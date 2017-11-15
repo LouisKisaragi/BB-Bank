@@ -89,6 +89,21 @@
 			&nbsp;&nbsp;
 		</td>
 	</tr>
+	<tr>
+		<th colspan="10">댓글</th>
+	</tr>
+	<tr>
+		<td colspan="2">여기에 글쓴이(ip)</td>
+		<td colspan="6"></td>
+		<td colspan="2">여기에 날짜</td>
+	</tr>
+	<tr>
+		<td colspan ="10">여기에 내용</td>
+	</tr>
+	<tr>
+		<td colspan="9"></td>
+		<td colspan="1">답글버튼</td>
+	</tr>
 </table>
 </form>
 </section>
