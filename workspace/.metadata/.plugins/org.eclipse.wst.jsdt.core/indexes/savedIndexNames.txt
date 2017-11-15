@@ -1,10 +1,6 @@
-INDEX VERSION 1.4+D:\자바JSP\jsp프로잭트\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+INDEX VERSION 1.4+C:\Users\IT63\Documents\GitHub\BB-Bank\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+206302043.index
+3907710489.index
+3705218295.index
+77965555.index
 1132860345.index
-3287921039.index
-3401809257.index
-754510436.index
-25820453.index
-396662032.index
-988725515.index
-2711455223.index
-6137986.index
