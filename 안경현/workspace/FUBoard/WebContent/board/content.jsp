@@ -104,6 +104,19 @@
 		<td colspan="9"></td>
 		<td colspan="1">답글버튼</td>
 	</tr>
+	<tr>
+		<th>작성자</th>
+		<td><input class="input" type="text" name="writer"></td>
+		<th>비밀번호</th>
+		<td>비밀번호입력</td>
+	</tr>
+	<tr>
+		<td>여기 댓글작성</td>
+	</tr>
+	<tr>
+		<td colspan="9"></td><td>댓글작성버튼</td>
+	</tr>
+	
 </table>
 </form>
 </section>
