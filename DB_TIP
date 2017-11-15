@@ -1,0 +1,20 @@
+Eclipse에서 데이터베이스 같이 사용하기
+하기전에 : 
+오라클 설치 폴더에서 다음을 찾는다.
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+여기 보면 ojdbc6.jar이라는 파일이 있는데 이 파일을 복사해두고 이제 앞으로 DB를 활용할 프로젝트에 기존에 빌드해놓았던 ojdbc를 다 제거하고 이걸로 다시 빌드한다.
+
+방법 : 
+Ecilpse에서 Database Development 찾기 -> Database Connections에서 우클릭 -> New -> 목록에서 Oracle 검색 후 선택 -> 드라이버에서 추가 버튼을 누르고 Name/Type 탭에서 Oracle Thin Driver 11을 찾아서(Oracle이 11g로 설치되어있기 때문) 선택 후 JAR List 탭 선택
+-> 기존에 있던 Driver file은 제거 후 오라클 설치 폴더에 들어가서 아까 찾았던 ojdbc6.jar을 선택해준다. -> Properties 탭에서 User ID와 pass 란에 DB 계정을 입력 후 확인 ->
+Host란에 localhost, 포트 번호는 1521 해보고 안되면 알아서 찾아서 9000번 같은거로 -> User name과 password에는 DB계정 입력 -> Test Connection으로 먼저 확인 후 연결이 성공했다고 하면 OK
+-> 이걸 실행하기 전에 Tomcat 서버 연결 끊기 -> Data Source Explorer 탭에서 방금 만든 New Oracle을 우클릭 후 Connect를 눌러서 접속 -> 패스워드 입력하라하면 DB 패스워드 입력하자
+
+DB 접속이 되었으니 sql 파일을 만들기 -> 프로젝트에 우클릭 -> New -> SQL file -> 파일이름입력 후 파일 생성 -> Connection profile에 Oracle_11, New Oracle, xe 선택
+-> 그리고 넓은 입력공간에 SQL 쿼리문을 입력하고 우클릭 Execute All 을 선택 -> 결과가 나온다.
+
+Tomcat 서버를 쓰려면 DB 접속을 끊고 써야 한다. 포트 번호가 중복되기 때문에
+
+
+포트 번호 찾기 :
+C:\oraclexe\app\oracle\product\11.2.0\server\network\ADMIN 로 가서 listener.ora를 열어서 DEFAULT_SERVICE_LISTENER = (XE) 를 확인한다.
