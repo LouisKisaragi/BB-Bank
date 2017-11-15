@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move 3 packages to &apos;FUBoard/src&apos;&#x0D;&#x0A;- Original project: &apos;board2&apos;&#x0D;&#x0A;- Destination element: &apos;FUBoard/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     board2/src/boardtwo.model&#x0D;&#x0A;     board2/src/boardtwo.action&#x0D;&#x0A;     board2/src/boardtwo.controller&#x0D;&#x0A;- Update references to refactored element" description="Move packages" destination="=FUBoard/src" element1="/src&lt;boardtwo.model" element2="/src&lt;boardtwo.action" element3="/src&lt;boardtwo.controller" flags="589830" fragments="3" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1509947332717" version="1.0"/>
-</session>
