@@ -1,0 +1,15 @@
+127.0.0.1 - - [03/Nov/2017:14:31:42 +0900] "GET / HTTP/1.1" 404 1070
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:31:44 +0900] "GET /board2/boardtwo/list.jsp HTTP/1.1" 200 524
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:31:44 +0900] "GET /board2/boardtwo/css/style.css HTTP/1.1" 200 266
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:31:44 +0900] "GET /board2/boardtwo/css/liststyle.css HTTP/1.1" 200 642
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:31:44 +0900] "GET /favicon.ico HTTP/1.1" 404 1081
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:20 +0900] "GET /board2/boardtwo/list.do HTTP/1.1" 500 2042
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:27 +0900] "GET /board2/board/list.do HTTP/1.1" 200 1730
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:27 +0900] "GET /board2/boardtwo/css/liststyle.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:27 +0900] "GET /board2/boardtwo/css/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:27 +0900] "GET /board2/boardtwo/images/level.gif HTTP/1.1" 200 833
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:27 +0900] "GET /board2/boardtwo/images/re.gif HTTP/1.1" 200 284
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:34 +0900] "GET /board2/board/content.do?num=74&pageNum=1 HTTP/1.1" 200 1464
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:32:34 +0900] "GET /board2/boardtwo/css/contentstyle.css HTTP/1.1" 200 537
+127.0.0.1 - - [03/Nov/2017:14:35:11 +0900] "GET / HTTP/1.1" 404 1070
+0:0:0:0:0:0:0:1 - - [03/Nov/2017:14:35:12 +0900] "GET /FUBoard/fileUpload/multipart_form.jsp HTTP/1.1" 200 590

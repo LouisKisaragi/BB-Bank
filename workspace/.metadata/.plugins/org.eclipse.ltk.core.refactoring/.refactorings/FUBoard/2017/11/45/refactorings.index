@@ -1,0 +1,15 @@
+1509947315011	Move 'boardtwo' to 'WebContent'
+1509947478329	Move 'commandPro.properties' to 'WEB-INF'
+1509947488235	Copy file
+1509947499234	Copy packages
+1509947505630	Copy folder
+1510276409773	Delete element
+1510276453474	Rename package 'boardtwo.action'
+1510276458623	Rename package 'boardtwo.controller'
+1510276462536	Rename package 'boardtwo.model'
+1510276469354	Delete element
+1510276472302	Delete element
+1510276483490	Delete element
+1510287753610	Encapsulate field 'ip'
+1510290501077	Encapsulate field 'preface'
+1510290504977	Encapsulate field 'bn'
