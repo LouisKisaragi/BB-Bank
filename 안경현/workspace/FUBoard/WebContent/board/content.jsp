@@ -75,7 +75,7 @@
 		<th>파일이름</th>
 		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}">
 				${article.origin_filename}</a></td>
-		<td>${article.filesize }kb</td>
+		<td><fmt:formatNumber value="${article.filesize/1024}" pattern="#,###"/>KB</td>
 	</tr>
 	<tr>
 		<td colspan="10">
