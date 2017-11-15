@@ -1,0 +1,4 @@
+ColorsAndFontsPreferencePage.selectedElement=Fterminal.views.view.font.definition
+PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
+eclipse.preferences.version=1
+terminal.views.view.font.definition=1|Consolas|13.8|0|WINDOWS|1|-23|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
