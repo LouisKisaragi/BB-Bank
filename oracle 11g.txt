@@ -1,0 +1,10 @@
+Run SQL Command Line을 통한 접근 방법
+Connect 명령어 입력
+Enter user-name : 유저 아이디
+Enter password : 유저 패스워드
+
+11g 정보
+관리자 : system / 1234
+유저 : scott / tiger
+
+나머지 방식은 같습니다. 모르는건 코멘트!
