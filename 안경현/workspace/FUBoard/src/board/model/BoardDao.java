@@ -22,14 +22,15 @@ public class BoardDao {
 	//이제부터 여기에 게시판에서 필요한 작업 기능들을 메서드로 추가하게 된다.
 	
 	//전체 글 개수를 알아오는 메서드
-	public int getArticleCount(){
+	public int getArticleCount(int bn){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
 		try{
 			conn = ConnUtil.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from BOARD");
+			pstmt = conn.prepareStatement("select count(*) from BOARD where bn=?");
+			pstmt.setInt(1, bn);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				count = rs.getInt(1);
@@ -55,7 +56,7 @@ public class BoardDao {
 					+ "(select rownum RNUM, NUM, WRITER,"
 					+ "ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
 					+ "READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE from "
-					+ "(select * from BOARD order by REF desc, STEP asc))where bn=? "
+					+ "(select * from BOARD order by REF desc, STEP asc))where bn=?) "
 					+ "where RNUM >= ? and RNUM <= ?";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);

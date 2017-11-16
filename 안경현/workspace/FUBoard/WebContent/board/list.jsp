@@ -16,7 +16,8 @@
 </head>
 <body>
 <section>
-<input type="hidden" name="bn" value="2">
+<!-- <input type="hidden" name="bn" value="2">-->
+<c:set var="bn" value="2"/>
 <b>글목록(전체 글:${count})</b>
 <table class="listwritebutton">
 	<tr>
@@ -113,15 +114,15 @@
 	</c:if>
 	
 	<c:if test="${startPage > pageBlock}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage - pageBlock }">이전</a>
+		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage - pageBlock }&bn=${bn}">이전</a>
 	</c:if>
 	
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}">[${i}]</a>
+		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}&bn=${bn}">[${i}]</a>
 	</c:forEach>
 	
 	<c:if test="${endPage < pageCount}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock }">다음</a>
+		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock }&bn=${bn }">다음</a>
 	</c:if>
 </c:if>
 </section>
