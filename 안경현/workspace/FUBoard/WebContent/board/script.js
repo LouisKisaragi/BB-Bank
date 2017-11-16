@@ -31,4 +31,9 @@ function commentSave(){
 		document.commentForm.pass.focus();
 		return false;
 	}
+	if(document.commentForm.content.value==""){
+		alert("내용을 입력하세요.");
+		document.commentForm.content.focus();
+		return false;
+	}
 }

@@ -10,12 +10,14 @@
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/board/script.js"></script>
 </head>
 <body>
 <section>
 <b>자료 보기</b>
 <br>
-<form>
+<form method="post" name="commentForm" action=""
+	onsubmit="return commentSave()">
 <input type="hidden" name="num" value="${num}">
 <table  class="contenttable">
 	<tr>
@@ -104,8 +106,6 @@
 		<td colspan="9"></td>
 		<td colspan="1"><input type="button" value="답글"></td>
 	</tr>
-	<form method="post" name="commentForm" action="${pageContext.request.contextPath}/board/writePro.do"
-	onsubmit="return writeSave()" enctype="application/x-www-form-urlencoded">
 	<tr>
 		<th colspan="2">작성자</th>
 		<td><input type="text" name="writer"></td>
@@ -114,9 +114,8 @@
 	</tr>
 	<tr>
 		<td colspan="9"><textarea name="content" rows="4" cols="40"></textarea></td>
-		<td><input type="button"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
+		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>
-	</form>
 </table>
 </form>
 </section>
