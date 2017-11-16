@@ -44,23 +44,24 @@ public class BoardDao {
 		return count;
 	}
 	//글 목록을 가져와서 List로 반환하는 메서드
-	public List<BoardDto> getArticles(int start, int end){
+	public List<BoardDto> getArticles(int start, int end, int bn){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardDto> articleList = null;
 		try{
 			conn = ConnUtil.getConnection();
-			String sql = "select * from "
+			String sql = "select * from(select * from "
 					+ "(select rownum RNUM, NUM, WRITER,"
 					+ "ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
 					+ "READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE from "
-					+ "(select * from BOARD order by REF desc, STEP asc)) "
+					+ "(select * from BOARD order by REF desc, STEP asc))where bn=? "
 					+ "where RNUM >= ? and RNUM <= ?";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, bn);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				articleList = new ArrayList<BoardDto>(5);

@@ -26,11 +26,14 @@ public class ListAction implements CommandAction{
 		int endRow = currentPage * pageSize; //한 페이지의 마지막 글 번호
 		int count = 0;
 		int number = 0;
+		String sbn=request.getParameter("bn");
+		System.out.println("bn::"+sbn);
+		int bn = Integer.parseInt(sbn);
 		List<BoardDto> articleList = null;
 		BoardDao dbPro = BoardDao.getInstance(); //DB연결
 		count = dbPro.getArticleCount(); //전체 글 개수
 		if(count > 0){ //현재 페이지의 글 목록
-			articleList = dbPro.getArticles(startRow, endRow);
+			articleList = dbPro.getArticles(startRow, endRow, bn);
 		} else {
 			articleList = Collections.emptyList();
 		}

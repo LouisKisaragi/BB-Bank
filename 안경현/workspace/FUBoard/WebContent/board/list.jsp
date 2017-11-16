@@ -16,6 +16,7 @@
 </head>
 <body>
 <section>
+<input type="hidden" name="bn" value="2">
 <b>글목록(전체 글:${count})</b>
 <table class="listwritebutton">
 	<tr>

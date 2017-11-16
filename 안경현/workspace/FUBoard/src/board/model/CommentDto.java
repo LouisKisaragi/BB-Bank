@@ -6,7 +6,6 @@ public class CommentDto {
 	private int num;
 	private String writer;
 	private String pass;
-	private int readcount;
 	private int ref;
 	private int step;
 	private int depth;
@@ -25,12 +24,6 @@ public class CommentDto {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
-	}
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
 	}
 	public int getRef() {
 		return ref;
