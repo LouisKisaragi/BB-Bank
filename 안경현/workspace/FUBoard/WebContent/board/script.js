@@ -20,3 +20,15 @@ function writeSave(){
 		return false;
 	}
 }
+function commentSave(){
+	if(document.commentForm.writer.value==""){
+		alert("작성자를 입력하세요.");
+		document.commentForm.writer.focus();
+		return false;
+	}
+	if(document.commentForm.pass.value==""){
+		alert("비밀번호를 입력하세요.");
+		document.commentForm.pass.focus();
+		return false;
+	}
+}
