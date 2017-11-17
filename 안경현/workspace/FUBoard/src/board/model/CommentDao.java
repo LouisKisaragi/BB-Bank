@@ -22,14 +22,15 @@ public class CommentDao {
 	//이제부터 여기에 댓글에서 필요한 작업 기능들을 메서드로 추가하게 된다.
 	
 	//전체 댓글 개수를 알아오는 메서드
-	public int getCArticleCount(){
+	public int getCArticleCount(int num){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
 		try{
 			conn = ConnUtil.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from BOARDCOMMENT");
+			pstmt = conn.prepareStatement("select count(*) from BOARDCOMMENT where bn=?");
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				count = rs.getInt(1);
@@ -44,23 +45,21 @@ public class CommentDao {
 		return count;
 	}
 	//댓글 목록을 가져와서 List로 반환하는 메서드
-	public List<CommentDto> getCArticles(int start, int end){
+	public List<CommentDto> getCArticles(int num){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<CommentDto> articleList = null;
 		try{
 			conn = ConnUtil.getConnection();
-			String sql = "select * from "
-					+ "(select rownum RNUM, NUM, WRITER,"
-					+ "PASS, REGDATE,"
-					+ "REF, STEP, DEPTH, CONTENT, IP, BN from "
-					+ "(select * from BOARDCOMMENT order by REF desc, STEP asc)) "
-					+ "where RNUM >= ? and RNUM <= ?";
+			String sql ="select * from "
+					+"(select NUM, WRITER,"
+					+"PASS, REGDATE,"
+					+"REF, STEP, DEPTH, CONTENT, IP, BN from" 
+					+"(select * from BOARDCOMMENT order by REF desc, STEP asc)where bn=?)";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				articleList = new ArrayList<CommentDto>(5);

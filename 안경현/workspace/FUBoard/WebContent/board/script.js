@@ -20,20 +20,20 @@ function writeSave(){
 		return false;
 	}
 }
-function commentSave(){
-	if(document.commentForm.writer.value==""){
+function contentSave(){
+	if(document.content.cwriter.value==""){
 		alert("작성자를 입력하세요.");
-		document.commentForm.writer.focus();
+		document.content.cwriter.focus();
 		return false;
 	}
-	if(document.commentForm.pass.value==""){
+	if(document.content.cpass.value==""){
 		alert("비밀번호를 입력하세요.");
-		document.commentForm.pass.focus();
+		document.content.cpass.focus();
 		return false;
 	}
-	if(document.commentForm.content.value==""){
+	if(document.content.ccomment.value==""){
 		alert("내용을 입력하세요.");
-		document.commentForm.content.focus();
+		document.content.ccomment.focus();
 		return false;
 	}
 }

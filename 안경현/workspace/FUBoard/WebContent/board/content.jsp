@@ -16,8 +16,8 @@
 <section>
 <b>자료 보기</b>
 <br>
-<form method="post" name="commentForm" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
-	onsubmit="return commentSave()">
+<form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
+	onsubmit="return contentSave()">
 <input type="hidden" name="num" value="${num}">
 <table  class="contenttable">
 	<tr>
@@ -95,6 +95,58 @@
 		<th colspan="10">댓글</th>
 	</tr>
 	<tr>
+<c:if test="${count == 0}">
+<table  class="listtable">
+	<tr>
+		<td>
+			게시판에 저장된 댓글이 없습니다.
+		</td>
+	</tr>
+</table>
+</c:if>
+<c:if test="${count > 0}">
+<table class="listtable">
+	<c:forEach var="articlec" items="${carticleList}">
+	<tr>
+		<td align="center" width="50">
+			<c:out value="${count}"/>
+			<c:set var="number" value="${count - 1}"/>
+		</td>
+		<td class="titletd">
+			<c:if test="${articlec.depth > 0}">
+				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+					width="${5 * articlec.depth}">
+				<img src="${pageContext.request.contextPath}/board/images/re.gif">
+			</c:if>
+			<c:if test="${articlec.depth == 0}">
+				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+					width="${5 * articlec.depth}">
+			</c:if>
+				글쓴이..${articlec.writer}
+			<c:if test="${articlec.readcount >= 20}">
+				<img src="${pageContext.request.contextPath}/board/images/hot.gif">
+			</c:if>
+		</td>
+		<td>	
+			<c:out value="${articlec.writer}"/><p>
+			<c:set value="${articlec.ip }" var="ipcut"/>
+			(
+			<script language="javascript">
+				var ipcutt="<c:out value="${ipcut}"/>";
+				var ipc = ipcutt.split('.');
+				document.write(ipc[0]);
+				document.write(".");
+				document.write(ipc[1]);
+			</script>
+			)
+		</td>
+		<td>${articlec.origin_filename }</td>
+		<td>${articlec.regdate}</td>
+		<td>${articlec.readcount}</td>
+	</tr>
+	</c:forEach>
+</table>
+</c:if>
 		<td colspan="2">${articlec.writer}<p>
 		<c:set value="${articlec.ip }" var="ipcut"/>
 			(
@@ -118,12 +170,12 @@
 	</tr>
 	<tr>
 		<th colspan="2">작성자</th>
-		<td><input type="text" name="writer"></td>
+		<td><input type="text" name="cwriter"></td>
 		<th colspan="6">비밀번호</th>
-		<td><input type="password" name="pass"></td>
+		<td><input type="password" name="cpass"></td>
 	</tr>
 	<tr>
-		<td colspan="9"><textarea name="content" rows="4" cols="40"></textarea></td>
+		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>
 		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>
 </table>
