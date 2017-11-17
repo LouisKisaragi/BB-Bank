@@ -9,7 +9,6 @@ public class WriteFormAction implements CommandAction{
 			HttpServletResponse response) throws Throwable {
 		//제목글과 답변글의 구분
 		int num=0, ref = 1, step=0, depth=0;
-	
 		try{
 			if(request.getParameter("num") != null){
 				num = Integer.parseInt(request.getParameter("num"));
@@ -19,9 +18,11 @@ public class WriteFormAction implements CommandAction{
 				
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		int bn = Integer.parseInt(request.getParameter("bn"));
+		request.setAttribute("pageNum",pageNum);
+		request.setAttribute("bn", bn);
 		//해당 뷰에서 사용할 속성
-
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("ref", new Integer(ref));
 		request.setAttribute("step", new Integer(step));

@@ -22,7 +22,7 @@
 <body>
 <section>
 <b>글삭제</b>
-<form method="POST" name="delForm" action="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}" 
+<form method="POST" name="delForm" action="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}" 
 	onsubmit="return deleteSave()">
 	<table class="deletetable">
 		<tr>
@@ -40,7 +40,7 @@
 			<td>
 				<input type="submit" value="삭제">
 				<input type="button" value="목록" 
-				onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}'">
+				onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn}'">
 			</td>
 		</tr>
 	</table>

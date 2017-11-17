@@ -1,5 +1,6 @@
 package board.model;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -179,5 +180,50 @@ public class CommentDao {
 		}
 		return article;
 	}
-	//글 수정을 처리할 글의 세부 테이터를 받아올 수 있는 방법
+	//댓글삭제
+	public int deleteArticle(int num, String pass,String location){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbPass = "";
+		String fileName=null;
+		int result = -1;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select PASS,SERVER_FILENAME from BOARDCOMMENT where NUM = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				fileName=rs.getString("server_filename");
+				dbPass = rs.getString("pass");
+				if(dbPass.equals(pass)){
+					pstmt.close(); 
+					pstmt = conn.prepareStatement(
+							"delete from BOARDCOMMENT where NUM = ?");
+					pstmt.setInt(1, num);
+					pstmt.executeUpdate();
+					result = 1; //삭제 성공
+					if(fileName.equals(null)) {
+						System.out.println("파일없음");
+					}else {
+						System.out.println("파일삭제중");
+					File f= new File(location+fileName);
+					f.delete();
+					System.out.println("파일삭제완료");
+					}
+				} else {
+					result = 0; //비밀번호 불일치
+				}
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return result;
+	}
 }

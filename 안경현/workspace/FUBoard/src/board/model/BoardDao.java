@@ -52,12 +52,12 @@ public class BoardDao {
 		List<BoardDto> articleList = null;
 		try{
 			conn = ConnUtil.getConnection();
-			String sql = "select * from(select * from "
-					+ "(select rownum RNUM, NUM, WRITER,"
-					+ "ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
-					+ "READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE from "
-					+ "(select * from BOARD order by REF desc, STEP asc))where bn=?) "
-					+ "where RNUM >= ? and RNUM <= ?";
+			String sql ="select * from(select * from "
+					+"(select rownum RNUM, NUM, WRITER,"
+					+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+					+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE from" 
+					+"(select * from BOARD order by REF desc, STEP asc)where bn=?))"
+					+"where RNUM >= ? and RNUM <= ?";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
 			pstmt.setInt(1, bn);

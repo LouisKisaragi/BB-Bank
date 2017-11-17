@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.BoardDao;
 import board.model.BoardDto;
+import board.model.CommentDao;
+import board.model.CommentDto;
 
 public class CommentAction implements CommandAction{
 
@@ -16,7 +18,7 @@ public class CommentAction implements CommandAction{
 			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		
-		BoardDto article = new BoardDto();	//데이터를 처리할 빈
+		CommentDto article = new CommentDto();	//데이터를 처리할 빈
 		System.out.println("writer=="+request.getParameter("writer"));
 		System.out.println("pass=="+request.getParameter("pass"));
 		System.out.println("ref=="+request.getParameter("ref"));
@@ -34,7 +36,7 @@ public class CommentAction implements CommandAction{
 		article.setContent(request.getParameter("content"));
 		article.setBn(Integer.parseInt(request.getParameter("bn")));
 		article.setIp(request.getRemoteAddr());
-		BoardDao dbPro = BoardDao.getInstance(); //DB 연결
+		CommentDao dbPro = CommentDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);
 		
 		
@@ -43,6 +45,7 @@ public class CommentAction implements CommandAction{
 		
 		//해당 페이지 번호
 		String pageNum = request.getParameter("pageNum");
+		String bn = request.getParameter("bn");
 		BoardDao d1bPro = BoardDao.getInstance();
 		
 		//해당 글번호에 대한 레코드
@@ -52,6 +55,7 @@ public class CommentAction implements CommandAction{
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("article", a1rticle);
-		return "/board/content.jsp";	//해당 뷰 경로 반환
+		request.setAttribute("bn", new Integer(bn));
+		return "/board/commentPro.jsp";	//해당 뷰 경로 반환
 	}
 }

@@ -26,6 +26,7 @@ public class UpdateProAction implements CommandAction{
 		String server_filename=null;
 		int filesize=0;
 		int num = Integer.parseInt(request.getParameter("num"));
+		int bn=Integer.parseInt(request.getParameter("bn"));
 		BoardDao dbProc = BoardDao.getInstance();
 		
 		//해당 글번호에 대한 레코드
@@ -133,6 +134,7 @@ public class UpdateProAction implements CommandAction{
 		BoardDao dbPro = BoardDao.getInstance(); //DB 연결
 		int check = dbPro.updateArticle(article);
 		//뷰에 사용할 속성
+		request.setAttribute("bn", new Integer(bn));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("check", new Integer(check));
 			//System.out.println("chek"+check);

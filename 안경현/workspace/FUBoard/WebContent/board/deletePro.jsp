@@ -4,7 +4,7 @@
 
 <c:if test="${check == 1}">
 	<meta http-equiv="Refresh"
-	content="0;url=${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}">
+	content="0;url=${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn}">
 </c:if>
 <c:if test="${check == 0}">
 <!doctype html>

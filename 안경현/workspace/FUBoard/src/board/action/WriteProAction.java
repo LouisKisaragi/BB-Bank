@@ -109,6 +109,11 @@ public class WriteProAction implements CommandAction{
 		article.setIp(request.getRemoteAddr());
 		BoardDao dbPro = BoardDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);
+		
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		int bn = Integer.parseInt(request.getParameter("bn"));
+		request.setAttribute("pageNum",pageNum);
+		request.setAttribute("bn", bn);
 		return "/board/writePro.jsp";	//해당 뷰 경로 반환
 	}
 	private String getFileName(Part part) throws UnsupportedEncodingException{

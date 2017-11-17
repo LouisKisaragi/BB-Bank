@@ -13,7 +13,7 @@ public class ListAction implements CommandAction{
 	public String requestPro (
 			HttpServletRequest request,
 			HttpServletResponse response)throws Throwable{
-		String pageNum = request.getParameter("pageNum"); //페이지 번호
+		String pageNum = request.getParameter("pageNum"); //페이지 번호\
 		String preface=null;//request.getParameter("preface");
 		String sbn=request.getParameter("bn");
 		if(pageNum == null){
@@ -43,6 +43,8 @@ public class ListAction implements CommandAction{
 
 		
 		//해당 뷰에서 사용할 속성
+		request.setAttribute("bn",bn);
+		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("startRow", new Integer(startRow));
 		request.setAttribute("endRow", new Integer(endRow));

@@ -16,7 +16,7 @@
 <article>
 <b>게시글 작성</b>
 <br></br>
-<form method="post" name="writeForm" action="${pageContext.request.contextPath}/board/writePro.do"
+<form method="post" name="writeForm" action="${pageContext.request.contextPath}/board/writePro.do?pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return writeSave()" enctype="multipart/form-data">
 	<input type="hidden" name="num" value="${num}">
 	<input type="hidden" name="ref" value="${ref}">
@@ -70,7 +70,7 @@
 				<input type="submit" value="업로드">
 				<input type="reset" value="다시작성">
 				<input type="button" value="목록" 
-				OnClick="window.location='${pageContext.request.contextPath}/board/list.do'">
+				OnClick="window.location='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum }&bn=${bn}'">
 			</td>
 		</tr>
 		</table>

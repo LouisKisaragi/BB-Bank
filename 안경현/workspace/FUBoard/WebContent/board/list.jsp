@@ -22,7 +22,7 @@
 <table class="listwritebutton">
 	<tr>
 		<td>
-			<a href="${pageContext.request.contextPath}/board/writeForm.do">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/board/writeForm.do?pageNum=${pageNum}&bn=${bn}">글쓰기</a>
 		</td>
 	</tr>
 </table>
@@ -74,14 +74,14 @@
 				<img src="${pageContext.request.contextPath}/board/images/level.gif"
 					width="${5 * article.depth}">
 			</c:if>
-			<a href="${pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${currentPage}">
+			<a href="${pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${pageNum }&bn=${bn}">
 				${article.subject}</a>
 			<c:if test="${article.readcount >= 20}">
 				<img src="${pageContext.request.contextPath}/board/images/hot.gif">
 			</c:if>
 		</td>
 		<td>	
-			<c:out value="${article.writer}"/>
+			<c:out value="${article.writer}"/><p>
 			<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script language="javascript">
@@ -104,7 +104,7 @@
 	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }"/>
 	<c:set var="pageCount" value="${count / pageSize + imsi }"/>
 	<c:set var="pageBlock" value="${3}"/>
-	<fmt:parseNumber var="result" value="${currentPage / pageBlock}" 
+	<fmt:parseNumber var="result" value="${(currentPage-1) / pageBlock}" 
 	integerOnly="true"/>
 	<c:set var="startPage" value="${result * pageBlock + 1 }"/>
 	<c:set var="endPage" value="${startPage + pageBlock - 1 }"/>

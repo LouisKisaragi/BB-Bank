@@ -16,7 +16,7 @@
 <section>
 <b>자료 보기</b>
 <br>
-<form method="post" name="commentForm" action=""
+<form method="post" name="commentForm" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return commentSave()">
 <input type="hidden" name="num" value="${num}">
 <table  class="contenttable">
@@ -24,7 +24,7 @@
 		<th>글번호</th>
 		<td colspan="1">${article.num}</td>
 		<th>업로더</th>
-		<td colspan="5">	${article.writer}
+		<td colspan="5">	${article.writer}<p>
 		<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script language="javascript">
@@ -75,19 +75,19 @@
 	</tr>
 	<tr>
 		<th>파일이름</th>
-		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}">
+		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
 				${article.origin_filename}</a></td>
 		<td><fmt:formatNumber value="${article.filesize/1024}" pattern="#,###"/>KB</td>
 	</tr>
 	<tr>
 		<td colspan="10">
-		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }">
 			&nbsp;&nbsp;
-		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
 			&nbsp;&nbsp;
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}'">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
-		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}'">
+		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
 		</td>
 	</tr>
@@ -95,7 +95,17 @@
 		<th colspan="10">댓글</th>
 	</tr>
 	<tr>
-		<td colspan="2">여기에 글쓴이(ip)</td>
+		<td colspan="2">${articlec.writer}<p>
+		<c:set value="${articlec.ip }" var="ipcut"/>
+			(
+			<script language="javascript">
+				var ipcutt="<c:out value="${ipcut}"/>";
+				var ipc = ipcutt.split('.');
+				document.write(ipc[0]);
+				document.write(".");
+				document.write(ipc[1]);
+			</script>
+			)</td>
 		<td colspan="6"></td>
 		<td colspan="2">여기에 날짜</td>
 	</tr>
