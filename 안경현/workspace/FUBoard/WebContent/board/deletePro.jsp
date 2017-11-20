@@ -14,7 +14,6 @@
 <link href="${pageContext.request.contextPath}/board/css/deleteFormstyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-${check }
 <br><br>
 비밀번호가 다릅니다.
 <br><br><br>

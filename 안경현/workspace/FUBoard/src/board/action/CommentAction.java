@@ -38,13 +38,13 @@ public class CommentAction implements CommandAction{
 		}
 		
 		CommentDto article = new CommentDto();	//데이터를 처리할 빈
-		System.out.println("writer=="+request.getParameter("cwriter"));
-		System.out.println("pass=="+request.getParameter("cpass"));
-		System.out.println("ref=="+ref);
-		System.out.println("step=="+step);
-		System.out.println("depth=="+depth);
-		System.out.println("content=="+request.getParameter("ccomment"));
-		System.out.println("bn=="+request.getParameter("num"));
+		//System.out.println("writer=="+request.getParameter("cwriter"));
+		//System.out.println("pass=="+request.getParameter("cpass"));
+		//System.out.println("ref=="+ref);
+		//System.out.println("step=="+step);
+		//System.out.println("depth=="+depth);
+		//System.out.println("content=="+request.getParameter("ccomment"));
+		//System.out.println("bn=="+request.getParameter("num"));
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setWriter(request.getParameter("cwriter"));
 		article.setPass(request.getParameter("cpass"));

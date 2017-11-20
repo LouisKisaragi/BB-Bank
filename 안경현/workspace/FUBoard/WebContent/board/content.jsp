@@ -81,9 +81,9 @@
 	</tr>
 	<tr>
 		<td colspan="10">
-		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }">
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
-		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
@@ -120,7 +120,7 @@
 			</script>
 			)</td>
 		<td colspan="6"></td>
-		<td colspan="2">${articlec.regdate }<input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/ComDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}"></td>
+		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 	</tr>
 	<tr>
 		<td colspan ="10">${articlec.content }</td>
@@ -133,7 +133,6 @@
 	</table>
 </c:if>
 <table class="contenttable">
-	
 	<tr>
 		<th colspan="2">작성자</th>
 		<td><input type="text" name="cwriter"></td>

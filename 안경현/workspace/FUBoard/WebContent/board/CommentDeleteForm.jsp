@@ -6,7 +6,7 @@
 <html>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css"/>
 <head>
-<title>게시판</title>
+<title>댓글삭제</title>
 <script>
 	function ComDeleteSave(){
 		if(document.ComDelForm.pass.value==""){
@@ -21,8 +21,8 @@
 </head>
 <body>
 <section>
-<b>글삭제</b>
-<form method="POST" name="ComDelForm" action="${pageContext.request.contextPath}/board/CommentDeletePro.do?num=${num }pageNum=${pageNum}&bn=${bn}" 
+<b>댓글삭제</b>
+<form method="POST" name="ComDelForm" action="${pageContext.request.contextPath}/board/CommentDeletePro.do?num=${num }&pageNum=${pageNum}&bn=${bn}&cnum=${cnum}" 
 	onsubmit="return ComDeleteSave()">
 	<table class="ComDeletetable">
 		<tr>
@@ -39,6 +39,7 @@
 		<tr>
 			<td>
 				<input type="submit" value="삭제">
+				<input type="button" value="이전" onClick="javascript:history.go(-1)">
 				<input type="button" value="목록" 
 				onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?num=${num }pageNum=${pageNum}&bn=${bn}'">
 			</td>

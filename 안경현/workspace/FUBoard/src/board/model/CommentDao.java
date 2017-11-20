@@ -192,7 +192,6 @@ public class CommentDao {
 					"select PASS from BOARDCOMMENT where NUM = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()){
 				dbPass = rs.getString("pass");
 				if(dbPass.equals(pass)){
@@ -202,10 +201,11 @@ public class CommentDao {
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
 					result = 1; //삭제 성공
-					}
-				} else {
+					}else {
 					result = 0; //비밀번호 불일치
 				}
+			}
+			System.out.println("re:"+result);
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {

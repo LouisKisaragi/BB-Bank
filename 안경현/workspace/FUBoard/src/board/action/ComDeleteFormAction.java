@@ -9,14 +9,16 @@ public class ComDeleteFormAction implements CommandAction{
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		
+		
+		int cnum = Integer.parseInt(request.getParameter("cnum"));
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		System.out.println(pageNum);
-		
+		request.setAttribute("cnum", new Integer(cnum));
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("bn", request.getParameter("bn"));
-		return "/board/ComDeleteForm.jsp";	//처리할 뷰 경로
+		return "/board/CommentDeleteForm.jsp";	//처리할 뷰 경로
 	}
 
 }
