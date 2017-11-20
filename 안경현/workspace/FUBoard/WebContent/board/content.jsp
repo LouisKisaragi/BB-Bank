@@ -128,15 +128,8 @@
 				document.write(ipc[1]);
 			</script>
 			)</td>
-		<td colspan="6"></td>
-		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
-	</tr>
-	<tr>
-		<td colspan ="10">${articlec.content }</td>
-	</tr>
-	<tr>
-		<td colspan="9"></td>
-		<td colspan="1"><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+	<td colspan ="10">${articlec.content }</td>
+		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 	</tr>
 	</c:forEach>
 	</table>

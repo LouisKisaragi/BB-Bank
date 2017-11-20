@@ -20,17 +20,8 @@
 	onsubmit="return contentSave()">
 
 <table class="contenttable">
-	<c:forEach var="articlec" items="${articleList}">
+	<c:set var="articlec" value="${article}"/>
 	<tr>
-	<c:choose>
-		<c:when test="${articlec.depth>0}">
-			<td>
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
-					width="${5 * article.depth}">
-				<img src="${pageContext.request.contextPath}/board/images/re.gif">
-			</td>
-		</c:when>
-		</c:choose>
 		<td colspan="2">${articlec.writer}<p>
 		<c:set value="${articlec.ip }" var="ipcut"/>
 			(
@@ -42,21 +33,13 @@
 				document.write(ipc[1]);
 			</script>
 			)</td>
-		<td colspan="6"></td>
-		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
-	</tr>
-	<tr>
 		<td colspan ="10">${articlec.content }</td>
-	</tr>
-	<tr>
-		<td colspan="9"></td>
-		<td colspan="1"><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
-	</tr>
-	</c:forEach>
+		<td colspan="2">${articlec.regdate }<p></td>
+	</tr>		
 	</table>
-
 <table class="contenttable">
 	<tr>
+		<td rowspan="2">답글 달기</td>
 		<th colspan="2">작성자</th>
 		<td><input type="text" name="cwriter"></td>
 		<th colspan="6">비밀번호</th>
