@@ -10,7 +10,7 @@ import board.model.BoardDto;
 import board.model.CommentDao;
 import board.model.CommentDto;
 
-public class CommentAction implements CommandAction{
+public class ReCommentAction implements CommandAction{
 
 
 	public String requestPro(

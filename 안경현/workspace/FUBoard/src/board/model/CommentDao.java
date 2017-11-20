@@ -98,6 +98,7 @@ public class CommentDao {
 		int depth = article.getDepth();
 		int number = 0;
 		String sql = "";
+		System.out.println("depth::"+depth);
 		try{
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement("select max(num) from BOARDCOMMENT");
@@ -108,6 +109,7 @@ public class CommentDao {
 				number = 1;
 			}
 			if(num != 0){	//답글일 경우
+				System.out.println("num::"+num);
 				sql = "update BOARDCOMMENT set STEP = STEP+1 where REF = ? and STEP > ?";
 				pstmt.close();
 				pstmt = conn.prepareStatement(sql);

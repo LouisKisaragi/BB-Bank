@@ -108,6 +108,15 @@
 <table class="contenttable">
 	<c:forEach var="articlec" items="${articleList}">
 	<tr>
+	<c:choose>
+		<c:when test="${articlec.depth>0}">
+			<td>
+				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+					width="${5 * article.depth}">
+				<img src="${pageContext.request.contextPath}/board/images/re.gif">
+			</td>
+		</c:when>
+		</c:choose>
 		<td colspan="2">${articlec.writer}<p>
 		<c:set value="${articlec.ip }" var="ipcut"/>
 			(
@@ -127,7 +136,7 @@
 	</tr>
 	<tr>
 		<td colspan="9"></td>
-		<td colspan="1"><input type="button" value="답글"></td>
+		<td colspan="1"><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 	</tr>
 	</c:forEach>
 	</table>
