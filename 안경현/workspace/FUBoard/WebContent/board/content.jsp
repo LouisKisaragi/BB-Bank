@@ -92,11 +92,11 @@
 		</td>
 	</tr>
 	<tr>
-		<th colspan="10">댓글</th>
+		<th colspan="10">댓글(총댓글수:${count })</th>
 	</tr>
-	<tr>
+	</table>
 <c:if test="${count == 0}">
-<table  class="listtable">
+<table  class="contenttable">
 	<tr>
 		<td>
 			게시판에 저장된 댓글이 없습니다.
@@ -105,48 +105,9 @@
 </table>
 </c:if>
 <c:if test="${count > 0}">
-<table class="listtable">
-	<c:forEach var="articlec" items="${carticleList}">
+<table class="contenttable">
+	<c:forEach var="articlec" items="${articleList}">
 	<tr>
-		<td align="center" width="50">
-			<c:out value="${count}"/>
-			<c:set var="number" value="${count - 1}"/>
-		</td>
-		<td class="titletd">
-			<c:if test="${articlec.depth > 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
-					width="${5 * articlec.depth}">
-				<img src="${pageContext.request.contextPath}/board/images/re.gif">
-			</c:if>
-			<c:if test="${articlec.depth == 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
-					width="${5 * articlec.depth}">
-			</c:if>
-				글쓴이..${articlec.writer}
-			<c:if test="${articlec.readcount >= 20}">
-				<img src="${pageContext.request.contextPath}/board/images/hot.gif">
-			</c:if>
-		</td>
-		<td>	
-			<c:out value="${articlec.writer}"/><p>
-			<c:set value="${articlec.ip }" var="ipcut"/>
-			(
-			<script language="javascript">
-				var ipcutt="<c:out value="${ipcut}"/>";
-				var ipc = ipcutt.split('.');
-				document.write(ipc[0]);
-				document.write(".");
-				document.write(ipc[1]);
-			</script>
-			)
-		</td>
-		<td>${articlec.origin_filename }</td>
-		<td>${articlec.regdate}</td>
-		<td>${articlec.readcount}</td>
-	</tr>
-	</c:forEach>
-</table>
-</c:if>
 		<td colspan="2">${articlec.writer}<p>
 		<c:set value="${articlec.ip }" var="ipcut"/>
 			(
@@ -159,15 +120,20 @@
 			</script>
 			)</td>
 		<td colspan="6"></td>
-		<td colspan="2">여기에 날짜</td>
+		<td colspan="2">${articlec.regdate }<input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/ComDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}"></td>
 	</tr>
 	<tr>
-		<td colspan ="10">여기에 내용</td>
+		<td colspan ="10">${articlec.content }</td>
 	</tr>
 	<tr>
 		<td colspan="9"></td>
 		<td colspan="1"><input type="button" value="답글"></td>
 	</tr>
+	</c:forEach>
+	</table>
+</c:if>
+<table class="contenttable">
+	
 	<tr>
 		<th colspan="2">작성자</th>
 		<td><input type="text" name="cwriter"></td>

@@ -1,6 +1,6 @@
 package board.model;
 
-import java.io.File;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,7 +56,7 @@ public class CommentDao {
 					+"(select NUM, WRITER,"
 					+"PASS, REGDATE,"
 					+"REF, STEP, DEPTH, CONTENT, IP, BN from" 
-					+"(select * from BOARDCOMMENT order by REF desc, STEP asc)where bn=?)";
+					+"(select * from BOARDCOMMENT order by STEP desc, REF asc)where bn=?)";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
 			pstmt.setInt(1, num);
@@ -180,22 +180,20 @@ public class CommentDao {
 		return article;
 	}
 	//댓글삭제
-	public int deleteArticle(int num, String pass,String location){
+	public int deleteArticle(int num, String pass){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String dbPass = "";
-		String fileName=null;
 		int result = -1;
 		try{
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement(
-					"select PASS,SERVER_FILENAME from BOARDCOMMENT where NUM = ?");
+					"select PASS from BOARDCOMMENT where NUM = ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				fileName=rs.getString("server_filename");
 				dbPass = rs.getString("pass");
 				if(dbPass.equals(pass)){
 					pstmt.close(); 
@@ -204,18 +202,10 @@ public class CommentDao {
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
 					result = 1; //삭제 성공
-					if(fileName.equals(null)) {
-						System.out.println("파일없음");
-					}else {
-						System.out.println("파일삭제중");
-					File f= new File(location+fileName);
-					f.delete();
-					System.out.println("파일삭제완료");
 					}
 				} else {
 					result = 0; //비밀번호 불일치
 				}
-			}
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {

@@ -41,6 +41,7 @@ public class ContentAction implements CommandAction{
 		request.setAttribute("bn", new Integer(bn));
 		request.setAttribute("artclec", articlec);
 		request.setAttribute("count", count);
+		request.setAttribute("articleList", carticleList);
 		return "/board/content.jsp"; //요청에 응답할 뷰 경로
 	}
 
