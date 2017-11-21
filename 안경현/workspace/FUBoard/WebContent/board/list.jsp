@@ -9,6 +9,7 @@
 
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
