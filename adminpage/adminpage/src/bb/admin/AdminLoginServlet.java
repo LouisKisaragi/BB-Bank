@@ -34,7 +34,7 @@ public class AdminLoginServlet extends HttpServlet {
     	   else
     	   {
     		   url = "bbADMIN/adminLogin.jsp";
-    		   request.setAttribute("message","login error!")
+    		   request.setAttribute("message","login error!");
     	   }
     	   RequestDispatcher rdp = request.getRequestDispatcher(url);
     	   rdp.forward(request, response);
