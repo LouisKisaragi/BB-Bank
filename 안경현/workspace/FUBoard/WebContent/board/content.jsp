@@ -10,19 +10,21 @@
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/board/script.js"></script>
 </head>
 <body>
 <section>
 <b>자료 보기</b>
 <br>
-<form>
+<form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
+	onsubmit="return contentSave()">
 <input type="hidden" name="num" value="${num}">
 <table  class="contenttable">
 	<tr>
 		<th>글번호</th>
 		<td colspan="1">${article.num}</td>
 		<th>업로더</th>
-		<td colspan="5">	${article.writer}
+		<td colspan="5">	${article.writer}<p>
 		<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script language="javascript">
@@ -73,50 +75,74 @@
 	</tr>
 	<tr>
 		<th>파일이름</th>
-		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}">
+		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
 				${article.origin_filename}</a></td>
 		<td><fmt:formatNumber value="${article.filesize/1024}" pattern="#,###"/>KB</td>
 	</tr>
 	<tr>
 		<td colspan="10">
-		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
-		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}'">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
-		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}'">
+		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
 		</td>
 	</tr>
 	<tr>
-		<th colspan="10">댓글</th>
+		<th colspan="10">댓글(총댓글수:${count })</th>
 	</tr>
+	</table>
+<c:if test="${count == 0}">
+<table  class="contenttable">
 	<tr>
-		<td colspan="2">여기에 글쓴이(ip)</td>
+		<td>
+			게시판에 저장된 댓글이 없습니다.
+		</td>
+	</tr>
+</table>
+</c:if>
+<c:if test="${count > 0}">
+<table class="contenttable">
+	<c:forEach var="articlec" items="${articleList}">
+	<tr>
+		<td colspan="2">${articlec.writer}<p>
+		<c:set value="${articlec.ip }" var="ipcut"/>
+			(
+			<script language="javascript">
+				var ipcutt="<c:out value="${ipcut}"/>";
+				var ipc = ipcutt.split('.');
+				document.write(ipc[0]);
+				document.write(".");
+				document.write(ipc[1]);
+			</script>
+			)</td>
 		<td colspan="6"></td>
-		<td colspan="2">여기에 날짜</td>
+		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 	</tr>
 	<tr>
-		<td colspan ="10">여기에 내용</td>
+		<td colspan ="10">${articlec.content }</td>
 	</tr>
 	<tr>
 		<td colspan="9"></td>
-		<td colspan="1">답글버튼</td>
+		<td colspan="1"><input type="button" value="답글"></td>
+	</tr>
+	</c:forEach>
+	</table>
+</c:if>
+<table class="contenttable">
+	<tr>
+		<th colspan="2">작성자</th>
+		<td><input type="text" name="cwriter"></td>
+		<th colspan="6">비밀번호</th>
+		<td><input type="password" name="cpass"></td>
 	</tr>
 	<tr>
-		<th>작성자</th>
-		<td><input class="input" type="text" name="writer"></td>
-		<th>비밀번호</th>
-		<td>비밀번호입력</td>
+		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>
+		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>
-	<tr>
-		<td>여기 댓글작성</td>
-	</tr>
-	<tr>
-		<td colspan="9"></td><td>댓글작성버튼</td>
-	</tr>
-	
 </table>
 </form>
 </section>
