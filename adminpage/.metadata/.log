@@ -3084,3 +3084,27 @@ java.sql.SQLException: ORA-01017: invalid username/password; logon denied
 
 !ENTRY org.eclipse.lsp4e 1 0 2017-11-21 10:49:26.711
 !MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 13:48:00.320
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 13:48:24.226
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:58.267
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:58.271
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:59.376
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:59.389
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:59.418
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-21 14:19:59.423
+!MESSAGE Non IFiles not supported yet

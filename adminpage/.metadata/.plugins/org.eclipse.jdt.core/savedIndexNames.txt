@@ -39,7 +39,6 @@ INDEX VERSION 1.130+C:\Users\IT63\Documents\GitHub\BB-Bank\adminpage\.metadata\.
 1686655237.index
 134360950.index
 3981179383.index
-2311972529.index
 1924480154.index
 1850603430.index
 3627084181.index

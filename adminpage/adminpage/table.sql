@@ -10,6 +10,8 @@ create table member(
 	primary key(id)
 );
 
+
+
 CREATE table "BOARD"(
 	"NUM"	NUMBER(7,0) NOT NULL,
 	"WRITER"	VARCHAR2(12) NOT NULL,
