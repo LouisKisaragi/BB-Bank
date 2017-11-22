@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
+=======
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>
@@ -20,6 +22,7 @@
 	</section>
 	<section name="completion_proposal_size">
 	</section>
+>>>>>>> 9e0daf62cb198ac462bab87ee911b4851a8db62e
 	<section name="JavaElementSearchActions">
 	</section>
 </section>
