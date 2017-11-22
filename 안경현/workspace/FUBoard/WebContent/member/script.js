@@ -1,27 +1,45 @@
+function idCheckSave(){
+	if(document.idCheck.iid.value == ""){
+		alert("아이디를 입력하세요.");
+		document.idCheck.iid.focus();
+		return false;
+	}else{
+		alert(document.idCheck.iid.value);
+		alert(opener.document.join.id.value);
+		opener.document.join.id.value=document.idCheck.iid.value;
+		window.close();
+	}		
+}
+
 function joinSave(){
 	if(document.join.id.value == ""){
 		alert("아이디를 입력하세요.");
-		document.writeForm.writer.focus();
+		document.join.id.focus();
 		return false;
 	}
 		
-	if(document.writeForm.subject.value == ""){
-		alert("제목을 입력하세요.");
-		document.writeForm.subject.focus();
-		return false;
-	}
-	if(document.writeForm.content.value == ""){
-		alert("내용을 입력하세요.");
-		document.writeForm.content.focus();
-		return false;
-	}
-	if(document.writeForm.pass.value == ""){
+	if(document.join.pass.value == ""){
 		alert("비밀번호를 입력하세요.");
-		document.writeForm.pass.focus();
+		document.join.pass.focus();
+		return false;
+	}
+	if(document.join.repass.value == ""){
+		alert("비밀번호재확인을 입력하세요.");
+		document.join.repass.focus();
+		return false;
+	}
+	if(document.join.name.value == ""){
+		alert("이름을 입력하세요.");
+		document.join.name.focus();
+		return false;
+	}
+	if(document.join.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.join.email.focus();
 		return false;
 	}
 }
-function idCheck(id){
+function idCheck(id,num,pageNum,bn){
 	if(id==""){
 		alert("아이디를 입력해주세요.");
 		document.join.id.focus();
@@ -36,7 +54,8 @@ function idCheck(id){
 		var popX=winX+(winWidth - popWidth)/2;
 		var popY=winY+(winHeight - popHeight)/2;
 		
-		url="idCheck.jsp?id="+id;
-		window.ipen(url, "post", "left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
+		url="idCheck.do?id="+id+"&num="+num+"&pageNum="+pageNum+"&bn="+bn;
+		window.open(url, "post", 
+				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 }

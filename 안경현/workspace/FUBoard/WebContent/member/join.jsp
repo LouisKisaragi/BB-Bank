@@ -24,7 +24,7 @@
 	<table class="jointable">
 		<tr>
 			<th>아이디</th><td><input type="text" name="id"></td>
-			<td><input type="button" value="아이디 중복확인" onClick="idCheck(this.form.id.value)">	</td>
+			<td><input type="button" value="아이디 중복확인" onClick="idCheck(this.form.id.value,${num},${pageNum },${bn })">	</td>
 		</tr>
 		<tr>
 			<th>비밀번호</th><td><input type="password" name="pass"></td>
@@ -42,7 +42,7 @@
 	<table class="joinbutton">
 		<c:choose>
 			<c:when test="${idcheck==0 }">
-				<tr><td>아이디 중복체크를 해주세요!</td></tr>
+				<tr><td>아이디 중복체크를 해주세요!<input type="button" value="회원가입" onClick="return joinSave();"></td></tr>
 			</c:when>
 			<c:when test="${passcheck==0 }">
 				<tr><td>비밀번호 재확인을 해주세요!</td></tr>
