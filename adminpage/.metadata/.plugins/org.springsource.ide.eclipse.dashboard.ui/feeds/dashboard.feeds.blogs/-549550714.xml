@@ -5,7 +5,85 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-11-18T14:19:44Z</updated>
+  <updated>2017-11-21T20:34:32Z</updated>
+  <entry>
+    <title>Spring Security OAuth 2.2.1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/11/21/spring-security-oauth-2-2-1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Joe Grandja</name>
+    </author>
+    <id>tag:spring.io,2017-11-21:3100</id>
+    <updated>2017-11-21T20:34:32Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the release of Spring Security OAuth 2.2.1.RELEASE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-security-oauth/milestone/28?closed=1"&gt;2.2.1.RELEASE&lt;/a&gt; is a maintenance release that includes bug fixes and minor improvements.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security-oauth/"&gt;Project Page&lt;/a&gt; |
+&lt;a href="https://github.com/spring-projects/spring-security-oauth/"&gt;GitHub&lt;/a&gt; |
+&lt;a href="http://projects.spring.io/spring-security-oauth/docs/Home.html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security-oauth2"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Skipper 1.0 M2 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/11/21/spring-cloud-skipper-1-0-m2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mark Pollack</name>
+    </author>
+    <id>tag:spring.io,2017-11-21:3099</id>
+    <updated>2017-11-21T18:07:55Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce the release of Spring Cloud Skipper 1.0 M2.&lt;/p&gt;
+&lt;p&gt;Skipper is a lightweight tool that allows you to discover Spring Boot applications and manage their lifecycle on multiple Cloud Platforms. You can use Skipper standalone or integrate it with Continuous Integration pipelines to help implement the practice of Continuous Deployment.&lt;/p&gt;
+&lt;p&gt;The 1.0 M2 release fixes several bugs and introduces a few new features.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for Postgres, MySQL, Microsoft SQL Server, and HSQLDB databases.&lt;/li&gt;
+  &lt;li&gt;Improved support for upgrading applications that use an HTTP location for the resource definition.&lt;/li&gt;
+  &lt;li&gt;LRU cache used to manage disk space for HTTP and Maven based resources that are downloaded.&lt;/li&gt;
+  &lt;li&gt;HTTP based resources are always downloaded, never cached.&lt;/li&gt;
+  &lt;li&gt;Use updated CF Deployer library with an HTTP based health check.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were some minor changes to the application manifest and package metadata format.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Changes to apiVersion and kind in to be more consistent.&lt;/li&gt;
+  &lt;li&gt;Separate out version property to a top-level field.&lt;/li&gt;
+  &lt;li&gt;Skipper 1.0 M1 packages are still supported.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;a href="https://docs.spring.io/spring-cloud-skipper/docs/1.0.0.M2/reference/htmlsingle/#getting-started-installing-skipper"&gt;getting started section&lt;/a&gt; in the reference guide is the best place to start kicking the tires.&lt;/p&gt;
+&lt;p&gt;Please reach out on &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues"&gt;Github issues&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-skipper"&gt;Stack Overflow&lt;/a&gt;, and the &lt;a href="https://gitter.im/spring-cloud/spring-cloud-skipper"&gt;Gitter channel&lt;/a&gt; with questions, feedback or contributions.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - November 21st, 2017</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/11/21/this-week-in-spring-november-21st-2017" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-11-21:3098</id>
+    <updated>2017-11-21T15:30:47Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! Can you beleive we&amp;rsquo;re less than six weeks away from 2018? Time sure flies when you&amp;rsquo;re having fun! &lt;/p&gt;
+&lt;p&gt;This week I&amp;rsquo;m in Los Angeles talking to community members and then taking in the Thanksgiving holiday here in the US surrounded by friends and family. Thanksgiving is a chance to reflect on that for which we are thankful. I am sure that I speak for all of us here on the Spring and Pivotal teams when I say that we are &lt;em&gt;thankful&lt;/em&gt; for you. Thank you for making this the most amazing, dynamic, exhilarating and interesting community in tech. If you&amp;rsquo;re in the US, happy Thanksgiving! Either way, we&amp;rsquo;ve got a lot to cover this week so let&amp;rsquo;s get to it. &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud co-founder and co-lead Spencer Gibb has just announced &lt;a href="https://spring.io/blog/2017/11/18/spring-cloud-finchley-m4-released"&gt;Spring Cloud Finchley M4&lt;/a&gt;. This new release updates everything to support Spring Boot 2.0.0.M6. As always, this is a milestone release and represents an ideal opportunity for you to try the bits.&lt;/li&gt;
+  &lt;li&gt;In this last week&amp;rsquo;s installment of &lt;a href="http://twitter.com/SpringTipsLive"&gt;&lt;em&gt;Spring Tips&lt;/em&gt;&lt;/a&gt; I looked at some of the more exotic features of the &lt;a href="https://spring.io/blog/2017/11/15/spring-tips-the-spring-boot-build-plugin"&gt;Spring Boot build plugin&lt;/a&gt; including &lt;em&gt;fat&lt;/em&gt; &lt;code&gt;.jar&lt;/code&gt;s and &lt;em&gt;thin&lt;/em&gt; &lt;code&gt;.jar&lt;/code&gt;s.&lt;/li&gt;
+  &lt;li&gt;Check out Spring Boot community legend Nicolas Fr?nkel&amp;rsquo;s talk introducing &lt;a href="https://www.youtube.com/watch?v=zSJFx0iyrq4"&gt;the under-the-hood mechanisms of Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Abhinav Mehla introduces the availability &lt;a href="https://www.mongodb.com/blog/post/on-demand-mongodb-enterprise-on-pivotal-cloud-foundry"&gt;of MongoDB Enterprise on Pivotal Cloud Foundry&lt;/a&gt;. This is awesome!&lt;/li&gt;
+  &lt;li&gt;This is such good news! Rod Johnson&amp;rsquo;s startup, Atomist, which aims to automate the end-to-end lifecycle around application development, &lt;a href="https://sdtimes.com/atomist-announces-new-automation-platform-targeted-developers/"&gt;has launched and announced their automation platform&lt;/a&gt;. Congratulations Rod! Here&amp;rsquo;s another great post &lt;a href="https://venturebeat.com/2017/11/15/atomist-launches-to-help-devs-automate-repository-creation-and-code-deployment/"&gt;on Atomist&amp;rsquo;s emerging from stealth &lt;/a&gt;. If you want to hear more, join &lt;a href="http://springoneplatform.io"&gt;him at SpringOne Platform&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Are you in the St. Louis area? Join fellow Spring Developer Advocate Mario Gray and me &lt;a href="https://twitter.com/steve_womack/status/931653007221121025"&gt;for Bootiful Testing&lt;/a&gt; December 13th, 2017.&lt;/li&gt;
+  &lt;li&gt;Auth0 has an interesting post that introduces using Gradle to build a Spring 5 application &lt;a href="https://auth0.com/blog/spring-5-embedded-tomcat-8-gradle-tutorial/"&gt;that manually embeds Apache Tomcat 5&lt;/a&gt;. (I think you&amp;rsquo;d probably be better off using Spring Boot 2 which auto-configures Apache Tomcat if its on the CLASSPATH).&lt;/li&gt;
+  &lt;li&gt;Our @SpringCentral Twitter account hilariously broke the &lt;a href="https://twitter.com/springcentral/status/931570478187126785"&gt;news before even I realized&lt;/a&gt;, but I recently updated my &lt;a href="https://dzone.com/refcardz/learn-microservices-in-java"&gt;DZone Microservices in Java refcard and it&amp;rsquo;s available now&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Spring Data lead Oliver Gierke &lt;a href="https://st.inf.tu-dresden.de/SalesPoint/"&gt;shares this sample application&lt;/a&gt;, &lt;em&gt;Salespoint&lt;/em&gt;, which is a Spring Boot-based POS framework use for teaching purposes at Technische Universit?t Dresden (which, I assume, means the technical university of Dresden, Germany), where Oliver teaches. Here&amp;rsquo;s &lt;a href="http://bit.ly/2zbY0z5"&gt;the project home&lt;/a&gt; and &lt;a href="http://bit.ly/2zaPTmo"&gt;the repository&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;This post introduces how T-Mobile refactored their major monolithic application &lt;a href="https://www.cloudfoundry.org/t-mobile-integrates-cloud-foundry-create-new-culture/?_lrsc=2e064143-6b50-44ec-a22d-ece03ddfe607"&gt;and introduced Cloud Foundry to change their culture&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;OAuth expert Will Tran discusses &lt;a href="https://www.infoq.com/presentations/oauth2-microservices-security"&gt;enforcing microservices¡¯ security policies with OAuth 2.0&lt;/a&gt; in this fantastic InfoQ video.&lt;/li&gt;
+  &lt;li&gt;Neo4J legend Michael Hunger walks us through a &lt;a href="http://gist.asciidoctor.org/?dropboxs-56rhbvey5cp8c53%2Fdevoxx-conference-graph.adoc%3Fdl%3D0"&gt;network analysis using Neo4J&amp;rsquo;s Cypher language and a dataset based on Devoxx&lt;/a&gt; conference talks. If you&amp;rsquo;re using Neo4j (with, perhaps, Spring Data Neo4J) then this is a masterclass of a read for you.&lt;/li&gt;
+  &lt;li&gt;I love it when cloud platforms demonstrate Spring Boot applications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Call it the &lt;a href="https://twitter.com/starbuxman?ref_src=twsrc%5Etfw"&gt;@starbuxman&lt;/a&gt; rule? Every cloud inevitably runs &lt;a href="https://twitter.com/springboot?ref_src=twsrc%5Etfw"&gt;@springboot&lt;/a&gt; apps. The folks at Oracle show how to run &lt;a href="https://twitter.com/springcloud?ref_src=twsrc%5Etfw"&gt;@springcloud&lt;/a&gt; on Oracle Cloud &amp;hellip; &lt;a href="https://t.co/BGZa26kGm7"&gt;&lt;a href="https://t.co/BGZa26kGm7"&gt;https://t.co/BGZa26kGm7&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;&amp;mdash; Richard Seroter (@rseroter) &lt;a href="https://twitter.com/rseroter/status/931561318565388288?ref_src=twsrc%5Etfw"&gt;November 17, 2017&lt;/a&gt;&lt;/blockquote&gt;&lt;br/&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;In this blog, &lt;a href="https://medium.com/oracledevs/spring-cloud-stream-and-kafka-based-microservices-on-oracle-cloud-9889732149a"&gt;Oracle demonstrates using Spring Cloud Stream&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Finchley.M4 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2017/11/18/spring-cloud-finchley-m4-released" />
@@ -1504,161 +1582,6 @@ needed to take to customize the project to suit your company&amp;#8217;s needs. 
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - October 31st, 2017</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/31/this-week-in-spring-october-31st-2017" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2017-10-31:3081</id>
-    <updated>2017-10-31T11:05:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans and welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in San Francisco for the &lt;a href="https://www.kotlinconf.com/"&gt;first, and sure-to-be-amazing, Kotlin Conf&lt;/a&gt; 2017. I&amp;rsquo;ll be talking about Spring Boot and Kotlin, and I hope you&amp;rsquo;ll &lt;a href="http://twitter.com/starbuxman"&gt;join me&lt;/a&gt; if you&amp;rsquo;re around.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;ve got a lot to cover this week so let&amp;rsquo;s get to it!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Batch lead Michael Minella &lt;a href="https://spring.io/blog/2017/10/24/spring-batch-4-0-0-m5-is-now-available"&gt;just announced Spring Batch 4.0.0.M5&lt;/a&gt; which includes, among other things, an &lt;code&gt;ItemProcessor&lt;/code&gt; implementation that supports Java 8 &lt;code&gt;Function&lt;/code&gt; implementations, updated documentation and much more.&lt;/li&gt;
-  &lt;li&gt;Spring Framework lead Juergen Hoeller &lt;a href="https://spring.io/blog/2017/10/24/spring-framework-5-0-1-available-now"&gt;announced Spring Framework 5.0.1&lt;/a&gt; which includes a few bug fixes which in turn pick up fixes in Reactor Netty and welcome performance improvements in AspectJ 1.8.12.&lt;/li&gt;
-  &lt;li&gt;Last week, in another installment of &lt;em&gt;Spring Tips&lt;/em&gt;, &lt;a href="https://spring.io/blog/2017/10/25/spring-tips-spring-cloud-contract-http"&gt;I looked at HTTP based contracts with Spring Cloud Contract&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Spring Cloud co-founder Spencer Gibb announced the first release candidate to Spring Cloud Edgware. There are some changes to not in the artifact names for various starters. Spring Cloud Edgware &lt;a href="https://spring.io/blog/2017/10/25/spring-cloud-edgware-rc1-released"&gt;has a &lt;em&gt;lot&lt;/em&gt; of new features&lt;/a&gt; so be sure to investigate the release notes.&lt;/li&gt;
-  &lt;li&gt;Do you ever wonder what the difference between Apache Geode and Pivotal Gemfire is? &lt;a href="https://spring.io/blog/2017/10/26/diff-q-spring-data-gemfire-spring-data-geode"&gt;Let Spring Data Geode/Gemfire lead John Blum illuminate the differences in this post&lt;/a&gt;. TL;DR: not much!&lt;/li&gt;
-  &lt;li&gt;Project Reactor lead &lt;a href="https://spring.io/blog/2017/10/27/reactor-bismuth-sr3-is-now-available"&gt;Stephane Maldini just announced Reactor Bismuth SR3&lt;/a&gt; which is packed with bug-fixes and improvements. Reactor Bismuth SR3 is available in Spring Framework 5.0.1.&lt;/li&gt;
-  &lt;li&gt;Spring REST Docs lead Andy Wilkinson &lt;a href="https://spring.io/blog/2017/10/30/spring-rest-docs-2-0-0-rc1"&gt;just announced Spring REST Docs 2.0.0.RC1&lt;/a&gt;. The new release requires Spring Framework 5.0 and Java 8. The main highlight of the 2.0 release is support for using Spring WebFlux&amp;rsquo;s &lt;code&gt;WebTestClient&lt;/code&gt; to document an API.&lt;/li&gt;
-  &lt;li&gt;Spring Web Services lead Greg Turnquist &lt;a href="https://spring.io/blog/2017/10/30/spring-web-services-3-0-0-release-2-4-2-release-is-out"&gt;just announced Spring Web Services 3.0.0.RELEASE&lt;/a&gt;. The new release has a number of new features including better handling of large attachments, SAML callbacks, upgrades to the latest version of AspectJ, support the up-and-coming Axiom 1.3, and much more. Of note, and thanks, is that 75% of the 3.0 release was contributed by the community!&lt;/li&gt;
-  &lt;li&gt;Dr. Mark Pollack just &lt;a href="https://spring.io/blog/2017/10/30/spring-cloud-skipper-1-0-m1-released"&gt;announced Spring Cloud Skipper 1.0 M1&lt;/a&gt;. From the article: &amp;ldquo;Skipper is a lightweight tool that allows you to discover Spring Boot applications and manage their lifecycle on multiple Cloud Platforms. You can use Skipper standalone or integrate it with Continuous Integration pipelines to help implement the practice of Continuous Deployment.&amp;rdquo;&lt;/li&gt;
-  &lt;li&gt;I love the &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/index.html"&gt;new Spring Framework documentation&lt;/a&gt; starting in Spring Framework 5.0.1. The new landing page is gorgeous and just click on any of the sections and you&amp;rsquo;ll see how the outline really cleans up nicely.&lt;/li&gt;
-  &lt;li&gt;Spring Integration ninja Artem Bilan explores the testy subject of integration &lt;a href="https://spring.io/blog/2017/10/24/how-to-test-spring-cloud-stream-applications-part-i"&gt;testing Spring Cloud Stream applications in this recommended new post&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Speaking of consumer driven contract testing, Spring Cloud Contract lead Marcin Grzejszczak takes &lt;a href="https://www.youtube.com/watch?list=PLxZQe6I1pYpfbUI587PZ7CY0l3oKPg9hH&amp;v=UwwaWodTj1k"&gt;a more interesting perspective in this talk from earlier this year&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Oleh Dokuka &lt;a href="https://medium.com/@olehdokuka/mastering-own-reactive-streams-implementation-part-1-publisher-e8eaf928a78c"&gt;looks at the Reactive Streams specification&amp;rsquo;s &lt;code&gt;Publisher&lt;/code&gt; type&lt;/a&gt; in terms of Pivotal&amp;rsquo;s Reactor implementation. As Lightbend&amp;rsquo;s &lt;a href="https://twitter.com/ktosopl/status/924958966269935617"&gt;Konrad Malawski says&lt;/a&gt;: &amp;ldquo;Probably the only post about #reactivestreams implementations and #flow #jdk9 out there that explains using the tck/rules well :)&amp;rdquo;&lt;/li&gt;
-  &lt;li&gt;Can you believe it&amp;rsquo;s already been more than a year since the last SpringOne Platform event? We&amp;rsquo;re only a month away from the big one in San Francisco for 2018! (Do you have your tickets, yet?) &lt;a href="https://twitter.com/apachegeode/status/923279646757548033"&gt;There are going to be a lot of great Apache Geode talks, among many other things, at SpringOne Platform&lt;/a&gt; and we hope you&amp;rsquo;ll join us.&lt;/li&gt;
-  &lt;li&gt;Spring founder and Atomist CEO Rod Johnson and I wrote a post that looks at how to automate the gestation &lt;a href="https://the-composition.com/turn-any-repo-into-a-software-factory-exploring-spring-5-and-kotlin-2f58283421a2"&gt;of a reactive, Kotlin-based Spring Boot 2.0 application with the Atomist automation service&lt;/a&gt; - check it out!&lt;/li&gt;
-  &lt;li&gt;Reactor ninja Simon Basle put together a short-and-sweet look at how to read a file &lt;a href="https://simonbasle.github.io/2017/10/file-reading-in-reactor/"&gt;with Project Reactor&lt;/a&gt; and the &lt;code&gt;java.nio.*&lt;/code&gt; support.&lt;/li&gt;
-  &lt;li&gt;I loved this post by Simon Wirtz that looks at some of &lt;a href="https://tech.io/playgrounds/8594/spring-5---dedicated-kotlin-features"&gt;the interesting integrations for Spring Framework 5 and Kotlin&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Raja Sundaram Ganesan put together a very nice post on &lt;a href="http://bytesville.com/developing-reactive-microservice-using-springboot-2/"&gt;developing reactive microservices using Spring Boot 2.0 and Kotlin&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Are you &lt;a href="https://twitter.com/snicoll/status/922748372620120064"&gt;using Microsoft Azure? You&amp;rsquo;ll be delighted to know&lt;/a&gt; there are now dedicated starters and auto-configurations for Spring Boot &lt;a href="http://start.spring.io"&gt;on the Spring Initializr&lt;/a&gt;. Take a look at the &lt;a href="https://github.com/Microsoft/azure-spring-boot"&gt;code while you&amp;rsquo;re at it!&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Skipper 1.0 M1 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/30/spring-cloud-skipper-1-0-m1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2017-10-30:3079</id>
-    <updated>2017-10-30T21:37:58Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce the release of Spring Cloud Skipper 1.0 M1.&lt;/p&gt;
-&lt;p&gt;Skipper is a lightweight tool that allows you to discover Spring Boot applications and manage their lifecycle on multiple Cloud Platforms. You can use Skipper standalone or integrate it with Continuous Integration pipelines to help implement the practice of Continuous Deployment.&lt;/p&gt;
-&lt;p&gt;The main features in Skipper 1.0 M1 are:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Define multiple platform accounts where Spring Boot applications can be deployed. Supported platforms are Local, Cloud Foundry, and Kubernetes.&lt;/li&gt;
-  &lt;li&gt;Substitute variables in Mustache templated files that describe how to deploy applications to a platform.&lt;/li&gt;
-  &lt;li&gt;Search Package Repositories for existing applications.&lt;/li&gt;
-  &lt;li&gt;Upgrade/Rollback a package based on a simple blue/green workflow.&lt;/li&gt;
-  &lt;li&gt;Store the history of resolved template files (aka &amp;lsquo;application manifests&amp;rsquo;) which represent the final description of what has been deployed to a platform for a specific release.&lt;/li&gt;
-  &lt;li&gt;Use via a standalone interactive shell or web API.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The &lt;a href="https://docs.spring.io/spring-cloud-skipper/docs/1.0.0.M1/reference/htmlsingle/#getting-started-installing-skipper"&gt;getting started section&lt;/a&gt; in the reference guide is the best place to start kicking the tires.&lt;/p&gt;
-&lt;p&gt;This project was born out of providing continuous delivery features in &lt;a href="http://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt;. In Data Flow, data pipelines are created which consist of two or more microservice applications that evolve independent from each other. It was later recognized that instead of addressing these features in Data Flow, a more general purpose project, Spring Cloud Skipper, should be created so that it can also be a useful tool outside the context of Spring Cloud Data Flow.&lt;/p&gt;
-&lt;p&gt;In the short term, Skipper¡¯s main use-case is to deploy &lt;a href="http://cloud.spring.io/spring-cloud-stream/"&gt;Spring Cloud Stream&lt;/a&gt; applications via Data Flow. However, we are looking to support templating of Cloud Foundry manifests and deploying them in a &lt;code&gt;cf push&lt;/code&gt; style.&lt;/p&gt;
-&lt;p&gt;Please reach out on &lt;a href="https://github.com/spring-cloud/spring-cloud-skipper/issues"&gt;Github issues&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-skipper"&gt;Stack Overflow&lt;/a&gt;, and the &lt;a href="https://gitter.im/spring-cloud/spring-cloud-skipper"&gt;Gitter channel&lt;/a&gt; with questions, feedback or contributions.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Web Services 3.0.0.RELEASE / 2.4.2.RELEASE is out!</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/30/spring-web-services-3-0-0-release-2-4-2-release-is-out" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Greg Turnquist</name>
-    </author>
-    <id>tag:spring.io,2017-10-30:3077</id>
-    <updated>2017-10-30T18:24:29Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Greetings Spring community,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ws/"&gt;Spring Web Services&lt;/a&gt; has released 3.0.0 for general availability as well as released a minor patch, 2.4.2.RELEASE.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;As stated in the &lt;a href="https://spring.io/blog/2017/10/17/spring-web-services-2-4-1-release-3-0-0-rc1-released"&gt;previous blog post&lt;/a&gt;, the 2.x series will be maintained as long as Spring Framework 4.x is supported, yet any new work will be conducted on the master branch.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The links below include related tickets.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10060&amp;amp;version=16502"&gt;2.4.2 Release Notes&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ws/docs/2.4.2.RELEASE/reference/"&gt;2.4.2 Documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10060&amp;amp;version=16498"&gt;3.0.0.RELEASE Release Notes&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ws/docs/3.0.0.RELEASE/reference/"&gt;3.0.0.RELEASE Documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;3.0.0.RELEASE:&lt;/p&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Better handling of large attachments to avoid &lt;strong&gt;OutOfMemory&lt;/strong&gt; exceptions.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wss4jSecurityInterceptor enhancements including SAML callbacks&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SpringSecurityPasswordValidationCallbackHandler improvement to avoid NPE from lack of a logged-in user&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Fixes to SOAP 1.1/SOAP 1.2 message header handling&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Fix content-type for Axiom SOAP 1.2&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrade to latest versions of AspectJ&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support for up-and-coming Axiom 1.3 (community contributor who wants to ensure Spring WS and Axiom 1.3 work together).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;2.4.2.RELEASE:&lt;/p&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Backporting of the same SpringSecurityPasswordValidationCallbackHandler fix&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Accidentally moved wss4j 2.x version too far forward to ensure stable compatibility. If you wish to use the very latest wss4j, you must move to the 3.0 version.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;I wish to stress that this release was heavily driven by community involvement. In fact, &lt;strong&gt;75% of this latest release&lt;/strong&gt; of the 3.0 branch were from community contributors.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ws/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-ws"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SWS"&gt;Issues&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The artifacts are staged on maven central and &lt;a href="http://repo.spring.io/" class="bare"&gt;http://repo.spring.io/&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="admonitionblock important"&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class="icon"&gt;
-&lt;div class="title"&gt;Important&lt;/div&gt;
-&lt;/td&gt;
-&lt;td class="content"&gt;
-I along with most of my colleagues on the Spring team will be at &lt;a href="https://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;. So sign up now!
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Cheers!&lt;/p&gt;
 &lt;/div&gt;</content>
   </entry>
 </feed>
