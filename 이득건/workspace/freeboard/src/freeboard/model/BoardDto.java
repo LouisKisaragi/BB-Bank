@@ -5,13 +5,14 @@ import java.sql.Timestamp;
 public class BoardDto {
 	private int num;
 	private String writer;
-	private String email;
+	private String preface;
 	private String subject;
 	private String pass;
 	private int readcount;
 	private int ref;
 	private int step;
 	private int depth;
+	private int bn;
 	private Timestamp regdate;
 	private String content;
 	private String ip;
@@ -32,13 +33,7 @@ public class BoardDto {
 		this.writer = writer;
 	}
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getSubject() {
 		return subject;
@@ -110,6 +105,22 @@ public class BoardDto {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	public String getPreface() {
+		return preface;
+	}
+
+	public void setPreface(String preface) {
+		this.preface = preface;
+	}
+
+	public int getBn() {
+		return bn;
+	}
+
+	public void setBn(int bn) {
+		this.bn = bn;
 	}
 
 }

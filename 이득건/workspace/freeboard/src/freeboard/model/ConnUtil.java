@@ -10,8 +10,7 @@ public class ConnUtil {
 		try {
 			InitialContext ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/myOracle");
-		} catch (NamingException e) {
-		}
+		} catch (NamingException e) {}
 	}
 
 	public static Connection getConnection() throws SQLException {
