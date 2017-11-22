@@ -5,7 +5,19 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-11-21T20:34:32Z</updated>
+  <updated>2017-11-22T01:00:00Z</updated>
+  <entry>
+    <title>Spring Tips: Bootiful Testing</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/11/22/spring-tips-bootiful-testing" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-11-20:3097</id>
+    <updated>2017-11-22T01:00:00Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we&amp;rsquo;ll look at testing and test-driven development, in general, in terms of the Spring ecosystem.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/lTSJCr7xdbM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
   <entry>
     <title>Spring Security OAuth 2.2.1 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2017/11/21/spring-security-oauth-2-2-1-released" />
@@ -1504,84 +1516,5 @@ dependencies {&#xD;
     ...&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Pipelines 1.0.0.M7 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/31/spring-cloud-pipelines-1-0-0-m7-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Marcin Grzejszczak</name>
-    </author>
-    <id>tag:spring.io,2017-10-31:3082</id>
-    <updated>2017-10-31T14:42:27Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the Spring Cloud team, it is my pleasure to announce a new milestone release of Spring Cloud Pipelines - &lt;code&gt;1.0.0.M7&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="what-s-new"&gt;&lt;a class="anchor" href="#what-s-new"&gt;&lt;/a&gt;What&amp;#8217;s new?&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This release adds a lot of new features and quality and testing improvements. As for main features, we&amp;#8217;ve added Kubernetes support for Jenkins and Concourse. As for quality and testing, we&amp;#8217;ve written over 150 Bash tests, added Shellcheck, EditorConfig and written more Jenkins tests. We&amp;#8217;ve also unified the project&amp;#8217;s documentation that now can be available for each milestone under Spring Cloud Static gh-pages. The docs for &lt;code&gt;1.0.0.M7&lt;/code&gt; are available here - &lt;a href="http://cloud.spring.io/spring-cloud-static/spring-cloud-pipelines/1.0.0.M7/" class="bare"&gt;http://cloud.spring.io/spring-cloud-static/spring-cloud-pipelines/1.0.0.M7/&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="breaking-changes"&gt;&lt;a class="anchor" href="#breaking-changes"&gt;&lt;/a&gt;Breaking changes&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We&amp;#8217;ve changed the pipeline descriptor filename from &lt;code&gt;pipeline.yml&lt;/code&gt; to &lt;code&gt;sc-pipelines.yml&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="release-notes"&gt;&lt;a class="anchor" href="#release-notes"&gt;&lt;/a&gt;Release Notes&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can click &lt;a href="https://github.com/spring-cloud/spring-cloud-pipelines/releases/tag/v1.0.0.M7"&gt;here to see the Release Notes&lt;/a&gt; for more information about what&amp;#8217;s been done for this milestone.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="thanks"&gt;&lt;a class="anchor" href="#thanks"&gt;&lt;/a&gt;Thanks&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Special thanks go to &lt;a href="https://twitter.com/wybczu"&gt;@wybczu&lt;/a&gt;, &lt;a href="https://github.com/malston"&gt;@malston&lt;/a&gt; , &lt;a href="https://github.com/bijukunjummen"&gt;@bijukunjummen&lt;/a&gt;, &lt;a href="https://github.com/anwarchk"&gt;@anwarchk&lt;/a&gt; and everybody involved in the project!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="feedback-needed"&gt;&lt;a class="anchor" href="#feedback-needed"&gt;&lt;/a&gt;Feedback needed&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you&amp;#8217;re already using Spring Cloud Pipelines please comment under &lt;a href="https://github.com/spring-cloud/spring-cloud-pipelines/issues/55"&gt;this issue&lt;/a&gt; with steps you
-needed to take to customize the project to suit your company&amp;#8217;s needs. Without your feedback I won&amp;#8217;t be able to automate the customization process!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webinar"&gt;&lt;a class="anchor" href="#webinar"&gt;&lt;/a&gt;Webinar&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you&amp;#8217;re interested in more information about the project please check out the  &lt;a href="https://content.pivotal.io/webinars/continuous-deployment-to-the-cloud"&gt;Spring Cloud Pipelines webinar&lt;/a&gt;. Of course, some of the concepts have changed since the video got recorded but the general idea remains the same.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="links"&gt;&lt;a class="anchor" href="#links"&gt;&lt;/a&gt;Links&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Please check out any of these links for more information or to contact us:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-pipelines/"&gt;Project page&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://cloud.spring.io/spring-cloud-static/spring-cloud-pipelines/1.0.0.M7/"&gt;Project 1.0.0.M7 documentation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://gitter.im/spring-cloud/spring-cloud-pipelines"&gt;Spring Cloud Pipelines Gitter&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

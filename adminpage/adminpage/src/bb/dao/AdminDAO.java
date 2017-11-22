@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 //import jsl.dto.GuestDTO;
 //import jsl.dto.PointManagerDTO;
 
-public class Admindao {
+public class AdminDAO {
 	private AdminDAO() {}
 	private static AdminDAO instance = new AdminDAO();
 	public static AdminDAO getinstance()

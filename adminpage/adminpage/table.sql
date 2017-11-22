@@ -11,7 +11,7 @@ create table member(
 );
 
 
-
+--
 CREATE table "BOARD"(
 	"NUM"	NUMBER(7,0) NOT NULL,
 	"WRITER"	VARCHAR2(12) NOT NULL,
