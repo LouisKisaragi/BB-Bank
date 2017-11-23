@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.action.CommandAction;
 
-public class JoinAction implements CommandAction{
+public class LoginAction implements CommandAction{
 
 	public String requestPro(
 			HttpServletRequest request, 

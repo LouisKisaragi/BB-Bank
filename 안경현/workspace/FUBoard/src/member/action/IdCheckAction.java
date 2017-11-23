@@ -14,11 +14,9 @@ public class IdCheckAction implements CommandAction{
 		
 		MemberDao dbPro = MemberDao.getInstance();
 		String id = request.getParameter("id");
+		
 		int check = dbPro.MemberIdCheck(id);
-			
-		request.setAttribute("num", new Integer(request.getParameter("num")));
-		request.setAttribute("pageNum", new Integer(request.getParameter("pageNum")));
-		request.setAttribute("bn", new Integer(request.getParameter("bn")));
+
 		request.setAttribute("id", id);
 		request.setAttribute("check",check);
 		return "/member/idCheck.jsp";
