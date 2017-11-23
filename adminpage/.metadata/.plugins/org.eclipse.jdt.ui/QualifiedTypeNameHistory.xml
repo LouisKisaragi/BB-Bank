@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <qualifiedTypeNameHistroy/>
-=======
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-</qualifiedTypeNameHistroy>
->>>>>>> 9e0daf62cb198ac462bab87ee911b4851a8db62e
