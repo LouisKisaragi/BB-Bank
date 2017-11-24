@@ -22,7 +22,15 @@
 	<input type="hidden" name="ref" value="${ref}">
 	<input type="hidden" name="step" value="${step}">
 	<input type="hidden" name="depth" value="${depth}">
-	<input type="hidden" name="bn" value="2">	
+	<input type="hidden" name="bn" value="${bn}">	
+	<c:choose>
+		<c:when test="${login eq 1 }">
+		<input type="hidden" name="mem" value=1><!-- 로그인상태일때 -->
+		</c:when>
+		<c:otherwise>
+		<input type="hidden" name="mem" value="0"><!-- 비로그인상태일때 -->
+		</c:otherwise>
+	</c:choose>
 	<table class="board">
 		<tr>
 			<td>
@@ -44,15 +52,23 @@
 		<tr>
 			<td class="attr">업로더</td>
 			<td COLSPAN="2">
-				<input type="text" name="writer">
-			</td>
+			<c:choose>
+				<c:when test="${login eq 1 }">${logId }<input type="hidden" name="writer" value="${logId }"></c:when>
+				<c:otherwise><input type="text" name="writer"></c:otherwise>
+			</c:choose>
+				</td>
 		</tr>
-		<tr>
-			<td class="attr">비밀번호</td>
-			<td COLSPAN="2">
-				<input type="password" name="pass">
-			</td>
-		</tr>
+			<c:choose>
+				<c:when test="${login eq 1 }"><input type="hidden" name="pass" value="${logPass }"></c:when>
+				<c:otherwise>
+					<tr>
+						<td class="attr">비밀번호</td>
+						<td COLSPAN="2">
+							<input type="password" name="pass">
+						</td>
+					</tr>
+				</c:otherwise>
+			</c:choose>
 		<tr>
 			<td class="attr">내 용</td>
 			<td COLSPAN="2">

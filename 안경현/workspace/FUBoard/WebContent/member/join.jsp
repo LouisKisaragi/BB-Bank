@@ -8,7 +8,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판</title>
+<title>회원가입</title>
 <link href="${pageContext.request.contextPath}/member/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/member/css/joinstyle.css" rel="stylesheet" type="text/css"/>
 <script src="script.js"></script>

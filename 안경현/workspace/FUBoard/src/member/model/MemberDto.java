@@ -9,7 +9,7 @@ public class MemberDto {
 	private String pass;
 	private String email;
 	private int point;
-	private int super_m;
+	private String super_m;
 	private Timestamp joindate;
 	
 	
@@ -50,18 +50,20 @@ public class MemberDto {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public int getSuper_m() {
-		return super_m;
-	}
-	public void setSuper_m(int super_m) {
-		this.super_m = super_m;
-	}
+
 	public Timestamp getJoindate() {
 		return joindate;
 	}
 	public void setJoindate(Timestamp joindate) {
 		this.joindate = joindate;
 	}
+	public String getSuper_m() {
+		return super_m;
+	}
+	public void setSuper_m(String super_m) {
+		this.super_m = super_m;
+	}
+
 	
 	
 	

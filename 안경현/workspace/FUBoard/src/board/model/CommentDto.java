@@ -13,6 +13,7 @@ public class CommentDto {
 	private Timestamp regdate;
 	private String content;
 	private int bn;
+	private int mem;
 	public int getNum() {
 		return num;
 	}
@@ -72,5 +73,11 @@ public class CommentDto {
 	}
 	public void setBn(int bn) {
 		this.bn = bn;
+	}
+	public int getMem() {
+		return mem;
+	}
+	public void setMem(int mem) {
+		this.mem = mem;
 	}
 }

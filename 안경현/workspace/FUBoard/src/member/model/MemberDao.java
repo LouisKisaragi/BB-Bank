@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import board.model.CommentDto;
 import board.model.ConnUtil;
 
 public class  MemberDao{
@@ -71,34 +72,27 @@ public class  MemberDao{
 			if(conn != null) try { conn.close(); } catch (SQLException e){}
 		}
 	}
+	//로그인
 	public int loginArticle(String id,String pass) {
-		int result=0;
+		int result=-1;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
-		String super_m="0";
-		String dbPass="";
 		try{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
-			sql = "select PASS from MEMBER where ID=?";
+			sql = "select * from MEMBER where ID=? and PASS=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setString(2,pass);
 			pstmt.executeQuery();
-			if(rs.next()){
-				dbPass = rs.getString("pass");
-				if(dbPass.equals(pass)){
-					pstmt.close(); 
-					pstmt = conn.prepareStatement(
-							"select from BOARDCOMMENT where NUM = ?");
-					pstmt.setString(1, num);
-					pstmt.executeUpdate();
-					result = 1; //삭제 성공
-					}else {
-					result = 0; //비밀번호 불일치
-				}
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=1;//로그인성공
 			}
+			
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -107,5 +101,43 @@ public class  MemberDao{
 			if(conn != null) try { conn.close(); } catch (SQLException e){}
 		}
 		return result;
+	}
+	
+	//회원정보 가져오기
+	public MemberDto memberArticle(String id,String pass) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		MemberDto article = null;
+		try{
+			conn = ConnUtil.getConnection();
+			//쿼리 작성
+			sql = "select * from MEMBER where ID=? and PASS=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2,pass);
+			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				article = new MemberDto();
+				article.setName(rs.getString("name"));
+				article.setEmail(rs.getString("email"));
+				article.setId(rs.getString("id"));
+				article.setJoindate(rs.getTimestamp("joindate"));
+				article.setPass(rs.getString("pass"));
+				article.setPoint(rs.getInt("point"));
+				article.setSuper_m(rs.getString("super_m"));
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return article;
 	}
 }
