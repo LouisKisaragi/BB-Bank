@@ -5027,3 +5027,459 @@ org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; 문서에서 루�
 
 !ENTRY org.eclipse.ui 2 2 2017-11-22 14:43:00.308
 !MESSAGE org.eclipse.ui.views.ContentOutline: Deprecated relationship "fast" should be converted to "stack".
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-11-22 15:29:10.479
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.jdt.internal.ui.JavaUIException: Problems reading information from XML 'QualifiedTypeNameHistory.xml'
+	at org.eclipse.jdt.internal.corext.util.History.createException(History.java:74)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:263)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:511)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:835)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:828)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:947)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1669)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1588)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:270)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
+	... 21 more
+!SUBENTRY 1 org.eclipse.jdt.ui 4 4 2017-11-22 15:29:10.479
+!MESSAGE Problems reading information from XML 'QualifiedTypeNameHistory.xml'
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:511)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:835)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:828)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:947)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1669)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1588)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:270)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2017-11-23 09:19:59.413 -----------------------------------------------
+eclipse.buildId=4.7.0.I20170612-0950
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2017-11-23 09:22:22.306
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-11-23 09:22:22.306
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2bfe398b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4a23be9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-11-23 09:22:29.450
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\IT63'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:02.705
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:02.715
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.219
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.230
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.433
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.442
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.656
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.660
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.868
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:09.883
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:10.609
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:10.614
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.131
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.146
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.270
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.286
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.747
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.764
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.888
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.893
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.984
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:11.990
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:12.081
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:12.093
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:12.184
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:12.193
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:13.106
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.lsp4e 1 0 2017-11-23 09:24:13.111
+!MESSAGE Non IFiles not supported yet
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-23 10:08:46.782
+!MESSAGE No repository found at http://www.pramati.com/downloads/eclipse/updates/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-23 10:09:15.632
+!MESSAGE No repository found at http://eclipse.org/m2e/download/.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-23 13:12:57.206
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-23 13:12:57.212
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-23 14:59:40.802
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-11-23 14:59:40.807
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-11-24 10:05:29.709 -----------------------------------------------
+eclipse.buildId=4.7.0.I20170612-0950
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2017-11-24 10:05:44.507
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2017-11-24 10:05:44.507
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3577fd9b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@76140ca5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-11-24 10:05:47.903
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\IT63'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-24 10:34:26.174
+!MESSAGE No repository found at http://www.pramati.com/downloads/eclipse/updates/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2017-11-24 10:34:54.733
+!MESSAGE No repository found at http://eclipse.org/m2e/download/.
+
+!ENTRY org.eclipse.ltk.core.refactoring 4 10000 2017-11-24 13:28:19.777
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.createCoreException(RefactoringHistoryManager.java:144)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.addRefactoringDescriptor(RefactoringHistoryManager.java:867)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistorySerializer.processHistoryNotification(RefactoringHistorySerializer.java:111)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistorySerializer.historyNotification(RefactoringHistorySerializer.java:73)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService$5.run(RefactoringHistoryService.java:589)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.fireRefactoringHistoryEvent(RefactoringHistoryService.java:580)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.performHistoryNotification(RefactoringHistoryService.java:931)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.access$0(RefactoringHistoryService.java:914)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService$2.historyNotification(RefactoringHistoryService.java:367)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory$2.run(DefaultOperationHistory.java:868)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.notifyListeners(DefaultOperationHistory.java:857)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.notifyDone(DefaultOperationHistory.java:923)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.closeOperation(DefaultOperationHistory.java:1217)
+	at org.eclipse.ltk.internal.core.refactoring.UndoManager2.changePerformed(UndoManager2.java:164)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:264)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:305)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:221)
+	at org.eclipse.ltk.core.refactoring.PerformRefactoringOperation.run(PerformRefactoringOperation.java:134)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant$2.run(ResourceDropAdapterAssistant.java:497)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant$3.run(ResourceDropAdapterAssistant.java:506)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:437)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:353)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(ProgressMonitorDialog.java:483)
+	at org.eclipse.ui.internal.progress.ProgressMonitorJobsDialog.run(ProgressMonitorJobsDialog.java:237)
+	at org.eclipse.ui.internal.progress.ProgressManager.run(ProgressManager.java:989)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant.performResourceMove(ResourceDropAdapterAssistant.java:517)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant.handleDrop(ResourceDropAdapterAssistant.java:223)
+	at org.eclipse.ui.navigator.CommonDropAdapter$1.run(CommonDropAdapter.java:185)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.navigator.CommonDropAdapter.performDrop(CommonDropAdapter.java:174)
+	at org.eclipse.jface.viewers.ViewerDropAdapter.drop(ViewerDropAdapter.java:254)
+	at org.eclipse.ui.part.PluginDropAdapter.drop(PluginDropAdapter.java:66)
+	at org.eclipse.swt.dnd.DNDListener.handleEvent(DNDListener.java:91)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4428)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:802)
+	at org.eclipse.swt.dnd.DropTarget.Drop(DropTarget.java:464)
+	at org.eclipse.swt.dnd.DropTarget.Drop_64(DropTarget.java:398)
+	at org.eclipse.swt.dnd.DropTarget$1.method6(DropTarget.java:262)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback6(COMObject.java:119)
+	at org.eclipse.swt.internal.ole.win32.COM.DoDragDrop(Native Method)
+	at org.eclipse.swt.dnd.DragSource.drag(DragSource.java:371)
+	at org.eclipse.swt.dnd.DragSource.lambda$0(DragSource.java:172)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4428)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4238)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3817)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1044)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:680)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:594)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:151)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.getCachedDocument(RefactoringHistoryManager.java:912)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.addRefactoringDescriptor(RefactoringHistoryManager.java:825)
+	... 76 more
+!SUBENTRY 1 org.eclipse.ltk.core.refactoring 4 10006 2017-11-24 13:28:19.788
+!MESSAGE 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; 문서에서 루트 요소 앞에 오는 마크업은 올바른 형식이어야 합니다.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.getCachedDocument(RefactoringHistoryManager.java:912)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryManager.addRefactoringDescriptor(RefactoringHistoryManager.java:825)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistorySerializer.processHistoryNotification(RefactoringHistorySerializer.java:111)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistorySerializer.historyNotification(RefactoringHistorySerializer.java:73)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService$5.run(RefactoringHistoryService.java:589)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.fireRefactoringHistoryEvent(RefactoringHistoryService.java:580)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.performHistoryNotification(RefactoringHistoryService.java:931)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService.access$0(RefactoringHistoryService.java:914)
+	at org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService$2.historyNotification(RefactoringHistoryService.java:367)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory$2.run(DefaultOperationHistory.java:868)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.notifyListeners(DefaultOperationHistory.java:857)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.notifyDone(DefaultOperationHistory.java:923)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.closeOperation(DefaultOperationHistory.java:1217)
+	at org.eclipse.ltk.internal.core.refactoring.UndoManager2.changePerformed(UndoManager2.java:164)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:264)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:305)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:221)
+	at org.eclipse.ltk.core.refactoring.PerformRefactoringOperation.run(PerformRefactoringOperation.java:134)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant$2.run(ResourceDropAdapterAssistant.java:497)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant$3.run(ResourceDropAdapterAssistant.java:506)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:437)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:353)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(ProgressMonitorDialog.java:483)
+	at org.eclipse.ui.internal.progress.ProgressMonitorJobsDialog.run(ProgressMonitorJobsDialog.java:237)
+	at org.eclipse.ui.internal.progress.ProgressManager.run(ProgressManager.java:989)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant.performResourceMove(ResourceDropAdapterAssistant.java:517)
+	at org.eclipse.ui.navigator.resources.ResourceDropAdapterAssistant.handleDrop(ResourceDropAdapterAssistant.java:223)
+	at org.eclipse.ui.navigator.CommonDropAdapter$1.run(CommonDropAdapter.java:185)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.navigator.CommonDropAdapter.performDrop(CommonDropAdapter.java:174)
+	at org.eclipse.jface.viewers.ViewerDropAdapter.drop(ViewerDropAdapter.java:254)
+	at org.eclipse.ui.part.PluginDropAdapter.drop(PluginDropAdapter.java:66)
+	at org.eclipse.swt.dnd.DNDListener.handleEvent(DNDListener.java:91)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4428)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:802)
+	at org.eclipse.swt.dnd.DropTarget.Drop(DropTarget.java:464)
+	at org.eclipse.swt.dnd.DropTarget.Drop_64(DropTarget.java:398)
+	at org.eclipse.swt.dnd.DropTarget$1.method6(DropTarget.java:262)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback6(COMObject.java:119)
+	at org.eclipse.swt.internal.ole.win32.COM.DoDragDrop(Native Method)
+	at org.eclipse.swt.dnd.DragSource.drag(DragSource.java:371)
+	at org.eclipse.swt.dnd.DragSource.lambda$0(DragSource.java:172)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:86)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4428)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4238)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3817)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1044)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:680)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:594)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:151)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)

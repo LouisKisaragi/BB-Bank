@@ -31,12 +31,9 @@
 					</div>
 					<div class ="collapse navbar-collapse" id="adminNavbar">
 						<ul class="nav navbar-nav">
-						  <li class="active"><a href="./AdminFrontController?src=guest">会員管理</a></li>
-						  <li><a href="./AdminFrontController?src=board&contentno=0&pageno=0">口コミ</a></li>
-						  <li><a href="./AdminFrontController?src=qna&contentno=0&pageno=0">問い合わせ</a></li>
-						  <li><a href="./AdminFrontController?src=point&contentno=0&pageno=0">会員ポイント</a></li>
-						  <li><a href="./AdminFrontController?src=style">スタイルページ管理</a></li>
-						  <li><a href="./AdminFrontController?src=event">イベントページ管理</a></li>
+						  <li class="active"><a href="./AdminFrontController?src=guest">회원관리</a></li>
+						  <li><a href="./AdminFrontController?src=board&contentno=0&pageno=0">게시판 관리</a></li>
+						  <li><a href="./AdminFrontController?src=qna&contentno=0&pageno=0">Q&A</a></li>
 						</ul>
 						<ul class = "nav navbar-nav navbar-right">
 						  <li><a href="./AdminFrontController?src=modify">관리자 설정</a></li>

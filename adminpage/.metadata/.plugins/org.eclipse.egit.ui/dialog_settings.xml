@@ -7,10 +7,17 @@
 		<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
 	</list>
 	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\IT63\Documents\GitHub\BB-Bank\.git">
+			<item value="false"/>
+			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+			<item value="commit test"/>
+			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+			<item value="60d9f175150dae8d390df6c898d5b84a04fd876a"/>
+		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
-		<item value="200,200" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="500,500" key="STAGING_SASH_FORM_WEIGHT"/>
 		<item value="false" key="sortItemState"/>
-		<item value="200,200" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+		<item value="500,500" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
 	</section>
 </section>
