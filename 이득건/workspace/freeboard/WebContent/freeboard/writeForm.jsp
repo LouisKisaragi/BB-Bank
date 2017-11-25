@@ -23,7 +23,6 @@
 <input type="hidden" name="bn" value=4>
 
 
-<p>
 
 <table class="board">
 	<tr>

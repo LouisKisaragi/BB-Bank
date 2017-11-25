@@ -47,7 +47,7 @@ INDEX VERSION 1.129+C:\Users\Lee Deuk keon\Documents\GitHub\BB-Bank\¿ÃµÊ∞«\works
 3145607036.index
 4239642686.index
 2182143685.index
-197789008.index
-3806754621.index
-741729848.index
 2725125150.index
+197789008.index
+741729848.index
+3806754621.index

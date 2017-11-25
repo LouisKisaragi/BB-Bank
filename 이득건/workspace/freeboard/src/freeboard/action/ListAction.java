@@ -14,6 +14,7 @@ public class ListAction implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)throws Throwable{
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
 		String prefaces = request.getParameter("prefaces"); //구분 구분자
+		String bn = "4";
 		if(pageNum == null){
 			pageNum = "1";
 			
@@ -48,6 +49,7 @@ public class ListAction implements CommandAction{
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("prefaces", prefaces);
+		request.setAttribute("bn", new Integer(bn));
 		
 		return "/freeboard/list.jsp"; //해당하는 뷰 경로 반환
 	}
