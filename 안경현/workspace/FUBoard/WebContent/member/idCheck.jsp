@@ -21,18 +21,21 @@
 </head>
 <body>
 <section>
-<form name="idCheck">
-check=${check }<p>
+<form name="idCheck" action="${pageContext.request.contextPath}/member/idCheck.do?id=${id }"  onsubmit="return idCheckSave()">
 <c:choose>
 	<c:when test="${check ==1 }">
 		이미 존재하는 ID입니다.
-		<input type="text"  name="iid"  value="${id }">
-		<input type="button" value="id 중복확인" onClick="idCheck.do?id=${id}&num=${num}"+num+"&pageNum="+pageNum+"&bn="+bn">
+		<input type="text"  name="id"  value="${id }">
+		<input type="submit" value="id 중복확인" >
 	</c:when>
 	<c:when test="${check ==0 }">
 		 사용 가능한 아이디입니다.
-		 <input type="text"  name="iid"  value="${id }">
-		<input type="button" value="이 id 사용하기" onClick="return idCheckSave();">
+	
+				 <input type="hidden"  name="rid"  value="${id }">
+				<p>${id }<p>
+	
+		<input type="submit" value="이 id 사용하기" >
+		<!-- onClick="return idCheckSave();" -->
 	</c:when>
 </c:choose>
 </form>

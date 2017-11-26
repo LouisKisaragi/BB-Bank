@@ -14,6 +14,9 @@
 			document.delForm.pass.focus();
 			return false;
 		}
+		function back(){
+			history.go(-1);
+		}
 	}
 </script>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
@@ -22,6 +25,19 @@
 <body>
 <section>
 <b>글삭제</b>
+<c:choose>
+	<c:when test="${mem } eq 1">
+		<c:when test="${login } eq 1">
+			<c:when test="${id } eq ${writer }">
+				정말로 삭제하시겠습니까?
+				<a href="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}">네</a>
+			</c:when>
+			<c:otherwise>
+				
+			</c:otherwise>
+		</c:when>
+	</c:when>
+<c:otherwise>
 <form method="POST" name="delForm" action="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}" 
 	onsubmit="return deleteSave()">
 	<table class="deletetable">
@@ -45,6 +61,8 @@
 		</tr>
 	</table>
 </form>
+</c:otherwise>
+</c:choose>
 </section>
 </body>
 </html>

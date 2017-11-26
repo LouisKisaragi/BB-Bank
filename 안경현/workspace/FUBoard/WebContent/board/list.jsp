@@ -20,6 +20,13 @@
 <!-- <input type="hidden" name="bn" value="2">-->
 <c:set var="bn" value="2"/>
 <b>글목록(전체 글:${count})</b>
+<p><c:if test="${login eq 1 }">(${logId }님 안녕하세요)</c:if></p>
+<table class="returnmain">
+<tr>
+<td><a href="${pageContext.request.contextPath }/board/main.do">메인으로가기</a></td>
+</tr>
+</table>
+
 <table class="listwritebutton">
 	<tr>
 		<td>
@@ -101,7 +108,49 @@
 	</c:forEach>
 </table>
 </c:if>
-<c:if test="${count > 0}">
+<c:if test="${count > 0}"><!-- 게시글이 하나라도 있으면 페이징 처리 화면이 뜬다. -->
+	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}"/><!-- 아래의 pageCount를 제어하는 삼항연산자. -->
+	<c:set var="pageCount" value="${count / pageSize + imsi}"/><!-- 정수 부분이 중요하다. 정수 부분만 확인하자. -->
+	<c:set var="pageBlock" value="${3}"/><!-- 페이징 처리에서 표시할 페이지의 수 -->
+	<fmt:parseNumber var="lastPage" value="${pageCount}" integerOnly="true"/>
+	<fmt:parseNumber var="result" value="${(currentPage-1) / pageBlock}" integerOnly="true"/>
+	<c:set var="startPage" value="${result * pageBlock + 1}"/>
+	<c:set var="endPage" value="${startPage + pageBlock - 1}"/>
+	
+	<c:if test="${endPage > pageCount}">
+		<c:set var="endPage" value="${pageCount}"/>
+	</c:if>
+	
+	<c:if test="${pageNum > 1}">
+		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=${bn}">[처음]</a>
+		<c:if test="${startPage > pageBlock}"> <!-- startPage 값이 pageBlock보다 클 때부터 작동한다. -->
+			<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage - pageBlock}&bn=${bn}">[이전]</a>
+		</c:if>
+	</c:if>
+	
+	<c:forEach var="i" begin="${startPage}" end="${endPage}">
+		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}&bn=${bn}">[${i}]</a>
+	</c:forEach>
+	
+	<c:if test="${endPage < pageCount}">
+		<c:choose>
+			<c:when test="${(startPage + pageBlock) <= lastPage}">
+				<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock}&bn=${bn}">[다음]</a>
+			</c:when>
+		</c:choose>
+	</c:if>
+	
+	<c:choose>
+		<c:when test="${lastPage eq pageNum}"></c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${lastPage}&bn=${bn}">[끝]</a>
+		</c:otherwise>
+	</c:choose>
+	
+</c:if>
+<br><br>
+
+<!--<c:if test="${count > 0}">
 	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }"/>
 	<c:set var="pageCount" value="${count / pageSize + imsi }"/>
 	<c:set var="pageBlock" value="${3}"/>
@@ -125,7 +174,7 @@
 	<c:if test="${endPage < pageCount}">
 		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock }&bn=${bn }">다음</a>
 	</c:if>
-</c:if>
+</c:if>-->
 </section>
 </body>
 </html>

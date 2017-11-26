@@ -12,7 +12,22 @@
 <body>
 <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2">
 				게시판2!</a>
-<a href="${pageContext.request.contextPath }/member/join.do?num=0&pageNum=0&bn=0">회원가입</a>	
-
+<a href="${pageContext.request.contextPath }/member/join.do">회원가입</a>	
+<c:choose>
+	<c:when test="${login eq 1 }">
+		<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
+	</c:when>
+	<c:otherwise>
+		<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${login eq 1 }">
+		<p>로그인상태</p>
+	</c:when>
+	<c:otherwise>
+		<p>비로그인상태</p>
+	</c:otherwise>
+</c:choose>
 </body>
 </html>

@@ -55,7 +55,7 @@ public class BoardDao {
 			String sql ="select * from(select * from "
 					+"(select rownum RNUM, NUM, WRITER,"
 					+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
-					+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE from" 
+					+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
 					+"(select * from BOARD order by REF desc, STEP asc)where bn=?))"
 					+"where RNUM >= ? and RNUM <= ?";
 			pstmt = conn.prepareStatement(sql);
@@ -85,6 +85,7 @@ public class BoardDao {
 					article.setIp(rs.getString("ip"));
 					article.setBn(rs.getInt("bn"));
 					article.setPreface(rs.getString("preface"));
+					article.setMem(rs.getInt("mem"));
 					articleList.add(article);
 				} while(rs.next());
 			}
@@ -134,8 +135,8 @@ public class BoardDao {
 			//쿼리 작성
 			sql = "insert into BOARD"
 					+ "(NUM, WRITER, ORIGIN_FILENAME, SUBJECT, PASS, "
-					+ "REGDATE, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE) "
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "REGDATE, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM) "
+					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getOrigin_filename());
@@ -152,6 +153,7 @@ public class BoardDao {
 			pstmt.setString(13, article.getIp());
 			pstmt.setInt(14,  article.getBn());
 			pstmt.setString(15, article.getPreface());
+			pstmt.setInt(16,  article.getMem());
 			pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -197,6 +199,7 @@ public class BoardDao {
 				article.setIp(rs.getString("ip"));
 				article.setBn(rs.getInt("bn"));
 				article.setPreface(rs.getString("preface"));
+				article.setMem(rs.getInt("mem"));
 			}
 		} catch (Exception e){
 			e.printStackTrace();
@@ -238,6 +241,7 @@ public class BoardDao {
 				article.setIp(rs.getString("ip"));
 				article.setBn(rs.getInt("bn"));
 				article.setPreface(rs.getString("preface"));
+				article.setMem(rs.getInt("mem"));
 			}
 		} catch (Exception e){
 			e.printStackTrace();

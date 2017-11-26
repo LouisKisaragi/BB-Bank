@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.action.CommandAction;
 
-public class JoinAction implements CommandAction{
+public class LoginAction implements CommandAction{
 
 	public String requestPro(
 			HttpServletRequest request, 
@@ -13,10 +13,10 @@ public class JoinAction implements CommandAction{
 		
 		
 		String page=request.getHeader("referer");
-		System.out.println("url::"+page);
+		System.out.println("url:=:"+page);
 
 	
 		request.setAttribute("page", page);
-		return "/member/join.jsp";
+		return "/member/login.jsp";
 	}
 }

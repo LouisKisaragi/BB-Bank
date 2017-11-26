@@ -40,10 +40,21 @@
 <table class="contenttable">
 	<tr>
 		<td rowspan="2">답글 달기</td>
-		<th colspan="2">작성자</th>
-		<td><input type="text" name="cwriter"></td>
-		<th colspan="6">비밀번호</th>
-		<td><input type="password" name="cpass"></td>
+	<c:choose>
+		<c:when test="${login eq 1 }">
+			<input type="hidden" name="cwriter" value="${logId }">
+			<input type="hidden" name="cpass" value="${logPass }">
+			<input type="hidden" name="mem" value="1">
+			<!-- 로그인상태일때 -->
+		</c:when>
+		<c:otherwise>
+			<th colspan="2">작성자</th>
+			<td><input type="text" name="cwriter"></td>
+			<th colspan="6">비밀번호</th>
+			<td><input type="password" name="cpass"></td><!-- 비로그인상태일때 -->
+			<input type="hidden" name="mem" value="0">
+		</c:otherwise>
+	</c:choose>
 	</tr>
 	<tr>
 		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>

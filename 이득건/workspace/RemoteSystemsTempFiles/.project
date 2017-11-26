@@ -7,6 +7,5 @@
 	<buildSpec>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.rse.ui.remoteSystemsTempNature</nature>
 	</natures>
 </projectDescription>

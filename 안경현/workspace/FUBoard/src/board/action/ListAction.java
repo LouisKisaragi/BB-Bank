@@ -39,7 +39,7 @@ public class ListAction implements CommandAction{
 			articleList = Collections.emptyList();
 		}
 		number = count - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
-
+		
 
 		
 		//해당 뷰에서 사용할 속성
@@ -53,6 +53,7 @@ public class ListAction implements CommandAction{
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("preface", preface);
+		
 		return "/board/list.jsp";	//해당하는 뷰 경로 반환
 	}
 }

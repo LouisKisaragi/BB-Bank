@@ -55,7 +55,7 @@ public class CommentDao {
 			String sql ="select * from "
 					+"(select NUM, WRITER,"
 					+"PASS, REGDATE,"
-					+"REF, STEP, DEPTH, CONTENT, IP, BN from" 
+					+"REF, STEP, DEPTH, CONTENT, IP, BN, MEM from" 
 					+"(select * from BOARDCOMMENT order by STEP desc, REF asc)where bn=?)";
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
@@ -75,6 +75,7 @@ public class CommentDao {
 					article.setContent(rs.getString("content"));
 					article.setIp(rs.getString("ip"));
 					article.setBn(rs.getInt("bn"));
+					article.setMem(rs.getInt("mem"));
 					articleList.add(article);
 				} while(rs.next());
 			}
@@ -126,8 +127,8 @@ public class CommentDao {
 			//쿼리 작성
 			sql = "insert into BOARDCOMMENT"
 					+ "(NUM, WRITER, PASS, "
-					+ "REGDATE, REF, STEP, DEPTH, CONTENT, IP, BN) "
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "REGDATE, REF, STEP, DEPTH, CONTENT, IP, BN, MEM) "
+					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getPass());
@@ -138,6 +139,7 @@ public class CommentDao {
 			pstmt.setString(7, article.getContent());
 			pstmt.setString(8, article.getIp());
 			pstmt.setInt(9,  article.getBn());
+			pstmt.setInt(10,  article.getMem());
 			pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -171,6 +173,7 @@ public class CommentDao {
 				article.setContent(rs.getString("content"));
 				article.setIp(rs.getString("ip"));
 				article.setBn(rs.getInt("bn"));
+				article.setMem(rs.getInt("mem"));
 			}
 		} catch (Exception e){
 			e.printStackTrace();
