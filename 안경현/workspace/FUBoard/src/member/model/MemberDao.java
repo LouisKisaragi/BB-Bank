@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import board.model.CommentDto;
 import board.model.ConnUtil;
 
 public class  MemberDao{
@@ -19,9 +18,35 @@ public class  MemberDao{
 		}
 		return instance;
 	}
-	
+	//이메일 중복확인
+	public int MemberEmailCheck(String email) {
+		int result=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//0이면 가능 / 1이면 중복
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from MEMBER where email=? and super_m=0");
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=1;
+			}else {
+				result=0;
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return result;
+	}
+	//아이디 중복확인
 	public int MemberIdCheck(String id) {
-		int result=0;
+		int result=-1;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -33,6 +58,8 @@ public class  MemberDao{
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				result=1;
+			}else {
+				result=0;
 			}
 		} catch(Exception ex){
 				ex.printStackTrace();

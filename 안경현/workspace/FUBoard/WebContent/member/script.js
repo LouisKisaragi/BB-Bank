@@ -13,6 +13,11 @@ function idCheckSave(){
 }
 
 function joinSave(){
+	if(document.join.emailcheck=="0"){
+		alert("이메일 인증을 해주세요.");
+		document.join.email.focus();
+		return false;
+	}
 	if(document.join.id.value == ""){
 		alert("아이디를 입력하세요.");
 		document.join.id.focus();
@@ -41,7 +46,7 @@ function joinSave(){
 	}
 	if(document.join.idcheck.value=="0"){
 		alert("아이디 중복체크를 해주세요.")
-		document.join.id.focus();
+		document.join.idcheck.focus();
 		return false;
 	}
 	if(document.join.passcheck.value=="0"){
@@ -63,6 +68,25 @@ function passCheck(pass,repass){
 		alert("비밀번호가 일치하지 않습니다.");
 		document.join.passcheck.value=0;
 		return false;
+	}
+}
+function emailCheck(email){
+	if(email==""){
+		alert("이메일을 입력하세요.");
+		document.join.email.focus();
+	}else{
+		var popWidth=300;
+		var popHeight = 200;
+		var winHeight = document.body.clientHeight;
+		var winWidth = document.body.clientWidth;
+		var winX =window.screenLeft;
+		var winY= window.screenTop;
+		var popX=winX+(winWidth - popWidth)/2;
+		var popY=winY+(winHeight - popHeight)/2;
+		
+		url="emailCheck.do?email="+email;
+		window.open(url, "post", 
+				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 }
 function idCheck(id){

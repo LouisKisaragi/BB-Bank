@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import board.action.CommandAction;
-import board.model.BoardDto;
 import member.model.MemberDao;
 import member.model.MemberDto;
 
