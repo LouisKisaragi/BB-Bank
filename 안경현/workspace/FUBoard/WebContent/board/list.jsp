@@ -20,7 +20,7 @@
 <!-- <input type="hidden" name="bn" value="2">-->
 <c:set var="bn" value="2"/>
 <b>글목록(전체 글:${count})</b>
-<p><c:if test="${login eq 1 }">(${logId }님 안녕하세요)</c:if></p>
+<p><c:if test="${login eq 1 }">(${logNick }님 안녕하세요)</c:if></p>
 <table class="returnmain">
 <tr>
 <td><a href="${pageContext.request.contextPath }/board/main.do">메인으로가기</a></td>

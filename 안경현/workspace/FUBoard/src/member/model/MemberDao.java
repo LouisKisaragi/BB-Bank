@@ -44,6 +44,33 @@ public class  MemberDao{
 		}
 		return result;
 	}
+	//닉네임 중복확인
+	public int MemberNickCheck(String nick) {
+		int result=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//0이면 가능 / 1이면 중복
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from MEMBER where NICKNAME=? and super_m=0");
+			pstmt.setString(1, nick);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=1;
+			}else {
+				result=0;
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return result;
+	}
+	
 	//아이디 중복확인
 	public int MemberIdCheck(String id) {
 		int result=-1;
@@ -81,15 +108,16 @@ public class  MemberDao{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
 			sql = "insert into MEMBER"
-					+ "(PNUM, ID, PASS, NAME, EMAIL, JOINDATE, SUPER_M)"					
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ? ,? ,?)";
+					+ "(PNUM, ID, PASS, NAME, EMAIL, NICKNAME, JOINDATE, SUPER_M)"					
+					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ? ,? ,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getId());
 			pstmt.setString(2, article.getPass());
 			pstmt.setString(3, article.getName());
 			pstmt.setString(4, article.getEmail());
-			pstmt.setTimestamp(5, article.getJoindate());
-			pstmt.setString(6, super_m);
+			pstmt.setString(5, article.getNickname());
+			pstmt.setTimestamp(6, article.getJoindate());
+			pstmt.setString(7, super_m);
 			pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -155,6 +183,8 @@ public class  MemberDao{
 				article.setPass(rs.getString("pass"));
 				article.setPoint(rs.getInt("point"));
 				article.setSuper_m(rs.getString("super_m"));
+				article.setNickname(rs.getString("nickname"));
+				
 			}
 			
 			

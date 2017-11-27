@@ -24,6 +24,7 @@
 	<input type="hidden" name="idcheck" value="0" >
 	<input type="hidden" name="passcheck" value="0">
 	<input type="hidden" name="emailcheck" value="0">
+	<input type="hidden" name="nickcheck" value="0">
 
 	<table class="jointable">
 		<tr>
@@ -40,8 +41,12 @@
 			<th>이름</th><td><input type="text" name="name" required></td>
 		</tr>
 		<tr>
+			<th>닉네임</th><td><input type="text" name="nickname" required></td>
+			<td><input type="button" value="닉네임 중복확인" onClick="nickCheck(this.form.nickname.value)"></td>
+		</tr>
+		<tr>
 			<th>이메일</th><td><input type="email" name="email" required></td>
-			<td><input type="button" value="이메일 인증" onClick="emailCheck(this.form.email.value)">	</td>
+			<td><input type="button" value="이메일 인증" onClick="emailCheck(this.form.email.value)"></td>
 		</tr>
 	</table>
 	<table class="joinbutton">

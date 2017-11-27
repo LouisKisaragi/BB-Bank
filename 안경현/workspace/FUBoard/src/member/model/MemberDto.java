@@ -11,7 +11,7 @@ public class MemberDto {
 	private int point;
 	private String super_m;
 	private Timestamp joindate;
-	
+	private String nickname;
 	
 	
 	public String getPass() {
@@ -62,6 +62,12 @@ public class MemberDto {
 	}
 	public void setSuper_m(String super_m) {
 		this.super_m = super_m;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	

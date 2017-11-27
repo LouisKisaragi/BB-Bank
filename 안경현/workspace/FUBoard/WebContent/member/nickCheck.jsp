@@ -10,32 +10,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<script src="script.js"></script>
+
 <style>
 
 </style>
-<title>아이디 중복확인 체크</title>
-
+<title>닉네임 중복확인 체크</title>
+<script src="script.js"></script>
 
 
 </head>
 <body>
 <section>
-<form name="idCheck" action="${pageContext.request.contextPath}/member/idCheck.do?id=${id }"  onsubmit="return idCheckSave()">
+<form name="nickCheck" action="${pageContext.request.contextPath}/member/nickCheck.do?nick=${nick }"  onsubmit="return nickCheckSave()">
 <c:choose>
 	<c:when test="${check ==1 }">
-		이미 존재하는 ID입니다.
-		<input type="text"  name="id"  value="${id }">
-		<input type="submit" value="id 중복확인" >
+		이미 존재하는 닉네임입니다.
+		<input type="text"  name="nick"  value="${id }">
+		<input type="submit" value="nick 중복확인" >
 	</c:when>
 	<c:when test="${check ==0 }">
-		 사용 가능한 아이디입니다.
+		 사용 가능한 닉네임입니다.
 	
-				 <input type="hidden"  name="rid"  value="${id }">
-				<p>${id }<p>
+				 <input type="hidden"  name="rnick"  value="${nick }">
+				<p>${nick }<p>
 	
-		<input type="submit" value="이 id 사용하기" >
-		<!-- onClick="return idCheckSave();" -->
+		<input type="button" value="이 닉네임 사용하기" onClick="nickCheckSt()">
 	</c:when>
 </c:choose>
 </form>

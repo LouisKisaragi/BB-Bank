@@ -12,7 +12,14 @@ public class LoginAction implements CommandAction{
 			HttpServletResponse response) throws Throwable {
 		
 		
-		String page=request.getHeader("referer");
+		String page=null;
+		
+		if(request.getParameter("url")==null) {
+			page =request.getHeader("referer");
+		}else {
+			page=request.getParameter("url");
+			System.out.println("takeurl:"+request.getParameter("url"));
+		}
 		System.out.println("url:=:"+page);
 
 	

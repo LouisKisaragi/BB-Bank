@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
-
+<script src="script.js"></script>
 <style>
 
 </style>
@@ -21,13 +21,16 @@
 </head>
 <body>
 <section>
-
-
-		이미 회원가입된 이메일입니다.<p>
-		<input type="button" value="종료" onClick="window.open('', '_self', ''); window.close();">
-
-	
-
+<c:choose>
+	<c:when test="${check eq 1 }">
+		이메일 인증이 완료되었습니다.<p>
+		<input type="button" value="확인" onClick="emailCC()">
+	</c:when>
+	<c:when test="${check eq -1 }">
+		인증번호가 다릅니다 다시 인증 바랍니다.<p>
+		<input type="button" value="종료" onClick='self.close()'>
+	</c:when>
+</c:choose>
 </section>
 <script src="script.js"></script>
 </body>

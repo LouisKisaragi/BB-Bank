@@ -53,7 +53,7 @@
 			<td class="attr">업로더</td>
 			<td COLSPAN="2">
 			<c:choose>
-				<c:when test="${login eq 1 }">${logId }<input type="hidden" name="writer" value="${logId }"></c:when>
+				<c:when test="${login eq 1 }">${logNick }<input type="hidden" name="writer" value="${logNick }"></c:when>
 				<c:otherwise><input type="text" name="writer"></c:otherwise>
 			</c:choose>
 				</td>

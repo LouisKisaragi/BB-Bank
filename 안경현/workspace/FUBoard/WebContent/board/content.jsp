@@ -18,7 +18,7 @@
 writer=${article.writer}
 login=${login }
 mem=${article.mem }
-logId=${logId }
+lognick=${logNick }
 <br>
 <form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return contentSave()">
@@ -101,7 +101,7 @@ logId=${logId }
 		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 	</c:when>
-	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logId }">
+	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logNick }">
 			
 	</c:when>
 	<c:when test="${article.mem eq '1' and login eq 0 }">
@@ -167,7 +167,7 @@ logId=${logId }
 	<tr>
 	<c:choose>
 		<c:when test="${login eq 1 }">
-			<input type="hidden" name="cwriter" value="${logId }">
+			<input type="hidden" name="cwriter" value="${logNick }">
 			<input type="hidden" name="cpass" value="${logPass }">
 			<!-- 로그인상태일때 -->
 		</c:when>

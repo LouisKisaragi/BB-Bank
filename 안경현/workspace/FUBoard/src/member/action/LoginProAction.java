@@ -42,6 +42,9 @@ public class LoginProAction implements CommandAction{
 			String loginpass = article1.getPass();
 			String loginname= article1.getName();
 			int point = article1.getPoint();
+			String lognick=article1.getNickname();
+			
+		session.setAttribute("logNick",lognick);
 		session.setAttribute("logId",loginid);
 		session.setAttribute("logPass",loginpass);
 		session.setAttribute("logName", loginname);
