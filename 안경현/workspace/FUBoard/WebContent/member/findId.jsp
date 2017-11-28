@@ -26,9 +26,8 @@ function back(){
 </head>
 <body>
 <section>
-	<form method="post"  name="findId" action="${pageContext.request.contextPath}/member/findIdPro.do"
-	onsubmit="return idFindSendSave()">
-	<input type="hidden" name="page" value="${page }">
+	<form method="post"  name="findId" action="${pageContext.request.contextPath}/member/findIdSend.do"
+	onsubmit="return idFindSave()">
 		아이디 찾기<p>
 		이름<input type="text" name="name"><br>
 		이메일<input type="email" name="email"><br>

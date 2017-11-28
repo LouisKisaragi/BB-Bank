@@ -28,11 +28,10 @@ function back(){
 <section>
 	<form method="post"  name="findPass" action="${pageContext.request.contextPath}/member/findPassSend.do"
 	onsubmit="return passFindSave()">
-	<input type="hidden" name="page" value="${page }">
 		비밀번호 찾기<p>
 		아이디<input type="text" name="id"><br>
 		이메일<input type="email" name="email"><br>
-		<input type="button"  value="비밀번호 찾기" onClick="passFind()">
+		<input type="submit"  value="비밀번호 찾기" >
 		<input type="button"  value="아이디 찾기" onClick="document.location.href='${pageContext.request.contextPath}/member/findId.do'">
 		<input type="button" value="이전으로 가기" onClick="javascript:back();">
 	</form>

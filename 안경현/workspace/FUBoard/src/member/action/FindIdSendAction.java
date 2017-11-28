@@ -26,7 +26,7 @@ public class FindIdSendAction implements CommandAction{
 			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		
-		String page=request.getParameter("page");
+		//String page=request.getParameter("page");
 		String name= request.getParameter("name");
 		String email=request.getParameter("email");
 		String authNum="";
@@ -41,7 +41,9 @@ public class FindIdSendAction implements CommandAction{
 			sendEmail(email.toString(), authNum);
 			session.setAttribute("authNum", authNum);
 		}
-		request.setAttribute("page",page);
+		request.setAttribute("name", name);
+		request.setAttribute("email" ,email);
+		//request.setAttribute("page",page);
 		request.setAttribute("check",check);
 		return "/member/findIdSend.jsp";	//해당 뷰 경로 반환
 	}

@@ -28,7 +28,6 @@ function back(){
 <section>
 	<form method="post"  name="findPassSend" action="${pageContext.request.contextPath}/member/findPassPro.do"
 	onsubmit="return passFindSendSave()">
-	<input type="hidden" name="page" value="${page }">
 	<input type="hidden" name="id" value="${id }">
 	<input type="hidden" name="email" value="${email }">
 		<c:choose>

@@ -26,10 +26,11 @@ function back(){
 </head>
 <body>
 <section>
+<form>
 <a href="${pageContext.request.contextPath }/member/findId.do" >아이디 찾기</a>
 <a href="${pageContext.request.contextPath }/member/findPass.do" >비밀번호 찾기</a>
 <a href="javascript:back()">이전으로 가기</a>
-	
+</form>
 </section>
 <script src="script.js"></script>
 </body>

@@ -41,10 +41,15 @@ public class FindPassSendAction implements CommandAction{
 			sendEmail(email.toString(), authNum);
 			session.setAttribute("authNum", authNum);
 		}
+		request.setAttribute("email",email);
+		request.setAttribute("id", id);
 		request.setAttribute("page",page);
 		request.setAttribute("check",check);
 		return "/member/findPassSend.jsp";	//해당 뷰 경로 반환
 	}
+	
+	
+	
 	public String RandomNum() {
 		StringBuffer buffer = new StringBuffer();
 		for(int i = 0 ; i <= 6 ; i ++) {
