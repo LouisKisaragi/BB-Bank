@@ -21,9 +21,9 @@
 		<list key="C:\Users\IT63\Documents\GitHub\BB-Bank\.git">
 			<item value="false"/>
 			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
-			<item value="test"/>
+			<item value="# WARNING: head commit changed in the meantime&#x0D;&#x0A;&#x0D;&#x0A;test"/>
 			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
-			<item value="0000000000000000000000000000000000000000"/>
+			<item value="7697e7a89c704e8520a64773b271666242fdb57f"/>
 		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
