@@ -14,8 +14,13 @@
 민주현/workspace/.recommenders/
 민주현/workspace/RemoteSystemsTempFiles/
 민주현/workspace/Servers/
+<<<<<<< HEAD
 adminpage/.metadata/
 adminpage/.recommenders/
 adminpage/RemoteSystemsTempFiles/
 adminpage/Servers
 *.lnk
+=======
+adminpage/target/
+adminpage/.metadata/
+>>>>>>> 40eba76335002effea7e6d78c0eb4c66ac2de59a
