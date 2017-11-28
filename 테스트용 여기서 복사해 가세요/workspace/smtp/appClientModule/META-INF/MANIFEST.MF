@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Export-Package: com.sun.mail.smtp;uses:="com.sun.mail.util,javax.mail.
+ internet,javax.mail,javax.security.sasl,javax.security.auth.callback,
+ com.sun.mail.auth,javax.net.ssl";version="1.4.7"
+Implementation-Title: com.sun.mail.smtp
+Probe-Provider-XML-File-Names: 
+Built-By: shannon
+Tool: Bnd-0.0.357
+Implementation-Vendor: Oracle
+Implementation-Vendor-Id: com.sun
+Specification-Title: com.sun.mail.smtp
+Bundle-License: http://www.sun.com/cddl, https://glassfish.java.net/pu
+ blic/CDDL+GPL_1_1.html
+Bundle-SymbolicName: com.sun.mail.smtp
+Extension-Name: com.sun.mail.smtp
+Implementation-Version: 1.4.7
+Specification-Vendor: Oracle
+Bundle-Name: JavaMail API smtp provider
+Created-By: 1.7.0_09 (Oracle Corporation)
+Bundle-Vendor: Oracle
+DynamicImport-Package: *
+Build-Jdk: 1.7.0_09
+Bundle-Version: 1.4.7
+Bnd-LastModified: 1362615437224
+Bundle-ManifestVersion: 2
+Bundle-Description: JavaMail API smtp provider
+Import-Package: com.sun.mail.auth,com.sun.mail.smtp;version="1.4",com.
+ sun.mail.util,javax.mail,javax.mail.internet,javax.net.ssl,javax.secu
+ rity.auth.callback,javax.security.sasl;resolution:=optional,sun.secur
+ ity.util;resolution:=optional
+Bundle-DocURL: http://www.oracle.com
+Specification-Version: 1.4
+Originally-Created-By: 1.7.0_09 (Oracle Corporation)
+Archiver-Version: Plexus Archiver
+
