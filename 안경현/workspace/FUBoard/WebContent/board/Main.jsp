@@ -12,7 +12,7 @@
 <body>
 <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2">
 				게시판2!</a>
-<a href="${pageContext.request.contextPath }/member/join.do?num=0&pageNum=0&bn=0">회원가입</a>	
+<a href="${pageContext.request.contextPath }/member/join.do">회원가입</a>	
 
 </body>
 </html>

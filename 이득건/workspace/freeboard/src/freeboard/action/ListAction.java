@@ -7,14 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import boardtwo.model.BoardDao;
-import boardtwo.model.BoardDto;
+//import freeboard.model.BoardDao;
+//import freeboard.model.BoardDto;
 
 public class ListAction implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)throws Throwable{
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
+		String prefaces = request.getParameter("prefaces"); //구분 구분자
 		if(pageNum == null){
 			pageNum = "1";
+			
+		}
+		if(prefaces == null){
+			prefaces = "all";
 		}
 		int pageSize = 5; //한 페이지 당 글의 수
 		int currentPage = Integer.parseInt(pageNum);
@@ -24,11 +29,11 @@ public class ListAction implements CommandAction{
 		int endRow = currentPage * pageSize; //한 페이지의 마지막 글 번호
 		int count = 0;
 		int number = 0;
-		List<BoardDto> articleList = null;
-		BoardDao dbPro = BoardDao.getInstance(); //DB연결
-		count = dbPro.getArticleCount(); //전체 글 개수
+		List<freeboard.model.BoardDto> articleList = null;
+		freeboard.model.BoardDao dbPro = freeboard.model.BoardDao.getInstance(); //DB연결
+		count = dbPro.getArticleCount(prefaces); //전체 글 개수
 		if(count > 0){ // 현재 페이지의 글 목록
-			articleList = dbPro.getArticles(startRow, endRow);
+			articleList = dbPro.getArticles(prefaces, startRow, endRow);
 		} else {
 			articleList = Collections.emptyList();
 		}
@@ -42,8 +47,9 @@ public class ListAction implements CommandAction{
 		request.setAttribute("pageSize", new Integer(pageSize));
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
+		request.setAttribute("prefaces", prefaces);
 		
-		return "/boardtwo/list.jsp"; //해당하는 뷰 경로 반환
+		return "/freeboard/list.jsp"; //해당하는 뷰 경로 반환
 	}
 	
 

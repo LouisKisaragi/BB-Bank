@@ -1,5 +1,7 @@
 package member.model;
 
+import java.sql.Timestamp;
+
 public class MemberDto {
 	private int pnum;
 	private String name;
@@ -8,6 +10,7 @@ public class MemberDto {
 	private String email;
 	private int point;
 	private int super_m;
+	private Timestamp joindate;
 	
 	
 	
@@ -52,6 +55,12 @@ public class MemberDto {
 	}
 	public void setSuper_m(int super_m) {
 		this.super_m = super_m;
+	}
+	public Timestamp getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(Timestamp joindate) {
+		this.joindate = joindate;
 	}
 	
 	
