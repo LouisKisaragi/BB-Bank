@@ -18,3 +18,4 @@ adminpage/.metadata/
 adminpage/.recommenders/
 adminpage/RemoteSystemsTempFiles/
 adminpage/Servers
+*.lnk
