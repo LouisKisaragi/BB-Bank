@@ -15,6 +15,7 @@
 민주현/workspace/RemoteSystemsTempFiles/
 민주현/workspace/Servers/
 <<<<<<< HEAD
+<<<<<<< HEAD
 adminpage/.metadata/
 adminpage/.recommenders/
 adminpage/RemoteSystemsTempFiles/
@@ -24,3 +25,9 @@ adminpage/Servers
 adminpage/target/
 adminpage/.metadata/
 >>>>>>> 40eba76335002effea7e6d78c0eb4c66ac2de59a
+=======
+adminpage/.metadata/
+adminpage/.recommenders/
+adminpage/RemoteSystemsTempFiles/
+adminpage/Servers
+>>>>>>> parent of 0619b3e... Merge branch 'master' of https://github.com/LouisKisaragi/BB-Bank
