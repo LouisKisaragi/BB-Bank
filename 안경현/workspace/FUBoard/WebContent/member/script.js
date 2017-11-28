@@ -1,3 +1,42 @@
+function idFindSave(){
+	if(document.findId.name.value == ""){
+		alert("아이디를 입력하세요.");
+		document.findId.name.focus();
+		return false;
+	}
+	if(document.findId.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.findId.email.focus();
+		return false;
+	}
+	
+}
+function passFindSave(){
+	if(document.findPass.id.value == ""){
+		alert("아이디를 입력하세요.");
+		document.findPass.id.focus();
+		return false;
+	}
+	if(document.findPass.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.findPass.email.focus();
+		return false;
+	}
+	
+}
+function idFindSendSave(){
+	if(document.findIdSend.certification.value==""){
+		alert("인증번호를 입력하세요.");
+		return false;
+	}
+}
+function passFindSendSave(){
+	if(document.findPassSend.certification.value==""){
+		alert("인증번호를 입력하세요.");
+		return false;
+	}
+}
+
 function idCheckSave(){
 	if(document.idCheck.id.value == ""){
 		alert("아이디를 입력하세요.");
@@ -11,14 +50,74 @@ function idCheckSave(){
 		window.close();
 	}	
 }
+function nickCheckSave(){
+	if(document.nickCheck.nick.value == ""){
+		alert("닉네임을 입력하세요.");
+		document.nickCheck.nick.focus();
+		return false;
+	}
+}
+function nickCheckSt(){
+	if(document.nickCheck.rnick.value != ""){
+		opener.document.join.nickname.value=document.nickCheck.rnick.value;
+		opener.document.join.nickcheck.value=1;
+		self.opener=self;
+		window.close();
+	}	
+}
+function nickCheck(nickname){
+	if(nickname==""){
+		alert("닉네임을 입력해주세요.");
+		document.join.nickname.focus();
+	}else {
+		
+		var popWidth=300;
+		var popHeight = 200;
+		var winHeight = document.body.clientHeight;
+		var winWidth = document.body.clientWidth;
+		var winX =window.screenLeft;
+		var winY= window.screenTop;
+		var popX=winX+(winWidth - popWidth)/2;
+		var popY=winY+(winHeight - popHeight)/2;
+		
+		url="nickCheck.do?nick="+nickname;
+		window.open(url, "post", 
+				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
+	}
+}
 
+function emailCC(){
+	opener.document.join.emailcheck.value=1;
+	self.opner=self;
+	window.close();
+}
+function EmailCerCheck(){
+	if(document.emailCheckSend.certification.value==""){
+		alert("인증번호를 입력하세요.");
+		return false;
+	}
+}
 function joinSave(){
+	if(document.join.nickcheck.value=="0"){
+		alert("닉네임중복 체크를 해주세요");
+		document.join.nickname.focus();
+		return false;
+	}
+	if(document.join.emailcheck.value=="0"){
+		alert("이메일 인증을 해주세요.");
+		document.join.email.focus();
+		return false;
+	}
 	if(document.join.id.value == ""){
 		alert("아이디를 입력하세요.");
 		document.join.id.focus();
 		return false;
 	}
-		
+	if(document.join.nickname.value == ""){
+		alert("닉네임을 입력하세요.");
+		document.join.nickname.focus();
+		return false;
+	}
 	if(document.join.pass.value == ""){
 		alert("비밀번호를 입력하세요.");
 		document.join.pass.focus();
@@ -41,7 +140,7 @@ function joinSave(){
 	}
 	if(document.join.idcheck.value=="0"){
 		alert("아이디 중복체크를 해주세요.")
-		document.join.id.focus();
+		document.join.idcheck.focus();
 		return false;
 	}
 	if(document.join.passcheck.value=="0"){
@@ -63,6 +162,25 @@ function passCheck(pass,repass){
 		alert("비밀번호가 일치하지 않습니다.");
 		document.join.passcheck.value=0;
 		return false;
+	}
+}
+function emailCheck(email){
+	if(email==""){
+		alert("이메일을 입력하세요.");
+		document.join.email.focus();
+	}else{
+		var popWidth=300;
+		var popHeight = 200;
+		var winHeight = document.body.clientHeight;
+		var winWidth = document.body.clientWidth;
+		var winX =window.screenLeft;
+		var winY= window.screenTop;
+		var popX=winX+(winWidth - popWidth)/2;
+		var popY=winY+(winHeight - popHeight)/2;
+		
+		url="emailCheck.do?email="+email;
+		window.open(url, "post", 
+				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 }
 function idCheck(id){

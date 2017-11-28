@@ -25,11 +25,13 @@ public class JoinProAction implements CommandAction{
 		System.out.println("pass=="+request.getParameter("pass"));
 		System.out.println("name=="+request.getParameter("name"));
 		System.out.println("email=="+request.getParameter("email"));
+		System.out.println("nickname=="+request.getParameter("nickname"));
 		article.setId(request.getParameter("id"));
 		article.setPass(request.getParameter("pass"));
 		article.setName(request.getParameter("name"));
 		article.setJoindate(new Timestamp(System.currentTimeMillis()));
 		article.setEmail(request.getParameter("email"));
+		article.setNickname(request.getParameter("nickname"));
 		MemberDao dbPro = MemberDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);
 		

@@ -91,6 +91,7 @@ public class WriteProAction implements CommandAction{
 		System.out.println("content=="+request.getParameter("content"));
 		System.out.println("bn=="+request.getParameter("bn"));
 		System.out.println("preface=="+request.getParameter("preface"));
+		System.out.println("mem=="+request.getParameter("mem"));
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setWriter(request.getParameter("writer"));
 		article.setOrigin_filename(origin_filename);
@@ -106,6 +107,7 @@ public class WriteProAction implements CommandAction{
 		article.setFilesize(filesize);
 		article.setBn(Integer.parseInt(request.getParameter("bn")));
 		article.setPreface(request.getParameter("preface"));
+		article.setMem(Integer.parseInt(request.getParameter("mem")));
 		article.setIp(request.getRemoteAddr());
 		BoardDao dbPro = BoardDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);

@@ -17,6 +17,7 @@ public class BoardDto {
 	private String content;
 	private String filetype;
 	private String preface;
+	private int mem;
 	private int bn;
 	public int getNum() {
 		return num;
@@ -119,5 +120,11 @@ public class BoardDto {
 	}
 	public void setBn(int bn) {
 		this.bn = bn;
+	}
+	public int getMem() {
+		return mem;
+	}
+	public void setMem(int mem) {
+		this.mem = mem;
 	}
 }

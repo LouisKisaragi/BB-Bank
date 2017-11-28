@@ -15,10 +15,23 @@
 <body>
 <section>
 <b>자료 보기</b>
+writer=${article.writer}
+login=${login }
+mem=${article.mem }
+lognick=${logNick }
 <br>
 <form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return contentSave()">
 <input type="hidden" name="num" value="${num}">
+<c:choose>
+	<c:when test="${login eq 1 }">
+		<input type="hidden" name="mem" value="1">
+	</c:when>
+	<c:otherwise>
+		<input type="hidden" name="mem" value="0">
+	</c:otherwise>
+</c:choose>
+
 <table  class="contenttable">
 	<tr>
 		<th>글번호</th>
@@ -81,10 +94,26 @@
 	</tr>
 	<tr>
 		<td colspan="10">
+		<c:choose>
+	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logId}">
 		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
-			&nbsp;&nbsp;
+				&nbsp;&nbsp;
 		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
-			&nbsp;&nbsp;
+				&nbsp;&nbsp;
+	</c:when>
+	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logNick }">
+			
+	</c:when>
+	<c:when test="${article.mem eq '1' and login eq 0 }">
+	 	
+	</c:when>
+	<c:otherwise>
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+				&nbsp;&nbsp;
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+				&nbsp;&nbsp;
+	</c:otherwise>
+	</c:choose>
 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn }'">
@@ -136,12 +165,21 @@
 </c:if>
 <table class="contenttable">
 	<tr>
-		<th colspan="2">작성자</th>
-		<td><input type="text" name="cwriter"></td>
-		<th colspan="6">비밀번호</th>
-		<td><input type="password" name="cpass"></td>
-	</tr>
-	<tr>
+	<c:choose>
+		<c:when test="${login eq 1 }">
+			<input type="hidden" name="cwriter" value="${logNick }">
+			<input type="hidden" name="cpass" value="${logPass }">
+			<!-- 로그인상태일때 -->
+		</c:when>
+		<c:otherwise>
+			<th colspan="2">작성자</th>
+			<td><input type="text" name="cwriter"></td>
+			<th colspan="6">비밀번호</th>
+			<td><input type="password" name="cpass"></td><!-- 비로그인상태일때 -->
+		</c:otherwise>
+	</c:choose>
+		
+	
 		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>
 		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>

@@ -44,7 +44,8 @@ public class CommentAction implements CommandAction{
 		System.out.println("depth=="+depth);
 		System.out.println("content=="+request.getParameter("ccomment"));
 		System.out.println("bn=="+request.getParameter("num"));
-		article.setNum(Integer.parseInt(request.getParameter("cnum")));
+		System.out.println("mem=="+request.getParameter("mem"));	
+	
 		article.setWriter(request.getParameter("cwriter"));
 		article.setPass(request.getParameter("cpass"));
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));
@@ -53,6 +54,7 @@ public class CommentAction implements CommandAction{
 		article.setDepth(depth);
 		article.setContent(request.getParameter("ccomment"));
 		article.setBn(Integer.parseInt(request.getParameter("num")));
+		article.setMem(Integer.parseInt(request.getParameter("mem")));
 		article.setIp(request.getRemoteAddr());
 		CommentDao dbPro = CommentDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);

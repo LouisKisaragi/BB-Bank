@@ -17,6 +17,6 @@ public class JoinAction implements CommandAction{
 
 	
 		request.setAttribute("page", page);
-		return "/member/login.jsp";
+		return "/member/join.jsp";
 	}
 }
