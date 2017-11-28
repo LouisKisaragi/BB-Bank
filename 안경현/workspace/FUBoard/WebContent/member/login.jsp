@@ -31,7 +31,7 @@ function back(){
 			</tr>
 			<tr>
 				<td><input type="submit" value="로그인" ></td>
-				<td><input type="button" value="아이디/비밀번호찾기"></td>
+				<td><input type="button" value="아이디/비밀번호찾기" onClick="document.location.href='${pageContext.request.contextPath }/member/findIdPass.do'"></td>
 				<td><input type="button" value="회원가입" onClick="document.location.href='${pageContext.request.contextPath}/member/join.do'"></td>
 				<td><input type="button" value="이전으로 돌아가기" onClick="javascript:back();">
 			</tr>	

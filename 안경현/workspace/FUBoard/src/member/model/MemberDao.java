@@ -70,7 +70,6 @@ public class  MemberDao{
 		}
 		return result;
 	}
-	
 	//아이디 중복확인
 	public int MemberIdCheck(String id) {
 		int result=-1;
@@ -82,6 +81,60 @@ public class  MemberDao{
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement("select * from MEMBER where id=? and super_m=0");
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=1;
+			}else {
+				result=0;
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return result;
+	}
+	//아이디 찾기
+	public int MemberIdFind(String name,String email) {
+		int result=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//0이면 가능 / 1이면 중복
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from MEMBER where name=? and email=? and super_m=0");
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=1;
+			}else {
+				result=0;
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return result;
+	}
+	//비밀번호 찾기
+	public int MemberPassFind(String id,String email) {
+		int result=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//0이면 가능 / 1이면 중복
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from MEMBER where id=? and email=? and super_m=0");
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				result=1;
@@ -156,6 +209,62 @@ public class  MemberDao{
 			if(conn != null) try { conn.close(); } catch (SQLException e){}
 		}
 		return result;
+	}
+	//아이디 찾아서 출력
+	public String getId(String name,String email) {
+		String id=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		try{
+			conn = ConnUtil.getConnection();
+			//쿼리 작성
+			sql = "select * from MEMBER where NAME=? and EMAIL=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				id=rs.getString("id");
+			}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				if(rs != null) try { rs.close(); } catch (SQLException e){}
+				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+				if(conn != null) try { conn.close(); } catch (SQLException e){}
+			}
+		return id;
+	}
+	//비밀번호 찾아서 출력
+	public String getPass(String id,String email) {
+		String pass=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		try{
+			conn = ConnUtil.getConnection();
+			//쿼리 작성
+			sql = "select * from MEMBER where id=? and EMAIL=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
+			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				pass=rs.getString("pass");
+			}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				if(rs != null) try { rs.close(); } catch (SQLException e){}
+				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+				if(conn != null) try { conn.close(); } catch (SQLException e){}
+			}
+		return pass;
 	}
 	
 	//회원정보 가져오기

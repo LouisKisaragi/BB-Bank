@@ -1,3 +1,42 @@
+function idFindSave(){
+	if(document.findId.name.value == ""){
+		alert("아이디를 입력하세요.");
+		document.findId.name.focus();
+		return false;
+	}
+	if(document.findId.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.findId.email.focus();
+		return false;
+	}
+	
+}
+function passFindSave(){
+	if(document.findPass.id.value == ""){
+		alert("아이디를 입력하세요.");
+		document.findPass.id.focus();
+		return false;
+	}
+	if(document.findPass.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.findPass.email.focus();
+		return false;
+	}
+	
+}
+function idFindSendSave(){
+	if(document.findIdSend.certification.value==""){
+		alert("인증번호를 입력하세요.");
+		return false;
+	}
+}
+function passFindSendSave(){
+	if(document.findPassSend.certification.value==""){
+		alert("인증번호를 입력하세요.");
+		return false;
+	}
+}
+
 function idCheckSave(){
 	if(document.idCheck.id.value == ""){
 		alert("아이디를 입력하세요.");
