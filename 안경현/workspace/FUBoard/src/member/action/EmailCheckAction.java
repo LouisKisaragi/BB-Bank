@@ -25,7 +25,7 @@ public class EmailCheckAction implements CommandAction{
 	public String requestPro(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
-		
+		request.setCharacterEncoding("UTF-8");
 		MemberDao dbPro = MemberDao.getInstance();
 		String email = request.getParameter("email");
 		String returnU =null;

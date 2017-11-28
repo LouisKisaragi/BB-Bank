@@ -217,10 +217,14 @@ public class  MemberDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
+		
 		try{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
-			sql = "select * from MEMBER where NAME=? and EMAIL=?";
+			System.out.println("name"+name);
+			System.out.println("email"+email);
+			
+			sql = "select id from MEMBER where NAME=? and EMAIL=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
@@ -236,6 +240,7 @@ public class  MemberDao{
 				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
 				if(conn != null) try { conn.close(); } catch (SQLException e){}
 			}
+		System.out.println("sq+l"+sql);
 		return id;
 	}
 	//비밀번호 찾아서 출력
@@ -248,7 +253,9 @@ public class  MemberDao{
 		try{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
-			sql = "select * from MEMBER where id=? and EMAIL=?";
+			System.out.println("id="+id);
+			System.out.println("email="+email);
+			sql = "select pass from MEMBER where ID=? and EMAIL=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, email);
@@ -256,6 +263,7 @@ public class  MemberDao{
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				pass=rs.getString("pass");
+				System.out.println("pass:::"+pass);
 			}
 			}catch(Exception e){
 				e.printStackTrace();

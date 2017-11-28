@@ -31,7 +31,7 @@ function back(){
 		이메일 인증이 완료되었습니다.<p>
 		등록된 비밀번호는 ${pass }입니다.
 		<input type="button" value="로그인하기" onClick="document.location.href='${pageContext.request.contextPath}/member/login.do?page=${page }'">
-		<input type="button" value="확인" onClick="document.location.href='${page}''">
+		<input type="button" value="확인" onClick="document.location.href='${page}'">
 	</c:when>
 	<c:when test="${check eq -1 }">
 		인증번호가 다릅니다 다시 인증 바랍니다.<p>

@@ -28,7 +28,6 @@ function back(){
 <section>
 	<form method="post"  name="findIdSend" action="${pageContext.request.contextPath}/member/findIdPro.do"
 	onsubmit="return idFindSendSave()">
-	<input type="hidden" name="page" value="${page }">
 	<input type="hidden" name="name" value="${name }">
 	<input type="hidden" name="email" value="${email }">
 		<c:choose>

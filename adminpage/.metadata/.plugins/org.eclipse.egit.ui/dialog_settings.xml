@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="CommitDialog.authorValues">
+		<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="666" key="DIALOG_WIDTH"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="457" key="DIALOG_HEIGHT"/>
+		<item value="475" key="DIALOG_X_ORIGIN"/>
+		<item value="134" key="DIALOG_Y_ORIGIN"/>
+		<list key="sashWeights">
+			<item value="600"/>
+			<item value="400"/>
+		</list>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\IT63\Documents\GitHub\BB-Bank\.git">
+			<item value="false"/>
+			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+			<item value="# WARNING: head commit changed in the meantime&#x0D;&#x0A;&#x0D;&#x0A;test"/>
+			<item value="LouisKisaragi &lt;31821382+LouisKisaragi@users.noreply.github.com&gt;"/>
+			<item value="7697e7a89c704e8520a64773b271666242fdb57f"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item value="500,500" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="false" key="sortItemState"/>
+		<item value="500,500" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+	</section>
+</section>

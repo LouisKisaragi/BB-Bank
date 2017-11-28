@@ -11,7 +11,7 @@ public class IdCheckAction implements CommandAction{
 	public String requestPro(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
-		
+		request.setCharacterEncoding("UTF-8");
 		MemberDao dbPro = MemberDao.getInstance();
 		String id = request.getParameter("id");
 		
