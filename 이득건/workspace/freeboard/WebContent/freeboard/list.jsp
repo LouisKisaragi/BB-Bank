@@ -23,6 +23,7 @@
 				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=1">[1] </a>
 				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=2">[2] </a>
 				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=3">[3] </a>
+				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=4">[4] </a>
 				</td>
 			</tr>
 		</table>
@@ -128,7 +129,7 @@ ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
 				<option value="1" selected >작성자
 				<option value="2" >제목
 				<option value="3">내용
-				<option value="3">제목+내용
+				<option value="4">제목+내용
 				</select>
 					</td>
 				</tr>

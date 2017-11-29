@@ -38,6 +38,7 @@
 				<option value="1" selected>1
 				<option value="2">2
 				<option value="3">3
+				<option value="4">4
 				</select>
 			</td>
 		</tr>	
