@@ -8,6 +8,7 @@ public class WriteFormAction implements CommandAction{
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		//제목글과 답변글의 구분
+		request.setCharacterEncoding("UTF-8");
 		int num=0, ref = 1, step=0, depth=0;
 		try{
 			if(request.getParameter("num") != null){

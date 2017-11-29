@@ -17,6 +17,7 @@ public class ContentAction implements CommandAction{
 	public String requestPro(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
+		request.setCharacterEncoding("UTF-8");
 		List<CommentDto> carticleList = null;
 		int num = Integer.parseInt(request.getParameter("num"));
 		CommentDao cdbPro = CommentDao.getInstance(); //DB연결

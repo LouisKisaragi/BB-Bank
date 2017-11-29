@@ -210,7 +210,6 @@ public class CommentDao {
 					result = 0; //비밀번호 불일치
 				}
 			}
-			System.out.println("re:"+result);
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {

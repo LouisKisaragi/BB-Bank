@@ -15,10 +15,6 @@
 <body>
 <section>
 <b>자료 보기</b>
-writer=${article.writer}
-login=${login }
-mem=${article.mem }
-lognick=${logNick }
 <br>
 <form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return contentSave()">
@@ -157,8 +153,20 @@ lognick=${logNick }
 				document.write(ipc[1]);
 			</script>
 			)</td>
-	<td colspan ="10">${articlec.content }</td>
-		<td colspan="2">${articlec.regdate }<p><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+	<td colspan ="10">${articlec.content }</td><td>${articlec.regdate }<p></td>
+	<c:choose>
+		<c:when test="${articlec.mem eq '1' and login eq 1 and articlec.writer eq logNick}">
+			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+		</c:when>
+		<c:when test="${articlec.mem eq '0' and login ne 1 }">
+			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+		</c:when>		
+		<c:otherwise>
+			<td>
+			<input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'">
+			</td>
+		</c:otherwise>
+	</c:choose>
 	</tr>
 	</c:forEach>
 	</table>
@@ -178,8 +186,6 @@ lognick=${logNick }
 			<td><input type="password" name="cpass"></td><!-- 비로그인상태일때 -->
 		</c:otherwise>
 	</c:choose>
-		
-	
 		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>
 		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>

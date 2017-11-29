@@ -25,25 +25,44 @@
 					<option value="solution">해결</option>
 				</select>
 			</td>
-			<td class="attr">제  목</td>
-			<td COLSPAN="1">
-				<input class="input" type="text" name="subject" value="${article.subject }">
+				<td class="attr">제  목</td>
+				<td COLSPAN="1">
+					<input class="input" type="text" name="subject" value="${article.subject }">
 			</td>
 		</tr>
-		<tr>
-			<td class="attr">업로더</td>
-			<td COLSPAN="2">
-				<input type="hidden" name="num" value="${article.num}">
-				<input type="hidden" name="writer" value="${article.writer}">
-				${article.writer }
-			</td>
-		</tr>
-		<tr>
-			<td class="attr">비밀번호</td>
-			<td COLSPAN="2">
-				<input type="password" name="pass">
-			</td>
-		</tr>
+			<c:choose>
+			<c:when test="${login eq 1 }">
+			<tr>
+				<td class="attr">업로더</td>
+					<td COLSPAN="2">
+					<input type="hidden" name="num" value="${article.num}">
+					<input type="hidden" name="writer" value="${article.writer}">
+					${article.writer }
+				</td>
+			</tr>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td class="attr">업로더</td>
+					<td COLSPAN="2">
+						<input type="text" name="writer">
+					</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${login eq 1 }">
+				<input type="hidden" name="pass" value="${logPass }">
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td class="attr">비밀번호</td>
+					<td COLSPAN="2">
+						<input type="password" name="pass">
+					</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
 		<tr>
 			<td class="attr">내 용</td>
 			<td COLSPAN="2">

@@ -17,7 +17,7 @@ public class DownloadFAction  implements CommandAction{
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		//해당 글번호
-		
+		request.setCharacterEncoding("UTF-8");
 		//제목글과 답변글의 구분
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println("pageNum::"+request.getParameter("pageNum"));

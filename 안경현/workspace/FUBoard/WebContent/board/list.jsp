@@ -14,6 +14,7 @@
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/board/css/liststyle.css" rel="stylesheet" type="text/css"/>
+<script src="${pageContext.request.contextPath}/board/script.js"></script>
 </head>
 <body>
 <section>
@@ -45,7 +46,36 @@
 </c:if>
 
 <c:if test="${count > 0}">
+
+	
+
 <table class="listtable">
+<tr>
+	<td colspan="10">
+	<c:choose>
+		<c:when test="${preface eq 'all'}">
+			[전부]&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=solution">[해결]</a>
+		</c:when>
+		<c:when test="${preface eq 'solution' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+			[해결]
+		</c:when>
+		<c:when test="${preface eq 'problem' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			[문제]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=solution">[해결]</a>
+		</c:when>
+		<c:otherwise>
+		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=${pageNum}&bn=${bn}&preface=solution">[해결]</a>
+		</c:otherwise>
+	</c:choose>
+	</td>
+</tr>
 	<tr>
 		<th id="num">번 호</th>
 		<th id="preface">분류</th>
@@ -107,6 +137,18 @@
 	</tr>
 	</c:forEach>
 </table>
+	<form method="post" name="listSearch" action="${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum }&bn=${bn }&preface=${preface }" 
+	onsubmit="return listSearchSave()">
+	<select name="details">
+		<option value="subject">제목</option>
+		<option value="content">내용</option>
+		<option value="subject+content">제목+내용</option>
+		<option value="writer">글쓴이</option>
+	</select>
+	<input type="text" name="search">
+	<input type="submit" value="검색" >
+	<p>
+	</form>
 </c:if>
 <c:if test="${count > 0}"><!-- 게시글이 하나라도 있으면 페이징 처리 화면이 뜬다. -->
 	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}"/><!-- 아래의 pageCount를 제어하는 삼항연산자. -->
@@ -150,31 +192,6 @@
 </c:if>
 <br><br>
 
-<!--<c:if test="${count > 0}">
-	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }"/>
-	<c:set var="pageCount" value="${count / pageSize + imsi }"/>
-	<c:set var="pageBlock" value="${3}"/>
-	<fmt:parseNumber var="result" value="${(currentPage-1) / pageBlock}" 
-	integerOnly="true"/>
-	<c:set var="startPage" value="${result * pageBlock + 1 }"/>
-	<c:set var="endPage" value="${startPage + pageBlock - 1 }"/>
-	
-	<c:if test="${endPage > pageCount}">
-		<c:set var="endPage" value="${pageCount}"/>
-	</c:if>
-	
-	<c:if test="${startPage > pageBlock}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage - pageBlock }&bn=${bn}">이전</a>
-	</c:if>
-	
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}&bn=${bn}">[${i}]</a>
-	</c:forEach>
-	
-	<c:if test="${endPage < pageCount}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock }&bn=${bn }">다음</a>
-	</c:if>
-</c:if>-->
 </section>
 </body>
 </html>
