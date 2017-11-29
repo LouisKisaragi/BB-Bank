@@ -12,13 +12,6 @@
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/board/script.js"></script>
-<!-- <script type="text/javascript"> -->
-<!-- 	function onDownload(num) { -->
-<!-- 		var o = document.getElementById("ifrm_filedown"); -->
-<!-- 		o.src="download.do?num="+num; -->
-<!-- 	} -->
-<!-- </script> -->
-
 
 </head>
 <body>
@@ -109,8 +102,7 @@ onsubmit="return contentSave()">
 			<tr>
 			<th>파일</th>
 			<td>
-<%-- 			<a href="#" onclick="onDownload('${article.num}')"> ${ article.server_filename }</a> --%>
-				<a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
+			<a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
 				${article.origin_filename}</a>
 			</td>
 		
@@ -182,20 +174,25 @@ onsubmit="return contentSave()">
 	<td colspan="3" style="text-align: left;"><pre>${comment.content}</pre>
 	<p style="font-size: 10pt; text-align: right;">${comment.regdate}
 	<c:choose>
+	
+	<%-- 관리자 --%>
 	<c:when test="${super_m eq '1' and login eq '1'}">
 		<input type="button" value="삭제"
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>
 	
-	<c:when test="${super_m eq '0' and comment.mem eq '1'and login eq '1' and comment.writer eq logNick}">
+	<%-- 일반 사용자 --%>
+	<c:when test="${super_m eq '0' and comment.mem eq '1' and login eq '1' and comment.writer eq logNick}">
 		<input type="button" value="삭제"
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>
 	
-	<c:when test="${comment.mem eq '0' and login eq '0'}">
+	<%-- 비로그인 --%>
+	<c:when test="${comment.mem eq '0' and comment.writer ne lockNick and login ne '1'}">
 		<input type="button" value="삭제"
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>
+	
 	</c:choose>
 	</p>
 	</td>				
