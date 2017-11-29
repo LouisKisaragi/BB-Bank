@@ -37,3 +37,10 @@ function contentSave(){
 		return false;
 	}
 }
+function listSearchSave(){
+	if(document.listSearch.search.value==""){
+		alert("검색어를 입력하세요.");
+		document.listSearch.search.focus();
+		return false;
+	}
+}

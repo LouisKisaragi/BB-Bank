@@ -10,10 +10,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import bb.dto.GuestDTO;
+
 //import jsl.dto.GuestDTO;
 //import jsl.dto.PointManagerDTO;
 
-public class Admindao {
+public class AdminDAO {
 	private AdminDAO() {}
 	private static AdminDAO instance = new AdminDAO();
 	public static AdminDAO getinstance()
@@ -85,8 +87,7 @@ public class Admindao {
 			while(rs.next())
 			{
 				guestDTO = new GuestDTO(rs.getString("id"), rs.getString("pass"), rs.getString("name"), 
-						rs.getString("address"), rs.getString("phone"), rs.getInt("point"),
-						rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
+						rs.getInt("point"),rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
 				
 				list.add(guestDTO);
 			}

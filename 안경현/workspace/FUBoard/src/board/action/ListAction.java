@@ -13,12 +13,19 @@ public class ListAction implements CommandAction{
 	public String requestPro (
 			HttpServletRequest request,
 			HttpServletResponse response)throws Throwable{
-		String pageNum = request.getParameter("pageNum"); //페이지 번호\
-		String preface=null;//request.getParameter("preface");
+		request.setCharacterEncoding("UTF-8");
+		String pageNum = request.getParameter("pageNum"); //페이지 번호
+		String preface=request.getParameter("preface");
+		String search=request.getParameter("search");
+		String details=request.getParameter("details");
 		String sbn=request.getParameter("bn");
 		if(pageNum == null){
 			pageNum = "1";
 		}
+		if(preface==null) {
+			preface="all";
+		}
+		
 		int pageSize = 5; //한 페이지 당 글의 개수
 		int currentPage = Integer.parseInt(pageNum);
 		//페이지의 시작 글 번호
@@ -27,17 +34,28 @@ public class ListAction implements CommandAction{
 		int endRow = currentPage * pageSize; //한 페이지의 마지막 글 번호
 		int count = 0;
 		int number = 0;
-		System.out.println("pn::"+pageNum);
-		System.out.println("bn::"+sbn);
 		int bn = Integer.parseInt(sbn);
 		List<BoardDto> articleList = null;
-		BoardDao dbPro = BoardDao.getInstance(); //DB연결
-		count = dbPro.getArticleCount(bn); //전체 글 개수
-		if(count > 0){ //현재 페이지의 글 목록
-			articleList = dbPro.getArticles(startRow, endRow, bn);
-		} else {
-			articleList = Collections.emptyList();
+		if(search==null) {//검색이아닐경우
+			
+			BoardDao dbPro = BoardDao.getInstance(); //DB연결
+			
+			count = dbPro.getArticleCount(bn,preface); //전체 글 개수
+			if(count > 0){ //현재 페이지의 글 목록
+				articleList = dbPro.getArticles(startRow, endRow, bn, preface);
+			} else {
+				articleList = Collections.emptyList();
+			}
+		}else {//검색일경우
+			BoardDao dbPro = BoardDao.getInstance();//db연결
+			count=dbPro.getSearchArticleCount(bn, preface, details, search);
+			if(count > 0){ //현재 페이지의 글 목록
+				articleList = dbPro.getSearchArticles(startRow, endRow, bn, preface, details, search);
+			} else {
+				articleList = Collections.emptyList();
+			}
 		}
+	
 		number = count - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
 		
 
@@ -53,7 +71,8 @@ public class ListAction implements CommandAction{
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("preface", preface);
-		
+		request.setAttribute("details", details);
+		request.setAttribute("search", search);
 		return "/board/list.jsp";	//해당하는 뷰 경로 반환
 	}
 }

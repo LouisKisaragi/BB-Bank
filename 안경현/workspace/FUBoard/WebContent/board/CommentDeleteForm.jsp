@@ -22,6 +22,12 @@
 <body>
 <section>
 <b>댓글삭제</b>
+<c:choose>
+	<c:when test="${mem eq 1 and login eq 1 and logNick eq writer }">
+				정말로 삭제하시겠습니까?
+				<a href="${pageContext.request.contextPath}/board/CommentDeletePro.do?num=${num }&pageNum=${pageNum}&bn=${bn}&cnum=${cnum}">네</a>
+		</c:when>
+<c:otherwise>
 <form method="POST" name="ComDelForm" action="${pageContext.request.contextPath}/board/CommentDeletePro.do?num=${num }&pageNum=${pageNum}&bn=${bn}&cnum=${cnum}" 
 	onsubmit="return ComDeleteSave()">
 	<table class="ComDeletetable">
@@ -46,6 +52,8 @@
 		</tr>
 	</table>
 </form>
+</c:otherwise>
+</c:choose>
 </section>
 </body>
 </html>

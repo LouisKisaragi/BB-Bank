@@ -18,7 +18,7 @@ public class DeleteFormAction implements CommandAction{
 		BoardDao dbPro = BoardDao.getInstance();
 		BoardDto article = dbPro.getArticle(num);
 		
-		request.setAttribute("id",article.getWriter());
+		request.setAttribute("writer", article.getWriter());
 		request.setAttribute("mem", article.getMem());
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));

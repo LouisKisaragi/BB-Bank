@@ -21,18 +21,25 @@ public class BoardDao {
 	}
 	//이제부터 여기에 게시판에서 필요한 작업 기능들을 메서드로 추가하게 된다.
 	
-	//전체 글 개수를 알아오는 메서드
-	public int getArticleCount(int bn){
+	//전체 글 개수를 알아오는 메서드+분류별
+	public int getArticleCount(int bn,String preface){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
 		try{
 			conn = ConnUtil.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from BOARD where bn=?");
-			pstmt.setInt(1, bn);
-			rs = pstmt.executeQuery();
-			if(rs.next()){
+			if(preface.equals("all")) {//[전부]일경우
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=?");
+					pstmt.setInt(1, bn);
+					rs = pstmt.executeQuery();
+			}else{
+				pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=?");
+				pstmt.setInt(1, bn);
+				pstmt.setString(2, preface);
+				rs = pstmt.executeQuery();
+			}
+		if(rs.next()){
 				count = rs.getInt(1);
 			}
 		} catch(Exception ex){
@@ -44,25 +51,224 @@ public class BoardDao {
 		}
 		return count;
 	}
-	//글 목록을 가져와서 List로 반환하는 메서드
-	public List<BoardDto> getArticles(int start, int end, int bn){
+	//검색 했을때 글 개수 알아오는 메서드
+	public int getSearchArticleCount(int bn,String preface,String details, String search){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		search="%"+search+"%";
+		try{
+			conn = ConnUtil.getConnection();
+			if(preface.equals("all")) {//[전부]일경우
+				if(details.equals("subject")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("content")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("subject+content")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ? or subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("writer")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and writer like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}
+					
+			}else{
+				if(details.equals("subject")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("content")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and content like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("subject+content")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and content like ? or subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("writer")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and writer like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}
+					
+			}
+		if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return count;
+	}
+	//글 목록을 가져와서 List로 반환하는 메서드+분류별
+	public List<BoardDto> getArticles(int start, int end, int bn, String preface){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardDto> articleList = null;
 		try{
 			conn = ConnUtil.getConnection();
-			String sql ="select * from(select * from "
-					+"(select rownum RNUM, NUM, WRITER,"
-					+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
-					+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
-					+"(select * from BOARD order by REF desc, STEP asc)where bn=?))"
-					+"where RNUM >= ? and RNUM <= ?";
+			String sql=null;
+			if(preface.equals("all")) {
+				 sql="select * from(select * from "
+						+"(select rownum RNUM, NUM, WRITER,"
+						+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+						+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+						+"(select * from BOARD order by REF desc, STEP asc)where bn=?))"
+						+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, bn);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
+					rs = pstmt.executeQuery();
+			}else{
+				 sql="select * from(select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and preface=?))"
+							+"where RNUM >= ? and RNUM <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, bn);
+						pstmt.setString(2, preface);
+						pstmt.setInt(3, start);
+						pstmt.setInt(4, end);
+						rs = pstmt.executeQuery();
+				}
+		
+			if(rs.next()){
+				articleList = new ArrayList<BoardDto>(5);
+				do {
+					BoardDto article = new BoardDto();
+					article.setNum(rs.getInt("num"));
+					article.setWriter(rs.getString("writer"));
+					article.setOrigin_filename(rs.getString("origin_filename"));
+					article.setSubject(rs.getString("subject"));
+					article.setPass(rs.getString("pass"));
+					article.setRegdate(rs.getTimestamp("regdate"));
+					article.setReadcount(rs.getInt("readcount"));
+					article.setRef(rs.getInt("ref"));
+					article.setStep(rs.getInt("step"));
+					article.setDepth(rs.getInt("depth"));
+					article.setContent(rs.getString("content"));
+					article.setServer_filename(rs.getString("server_filename"));
+					article.setFiletype(rs.getString("filetype"));
+					article.setFilesize(rs.getInt("filesize"));
+					article.setIp(rs.getString("ip"));
+					article.setBn(rs.getInt("bn"));
+					article.setPreface(rs.getString("preface"));
+					article.setMem(rs.getInt("mem"));
+					articleList.add(article);
+				} while(rs.next());
+			}
+		} catch(Exception e){
+				e.printStackTrace();
+		} finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return articleList;
+	}
+	//글 목록을 가져와서 List로 반환하는 메서드+검색했을때
+	public List<BoardDto> getSearchArticles(int start, int end, int bn, String preface, String details,String search){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardDto> articleList = null;
+		String sql=null;
+		search="%"+search+"%";
+		try{
+			conn = ConnUtil.getConnection();
+			if(preface.equals("all")) {//[전부]일경우
+				if(details.equals("subject")) {
+					 sql="select * from(select * from "
+								+"(select rownum RNUM, NUM, WRITER,"
+								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and (subject like ?)))"
+								+"where RNUM >= ? and RNUM <= ?";
+					pstmt=conn.prepareStatement(sql);
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					pstmt.setInt(3, start);
+					pstmt.setInt(4, end);
+					//(select * from BOARD order by REF desc, STEP asc)where bn=2 and preface='solution' and (writer like '%3%' or subject like '%e%')))
+					rs = pstmt.executeQuery();
+				}else if(details.equals("content")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and content like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("subject+content")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and content like ? or subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("writer")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and writer like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, search);
+					rs = pstmt.executeQuery();
+				}
+					
+			}else{
+				if(details.equals("subject")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("content")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and content like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("subject+content")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and content like ? or subject like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}else if(details.equals("writer")) {
+					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and writer like ?");
+					pstmt.setInt(1, bn);
+					pstmt.setString(2, preface);
+					pstmt.setString(3, search);
+					rs = pstmt.executeQuery();
+				}
+					
+			}
+			
 			pstmt = conn.prepareStatement(sql);
-			System.out.println(sql);
 			pstmt.setInt(1, bn);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setString(2, preface);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				articleList = new ArrayList<BoardDto>(5);
@@ -323,12 +529,9 @@ public class BoardDao {
 					pstmt.executeUpdate();
 					result = 1; //삭제 성공
 					if(fileName.equals(null)) {
-						System.out.println("파일없음");
 					}else {
-						System.out.println("파일삭제중");
 					File f= new File(location+fileName);
 					f.delete();
-					System.out.println("파일삭제완료");
 					}
 				} else {
 					result = 0; //비밀번호 불일치
