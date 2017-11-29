@@ -12,12 +12,12 @@
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/board/script.js"></script>
-<script type="text/javascript">
-	function onDownload(num) {
-		var o = document.getElementById("ifrm_filedown");
-		o.src="download.do?num="+num;
-	}
-</script>
+<!-- <script type="text/javascript"> -->
+<!-- 	function onDownload(num) { -->
+<!-- 		var o = document.getElementById("ifrm_filedown"); -->
+<!-- 		o.src="download.do?num="+num; -->
+<!-- 	} -->
+<!-- </script> -->
 
 
 </head>
@@ -108,7 +108,11 @@ onsubmit="return contentSave()">
 	
 			<tr>
 			<th>파일</th>
-			<td><a href="#" onclick="onDownload('${article.num}')"> ${ article.server_filename }</a></td>
+			<td>
+<%-- 			<a href="#" onclick="onDownload('${article.num}')"> ${ article.server_filename }</a> --%>
+				<a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
+				${article.origin_filename}</a>
+			</td>
 		
 			<th>사이즈</th>
 			<td>
@@ -184,6 +188,11 @@ onsubmit="return contentSave()">
 	</c:when>
 	
 	<c:when test="${super_m eq '0' and comment.mem eq '1'and login eq '1' and comment.writer eq logNick}">
+		<input type="button" value="삭제"
+	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
+	</c:when>
+	
+	<c:when test="${super_m eq '0' and comment.mem eq '0' and login eq '0'}">
 		<input type="button" value="삭제"
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>

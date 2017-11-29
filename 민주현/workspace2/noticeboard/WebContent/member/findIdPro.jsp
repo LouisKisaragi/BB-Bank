@@ -32,7 +32,7 @@ function back(){
 		등록된 ID는 ${id }입니다.
 		<input type="button" value="로그인하기" onClick="document.location.href='${pageContext.request.contextPath}/member/login.do?page=${page }'">
 		<input type="button" value="비밀번호 찾기" onClick="document.location.href='${pageContext.request.contextPath}/member/findPass.do'">
-		<input type="button" value="확인" onClick="document.location.href='${page}''">
+		<input type="button" value="확인" onClick="document.location.href='${page}'">
 	</c:when>
 	<c:when test="${check eq -1 }">
 		인증번호가 다릅니다 다시 인증 바랍니다.<p>

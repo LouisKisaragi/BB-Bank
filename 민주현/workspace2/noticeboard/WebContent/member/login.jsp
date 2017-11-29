@@ -22,6 +22,7 @@ function back(){
 <section>
 	<form method="post"  name="login" action="${pageContext.request.contextPath}/member/loginPro.do?&page=${page}"
 	onsubmit="return login()">
+	<input type="hidden" name="page" value="${page }" >
 		<table class="login">
 			<tr>
 				<th>아이디</th><td><input type="text" name="id"></td>

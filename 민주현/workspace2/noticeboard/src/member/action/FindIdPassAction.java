@@ -13,9 +13,10 @@ public class FindIdPassAction implements CommandAction{
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
-		String page=request.getParameter("page");
+		
+	//	String page=request.getParameter("page");
 
-		request.setAttribute("page",page);
+	//	request.setAttribute("page",page);
 		return "/member/findIdPass.jsp";	//해당 뷰 경로 반환
 	}
 }

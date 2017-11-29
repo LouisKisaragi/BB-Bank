@@ -23,7 +23,9 @@ public class LoginProAction implements CommandAction{
 		String page=request.getParameter("page");
 		MemberDto article = new MemberDto();	//데이터를 처리할 빈
 		
-	
+		System.out.println("url::="+page);
+		System.out.println("id=="+request.getParameter("id"));
+		System.out.println("pass=="+request.getParameter("pass"));
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
 		article.setId(request.getParameter("id"));

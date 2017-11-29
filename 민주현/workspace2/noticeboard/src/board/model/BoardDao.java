@@ -11,8 +11,7 @@ import java.util.List;
 
 public class BoardDao {
 	
-//		private static BoardDao instance = null;
-		private static BoardDao instance = new BoardDao();
+		private static BoardDao instance = null;
 		
 		private BoardDao() {}
 		public static BoardDao getInstance() {

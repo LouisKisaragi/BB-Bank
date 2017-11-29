@@ -10,7 +10,7 @@ public class EmailCertificationAction implements CommandAction{
 	public String requestPro(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
-		
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);//세션이 있는지 없는지를 확인 
 		//있으면 세션을 반환시키고. 없으면 생성
 		String authNum=(String)session.getAttribute("authNum");
@@ -24,6 +24,9 @@ public class EmailCertificationAction implements CommandAction{
 		}else {
 			request.setAttribute("check", -1);
 		}
+		
+		session.setAttribute("authNum",0);
+		session.invalidate();
 		request.setAttribute("page", page);
 		return "/member/emailCheckPro.jsp";
 	}
