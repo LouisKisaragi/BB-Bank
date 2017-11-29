@@ -192,7 +192,7 @@ onsubmit="return contentSave()">
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>
 	
-	<c:when test="${super_m eq '0' and comment.mem eq '0' and login eq '0'}">
+	<c:when test="${comment.mem eq '0' and login eq '0'}">
 		<input type="button" value="삭제"
 	onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${comment.num}'">
 	</c:when>
