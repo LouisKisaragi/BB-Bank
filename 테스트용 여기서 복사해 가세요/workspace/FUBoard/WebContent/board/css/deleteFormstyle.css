@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width:360px;
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
+.deletetable{
+	width: 360px;
+	text-align:center;
+	border-collapse:collapse;
+}
+.deletetable th{
+	color: #ffffff;
+	border:1px solid #333;
+	background-color: #4aa8b5; 
+	height:30px;
+}
+.deletetable td {
+	border:1px solid #333;
+	text-align:center;
+	height:30px;
+	border:1px solid #333;
+}
