@@ -209,7 +209,7 @@
 		</tr>
 	</table>
 </form>
-검색기능 만들기<br>
+변수체크란<br>
 입력한 키워드 : [${keywords}]<br>
 분류 : ${prefaces}<br>
 bn : ${bn}<br>
