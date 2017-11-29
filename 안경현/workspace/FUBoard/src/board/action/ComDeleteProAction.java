@@ -2,6 +2,7 @@ package board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.model.CommentDao;
 
@@ -15,7 +16,13 @@ public class ComDeleteProAction implements CommandAction{
 		int num = Integer.parseInt(request.getParameter("num"));
 		int bn=Integer.parseInt(request.getParameter("bn"));
 		String pageNum = request.getParameter("pageNum");
-		String pass = request.getParameter("pass");
+		HttpSession session = request.getSession(false);
+		String pass = null;
+		if(session.equals(null)) {
+			pass = request.getParameter("pass");
+		}else {
+			pass=(String)session.getAttribute("logPass");
+		}
 		CommentDao dbPro = CommentDao.getInstance();
 		int check = dbPro.deleteArticle(cnum, pass);
 	

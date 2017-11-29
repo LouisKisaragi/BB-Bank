@@ -26,19 +26,12 @@
 <section>
 <b>글삭제</b>
 <c:choose>
-	<c:when test="${mem } eq 1">
-		<c:when test="${login } eq 1">
-			<c:when test="${id } eq ${writer }">
+	<c:when test="${mem eq 1 and login eq 1 and logNick eq writer }">
 				정말로 삭제하시겠습니까?
-				<a href="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}">네</a>
-			</c:when>
-			<c:otherwise>
-				
-			</c:otherwise>
+				<a href="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}&num=${num}">네</a>
 		</c:when>
-	</c:when>
 <c:otherwise>
-<form method="POST" name="delForm" action="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}" 
+<form method="POST" name="delForm" action="${pageContext.request.contextPath}/board/deletePro.do?pageNum=${pageNum}&bn=${bn}&num=${num}" 
 	onsubmit="return deleteSave()">
 	<table class="deletetable">
 		<tr>

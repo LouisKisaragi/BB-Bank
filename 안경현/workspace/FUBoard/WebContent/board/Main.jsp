@@ -10,7 +10,7 @@
 <title>테스트용 메인</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2">
+<a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2&preface=all">
 				게시판2!</a>
 <a href="${pageContext.request.contextPath }/member/join.do">회원가입</a>	
 <c:choose>
