@@ -97,35 +97,72 @@ public class J003_DAO {
 					pstmt = conn.prepareStatement(sql);
 				}
 			} else { // 검색 키워드가 존재할 때는 검색 키워드와 관련이 있는 SQL문을 사용한다.
-				if(jogun.equals("a")) {
-					sql = "select count(*) from BOARD where bn=5 and subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, keywords);
-				} else if(jogun.equals("b")) {
-					sql = "select count(*) from BOARD where bn=5 and content like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, keywords);
-				} else if(jogun.equals("c")) {
-					sql = "select count(*) from BOARD where bn=5 and content like ? or subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, keywords);
-					pstmt.setString(2, keywords);
-				} else if(jogun.equals("d")) {
-					sql = "select count(*) from BOARD where bn=5 and writer like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, keywords);
+				// prefaces 값에 따라 사용하는 SQL문이 달라진다.
+				if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
+					if(jogun.equals("a")) {
+						sql = "select count(*) from BOARD where bn=5 and preface=? and subject like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, prefaces);
+						pstmt.setString(2, keywords);
+					} else if(jogun.equals("b")) {
+						sql = "select count(*) from BOARD where bn=5 and preface=? and content like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, prefaces);
+						pstmt.setString(2, keywords);
+					} else if(jogun.equals("c")) {
+						sql = "select count(*) from BOARD where bn=5 and preface=? and (content like ? or subject like ?)";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, prefaces);
+						pstmt.setString(2, keywords);
+						pstmt.setString(3, keywords);
+					} else if(jogun.equals("d")) {
+						sql = "select count(*) from BOARD where bn=5 and preface=? and writer like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, prefaces);
+						pstmt.setString(2, keywords);
+					} else {
+						sql = "select count(*) from BOARD where bn=5 and preface=? and subject like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, prefaces);
+						pstmt.setString(2, keywords);
+					}
 				} else {
-					sql = "select count(*) from BOARD where bn=5 and subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, keywords);
+					if(jogun.equals("a")) {
+						sql = "select count(*) from BOARD where bn=5 and subject like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, keywords);
+					} else if(jogun.equals("b")) {
+						sql = "select count(*) from BOARD where bn=5 and content like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, keywords);
+					} else if(jogun.equals("c")) {
+						sql = "select count(*) from BOARD where bn=5 and (content like ? or subject like ?)";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, keywords);
+						pstmt.setString(2, keywords);
+					} else if(jogun.equals("d")) {
+						sql = "select count(*) from BOARD where bn=5 and writer like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, keywords);
+					} else {
+						sql = "select count(*) from BOARD where bn=5 and subject like ?";
+						keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, keywords);
+					}
 				}
 			}
 			res = pstmt.executeQuery();
+			System.out.println("카운트가 사용한 SQL : " + sql);
 			if(res.next()) {
 				count = res.getInt(1);
 			}
@@ -309,6 +346,7 @@ public class J003_DAO {
 				}
 			}
 			res = pstmt.executeQuery();
+			System.out.println("리스트가 사용한 SQL : " + sql);
 			if(res.next()) {
 				articleList = new ArrayList<J002_BoardDTO>(5); // ListAction에 선언된 pageSize와 같은 수로 리스트크기를 정하자.
 				do {
