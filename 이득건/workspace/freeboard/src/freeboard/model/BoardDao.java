@@ -103,39 +103,28 @@ public class BoardDao {
 			} else { // 검색 키워드가 존재할 때는 검색 키워드와 관련이 있는 SQL문을 사용한다.
 				if (condition.equals("1")) {
 					sql = "select count(*) from BOARD where bn=4 and subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
-														// 가능, 이렇게 별도로 키워드를
-														// 지정해줘야 한다.
+					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 				} else if (condition.equals("2")) {
 					sql = "select count(*) from BOARD where bn=4 and content like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
-														// 가능, 이렇게 별도로 키워드를
-														// 지정해줘야 한다.
+					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 				} else if (condition.equals("3")) {
 					sql = "select count(*) from BOARD where bn=4 and content like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
-														// 가능, 이렇게 별도로 키워드를
-														// 지정해줘야 한다.
+					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 				} else if (condition.equals("4")) {
 					sql = "select count(*) from BOARD where bn=4 and content like ? or subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
-														// 가능, 이렇게 별도로 키워드를
-														// 지정해줘야 한다.
+					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setString(2, keywords);
 				} else {
-
 					sql = "select count(*) from BOARD where bn=4 and subject like ?";
-					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
-														// 가능, 이렇게 별도로 키워드를
-														// 지정해줘야 한다.
+					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 				}
@@ -184,44 +173,21 @@ public class BoardDao {
 		String sql = ""; // sql문
 		try {
 			conn = ConnUtil.getConnection();
-			System.out.println("리스트 구분 : " + prefaces);
-			if (prefaces.equals("1")) {
-				sql = "select * from (select * from "
-						+ "(select rownum RNUM, NUM, WRITER, PREFACE, SUBJECT, PASS, REGDATE, "
-						+ "READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from "
-						+ "(select * from BOARD order by REF desc, STEP asc) where bn=4 and preface='1')) "
-						+ "where RNUM >= ? and RNUM <= ?";
-			} else if (prefaces.equals("2")) {
-				sql = "select * from (select * from "
-						+ "(select rownum RNUM, NUM, WRITER, PREFACE, SUBJECT, PASS, REGDATE, "
-						+ "READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from "
-						+ "(select * from BOARD order by REF desc, STEP asc) where bn=4 and preface='2')) "
-						+ "where RNUM >= ? and RNUM <= ?";
-			} else if (prefaces.equals("3")) {
-				sql = "select * from (select * from "
-						+ "(select rownum RNUM, NUM, WRITER, PREFACE, SUBJECT, PASS, REGDATE, "
-						+ "READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from "
-						+ "(select * from BOARD order by REF desc, STEP asc) where bn=4 and preface='3')) "
-						+ "where RNUM >= ? and RNUM <= ?";
-			} else if (prefaces.equals("4")) {
-				sql = "select * from (select * from "
-						+ "(select rownum RNUM, NUM, WRITER, PREFACE, SUBJECT, PASS, REGDATE, "
-						+ "READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from "
-						+ "(select * from BOARD order by REF desc, STEP asc) where bn=4 and preface='4')) "
-						+ "where RNUM >= ? and RNUM <= ?";
+			if(prefaces.equals("1") || prefaces.equals("2") || prefaces.equals("3") || prefaces.equals("4") || prefaces.equals("5")) {
+				sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and preface=?)) where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, prefaces);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
 			} else {
-				sql = "select * from (select rownum RNUM, NUM, WRITER, PREFACE,  SUBJECT, PASS, "
-						+ "REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from "
-						+ "(select * from BOARD order by REF desc, STEP asc) where bn=4) where RNUM >=? and RNUM <=?";
+				sql = "select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4) where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
 			}
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				articleList = new ArrayList<BoardDto>(5); // ListAction에 선언된
-															// pageSize와 같은 수로
-															// 리스트크기를 정하자.
+				articleList = new ArrayList<BoardDto>(5); // ListAction에 선언된 pageSize와 같은 수로 리스트크기를 정하자.
 				do {
 					BoardDto article = new BoardDto(); // DTO 생성
 					article.setNum(rs.getInt("num"));
