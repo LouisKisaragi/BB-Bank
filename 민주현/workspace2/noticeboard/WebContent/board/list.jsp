@@ -14,7 +14,7 @@ rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
-
+<%@ include file="header.jsp" %>
 <section>
 <c:set var="bn" value="1"/>
 	<b>글목록(전체글:${count})</b>

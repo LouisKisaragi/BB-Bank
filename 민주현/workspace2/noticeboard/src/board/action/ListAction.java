@@ -27,7 +27,7 @@ public class ListAction implements CommandAction{
 		
 		String preface = request.getParameter("preface");
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
-		String sbn = request.getParameter("bn");
+//		String sbn = request.getParameter("bn");
 		if(pageNum == null) {
 			pageNum = "1";
 		}
@@ -39,7 +39,7 @@ public class ListAction implements CommandAction{
 		int endRow = currentPage * pageSize; //한 페이지의 마지막 글번호
 		int count = 0;
 		int number = 0;
-		int bn = Integer.parseInt(sbn);
+		int bn = Integer.parseInt(request.getParameter("bn"));
 		List<BoardDto> articleList = null;
 		BoardDao dbPro = BoardDao.getInstance(); //DB연결
 		count =dbPro.getArticleCount(bn, keyField, keyWord); //전체 글 개수

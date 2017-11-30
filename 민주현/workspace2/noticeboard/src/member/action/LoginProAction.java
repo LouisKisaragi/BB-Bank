@@ -20,6 +20,7 @@ public class LoginProAction implements CommandAction{
 		HttpSession session = request.getSession(true);//세션이 있는지 없는지를 확인 
 		//있으면 세션을 반환시키고. 없으면 생성
 
+		
 		String page=request.getParameter("page");
 		MemberDto article = new MemberDto();	//데이터를 처리할 빈
 		

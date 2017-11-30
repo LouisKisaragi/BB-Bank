@@ -20,9 +20,9 @@ function back(){
 }
 </script>
 <section>
-	<form method="post"  name="login" action="${pageContext.request.contextPath}/member/loginPro.do?&page=${page}"
+	<form method="post"  name="login" action="${pageContext.request.contextPath}/member/loginPro.do?"
 	onsubmit="return login()">
-	<input type="hidden" name="page" value="${page }" >
+	<input type="hidden" name="page" value="${page}" >
 		<table class="login">
 			<tr>
 				<th>아이디</th><td><input type="text" name="id"></td>
