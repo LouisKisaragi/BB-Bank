@@ -274,7 +274,44 @@ public class  MemberDao{
 			}
 		return pass;
 	}
-	
+	//회원정보 보기-닉네임으로검색
+	public MemberDto memberSeeArticle(String nick) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		MemberDto article = null;
+		try{
+			conn = ConnUtil.getConnection();
+			System.out.println("1");
+			//쿼리 작성
+			sql = "select * from MEMBER where NICKNAME=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				article = new MemberDto();
+				article.setName(rs.getString("name"));
+				article.setEmail(rs.getString("email"));
+				article.setId(rs.getString("id"));
+				article.setJoindate(rs.getTimestamp("joindate"));
+				article.setPoint(rs.getInt("point"));
+				article.setSuper_m(rs.getString("super_m"));
+				article.setNickname(rs.getString("nickname"));
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return article;
+	}
+
 	//회원정보 가져오기
 	public MemberDto memberArticle(String id,String pass) {
 		Connection conn = null;

@@ -1,5 +1,7 @@
 package member.action;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,12 +44,16 @@ public class LoginProAction implements CommandAction{
 			String loginname= article1.getName();
 			int point = article1.getPoint();
 			String lognick=article1.getNickname();
+			String logemail=article1.getEmail();
+			Timestamp logjoin=article1.getJoindate();
 			
 		session.setAttribute("logNick",lognick);
 		session.setAttribute("logId",loginid);
 		session.setAttribute("logPass",loginpass);
 		session.setAttribute("logName", loginname);
 		session.setAttribute("logPoint", point);
+		session.setAttribute("logEmail", logemail);
+		session.setAttribute("logJoin", logjoin);
 		session.setAttribute("login", 1);
 		}
 		return "/member/loginPro.jsp";	//해당 뷰 경로 반환

@@ -102,7 +102,7 @@
 	<tr>
 		<td colspan="10">
 		<c:choose>
-	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logId}">
+	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logNick}">
 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">

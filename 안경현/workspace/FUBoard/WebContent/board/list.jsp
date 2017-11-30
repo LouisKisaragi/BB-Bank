@@ -83,6 +83,7 @@
 <table class="returnmain">
 <tr>
 <td><a href="${pageContext.request.contextPath }/board/main.do">메인으로가기</a></td>
+<td><a href="${pageContext.request.contextPath }/member/login.do">로그인가기</a></td>
 </tr>
 </table>
 
@@ -156,8 +157,10 @@
 		<td class="titletd">
 		<a href="${pageContext.request.contextPath}/board/content.do?num=${marticle.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}'">${marticle.subject }</a>
 		</td>
-		<td>	
+		<td>
+		
 			<c:out value="${marticle.writer}"/>
+			
 		</td>
 		<td>${marticle.origin_filename }</td>
 		<td>${marticle.regdate}</td>
@@ -198,7 +201,15 @@
 			</c:if>
 		</td>
 		<td>	
-			<c:out value="${article.writer}"/><p>
+			<c:choose>
+				<c:when test="${article.mem eq 1 }">	
+					<a href="${pageContext.request.contextPath }/member/viewMemberInformation.do?viewNick=${article.writer }"><c:out value="${article.writer}"/></a>
+				</c:when>
+				<c:otherwise>
+					<c:out value="${article.writer}"/>
+				</c:otherwise>
+			</c:choose>
+			<p>
 			<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script language="javascript">
