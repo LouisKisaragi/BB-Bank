@@ -1,4 +1,4 @@
-package jsl.dto;
+package bb.dto;
 
 import java.util.Date;
 

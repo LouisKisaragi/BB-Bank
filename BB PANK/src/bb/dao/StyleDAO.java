@@ -1,4 +1,4 @@
-package jsl.dao;
+package bb.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
