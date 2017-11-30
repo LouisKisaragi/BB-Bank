@@ -30,11 +30,11 @@ public class BoardDao {
 		try{
 			conn = ConnUtil.getConnection();
 			if(preface.equals("all")) {//[전부]일경우
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and mem!=2");
 					pstmt.setInt(1, bn);
 					rs = pstmt.executeQuery();
 			}else{
-				pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=?");
+				pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=?  and mem!=2");
 				pstmt.setInt(1, bn);
 				pstmt.setString(2, preface);
 				rs = pstmt.executeQuery();
@@ -62,22 +62,23 @@ public class BoardDao {
 			conn = ConnUtil.getConnection();
 			if(preface.equals("all")) {//[전부]일경우
 				if(details.equals("subject")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and subject like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and subject like ? and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("content")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ? and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
 					rs = pstmt.executeQuery();
-				}else if(details.equals("subject+content")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ? or subject like ?");
+				}else if(details.equals("subjectcontent")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and content like ? or subject like ?  and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
+					pstmt.setString(3, search);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("writer")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and writer like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and writer like ?  and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
 					rs = pstmt.executeQuery();
@@ -85,25 +86,26 @@ public class BoardDao {
 					
 			}else{
 				if(details.equals("subject")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and subject like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and subject like ?  and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, preface);
 					pstmt.setString(3, search);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("content")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and content like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and content like ?  and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, preface);
 					pstmt.setString(3, search);
 					rs = pstmt.executeQuery();
-				}else if(details.equals("subject+content")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and content like ? or subject like ?");
+				}else if(details.equals("subjectcontent")) {
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and (content like ? or subject like ?)  and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, preface);
 					pstmt.setString(3, search);
+					pstmt.setString(4, search);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("writer")) {
-					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and writer like ?");
+					pstmt = conn.prepareStatement("select count(*) from BOARD where bn=? and preface=? and writer like ? and mem!=2");
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, preface);
 					pstmt.setString(3, search);
@@ -137,7 +139,7 @@ public class BoardDao {
 						+"(select rownum RNUM, NUM, WRITER,"
 						+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
 						+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
-						+"(select * from BOARD order by REF desc, STEP asc)where bn=?))"
+						+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2))"
 						+"where RNUM >= ? and RNUM <= ?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
@@ -149,7 +151,7 @@ public class BoardDao {
 							+"(select rownum RNUM, NUM, WRITER,"
 							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
 							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
-							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and preface=?))"
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and preface=? and mem!=2))"
 							+"where RNUM >= ? and RNUM <= ?";
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setInt(1, bn);
@@ -158,6 +160,60 @@ public class BoardDao {
 						pstmt.setInt(4, end);
 						rs = pstmt.executeQuery();
 				}
+		
+			if(rs.next()){
+				articleList = new ArrayList<BoardDto>(5);
+				do {
+					BoardDto article = new BoardDto();
+					article.setNum(rs.getInt("num"));
+					article.setWriter(rs.getString("writer"));
+					article.setOrigin_filename(rs.getString("origin_filename"));
+					article.setSubject(rs.getString("subject"));
+					article.setPass(rs.getString("pass"));
+					article.setRegdate(rs.getTimestamp("regdate"));
+					article.setReadcount(rs.getInt("readcount"));
+					article.setRef(rs.getInt("ref"));
+					article.setStep(rs.getInt("step"));
+					article.setDepth(rs.getInt("depth"));
+					article.setContent(rs.getString("content"));
+					article.setServer_filename(rs.getString("server_filename"));
+					article.setFiletype(rs.getString("filetype"));
+					article.setFilesize(rs.getInt("filesize"));
+					article.setIp(rs.getString("ip"));
+					article.setBn(rs.getInt("bn"));
+					article.setPreface(rs.getString("preface"));
+					article.setMem(rs.getInt("mem"));
+					articleList.add(article);
+				} while(rs.next());
+			}
+		} catch(Exception e){
+				e.printStackTrace();
+		} finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return articleList;
+	}
+	//공지사항 목록을 list로 반환하는 메서드
+	public List<BoardDto> getMArticles(int bn){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardDto> articleList = null;
+		try{
+			conn = ConnUtil.getConnection();
+			String sql=null;
+			
+				 sql="select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem=2)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, bn);
+						rs = pstmt.executeQuery();
+			
 		
 			if(rs.next()){
 				articleList = new ArrayList<BoardDto>(5);
@@ -204,72 +260,121 @@ public class BoardDao {
 		try{
 			conn = ConnUtil.getConnection();
 			if(preface.equals("all")) {//[전부]일경우
-				if(details.equals("subject")) {
+				if(details.equals("subject")) {//[제목]
 					 sql="select * from(select * from "
 								+"(select rownum RNUM, NUM, WRITER,"
 								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
 								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
-								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and (subject like ?)))"
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and (subject like ?)))"
 								+"where RNUM >= ? and RNUM <= ?";
 					pstmt=conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, end);
-					//(select * from BOARD order by REF desc, STEP asc)where bn=2 and preface='solution' and (writer like '%3%' or subject like '%e%')))
 					rs = pstmt.executeQuery();
-				}else if(details.equals("content")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and content like ?");
+				}else if(details.equals("content")) {//내용
+					 sql="select * from(select * from "
+								+"(select rownum RNUM, NUM, WRITER,"
+								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and (content like ?)))"
+								+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
+					pstmt.setInt(3, start);
+					pstmt.setInt(4, end);
 					rs = pstmt.executeQuery();
-				}else if(details.equals("subject+content")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and content like ? or subject like ?");
+				}else if(details.equals("subjectcontent")) {
+					 sql="select * from(select * from "
+								+"(select rownum RNUM, NUM, WRITER,"
+								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and (content like ? or subject like ?)))"
+								+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
+					pstmt.setString(3, search);
+					pstmt.setInt(4, start);
+					pstmt.setInt(5, end);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("writer")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and writer like ?");
+					 sql="select * from(select * from "
+								+"(select rownum RNUM, NUM, WRITER,"
+								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and (writer like ?)))"
+								+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, search);
+					pstmt.setInt(3, start);
+					pstmt.setInt(4, end);
 					rs = pstmt.executeQuery();
 				}
 					
 			}else{
 				if(details.equals("subject")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and subject like ?");
+					 sql="select * from(select * from "
+								+"(select rownum RNUM, NUM, WRITER,"
+								+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+								+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+								+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and preface=? and (subject like ?)))"
+								+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, bn);
 					pstmt.setString(2, preface);
 					pstmt.setString(3, search);
+					pstmt.setInt(4, start);
+					pstmt.setInt(5, end);
 					rs = pstmt.executeQuery();
 				}else if(details.equals("content")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and content like ?");
-					pstmt.setInt(1, bn);
-					pstmt.setString(2, preface);
-					pstmt.setString(3, search);
-					rs = pstmt.executeQuery();
-				}else if(details.equals("subject+content")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and content like ? or subject like ?");
-					pstmt.setInt(1, bn);
-					pstmt.setString(2, preface);
-					pstmt.setString(3, search);
-					rs = pstmt.executeQuery();
+					sql="select * from(select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and preface=? and (content like ?)))"
+							+"where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bn);
+				pstmt.setString(2, preface);
+				pstmt.setString(3, search);
+				pstmt.setInt(4, start);
+				pstmt.setInt(5, end);
+				rs = pstmt.executeQuery();
+				}else if(details.equals("subjectcontent")) {
+					sql="select * from(select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and preface=? and (content like ? or subject like ?)))"
+							+"where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bn);
+				pstmt.setString(2, preface);
+				pstmt.setString(3, search);
+				pstmt.setString(4, search);
+				pstmt.setInt(5, start);
+				pstmt.setInt(6, end);
+				rs = pstmt.executeQuery();
 				}else if(details.equals("writer")) {
-					pstmt = conn.prepareStatement("select * from BOARD where bn=? and preface=? and writer like ?");
-					pstmt.setInt(1, bn);
-					pstmt.setString(2, preface);
-					pstmt.setString(3, search);
-					rs = pstmt.executeQuery();
+					sql="select * from(select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"ORIGIN_FILENAME, SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, SERVER_FILENAME, FILETYPE, FILESIZE, IP, BN, PREFACE, MEM from" 
+							+"(select * from BOARD order by REF desc, STEP asc)where bn=? and mem!=2 and preface=? and (writer like ?)))"
+							+"where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bn);
+				pstmt.setString(2, preface);
+				pstmt.setString(3, search);
+				pstmt.setInt(4, start);
+				pstmt.setInt(5, end);
+				rs = pstmt.executeQuery();
 				}
-					
 			}
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bn);
-			pstmt.setString(2, preface);
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
-			rs = pstmt.executeQuery();
 			if(rs.next()){
 				articleList = new ArrayList<BoardDto>(5);
 				do {

@@ -20,12 +20,6 @@ public class JoinProAction implements CommandAction{
 		
 		String page=request.getParameter("page");
 		MemberDto article = new MemberDto();	//데이터를 처리할 빈
-		System.out.println("url::"+page);
-		System.out.println("id=="+request.getParameter("id"));
-		System.out.println("pass=="+request.getParameter("pass"));
-		System.out.println("name=="+request.getParameter("name"));
-		System.out.println("email=="+request.getParameter("email"));
-		System.out.println("nickname=="+request.getParameter("nickname"));
 		article.setId(request.getParameter("id"));
 		article.setPass(request.getParameter("pass"));
 		article.setName(request.getParameter("name"));

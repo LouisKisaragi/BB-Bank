@@ -24,6 +24,7 @@
 <c:choose>
 	<c:when test="${login eq 1 }">
 		<p>로그인상태</p>
+		<a href="${pageContext.request.contextPath }/member/viewMemberInformation.do?viewNick=${logNick}">회원정보</a>
 	</c:when>
 	<c:otherwise>
 		<p>비로그인상태</p>

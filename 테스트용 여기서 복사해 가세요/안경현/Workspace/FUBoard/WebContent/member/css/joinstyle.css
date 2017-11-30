@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width: 700px; 
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
+table{
+	width:300px;
+	border-collapse:collapse;
+}
+a{ 
+	text-decoration:none; 
+}
+.joinbutton{
+	text-align:right;
+}
+.jointable{
+	text-align:center;	
+
+}
+.jointable td{
+
+}
+.jointable th {
+	color: #ffffff;
+
+	background-color: #4aa8b5; 
+	height:30px;
+	width:125px;
+}
+.jointable .titletd{
+	text-align:left;
+}
+#num{ width:50px;}
+#title{ width:250px;}
+#writer{ width:100px;}
+#date{ width:150px;}
+#counter{ width:50px;}
+#ip{ width:100px;}

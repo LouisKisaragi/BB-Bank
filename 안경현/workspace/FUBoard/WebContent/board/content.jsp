@@ -34,6 +34,11 @@
 		<td colspan="1">${article.num}</td>
 		<th>업로더</th>
 		<td colspan="5">	${article.writer}<p>
+		<c:choose>
+	<c:when test="${article.mem eq 2 }">
+
+	</c:when>
+	<c:otherwise>
 		<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script language="javascript">
@@ -43,7 +48,10 @@
 				document.write(".");
 				document.write(ipc[1]);
 			</script>
-			)</td>
+			)
+	</c:otherwise>
+</c:choose>
+		</td>
 		<th>작성일</th>
 		<td>${article.regdate}</td>
 	</tr>
@@ -60,6 +68,9 @@
 				<c:when test="${article.preface eq 'solution' }">
 				[해결]
 				</c:when>
+				<c:otherwise>
+				[공지]
+				</c:otherwise>
 			</c:choose>
 		</td>
 		<td colspan="6" class="contenttitle">${article.subject}</td>
@@ -92,26 +103,33 @@
 		<td colspan="10">
 		<c:choose>
 	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logId}">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+			&nbsp;&nbsp;
 		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logNick }">
-			
+				<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+			&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq '1' and login eq 0 }">
-	 	
+	 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+			&nbsp;&nbsp;
+	</c:when>
+	<c:when test="${article.mem eq '2' }">
 	</c:when>
 	<c:otherwise>
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+			&nbsp;&nbsp;
 		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 	</c:otherwise>
 	</c:choose>
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
-			&nbsp;&nbsp;
+	
 		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
 		</td>
@@ -186,6 +204,8 @@
 			<td><input type="password" name="cpass"></td><!-- 비로그인상태일때 -->
 		</c:otherwise>
 	</c:choose>
+		</tr>
+		<tr>
 		<td colspan="9"><textarea name="ccomment" rows="4" cols="40"></textarea></td>
 		<td><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" 	value="등록"></td>
 	</tr>

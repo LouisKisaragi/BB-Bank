@@ -30,7 +30,6 @@ public class LoginProAction implements CommandAction{
 		String pass=request.getParameter("pass");
 		article.setId(request.getParameter("id"));
 		article.setPass(request.getParameter("pass"));
-		
 		MemberDao dbPro = MemberDao.getInstance(); //DB 연결
 		int check = dbPro.loginArticle(id,pass);
 		request.setAttribute("check", check);
@@ -48,7 +47,7 @@ public class LoginProAction implements CommandAction{
 		session.setAttribute("logId",loginid);
 		session.setAttribute("logPass",loginpass);
 		session.setAttribute("logName", loginname);
-		session.setAttribute("point", point);
+		session.setAttribute("logPoint", point);
 		session.setAttribute("login", 1);
 		}
 		return "/member/loginPro.jsp";	//해당 뷰 경로 반환

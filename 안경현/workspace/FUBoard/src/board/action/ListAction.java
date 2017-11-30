@@ -35,9 +35,9 @@ public class ListAction implements CommandAction{
 		int count = 0;
 		int number = 0;
 		int bn = Integer.parseInt(sbn);
+		
 		List<BoardDto> articleList = null;
-		if(search==null) {//검색이아닐경우
-			
+		if(search==null || search=="") {//검색이아닐경우
 			BoardDao dbPro = BoardDao.getInstance(); //DB연결
 			
 			count = dbPro.getArticleCount(bn,preface); //전체 글 개수
@@ -55,12 +55,14 @@ public class ListAction implements CommandAction{
 				articleList = Collections.emptyList();
 			}
 		}
-	
+		BoardDao MdbPro=BoardDao.getInstance();
+		List<BoardDto> articleMList= MdbPro.getMArticles(bn);
 		number = count - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
 		
 
 		
 		//해당 뷰에서 사용할 속성
+		request.setAttribute("MarticleList", articleMList);
 		request.setAttribute("bn",bn);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", new Integer(currentPage));

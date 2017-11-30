@@ -78,6 +78,10 @@ public class WriteProAction implements CommandAction{
 		request.setCharacterEncoding("UTF-8");
 		BoardDto article = new BoardDto();	//데이터를 처리할 빈
 	//	saveFile(request);
+		if(server_filename.equals("0_0_octet-stream_")) {
+			server_filename=null;
+			contentType=null;
+		}
 		System.out.println("filesize::+"+filesize);
 		System.out.println("ct="+contentType);
 		System.out.println("fn="+origin_filename);
