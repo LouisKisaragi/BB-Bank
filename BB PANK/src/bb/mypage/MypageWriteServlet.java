@@ -1,4 +1,4 @@
-package jsl.mypage;
+package bb.mypage;
 
 import java.io.IOException;
 import java.io.PrintWriter;

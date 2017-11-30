@@ -1,4 +1,4 @@
-package jsl.board;
+package bb.board;
 
 import java.io.IOException;
 import java.io.PrintWriter;

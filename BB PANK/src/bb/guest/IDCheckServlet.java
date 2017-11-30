@@ -1,4 +1,4 @@
-package jsl.guest;
+package bb.guest;
 
 import java.io.IOException;
 

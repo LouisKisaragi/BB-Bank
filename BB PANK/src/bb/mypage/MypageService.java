@@ -1,4 +1,4 @@
-package jsl.mypage;
+package bb.mypage;
 
 import java.util.ArrayList;
 

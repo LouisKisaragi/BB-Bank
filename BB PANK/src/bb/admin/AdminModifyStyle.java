@@ -1,4 +1,4 @@
-package jsl.admin;
+package bb.admin;
 
 import java.io.IOException;
 
