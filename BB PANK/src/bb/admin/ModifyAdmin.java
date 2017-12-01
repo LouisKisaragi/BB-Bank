@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jsl.dao.GuestDAO;
-import jsl.dto.GuestDTO;
+import bb.dao.GuestDAO;
+import bb.dto.GuestDTO;
 
 @WebServlet("/modifyadmin.do")
 public class ModifyAdmin extends HttpServlet {
@@ -29,14 +29,12 @@ public class ModifyAdmin extends HttpServlet {
 		String id = oldGuestDTO.getId();
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
-		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
 		int point = oldGuestDTO.getPoint();
 		Date joindate = oldGuestDTO.getJoindate();
 		int admin = oldGuestDTO.getAdmin();
 		int visiable = oldGuestDTO.getVisiable();
 		
-		String result_url = "hairADMIN/adminMain.jsp";
+		String result_url = "bbADMIN/adminMain.jsp";
 		
 		GuestDTO adminDTO = new GuestDTO(id, pass, name, address, phone, point, joindate, admin, visiable);
 		
@@ -47,11 +45,11 @@ public class ModifyAdmin extends HttpServlet {
 		
 		if(result > 0)
 		{
-			request.setAttribute("success", "作業完了しました。");
+			request.setAttribute("success", "작업 완료 했습니다.");
 			session.setAttribute("AdminAuthority", adminDTO);
 		}else
 		{
-			request.setAttribute("success", "作業失敗しました。");
+			request.setAttribute("Fail", "작업 실패했습니다.");
 		}
 		
 		RequestDispatcher rdp = request.getRequestDispatcher(result_url);

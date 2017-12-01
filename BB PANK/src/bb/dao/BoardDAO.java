@@ -10,8 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import jsl.dto.BoardDTO;
-import jsl.dto.QnADTO;
+//import jsl.dto.BoardDTO;
+//import jsl.dto.QnADTO;
 
 public class BoardDAO
 {
