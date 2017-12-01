@@ -20,6 +20,30 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<!-- Begin Body -->
+<nav class="navbar fixed-left navbar-expand-lg navbar-dark bg-dark fixed-left">
+<div class="container">
+	<div class="row">
+  			<div class="col-md-3" id="leftCol">
+              
+              	<ul class="nav nav-stacked" id="sidebar">
+                  <li><a href="#sec0">Section 0</a></li>
+                  <li><a href="#sec1">Section 1</a></li>
+                  <li>
+                    <a href="#sec2">Section 2</a>
+                    <ul class="nav nav-stacked">
+                      <li><a href="#sec2a">Section 2 a</a></li>
+                      <li><a href="#sec2b">Section 2 b</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#sec3">Section 3</a></li>
+                  <li><a href="#sec4">Section 4</a></li>
+              	</ul>
+              
+      		</div>  
+   </div>
+   </div>
+</nav>
 <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -80,14 +104,8 @@
 		<p>비로그인상태</p>
 	</c:otherwise>
 </c:choose>
+<%@ include file="footer.jsp" %>
 
-<!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-      </div>
-      <!-- /.container -->
-    </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/vendor/jquery/jquery.min.js"></script>
