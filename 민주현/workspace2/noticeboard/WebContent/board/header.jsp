@@ -34,7 +34,7 @@
 				<a class="nav-link" href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
             </li>
             <li class="nav-item">
-            	<a class="nav-link">${logNick}</a>
+            	<a class="nav-link" href="#">${logNick}</a>
             </li>
             
 				</c:when>
@@ -52,6 +52,9 @@
         </div>
       </div>
     </nav>
-
+   
+	<!-- Bootstrap core JavaScript -->
+    <script src="${pageContext.request.contextPath}/Resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
