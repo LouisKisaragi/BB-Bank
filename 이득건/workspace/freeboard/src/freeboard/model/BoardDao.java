@@ -345,6 +345,7 @@ public class BoardDao {
 					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
 														// 가능, 이렇게 별도로 키워드를
 														// 지정해줘야 한다.
+					//
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setInt(3, start);

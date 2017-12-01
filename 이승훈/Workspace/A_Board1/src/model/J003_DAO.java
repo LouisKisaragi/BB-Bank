@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// °¢Á¾ ¸Ş¼Òµå, Æ¯¼öÇÑ º¯¼öµéÀÌ Æ÷ÇÔµÈ Å¬·¡½º
-// ÁÖÀÇ : ¸Ş¼Òµå °°Àº°ÍµéÀ» Ç¥ÇöÇÒ ¶§ À¢¸¸ÇÏ¸é Ç¥½Ã Çü½ÄÀ» ÅëÀÏÇÏµµ·Ï ÇÏÀÚ.
-// ¿¹½Ã : sql¹®À» º°µµÀÇ String º¯¼ö·Î ¼±¾ğÇØ¼­ °Å±â´Ù ½á³ÖÀ¸·Á ÇÑ´Ù¸é ¸ğµç ¸Ş¼Òµå¿¡ ´Ù Àû¿ëÇÏÀÚ.
+// ê°ì¢… ë©”ì†Œë“œ, íŠ¹ìˆ˜í•œ ë³€ìˆ˜ë“¤ì´ í¬í•¨ëœ í´ë˜ìŠ¤
+// ì£¼ì˜ : ë©”ì†Œë“œ ê°™ì€ê²ƒë“¤ì„ í‘œí˜„í•  ë•Œ ì›¬ë§Œí•˜ë©´ í‘œì‹œ í˜•ì‹ì„ í†µì¼í•˜ë„ë¡ í•˜ì.
+// ì˜ˆì‹œ : sqlë¬¸ì„ ë³„ë„ì˜ String ë³€ìˆ˜ë¡œ ì„ ì–¸í•´ì„œ ê±°ê¸°ë‹¤ ì¨ë„£ìœ¼ë ¤ í•œë‹¤ë©´ ëª¨ë“  ë©”ì†Œë“œì— ë‹¤ ì ìš©í•˜ì.
 public class J003_DAO {
 	private static J003_DAO instance = null;
 	private J003_DAO() {
-		// »ı¼ºÀÚ
+		// ìƒì„±ì
 	}
 	public static J003_DAO getInstance() {
 		if(instance == null) {
@@ -23,23 +23,23 @@ public class J003_DAO {
 		return instance;
 	}
 	
-	// ÀüÃ¼ ±Û °³¼ö¸¦ ¾Ë¾Æ¿À´Â º¯¼öÇü ¸Ş¼Òµå
-	// int°ª, ¸Å°³º¯¼ö prefaces
+	// ì „ì²´ ê¸€ ê°œìˆ˜ë¥¼ ì•Œì•„ì˜¤ëŠ” ë³€ìˆ˜í˜• ë©”ì†Œë“œ
+	// intê°’, ë§¤ê°œë³€ìˆ˜ prefaces
 	public int getArticleCount(String prefaces) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		int count = 0;		// ½ÇÁ¦·Î return µÉ °ª
-		String sql = "";	// sql¹®
+		int count = 0;		// ì‹¤ì œë¡œ return ë  ê°’
+		String sql = "";	// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
-			// ÁöÁ¤µÈ prefaces¿¡ µû¶ó¼­ »ç¿ëÇÏ´Â sql¹®ÀÌ ´Ş¶óÁø´Ù.
+			// ì§€ì •ëœ prefacesì— ë”°ë¼ì„œ ì‚¬ìš©í•˜ëŠ” sqlë¬¸ì´ ë‹¬ë¼ì§„ë‹¤.
 			if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
-				sql = "select count(*) from BOARD where bn=5 and preface=?";
+				sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, prefaces);
 			} else {
-				sql = "select count(*) from BOARD where bn=5";
+				sql = "select count(*) from BOARD where bn=5 and mem!=2";
 				pstmt = conn.prepareStatement(sql);
 			}
 			res = pstmt.executeQuery();
@@ -74,95 +74,95 @@ public class J003_DAO {
 		return count;
 	}		// end getArticleCount()
 
-	// ÀüÃ¼ ±Û °³¼ö¸¦ ¾Ë¾Æ¿À´Â º¯¼öÇü ¸Ş¼Òµå(°Ë»ö Àü¿ë)
-	// int°ª, ¸Å°³º¯¼ö prefaces, keywords
+	// ì „ì²´ ê¸€ ê°œìˆ˜ë¥¼ ì•Œì•„ì˜¤ëŠ” ë³€ìˆ˜í˜• ë©”ì†Œë“œ(ê²€ìƒ‰ ì „ìš©)
+	// intê°’, ë§¤ê°œë³€ìˆ˜ prefaces, keywords
 	public int getArticleCounts(String prefaces, String keywords, String jogun) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		int count = 0;		// ½ÇÁ¦·Î return µÉ °ª
-		String sql = "";	// sql¹®
+		int count = 0;		// ì‹¤ì œë¡œ return ë  ê°’
+		String sql = "";	// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
 			
-			// SQL¹® ¼±ÅÃ
-			if(keywords == null) {	// °Ë»ö Å°¿öµå°¡ ¾øÀ» ¶§´Â °Ë»ö Å°¿öµå¿Í °ü·ÃÀÌ ¾ø´Â SQL¹®À» »ç¿ëÇÑ´Ù.
-				// prefaces °ª¿¡ µû¶ó »ç¿ëÇÏ´Â SQL¹®ÀÌ ´Ş¶óÁø´Ù.
+			// SQLë¬¸ ì„ íƒ
+			if(keywords == null) {	// ê²€ìƒ‰ í‚¤ì›Œë“œê°€ ì—†ì„ ë•ŒëŠ” ê²€ìƒ‰ í‚¤ì›Œë“œì™€ ê´€ë ¨ì´ ì—†ëŠ” SQLë¬¸ì„ ì‚¬ìš©í•œë‹¤.
+				// prefaces ê°’ì— ë”°ë¼ ì‚¬ìš©í•˜ëŠ” SQLë¬¸ì´ ë‹¬ë¼ì§„ë‹¤.
 				if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
-					sql = "select count(*) from BOARD where bn=5 and preface=?";
+					sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, prefaces);
 				} else {
-					sql = "select count(*) from BOARD where bn=5";
+					sql = "select count(*) from BOARD where bn=5 and mem!=2";
 					pstmt = conn.prepareStatement(sql);
 				}
-			} else { // °Ë»ö Å°¿öµå°¡ Á¸ÀçÇÒ ¶§´Â °Ë»ö Å°¿öµå¿Í °ü·ÃÀÌ ÀÖ´Â SQL¹®À» »ç¿ëÇÑ´Ù.
-				// prefaces °ª¿¡ µû¶ó »ç¿ëÇÏ´Â SQL¹®ÀÌ ´Ş¶óÁø´Ù.
+			} else { // ê²€ìƒ‰ í‚¤ì›Œë“œê°€ ì¡´ì¬í•  ë•ŒëŠ” ê²€ìƒ‰ í‚¤ì›Œë“œì™€ ê´€ë ¨ì´ ìˆëŠ” SQLë¬¸ì„ ì‚¬ìš©í•œë‹¤.
+				// prefaces ê°’ì— ë”°ë¼ ì‚¬ìš©í•˜ëŠ” SQLë¬¸ì´ ë‹¬ë¼ì§„ë‹¤.
 				if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
 					if(jogun.equals("a")) {
-						sql = "select count(*) from BOARD where bn=5 and preface=? and subject like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=? and subject like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 					} else if(jogun.equals("b")) {
-						sql = "select count(*) from BOARD where bn=5 and preface=? and content like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=? and content like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 					} else if(jogun.equals("c")) {
-						sql = "select count(*) from BOARD where bn=5 and preface=? and (content like ? or subject like ?)";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=? and (content like ? or subject like ?)";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 						pstmt.setString(3, keywords);
 					} else if(jogun.equals("d")) {
-						sql = "select count(*) from BOARD where bn=5 and preface=? and writer like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=? and writer like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 					} else {
-						sql = "select count(*) from BOARD where bn=5 and preface=? and subject like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and preface=? and subject like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 					}
 				} else {
 					if(jogun.equals("a")) {
-						sql = "select count(*) from BOARD where bn=5 and subject like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and subject like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, keywords);
 					} else if(jogun.equals("b")) {
-						sql = "select count(*) from BOARD where bn=5 and content like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and content like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, keywords);
 					} else if(jogun.equals("c")) {
-						sql = "select count(*) from BOARD where bn=5 and (content like ? or subject like ?)";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and (content like ? or subject like ?)";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, keywords);
 						pstmt.setString(2, keywords);
 					} else if(jogun.equals("d")) {
-						sql = "select count(*) from BOARD where bn=5 and writer like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and writer like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, keywords);
 					} else {
-						sql = "select count(*) from BOARD where bn=5 and subject like ?";
-						keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+						sql = "select count(*) from BOARD where bn=5 and mem!=2 and subject like ?";
+						keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setString(1, keywords);
 					}
 				}
 			}
 			res = pstmt.executeQuery();
-			System.out.println("Ä«¿îÆ®°¡ »ç¿ëÇÑ SQL : " + sql);
+			System.out.println("ì¹´ìš´íŠ¸ê°€ ì‚¬ìš©í•œ SQL : " + sql);
 			if(res.next()) {
 				count = res.getInt(1);
 			}
@@ -194,33 +194,33 @@ public class J003_DAO {
 		return count;
 	}		// end getArticleCounts()
 
-	// ±Û ¸ñ·ÏÀ» °¡Á®¿Í¼­ List·Î º¯È¯ÇÏ´Â º¯¼öÇü ¸Ş¼Òµå
-	// List°ª, String ¸Å°³º¯¼ö°¡ ÇÏ³ª, int ¸Å°³º¯¼ö°¡ 2°³
+	// ê¸€ ëª©ë¡ì„ ê°€ì ¸ì™€ì„œ Listë¡œ ë³€í™˜í•˜ëŠ” ë³€ìˆ˜í˜• ë©”ì†Œë“œ
+	// Listê°’, String ë§¤ê°œë³€ìˆ˜ê°€ í•˜ë‚˜, int ë§¤ê°œë³€ìˆ˜ê°€ 2ê°œ
 	public List<J002_BoardDTO> getArticles(String prefaces, int start, int end) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		List<J002_BoardDTO> articleList = null;	// ½ÇÁ¦·Î return µÉ °ª
-		String sql = "";						// sql¹®
+		List<J002_BoardDTO> articleList = null;	// ì‹¤ì œë¡œ return ë  ê°’
+		String sql = "";						// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
 			if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
-				sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and preface=?)) where RNUM >= ? and RNUM <= ?";
+				sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and preface=?)) where RNUM >= ? and RNUM <= ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, prefaces);
 				pstmt.setInt(2, start);
 				pstmt.setInt(3, end);
 			} else {
-				sql = "select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5) where RNUM >= ? and RNUM <= ?";
+				sql = "select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2) where RNUM >= ? and RNUM <= ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, end);
 			}
 			res = pstmt.executeQuery();
 			if(res.next()) {
-				articleList = new ArrayList<J002_BoardDTO>(5); // ListAction¿¡ ¼±¾ğµÈ pageSize¿Í °°Àº ¼ö·Î ¸®½ºÆ®Å©±â¸¦ Á¤ÇÏÀÚ.
+				articleList = new ArrayList<J002_BoardDTO>(5); // ListActionì— ì„ ì–¸ëœ pageSizeì™€ ê°™ì€ ìˆ˜ë¡œ ë¦¬ìŠ¤íŠ¸í¬ê¸°ë¥¼ ì •í•˜ì.
 				do {
-					J002_BoardDTO article = new J002_BoardDTO();	// DTO »ı¼º
+					J002_BoardDTO article = new J002_BoardDTO();	// DTO ìƒì„±
 					article.setNum(res.getInt("num"));
 					article.setPreface(res.getString("preface"));
 					article.setWriter(res.getString("writer"));
@@ -265,38 +265,101 @@ public class J003_DAO {
 		return articleList;
 	}		// getArticles()
 	
-	// ±Û ¸ñ·ÏÀ» °¡Á®¿Í¼­ List·Î º¯È¯ÇÏ´Â º¯¼öÇü ¸Ş¼Òµå(°Ë»ö Àü¿ë)
-	// List°ª, String ¸Å°³º¯¼ö°¡ µÑ, int ¸Å°³º¯¼ö°¡ 2°³
+	// ê¸€ ëª©ë¡ì„ ê°€ì ¸ì™€ì„œ Listë¡œ ë³€í™˜í•˜ëŠ” ë³€ìˆ˜í˜• ë©”ì†Œë“œ(ê³µì§€ ì „ìš©)
+		// Listê°’, String ë§¤ê°œë³€ìˆ˜ê°€ í•˜ë‚˜, int ë§¤ê°œë³€ìˆ˜ê°€ 2ê°œ
+		public List<J002_BoardDTO> getArticlesNotice(int start, int end) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet res = null;
+			List<J002_BoardDTO> articleList = null;	// ì‹¤ì œë¡œ return ë  ê°’
+			String sql = "";						// sqlë¬¸
+			try {
+				conn = J001_ConnUtil.getConnection();
+				sql = "select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem=2) where RNUM >= ? and RNUM <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+				res = pstmt.executeQuery();
+				if(res.next()) {
+					articleList = new ArrayList<J002_BoardDTO>(5); // ListActionì— ì„ ì–¸ëœ pageSizeì™€ ê°™ì€ ìˆ˜ë¡œ ë¦¬ìŠ¤íŠ¸í¬ê¸°ë¥¼ ì •í•˜ì.
+					do {
+						J002_BoardDTO article = new J002_BoardDTO();	// DTO ìƒì„±
+						article.setNum(res.getInt("num"));
+						article.setPreface(res.getString("preface"));
+						article.setWriter(res.getString("writer"));
+						article.setSubject(res.getString("subject"));
+						article.setPass(res.getString("pass"));
+						article.setRegdate(res.getTimestamp("regdate"));
+						article.setReadcount(res.getInt("readcount"));
+						article.setRef(res.getInt("ref"));
+						article.setStep(res.getInt("step"));
+						article.setDepth(res.getInt("depth"));
+						article.setContent(res.getString("content"));
+						article.setIp(res.getString("ip"));
+						article.setBn(res.getInt("bn"));
+						articleList.add(article);
+					} while(res.next());
+				}	// end if
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if(res != null) {
+					try {
+						res.close();
+						} catch(SQLException e) {
+							
+						}
+				}
+				if(pstmt != null) {
+					try{
+						pstmt.close();
+						} catch(SQLException e) {
+							
+						}
+				}
+				if(conn != null) {
+					try{
+						conn.close();
+						} catch(SQLException e) {
+							
+						}
+				}
+			}	// end try-catch
+			return articleList;
+		}		// getArticlesNotice()
+	
+	// ê¸€ ëª©ë¡ì„ ê°€ì ¸ì™€ì„œ Listë¡œ ë³€í™˜í•˜ëŠ” ë³€ìˆ˜í˜• ë©”ì†Œë“œ(ê²€ìƒ‰ ì „ìš©)
+	// Listê°’, String ë§¤ê°œë³€ìˆ˜ê°€ ë‘˜, int ë§¤ê°œë³€ìˆ˜ê°€ 2ê°œ
 	public List<J002_BoardDTO> getArticless(String prefaces, String keywords, String jogun, int start, int end) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		List<J002_BoardDTO> articleList = null;	// ½ÇÁ¦·Î return µÉ °ª
-		String sql = "";						// sql¹®
+		List<J002_BoardDTO> articleList = null;	// ì‹¤ì œë¡œ return ë  ê°’
+		String sql = "";						// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
-			// prefaces °ª¿¡ µû¶ó ´Ş¶óÁø´Ù.
+			// prefaces ê°’ì— ë”°ë¼ ë‹¬ë¼ì§„ë‹¤.
 			if(prefaces.equals("a") || prefaces.equals("b") || prefaces.equals("c") || prefaces.equals("d") || prefaces.equals("e")) {
-				// °Ë»ö Á¶°Ç¿¡ µû¶ó ´Ù¸¥ SQL¹®À» »ç¿ëÇÏµµ·Ï ÇÑ´Ù.
+				// ê²€ìƒ‰ ì¡°ê±´ì— ë”°ë¼ ë‹¤ë¥¸ SQLë¬¸ì„ ì‚¬ìš©í•˜ë„ë¡ í•œë‹¤.
 				if(jogun.equals("a")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and preface=? and subject like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and preface=? and subject like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, prefaces);
 					pstmt.setString(2, keywords);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, end);
 				} else if(jogun.equals("b")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and preface=? and content like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and preface=? and content like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, prefaces);
 					pstmt.setString(2, keywords);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, end);
 				} else if(jogun.equals("c")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and preface=? and (subject like ? or content like ?))) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and preface=? and (subject like ? or content like ?))) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, prefaces);
 					pstmt.setString(2, keywords);
@@ -304,41 +367,41 @@ public class J003_DAO {
 					pstmt.setInt(4, start);
 					pstmt.setInt(5, end);
 				} else if(jogun.equals("d")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and preface=? and writer like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and preface=? and writer like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, prefaces);
 					pstmt.setString(2, keywords);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, end);
 				}
-			} else { // prefaces°¡ Á¸ÀçÇÏÁö ¾Ê´Â, ¸ğµç ±ÛÀ» º¼ ¶§´Â preface Á¶°ÇÀ» ¾ø¾ÖÁØ´Ù.
-				// °Ë»ö Á¶°Ç¿¡ µû¶ó ´Ù¸¥ SQL¹®À» »ç¿ëÇÏµµ·Ï ÇÑ´Ù.
+			} else { // prefacesê°€ ì¡´ì¬í•˜ì§€ ì•ŠëŠ”, ëª¨ë“  ê¸€ì„ ë³¼ ë•ŒëŠ” preface ì¡°ê±´ì„ ì—†ì• ì¤€ë‹¤.
+				// ê²€ìƒ‰ ì¡°ê±´ì— ë”°ë¼ ë‹¤ë¥¸ SQLë¬¸ì„ ì‚¬ìš©í•˜ë„ë¡ í•œë‹¤.
 				if(jogun.equals("a")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and subject like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and subject like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
 				} else if(jogun.equals("b")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and content like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and content like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setInt(2, start);
 					pstmt.setInt(3, end);
 				} else if(jogun.equals("c")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and subject like ? or content like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and subject like ? or content like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setString(2, keywords);
 					pstmt.setInt(3, start);
 					pstmt.setInt(4, end);
 				} else if(jogun.equals("d")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and writer like ?)) where RNUM >= ? and RNUM <= ?";
-					keywords = "%" + keywords + "%"; // keywords¸¦ Æ÷ÇÔÇÑ ¸ğµç ¹®ÀÚ ÀÔ·Â °¡´É, ÀÌ·¸°Ô º°µµ·Î Å°¿öµå¸¦ ÁöÁ¤ÇØÁà¾ß ÇÑ´Ù.
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=5 and mem!=2 and writer like ?)) where RNUM >= ? and RNUM <= ?";
+					keywords = "%" + keywords + "%"; // keywordsë¥¼ í¬í•¨í•œ ëª¨ë“  ë¬¸ì ì…ë ¥ ê°€ëŠ¥, ì´ë ‡ê²Œ ë³„ë„ë¡œ í‚¤ì›Œë“œë¥¼ ì§€ì •í•´ì¤˜ì•¼ í•œë‹¤.
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, keywords);
 					pstmt.setInt(2, start);
@@ -346,11 +409,11 @@ public class J003_DAO {
 				}
 			}
 			res = pstmt.executeQuery();
-			System.out.println("¸®½ºÆ®°¡ »ç¿ëÇÑ SQL : " + sql);
+			System.out.println("ë¦¬ìŠ¤íŠ¸ê°€ ì‚¬ìš©í•œ SQL : " + sql);
 			if(res.next()) {
-				articleList = new ArrayList<J002_BoardDTO>(5); // ListAction¿¡ ¼±¾ğµÈ pageSize¿Í °°Àº ¼ö·Î ¸®½ºÆ®Å©±â¸¦ Á¤ÇÏÀÚ.
+				articleList = new ArrayList<J002_BoardDTO>(5); // ListActionì— ì„ ì–¸ëœ pageSizeì™€ ê°™ì€ ìˆ˜ë¡œ ë¦¬ìŠ¤íŠ¸í¬ê¸°ë¥¼ ì •í•˜ì.
 				do {
-					J002_BoardDTO article = new J002_BoardDTO();	// DTO »ı¼º
+					J002_BoardDTO article = new J002_BoardDTO();	// DTO ìƒì„±
 					article.setNum(res.getInt("num"));
 					article.setPreface(res.getString("preface"));
 					article.setWriter(res.getString("writer"));
@@ -395,12 +458,12 @@ public class J003_DAO {
 		return articleList;
 	}		// getArticless()
 
-	// ±Û ÀúÀåÀ» Ã³¸®ÇÏ´Â ¸Ş¼Òµå
+	// ê¸€ ì €ì¥ì„ ì²˜ë¦¬í•˜ëŠ” ë©”ì†Œë“œ
 	public void insertArticle(J002_BoardDTO article) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		String sql = "";		// sql¹®
+		String sql = "";		// sqlë¬¸
 		int num = article.getNum();
 		int ref = article.getRef();
 		int step = article.getStep();
@@ -416,7 +479,7 @@ public class J003_DAO {
 			} else {
 				number = 1;
 			}
-			if(num != 0) {	// ´ä±ÛÀÏ °æ¿ì
+			if(num != 0) {	// ë‹µê¸€ì¼ ê²½ìš°
 				sql = "update BOARD set STEP = STEP + 1 where REF = ? and STEP > ?";
 				pstmt.close();
 				pstmt = conn.prepareStatement(sql);
@@ -425,13 +488,13 @@ public class J003_DAO {
 				pstmt.executeUpdate();
 				step = step + 1;
 				depth = depth + 1;
-			} else {	// »õ ±ÛÀÏ °æ¿ì
+			} else {	// ìƒˆ ê¸€ì¼ ê²½ìš°
 				ref = number;
 				step = 0;
 				depth = 0;
 			}
 			
-			sql = "insert into BOARD (NUM, WRITER, SUBJECT, PASS, REGDATE, REF, STEP, DEPTH, CONTENT, IP, PREFACE, BN) values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into BOARD (NUM, WRITER, SUBJECT, PASS, REGDATE, REF, STEP, DEPTH, CONTENT, IP, PREFACE, BN, MEM) values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt.close();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
@@ -445,6 +508,7 @@ public class J003_DAO {
 			pstmt.setString(9, article.getIp());
 			pstmt.setString(10, article.getPreface());
 			pstmt.setInt(11, article.getBn());
+			pstmt.setInt(12, article.getMem());
 						
 			pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -474,13 +538,13 @@ public class J003_DAO {
 		}	// end try-catch
 	}		// end insertArticle()
 	
-	// ±Û ³»¿ëÀ» °¡Á®¿À´Â ¸Ş¼Òµå
+	// ê¸€ ë‚´ìš©ì„ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	public J002_BoardDTO getArticle(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
 		J002_BoardDTO article = null;
-		String sql = "";		// sql¹®
+		String sql = "";		// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
 			sql = "update BOARD set READCOUNT = READCOUNT + 1 where NUM = ?";
@@ -507,6 +571,7 @@ public class J003_DAO {
 				article.setDepth(res.getInt("depth"));
 				article.setContent(res.getString("content"));
 				article.setIp(res.getString("ip"));
+				article.setMem(res.getInt("mem"));
 			}
 			
 		} catch(Exception e) {
@@ -537,13 +602,13 @@ public class J003_DAO {
 		return article;
 	} // end getArticle()
 	
-	// ±Û ¼öÁ¤À» Ã³¸®ÇÒ ±ÛÀÇ ¼¼ºÎ µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¿Ã ¼ö ÀÖ´Â ¸Ş¼Òµå
+	// ê¸€ ìˆ˜ì •ì„ ì²˜ë¦¬í•  ê¸€ì˜ ì„¸ë¶€ ë°ì´í„°ë¥¼ ë°›ì•„ì˜¬ ìˆ˜ ìˆëŠ” ë©”ì†Œë“œ
 	public J002_BoardDTO updateGetArticle(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
 		J002_BoardDTO article = null;
-		String sql = "";		// sql¹®
+		String sql = "";		// sqlë¬¸
 		try {
 			conn = J001_ConnUtil.getConnection();
 			sql = "select * from BOARD where NUM = ?";
@@ -565,6 +630,7 @@ public class J003_DAO {
 				article.setDepth(res.getInt("depth"));
 				article.setContent(res.getString("content"));
 				article.setIp(res.getString("ip"));
+				article.setMem(res.getInt("mem"));
 			}
 			
 		} catch(Exception e) {
@@ -595,12 +661,12 @@ public class J003_DAO {
 		return article;
 	} // end updateGetArticle()
 	
-	// ±Û ¼öÁ¤ Ã³¸® ¸Ş¼Òµå
+	// ê¸€ ìˆ˜ì • ì²˜ë¦¬ ë©”ì†Œë“œ
 	public int updateArticle(J002_BoardDTO article) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		String sql = "";		// sql¹®
+		String sql = "";		// sqlë¬¸
 		String dbpasswd = "";
 		int result = -1;		// flag
 		try {
@@ -620,9 +686,9 @@ public class J003_DAO {
 					pstmt.setString(3, article.getContent());
 					pstmt.setInt(4, article.getNum());
 					pstmt.executeUpdate();
-					result = 1;	// ¼öÁ¤ ¼º°ø
+					result = 1;	// ìˆ˜ì • ì„±ê³µ
 				} else {
-					result = 0; // ¼öÁ¤ ½ÇÆĞ
+					result = 0; // ìˆ˜ì • ì‹¤íŒ¨
 				}
 			} // end if
 		} catch(Exception e) {
@@ -654,12 +720,12 @@ public class J003_DAO {
 	} // end updateArticle()
 	
 	
-	// DB¿¡¼­ ±ÛÀ» »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// DBì—ì„œ ê¸€ì„ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ
 	public int deleteArticle(int num, String pass) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		String sql = "";		// sql¹®
+		String sql = "";		// sqlë¬¸
 		String dbPass = "";
 		int result = -1;		// flag
 		try {
@@ -676,9 +742,9 @@ public class J003_DAO {
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
-					result = 1; // »èÁ¦ ¼º°ø
+					result = 1; // ì‚­ì œ ì„±ê³µ
 				} else {
-					result = 0; // ÆĞ½º¿öµå ºÒÀÏÄ¡
+					result = 0; // íŒ¨ìŠ¤ì›Œë“œ ë¶ˆì¼ì¹˜
 				}
 			}
 		} catch(Exception e) {
@@ -709,5 +775,5 @@ public class J003_DAO {
 		return result;
 	} // end deleteArticle()
 	
-	// ¸Ş¼ÒµåµéÀ» Ãß°¡
+	// ë©”ì†Œë“œë“¤ì„ ì¶”ê°€
 }
