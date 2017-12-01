@@ -1,5 +1,5 @@
-ÁÖÀÇ!
-µ¥ÀÌÅÍº£ÀÌ½º °èÁ¤ °ü·Ã ¼Ò½º´Â
-J001_ConnUtil.java¿¡ ½áÁ®ÀÖ´Ù.
+ï»¿ì£¼ì˜!
+ë°ì´í„°ë² ì´ìŠ¤ ê³„ì • ê´€ë ¨ ì†ŒìŠ¤ëŠ”
+J001_ConnUtil.javaì— ì¨ì ¸ìžˆë‹¤.
 
-¾÷·ÎµåÇÑ ÀÚ·áÀÇ DB°èÁ¤¸í/ÆÐ½º¿öµå´Â 'scottt' / 'tiger' ÀÌ´Ù.
+ì—…ë¡œë“œí•œ ìžë£Œì˜ DBê³„ì •ëª…/íŒ¨ìŠ¤ì›Œë“œëŠ” 'scottt' / 'tiger' ì´ë‹¤.
