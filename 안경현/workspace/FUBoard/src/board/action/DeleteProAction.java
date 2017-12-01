@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import board.model.BoardDao;
+import board.model.BoardDto;
+import member.model.MemberDao;
 
 public class DeleteProAction implements CommandAction{
 
@@ -26,7 +28,15 @@ public class DeleteProAction implements CommandAction{
 		BoardDao dbPro = BoardDao.getInstance();
 		
 		int check = dbPro.deleteArticle(num, pass, location);
-	
+		BoardDto article=dbPro.getArticle(num);
+		int mem=article.getMem();
+		if(check==1) {
+			if(mem==1) {
+				MemberDao dbMPro= MemberDao.getInstance();//회원 DB연결
+				String Mwriter=article.getWriter();
+				dbMPro.MemberPoint(Mwriter,-10);
+				}
+		}
 		//뷰에서 사용할 속성
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("check", new Integer(check));

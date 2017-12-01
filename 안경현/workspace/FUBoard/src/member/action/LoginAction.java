@@ -16,7 +16,7 @@ public class LoginAction implements CommandAction{
 		
 		String page =request.getHeader("referer");
 	
-		System.out.println("url:=:"+page);
+		//System.out.println("url:=:"+page);
 		
 		session.setAttribute("returnPage", page);
 	

@@ -6,13 +6,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>테스트용 메인</title>
 </head>
 <body>
 <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2&preface=all">
 				게시판2!</a>
-<a href="${pageContext.request.contextPath }/member/join.do">회원가입</a>	
+				<c:choose>
+	<c:when test="${login eq 1 }">
+		<a href="${pageContext.request.contextPath }/member/memberOut.do">회원탈퇴</a>
+	</c:when>
+	<c:otherwise>
+		<a href="${pageContext.request.contextPath }/member/join.do">회원가입</a>
+	</c:otherwise>
+</c:choose>	
 <c:choose>
 	<c:when test="${login eq 1 }">
 		<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
@@ -24,7 +32,7 @@
 <c:choose>
 	<c:when test="${login eq 1 }">
 		<p>로그인상태</p>
-		<a href="${pageContext.request.contextPath }/member/viewMemberInformation.do?viewNick=${logNick}">회원정보</a>
+		<a href="javascript:openView('${logNick }');" target="_blank">회원정보</a>
 	</c:when>
 	<c:otherwise>
 		<p>비로그인상태</p>

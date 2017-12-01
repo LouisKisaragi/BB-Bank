@@ -203,15 +203,23 @@ function idCheck(id){
 				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
 }
-function login(){
-	if(document.login.id.value=""){
-		alert("아이디를 입력해주세요.");
-		document.join.id.focus();
+function logInSave(){
+	if(document.logIn.id.value==""){
+		alert("아이디를 입력 해주세요");
+		document.logIn.id.focus();
 		return false;
 	}
-	if(document.login.pass.value=""){
+	if(document.logIn.pass.value==""){
 		alert("비밀번호를 입력해주세요.");
-		document.join.id.focus();
+		document.logIn.pass.focus();
+		return false;
+	}
+}
+
+function outSave(){
+	if(document.memberOut.pass.value==""){
+		alert("비밀번호를 입력해주세요.");
+		document.memberOut.pass.focus();
 		return false;
 	}
 }

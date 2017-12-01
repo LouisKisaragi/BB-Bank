@@ -1,3 +1,7 @@
+function openView(nick){
+	url="../member/viewMemberInformation.do?viewNick="+nick;
+	window.open(url,"_blank","width=300,height=300;");
+}
 function writeSave(){
 	if(document.writeForm.writer.value == ""){
 		alert("작성자를 입력하세요.");

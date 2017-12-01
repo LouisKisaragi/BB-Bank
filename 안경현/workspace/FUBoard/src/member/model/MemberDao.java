@@ -18,6 +18,41 @@ public class  MemberDao{
 		}
 		return instance;
 	}
+	//포인트 증감기능
+	public int MemberPoint(String id, int P) {
+		int point = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbPoint = "";
+		int result = -1;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select POINT from MEMBER where ID = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				dbPoint = rs.getString("pass");
+				point=Integer.parseInt(dbPoint)+P;
+				pstmt.close();
+				pstmt = conn.prepareStatement(
+						"update MEMBER set POINT=? where ID=?");
+				pstmt.setInt(1,point);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+				result=1;
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return result;
+	}
 	//이메일 중복확인
 	public int MemberEmailCheck(String email) {
 		int result=-1;
@@ -310,6 +345,42 @@ public class  MemberDao{
 			if(conn != null) try { conn.close(); } catch (SQLException e){}
 		}
 		return article;
+	}
+	//회원탈퇴
+	public int memberOut(String id, String pass) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbPass = "";
+		int result = -1;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select PASS from MEMBER where ID = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				dbPass = rs.getString("pass");
+				if(dbPass.equals(pass)){
+					pstmt.close(); 
+					pstmt = conn.prepareStatement(
+							"delete from MEMBER where ID = ?");
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+					result = 1; //삭제 성공
+				} else {
+					result = 0; //비밀번호 불일치
+				}
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return result;
 	}
 
 	//회원정보 가져오기

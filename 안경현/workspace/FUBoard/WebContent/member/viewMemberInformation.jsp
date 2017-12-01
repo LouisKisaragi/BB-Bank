@@ -26,7 +26,7 @@
 				<b>[${logNick }]님 안녕하세요</b><p>
 				<table class="memberInformation">
 				<tr>
-				<td>[${logNick }] 회원님의 정보</td>
+				<td colspan="2">[${logNick }] 회원님의 정보</td>
 				</tr>
 				<tr>
 				<th>이름</th><td>[${logName }]</td>
@@ -44,7 +44,7 @@
 				<th>가입날짜</th><td>[${logJoin }]</td>
 				</tr>
 				<tr>
-				<td><a href="javascript:self.close()">닫기</a></td>
+				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
 				</tr>
 				</table>
 				</c:when>
@@ -52,7 +52,7 @@
 				<b>[${logNick }님 안녕하세요]</b>
 				<table class="memberInformation">
 				<tr>
-				<td>[${article.nickname }] 회원님의 정보</td>
+				<td colspan="2">[${article.nickname }] 회원님의 정보</td>
 				</tr>
 				<tr>
 				<th>이메일</th><td>[${article.email }]</td>
@@ -64,14 +64,14 @@
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td><a href="javascript:self.close()">닫기</a></td>
+				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
 				</tr>
 				</table>
 				</c:when>
 			<c:otherwise>
 			<table class="memberInformation">
 				<tr>
-				<td>[${article.nickname }] 회원님의 정보</td>
+				<td colspan="2">[${article.nickname }] 회원님의 정보</td>
 				</tr>
 				<tr>
 				<th>이메일</th><td>[${article.email }]</td>
@@ -83,7 +83,7 @@
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td><a href="javascript:self.close()">닫기</a></td>
+				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
 				</tr>
 				</table>
 			</c:otherwise>

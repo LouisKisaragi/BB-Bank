@@ -10,6 +10,8 @@ import javax.servlet.http.Part;
 
 import board.model.BoardDao;
 import board.model.BoardDto;
+import member.model.MemberDao;
+
 import static java.lang.Math.toIntExact;
 
 public class WriteProAction implements CommandAction{
@@ -78,7 +80,7 @@ public class WriteProAction implements CommandAction{
 		request.setCharacterEncoding("UTF-8");
 		BoardDto article = new BoardDto();	//데이터를 처리할 빈
 	//	saveFile(request);
-		if(server_filename.equals("0_0_octet-stream_")) {
+		if(contentType.equals("application/octet-stream")) {
 			server_filename=null;
 			contentType=null;
 		}
@@ -115,6 +117,11 @@ public class WriteProAction implements CommandAction{
 		article.setIp(request.getRemoteAddr());
 		BoardDao dbPro = BoardDao.getInstance(); //DB 연결
 		dbPro.insertArticle(article);
+		
+		if(request.getParameter("mem")=="1") {
+		MemberDao dbMPro= MemberDao.getInstance();//회원 DB연결
+		dbMPro.MemberPoint(request.getParameter("writer"),10);
+		}
 		
 		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
 		int bn = Integer.parseInt(request.getParameter("bn"));

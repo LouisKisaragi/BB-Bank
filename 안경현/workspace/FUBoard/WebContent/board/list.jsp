@@ -80,12 +80,6 @@
 <c:set var="bn" value="2"/>
 <b>글목록(전체 글:${count})</b>
 <p><c:if test="${login eq 1 }">(${logNick }님 안녕하세요)</c:if></p>
-<table class="returnmain">
-<tr>
-<td><a href="${pageContext.request.contextPath }/board/main.do">메인으로가기</a></td>
-<td><a href="${pageContext.request.contextPath }/member/login.do">로그인가기</a></td>
-</tr>
-</table>
 
 <table class="listwritebutton">
 	<tr>
@@ -203,7 +197,7 @@
 		<td>	
 			<c:choose>
 				<c:when test="${article.mem eq 1 }">	
-					<a href="${pageContext.request.contextPath }/member/viewMemberInformation.do?viewNick=${article.writer }"><c:out value="${article.writer}"/></a>
+					<a href="javascript:openView('${article.writer }');" target="_blank"><c:out value="${article.writer}"/></a>
 				</c:when>
 				<c:otherwise>
 					<c:out value="${article.writer}"/>
