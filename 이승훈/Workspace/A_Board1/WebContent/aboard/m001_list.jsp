@@ -31,6 +31,7 @@
 <table>
 	<tr>
 		<td>
+			<!-- 해당하는 preface일 경우, 링크를 제거하자 -->
 			<a href="${pageContext.request.contextPath}/list.do">[전체]</a>
 			<a href="${pageContext.request.contextPath}/list.do?prefaces=a">[a]</a>
 			<a href="${pageContext.request.contextPath}/list.do?prefaces=b">[b]</a>
@@ -63,6 +64,32 @@
 		<th id="date">작성일</th>
 		<th id="counter">조회</th>
 	</tr>
+	
+	<!-- 공지 -->
+	<c:forEach var="notice" items="${noticeList}">
+	<tr>
+		<!-- 글번호 -->
+		<td align=center width=50>
+			
+		</td>
+		<!-- 분류 -->
+		<td>
+			<b>공지</b>
+		</td>
+		<!-- 제목 -->
+		<td class="titleid">
+			<a href="${pageContext.request.contextPath}/content.do?num=${notice.num}&pageNum=${currentPage}">${notice.subject}</a>
+		</td>
+		<!-- 글쓴이(IP) -->
+		<td>${notice.writer}</td>
+		<!-- 날짜 -->
+		<td>${notice.regdate}</td>
+		<!-- 조회수 -->
+		<td>${notice.readcount}</td>
+	</tr>
+	</c:forEach>
+	
+	<!-- 내용 -->
 	<c:forEach var="article" items="${articleList}">
 	<tr>
 		<!-- 글번호 -->
@@ -138,6 +165,7 @@
 	</c:if>
 	
 	<%-- 중간 --%>
+	<%-- 해당하는 페이지일 경우, 숫자에 링크를 떼는 등 차별화한다. --%>
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<c:choose> <%-- 키워드가 있을때, 없을때를 구분해야 한다. --%>
 			<%-- 키워드가 없을 때 --%>
@@ -214,6 +242,8 @@
 분류 : ${prefaces}<br>
 bn : ${bn}<br>
 조건 : ${jogun}<br>
+세션 값 : ${tempdata}<br>
+페이지 번호 : ${pageNum}<br>
 <c:if test="${keywords ne null}">
 크으으
 </c:if>
