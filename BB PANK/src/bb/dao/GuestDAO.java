@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import jsl.dto.GuestDTO;
+import bb.dto.GuestDTO;
 
 
 public class GuestDAO
@@ -141,7 +141,7 @@ public class GuestDAO
 	}
 	
 	///////////////////////////// 회원 포인트 추출 /////////////////////////////////
-	public int getUserPoint(String id)
+	/*public int getUserPoint(String id)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -190,7 +190,8 @@ public class GuestDAO
 		{
 			close(null, pstmt, conn);
 		}
-	}
+	}*/
+	//포인트 소스 활성화 시킨후 주석 해제.
 	
 	/////////////////////////////////// 회원 가입 /////////////////////////////////
 	public boolean insertGuest(GuestDTO guest)

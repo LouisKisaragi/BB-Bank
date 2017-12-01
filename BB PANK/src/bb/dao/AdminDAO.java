@@ -10,8 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import jsl.dto.GuestDTO;
-import jsl.dto.PointManagerDTO;
+import bb.dto.GuestDTO;
+//import bb.dto.PointManagerDTO;
 
 public class AdminDAO
 {
@@ -104,7 +104,7 @@ public class AdminDAO
 	}
 	
 	///// 모든 포인트 로그의 정보를 가져옴. /////
-	public ArrayList<PointManagerDTO> LoadPointLog()
+	/*public ArrayList<PointManagerDTO> LoadPointLog()
 	{
 		ArrayList<PointManagerDTO> list = new ArrayList<PointManagerDTO>();
 		Connection conn = null;
@@ -154,8 +154,8 @@ public class AdminDAO
 		} finally {
 			close(null, pstmt, conn);
 		}
-	}
-	
+	}*/
+///// Q&A 정보를 가져옴. /////
 	public void insertAnswer(String answer, int num)
 	{
 		Connection conn = null;
