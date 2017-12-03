@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" >
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=1">
             <span class="nav-link-text">공지사항</span>
           </a>
         </li>
