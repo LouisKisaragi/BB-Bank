@@ -2,6 +2,7 @@ package bb.admin;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import bb.dao.GuestDAO;
-//import bb.dto.GuestDTO;
+import bb.dao.AdminDAO;
+//import bb.dto.MemberDAO;
 /**
  * Servlet implementation class AdminLoginServlet
  */
@@ -28,7 +29,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		AdminDAO dao = AdminDAO.getinstance();
-		GuestDAO g_dao = GuestDAO.getinstance();
+		//MemberDAO g_dao = MemberDAO.getinstance();
 		int result = dao.checkLogin(id, pass);
 		String url = null;
 		HttpSession session = request.getSession();
@@ -36,7 +37,7 @@ public class AdminLoginServlet extends HttpServlet {
 		if (result > 0)
 		{
 			url = "bbADMIN/adminMain.jsp";
-			session.setAttribute("AdminAuthority", g_dao.successLogin(id));
+			session.setAttribute("AdminAuthority", m_dao.successLogin(id));
 		}
 		else 
 		{
@@ -47,13 +48,5 @@ public class AdminLoginServlet extends HttpServlet {
 		RequestDispatcher rdp = request.getRequestDispatcher(url);
 		rdp.forward(request, response);
 	}
-
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 }
