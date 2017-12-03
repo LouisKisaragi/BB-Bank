@@ -50,7 +50,7 @@ public class LoginProAction implements CommandAction{
 		session.setAttribute("logId",loginid);
 		session.setAttribute("logPass",loginpass);
 		session.setAttribute("logName", loginname);
-		session.setAttribute("point", point);
+		session.setAttribute("logPoint", point);
 		session.setAttribute("login", 1);
 		session.setAttribute("super_m", super_m);
 		}

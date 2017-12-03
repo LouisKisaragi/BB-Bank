@@ -11,7 +11,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
 <link href="${pageContext.request.contextPath}/member/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/member/css/liststyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
 
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -19,6 +32,7 @@ function back(){
 	history.go(-1);
 }
 </script>
+<%@ include file="header.jsp" %>
 <section>
 	<form method="post"  name="login" action="${pageContext.request.contextPath}/member/loginPro.do?"
 	onsubmit="return login()">
@@ -39,5 +53,8 @@ function back(){
 		</table>
 	</form>
 </section>
+<div id="footer">
+<%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>

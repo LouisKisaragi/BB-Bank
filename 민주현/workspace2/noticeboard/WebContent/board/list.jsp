@@ -11,7 +11,18 @@
 rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/board/css/liststyle.css"
 rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
 
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+</style>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -155,5 +166,8 @@ rel="stylesheet" type="text/css"/>
 </table>
 </form>
 </section>
+<div id="footer">
+<%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>
