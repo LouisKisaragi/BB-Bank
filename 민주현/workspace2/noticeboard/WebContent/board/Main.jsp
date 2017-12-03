@@ -8,6 +8,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/board/css/writeFormstyle.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 <style type="text/css">
 #footer {
@@ -41,14 +43,7 @@
 		<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
 	</c:otherwise>
 </c:choose>
-<c:choose>
-	<c:when test="${login eq 1 }">
-		<p>로그인상태</p>
-	</c:when>
-	<c:otherwise>
-		<p>비로그인상태</p>
-	</c:otherwise>
-</c:choose>
+
 <div id="footer">
 <%@ include file="footer.jsp" %>
 </div>
