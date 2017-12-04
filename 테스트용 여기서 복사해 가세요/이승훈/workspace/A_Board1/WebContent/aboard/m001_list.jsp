@@ -15,6 +15,7 @@
 <section>
 
 <% request.setCharacterEncoding("UTF-8"); %>
+<%-- 제목 --%>
 <b>
 <c:choose>
 	<c:when test="${prefaces eq 'a' or prefaces eq 'b' or prefaces eq 'c' or prefaces eq 'd' or prefaces eq 'e'}">
@@ -25,9 +26,12 @@
 	</c:otherwise>
 </c:choose>
  글목록 : (전체 글 : ${count})</b>
+ 
+<%-- 검색어 --%>
 <c:if test="${keywords ne null}">
 	<br>검색어 : ${keywords}
 </c:if>
+
 <table>
 	<tr>
 		<td>

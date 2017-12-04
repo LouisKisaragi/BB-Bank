@@ -1,6 +1,6 @@
 package model;
 import java.sql.Timestamp;
-/*	Å×ÀÌºí »ı¼ºÇÏ´Â Äõ¸®¹® - ÀÌ DB¸¦ Åä´ë·Î ¸¸µé¾îÁø DTO´Ù.
+/*	í…Œì´ë¸” ìƒì„±í•˜ëŠ” ì¿¼ë¦¬ë¬¸ - ì´ DBë¥¼ í† ëŒ€ë¡œ ë§Œë“¤ì–´ì§„ DTOë‹¤.
 CREATE table "BOARD"(
 	"NUM" NUMBER(7,0) NOT NULL,
 	"WRITER" VARCHAR2(12) NOT NULL,
@@ -22,33 +22,33 @@ CREATE table "BOARD"(
 	"MEM" NUMBER(1,0) DEFAULT 0 NOT NULL,
 	constraint "BOARD_PK" primary key ("NUM"));
 
-°íÀ¯ Å°(Áßº¹µÇÁö ¾Ê´Â)´Â num
+ê³ ìœ  í‚¤(ì¤‘ë³µë˜ì§€ ì•ŠëŠ”)ëŠ” num
 */
-// DTOÀÇ ³»¿ëÀº DB¿¡ ÀúÀå °¡´ÉÇÑ ¿­ÀÌ´Ù.
+// DTOì˜ ë‚´ìš©ì€ DBì— ì €ì¥ ê°€ëŠ¥í•œ ì—´ì´ë‹¤.
 
 public class J002_BoardDTO {
-	// DBÀÇ ³»¿ëµéÀ» ¿©±â ÀüºÎ Æ÷ÇÔ½ÃÅ²´Ù.
-	private int num;				// °íÀ¯ ³Ñ¹ö, 7ÀÚ¸®¼ö, °ø¹éX
-	private String writer;			// ±Û¾´ÀÌ, 12byte, °ø¹éX
-	private String subject;			// ±Û Á¦¸ñ, 500byte, °ø¹éX
-	private String pass;			// ÆĞ½º¿öµå, 10byte, °ø¹éX
-	private int readcount;			// Á¶È¸¼ö, 5ÀÚ¸®¼ö, ±âº»°ª 0, °ø¹éX
-	private int ref;				// ref, 3ÀÚ¸®¼ö, ±âº»°ª 0, °ø¹éX
-	private int step;				// step, 3ÀÚ¸®¼ö, ±âº»°ª 0, °ø¹éX
-	private int depth;				// depth, 3ÀÚ¸®¼ö, ±âº»°ª 0, °ø¹éX
-	private Timestamp regdate;		// ³¯Â¥, timestamp, ±âº»°ª sysdate, °ø¹éX
-	private String content;			// ³»¿ë, 4000byte, °ø¹éX
-	private String ip;				// IP ÁÖ¼Ò, 20byte, °ø¹éX
-	private int bn;					// º¸µå ³Ñ¹ö(°Ô½ÃÆÇ ºĞ·ù), 2ÀÚ¸®¼ö, °ø¹éX
-	private String origin_filename;	// ¿ø·¡ ÆÄÀÏ¸í, 256byte
-	private String server_filename;	// ¼­¹ö¿¡¿Ã·ÁÁøÆÄÀÏ¸í, 256byte
-	private int filesize;			// ÆÄÀÏÀÇ Å©±â, 7ÀÚ¸®¼ö
-	private String filetype;		// ÆÄÀÏÀÇ Á¾·ù, 256byte
-	private String preface;			// ¸Ó¸®¸»(Àâ´ã/KBO/Áú¹®), 50byte, °ø¹éX
-	private int mem;				// ¸â¹ö »óÅÂ(0,1,2), 1ÀÚ¸®¼ö, ±âº»°ª 0, °ø¹éX
+	// DBì˜ ë‚´ìš©ë“¤ì„ ì—¬ê¸° ì „ë¶€ í¬í•¨ì‹œí‚¨ë‹¤.
+	private int num;				// ê³ ìœ  ë„˜ë²„, 7ìë¦¬ìˆ˜, ê³µë°±X
+	private String writer;			// ê¸€ì“´ì´, 12byte, ê³µë°±X
+	private String subject;			// ê¸€ ì œëª©, 500byte, ê³µë°±X
+	private String pass;			// íŒ¨ìŠ¤ì›Œë“œ, 10byte, ê³µë°±X
+	private int readcount;			// ì¡°íšŒìˆ˜, 5ìë¦¬ìˆ˜, ê¸°ë³¸ê°’ 0, ê³µë°±X
+	private int ref;				// ref, 3ìë¦¬ìˆ˜, ê¸°ë³¸ê°’ 0, ê³µë°±X
+	private int step;				// step, 3ìë¦¬ìˆ˜, ê¸°ë³¸ê°’ 0, ê³µë°±X
+	private int depth;				// depth, 3ìë¦¬ìˆ˜, ê¸°ë³¸ê°’ 0, ê³µë°±X
+	private Timestamp regdate;		// ë‚ ì§œ, timestamp, ê¸°ë³¸ê°’ sysdate, ê³µë°±X
+	private String content;			// ë‚´ìš©, 4000byte, ê³µë°±X
+	private String ip;				// IP ì£¼ì†Œ, 20byte, ê³µë°±X
+	private int bn;					// ë³´ë“œ ë„˜ë²„(ê²Œì‹œíŒ ë¶„ë¥˜), 2ìë¦¬ìˆ˜, ê³µë°±X
+	private String origin_filename;	// ì›ë˜ íŒŒì¼ëª…, 256byte
+	private String server_filename;	// ì„œë²„ì—ì˜¬ë ¤ì§„íŒŒì¼ëª…, 256byte
+	private int filesize;			// íŒŒì¼ì˜ í¬ê¸°, 7ìë¦¬ìˆ˜
+	private String filetype;		// íŒŒì¼ì˜ ì¢…ë¥˜, 256byte
+	private String preface;			// ë¨¸ë¦¬ë§(ì¡ë‹´/KBO/ì§ˆë¬¸), 50byte, ê³µë°±X
+	private int mem;				// ë©¤ë²„ ìƒíƒœ(0,1,2), 1ìë¦¬ìˆ˜, ê¸°ë³¸ê°’ 0, ê³µë°±X
 	
 	public J002_BoardDTO() {
-		// »ı¼ºÀÚ
+		// ìƒì„±ì
 	}
 
 	public int getNum() {
