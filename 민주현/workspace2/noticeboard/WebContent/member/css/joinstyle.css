@@ -6,14 +6,14 @@ section{
 	left:0; top:0; right:0; bottom:0;
 }
 table{
-	width:300px;
+	width:700px;
 	border-collapse:collapse;
 }
 a{ 
 	text-decoration:none; 
 }
 .joinbutton{
-	text-align:right;
+	text-align:center;
 }
 .jointable{
 	text-align:center;	
