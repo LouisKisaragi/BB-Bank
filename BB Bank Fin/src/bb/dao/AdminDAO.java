@@ -33,11 +33,11 @@ public class AdminDAO {
 		return conn;
 	}
 	
-	/////// ������ ���� �α��� ó��//////
+	/////// 관리자 계정 로그인 처리//////
 	public int checkLogin(String id, String pass)
 	{
 		int result = -1;
-		// �⺻�� -1. ���� �ȵ�.
+		// 기본값 -1. 인증 안됨.
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,7 +65,7 @@ public class AdminDAO {
 		return result;
 	}
 	
-	/////// ��� ȸ���� ������ ������ //////
+	/////// 모든 회원의 정보를 가져옴 //////
 	public ArrayList<MemberDTO> listMember()
 	{
 		Connection conn = null;
@@ -102,7 +102,7 @@ public class AdminDAO {
 		return list;
 	}
 	
-	///// ��� ����Ʈ �α��� ������ ������. /////
+	///// 모든 포인트 로그의 정보를 가져옴. /////
 	/*public ArrayList<PointManagerDTO> LoadPointLog()
 	{
 		ArrayList<PointManagerDTO> list = new ArrayList<PointManagerDTO>();
@@ -139,7 +139,7 @@ public class AdminDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql_pointlog = "insert into pointlog values(?,?,?,sysdate)";
-		try	{ // �� ����Ʈ ������ ������ ����Ʈ�α׿� �Է���.
+		try	{ // 그 포인트 수정한 내역을 포인트로그에 입력함.
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql_pointlog);
 
@@ -201,7 +201,7 @@ public class AdminDAO {
 	
 	public void close(ResultSet rs, PreparedStatement pstmt, Connection conn)
 	{
-		if(rs!=null) // ResultSet ���� ���
+		if(rs!=null) // ResultSet 있을 경우
 		{
 			try 
 			{
@@ -212,7 +212,7 @@ public class AdminDAO {
 			}
 		}
 		
-		if(pstmt!=null)  // PreparedStatement ���� ���
+		if(pstmt!=null)  // PreparedStatement 있을 경우
 		{
 			try
 			{
@@ -223,7 +223,7 @@ public class AdminDAO {
 			}
 		}
 		
-		if(conn!=null) // Connection ���� ���
+		if(conn!=null) // Connection 있을 경우
 		{
 			try 
 			{
