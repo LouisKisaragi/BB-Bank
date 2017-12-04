@@ -1,5 +1,7 @@
 package member.action;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,6 +46,8 @@ public class LoginProAction implements CommandAction{
 			String loginname= article1.getName();
 			int point = article1.getPoint();
 			String lognick=article1.getNickname();
+			String logemail=article1.getEmail();
+			Timestamp logjoin=article1.getJoindate();
 			String super_m = article1.getSuper_m();
 			
 		session.setAttribute("logNick",lognick);
@@ -51,6 +55,8 @@ public class LoginProAction implements CommandAction{
 		session.setAttribute("logPass",loginpass);
 		session.setAttribute("logName", loginname);
 		session.setAttribute("logPoint", point);
+		session.setAttribute("logEmail", logemail);
+		session.setAttribute("logJoin", logjoin);
 		session.setAttribute("login", 1);
 		session.setAttribute("super_m", super_m);
 		}
