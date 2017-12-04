@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bb.dao.AdminDAO;
-//import bb.dto.MemberDAO;
+import bb.dao.MemberDAO;
 /**
  * Servlet implementation class AdminLoginServlet
  */
@@ -29,7 +29,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		AdminDAO dao = AdminDAO.getinstance();
-		//MemberDAO g_dao = MemberDAO.getinstance();
+		MemberDAO m_dao = MemberDAO.getinstance();
 		int result = dao.checkLogin(id, pass);
 		String url = null;
 		HttpSession session = request.getSession();
@@ -42,7 +42,7 @@ public class AdminLoginServlet extends HttpServlet {
 		else 
 		{
 			url = "bbADMIN/adminLogin.jsp";
-			request.setAttribute("message", "∑Œ±◊¿Œ Ω«∆–");
+			request.setAttribute("message", "Î°úÍ∑∏Ïù∏ Ïã§Ìå®!");
 		}
 		
 		RequestDispatcher rdp = request.getRequestDispatcher(url);

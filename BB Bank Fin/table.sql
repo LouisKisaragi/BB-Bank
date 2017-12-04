@@ -14,13 +14,14 @@ create table member(
 	id varchar2(12) not null,
 	pass varchar2(12) not null,
 	name varchar2(24) not null,
-              nickname varchar2(50) not null,
+    nickname varchar2(50) not null,
 	email varchar2(40),
 	point number(6) default 0,
 	joindate date default sysdate,
+	logindate varchar2(20),
 	admin number(1) default 0,
 	super_m number(1) default 1,
-              -- 유저와 관리자를 구분하는 키, 가입하면 유저는 1만 받는다.
+    -- 유저와 관리자를 구분하는 키, 가입하면 유저는 1만 받는다.
 	primary key(id)
 );
 
@@ -31,26 +32,24 @@ CREATE SEQUENCE MEMBER_SEQ
 	NOCACHE
 	NOCYCLE;
 
-
-
 --포인트 내역 테이블
 create table pointlog(
-guest_id varchar2(12) not null,
+member_id varchar2(12) not null,
 p_calcul number(10),
 p_cont varchar2(100),
 p_date date default sysdate,
-foreign key(guest_id) references guest(id)
+foreign key(member_id) references member(id)
 );
 
 --게시판 테이블
 create table board(
 num number(38),
-guest_id varchar2(12) not null, 
+member_id varchar2(12) not null, 
 title varchar2(50),
 contents varchar2(1000),
 image varchar2(300),
 primary key(num),
-foreign key(guest_id) references guest(id)
+foreign key(member_id) references member(id)
 );
 
 --리플기능 구현을 위한 테이블

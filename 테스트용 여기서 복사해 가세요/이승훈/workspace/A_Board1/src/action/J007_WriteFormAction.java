@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 
 public class J007_WriteFormAction implements J005_CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		// Á¦¸ñ±Û°ú ´äº¯±ÛÀÇ ºÎºĞ
+		// ì œëª©ê¸€ê³¼ ë‹µë³€ê¸€ì˜ ë¶€ë¶„
 		int num = 0, ref = 1, step = 0, depth = 0;
 		
 		HttpSession session = request.getSession();
@@ -22,11 +22,11 @@ public class J007_WriteFormAction implements J005_CommandAction {
 			e.printStackTrace();
 		}	// end try-catch
 		
-		// ÇØ´ç ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// í•´ë‹¹ ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("ref", new Integer(ref));
 		request.setAttribute("step", new Integer(step));
 		request.setAttribute("depth", new Integer(depth));
-		return "/aboard/m003_writeForm.jsp";		// ÇØ´ç °æ·Î ºä ¹İÈ¯
+		return "/aboard/m003_writeForm.jsp";		// í•´ë‹¹ ê²½ë¡œ ë·° ë°˜í™˜
 	}
 }

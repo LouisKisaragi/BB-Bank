@@ -4,25 +4,25 @@ import javax.servlet.http.HttpServletResponse;
 import model.J002_BoardDTO;
 import model.J003_DAO;
 
-// ±Û ³»¿ëÀ» Ã³¸®
+// ê¸€ ë‚´ìš©ì„ ì²˜ë¦¬
 public class J009_ContentAction implements J005_CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		// ÇØ´ç ±Û ¹øÈ£
+		// í•´ë‹¹ ê¸€ ë²ˆí˜¸
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-		// ÇØ´ç ÆäÀÌÁö ¹øÈ£
+		// í•´ë‹¹ í˜ì´ì§€ ë²ˆí˜¸
 		String pageNum = request.getParameter("pageNum");
 		J003_DAO dbPro = J003_DAO.getInstance();
 		
-		// ÇØ´ç ±Û ¹øÈ£¿¡ ´ëÇÑ ·¹ÄÚµå
+		// í•´ë‹¹ ê¸€ ë²ˆí˜¸ì— ëŒ€í•œ ë ˆì½”ë“œ
 		J002_BoardDTO article = dbPro.getArticle(num);
 		int mem = article.getMem();
 		
-		// ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("article", article);
 		request.setAttribute("mem", new Integer(mem));
-		return "/aboard/m002_content.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m002_content.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

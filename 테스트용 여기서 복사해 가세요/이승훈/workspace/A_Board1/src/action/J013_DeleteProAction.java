@@ -13,9 +13,9 @@ public class J013_DeleteProAction implements J005_CommandAction {
 		J003_DAO dbPro = J003_DAO.getInstance();
 		int check = dbPro.deleteArticle(num, pass);
 		
-		// ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("check", new Integer(check));
-		return "/aboard/m008_deletePro.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m008_deletePro.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

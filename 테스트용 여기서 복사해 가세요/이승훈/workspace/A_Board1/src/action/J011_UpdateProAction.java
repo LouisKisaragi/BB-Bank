@@ -9,7 +9,7 @@ public class J011_UpdateProAction implements J005_CommandAction {
 		request.setCharacterEncoding("UTF-8");
 		String pageNum = request.getParameter("pageNum");
 		
-		J002_BoardDTO article = new J002_BoardDTO();	// µ¥ÀÌÅÍ¸¦ Ã³¸®ÇÒ Bean
+		J002_BoardDTO article = new J002_BoardDTO();	// ë°ì´í„°ë¥¼ ì²˜ë¦¬í•  Bean
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setWriter(request.getParameter("writer"));
 		article.setSubject(request.getParameter("subject"));
@@ -19,9 +19,9 @@ public class J011_UpdateProAction implements J005_CommandAction {
 		J003_DAO dbPro = J003_DAO.getInstance();
 		int check = dbPro.updateArticle(article);
 		
-		// ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("check", new Integer(check));
-		return "/aboard/m006_updatePro.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m006_updatePro.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

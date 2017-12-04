@@ -11,10 +11,10 @@ public class J010_UpdateFormAction implements J005_CommandAction {
 		J003_DAO dbPro = J003_DAO.getInstance();
 		J002_BoardDTO article = dbPro.updateGetArticle(num);
 		
-		// ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("article", article);
 		
-		return "/aboard/m005_updateForm.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m005_updateForm.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

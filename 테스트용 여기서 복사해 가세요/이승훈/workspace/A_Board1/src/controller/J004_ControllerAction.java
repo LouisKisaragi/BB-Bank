@@ -1,5 +1,5 @@
 package controller;
-// java °ü·Ã import
+// java ê´€ë ¨ import
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-// servlet °ü·Ã import
+// servlet ê´€ë ¨ import
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,27 +15,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.J005_CommandAction; // CommandActionÀ» import ½ÃÄÑÁØ´Ù.
+import action.J005_CommandAction; // CommandActionì„ import ì‹œì¼œì¤€ë‹¤.
 
 public class J004_ControllerAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	// ¸í·É¾î¿Í ¸í·É¾î Ã³¸® Å¬·¡½º¸¦ ½ÖÀ¸·Î ÀúÀåÇØµÎ´Â MAP
+	// ëª…ë ¹ì–´ì™€ ëª…ë ¹ì–´ ì²˜ë¦¬ í´ë˜ìŠ¤ë¥¼ ìŒìœ¼ë¡œ ì €ì¥í•´ë‘ëŠ” MAP
 	private Map<String, Object> commandMap = new HashMap<String, Object>();
 	
-	// ¸í·É¾î¿Í Ã³¸®Å¬·¡½º°¡ MappingµÇ¾îÀÖ´Â CommandPro.propertiesÆÄÀÏÀ» ÀĞ¾î Map °´Ã¼ÀÎ commandMap¿¡ ÀúÀåÇÑ´Ù.
+	// ëª…ë ¹ì–´ì™€ ì²˜ë¦¬í´ë˜ìŠ¤ê°€ Mappingë˜ì–´ìˆëŠ” CommandPro.propertiesíŒŒì¼ì„ ì½ì–´ Map ê°ì²´ì¸ commandMapì— ì €ì¥í•œë‹¤.
 	
-	// web.xml¿¡¼­ propertyConfig¿¡ ÇØ´çÇÏ´Â init-paramÀÇ °ªÀ» ÀĞ¾î¿Â´Ù.
+	// web.xmlì—ì„œ propertyConfigì— í•´ë‹¹í•˜ëŠ” init-paramì˜ ê°’ì„ ì½ì–´ì˜¨ë‹¤.
 	public void init(ServletConfig config) throws ServletException {
 		String props = config.getInitParameter("propertyConfig");
 		
-		// ¸í·É¾î¿Í Ä¿¸®Å¬·¡½ºÀÇ ¸ÅÇÎ Á¤º¸¸¦ ÀúÀåÇÒ Properties °´Ã¼ »ı¼º
+		// ëª…ë ¹ì–´ì™€ ì»¤ë¦¬í´ë˜ìŠ¤ì˜ ë§¤í•‘ ì •ë³´ë¥¼ ì €ì¥í•  Properties ê°ì²´ ìƒì„±
 		Properties pr = new Properties();
 		FileInputStream f = null;
 		String path = config.getServletContext().getRealPath("/WEB-INF");
 		try {
 			f = new FileInputStream(new File(path, props));
-			// CommandPro.propertiesÀÇ Á¤º¸¸¦ Properties °´Ã¼¿¡ ÀúÀå
+			// CommandPro.propertiesì˜ ì •ë³´ë¥¼ Properties ê°ì²´ì— ì €ì¥
 			pr.load(f);
 		} catch(IOException e) {
 			throw new ServletException(e);
@@ -48,18 +48,18 @@ public class J004_ControllerAction extends HttpServlet {
 				} // end try-catch
 			}	// end if
 		}		// end finally
-		// Iterator °´Ã¼ »ç¿ë
+		// Iterator ê°ì²´ ì‚¬ìš©
 		Iterator<Object> keyIter = pr.keySet().iterator();
 		
 		while(keyIter.hasNext()) {
 			String command = (String)keyIter.next();
 			String className = pr.getProperty(command);
 			try {
-				// °¡Á®¿Â ¹®ÀÚ¿­À» Å¬·¡½º·Î ¸¸µë
+				// ê°€ì ¸ì˜¨ ë¬¸ìì—´ì„ í´ë˜ìŠ¤ë¡œ ë§Œë“¬
 				Class<?> commandClass = Class.forName(className);
-				// ¸¸µé¾îÁø ÇØ´ç Å¬·¡½ºÀÇ °´Ã¼ »ı¼º
+				// ë§Œë“¤ì–´ì§„ í•´ë‹¹ í´ë˜ìŠ¤ì˜ ê°ì²´ ìƒì„±
 				Object commandInstance = commandClass.newInstance();
-				// »ı¼ºµÈ °´Ã¼¸¦ commandMap¿¡ ÀúÀå
+				// ìƒì„±ëœ ê°ì²´ë¥¼ commandMapì— ì €ì¥
 				commandMap.put(command, commandInstance);
 			} catch(ClassNotFoundException e) {
 				throw new ServletException(e);
@@ -71,17 +71,17 @@ public class J004_ControllerAction extends HttpServlet {
 		}		// end while
 	}			// end init()
 	
-	// Get ¹æ½ÄÀÇ ¼­ºñ½º ¸Ş¼Òµå
+	// Get ë°©ì‹ì˜ ì„œë¹„ìŠ¤ ë©”ì†Œë“œ
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestPro(request, response);
 	}
 	
-	// Post ¹æ½ÄÀÇ ¼­ºñ½º ¸Ş¼Òµå
+	// Post ë°©ì‹ì˜ ì„œë¹„ìŠ¤ ë©”ì†Œë“œ
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestPro(request, response);
 	}
 	
-	// »ç¿ëÀÚÀÇ ¿äÃ»¿¡ µû¶ó ºĞ¼®ÇÏ¿© ÇØ´ç ÀÛ¾÷À» Ã³¸®
+	// ì‚¬ìš©ìì˜ ìš”ì²­ì— ë”°ë¼ ë¶„ì„í•˜ì—¬ í•´ë‹¹ ì‘ì—…ì„ ì²˜ë¦¬
 	public void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String view = null;
 		J005_CommandAction com = null;
