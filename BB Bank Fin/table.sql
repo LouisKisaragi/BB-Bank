@@ -1,4 +1,4 @@
---계정 생성 및 접근권한 부여
+﻿--계정 생성 및 접근권한 부여
 --user id bbsystem / user password bb12345
 
 -- 계정 생성
@@ -18,7 +18,6 @@ create table member(
 	email varchar2(40),
 	point number(6) default 0,
 	joindate date default sysdate,
-	logindate varchar2(20),
 	admin number(1) default 0,
 	super_m number(1) default 1,
     -- 유저와 관리자를 구분하는 키, 가입하면 유저는 1만 받는다.

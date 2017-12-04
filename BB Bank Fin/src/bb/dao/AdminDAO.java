@@ -11,7 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import bb.dto.MemberDTO;
-//import bb.dto.PointManagerDTO;
+import bb.dto.PointManagerDTO;
 
 public class AdminDAO {
 	
@@ -33,11 +33,11 @@ public class AdminDAO {
 		return conn;
 	}
 	
-	/////// °ü¸®ÀÚ °èÁ¤ ·Î±×ÀÎ Ã³¸®//////
+	/////// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½//////
 	public int checkLogin(String id, String pass)
 	{
 		int result = -1;
-		// ±âº»°ª -1. ÀÎÁõ ¾ÈµÊ.
+		// ï¿½âº»ï¿½ï¿½ -1. ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½.
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,7 +65,7 @@ public class AdminDAO {
 		return result;
 	}
 	
-	/////// ¸ðµç È¸¿øÀÇ Á¤º¸¸¦ °¡Á®¿È //////
+	/////// ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ //////
 	public ArrayList<MemberDTO> listMember()
 	{
 		Connection conn = null;
@@ -102,7 +102,7 @@ public class AdminDAO {
 		return list;
 	}
 	
-	///// ¸ðµç Æ÷ÀÎÆ® ·Î±×ÀÇ Á¤º¸¸¦ °¡Á®¿È. /////
+	///// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. /////
 	/*public ArrayList<PointManagerDTO> LoadPointLog()
 	{
 		ArrayList<PointManagerDTO> list = new ArrayList<PointManagerDTO>();
@@ -139,7 +139,7 @@ public class AdminDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql_pointlog = "insert into pointlog values(?,?,?,sysdate)";
-		try	{ // ±× Æ÷ÀÎÆ® ¼öÁ¤ÇÑ ³»¿ªÀ» Æ÷ÀÎÆ®·Î±×¿¡ ÀÔ·ÂÇÔ.
+		try	{ // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Î±×¿ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½.
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql_pointlog);
 
@@ -201,7 +201,7 @@ public class AdminDAO {
 	
 	public void close(ResultSet rs, PreparedStatement pstmt, Connection conn)
 	{
-		if(rs!=null) // ResultSet ÀÖÀ» °æ¿ì
+		if(rs!=null) // ResultSet ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
 			try 
 			{
@@ -212,7 +212,7 @@ public class AdminDAO {
 			}
 		}
 		
-		if(pstmt!=null)  // PreparedStatement ÀÖÀ» °æ¿ì
+		if(pstmt!=null)  // PreparedStatement ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
 			try
 			{
@@ -223,7 +223,7 @@ public class AdminDAO {
 			}
 		}
 		
-		if(conn!=null) // Connection ÀÖÀ» °æ¿ì
+		if(conn!=null) // Connection ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
 			try 
 			{
