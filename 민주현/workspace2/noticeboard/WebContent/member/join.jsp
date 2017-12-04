@@ -13,12 +13,27 @@
 <link href="${pageContext.request.contextPath}/member/css/joinstyle.css" rel="stylesheet" type="text/css"/>
 <script src="script.js"></script>
 <script src="${pageContext.request.contextPath}/member/script.js"></script>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <section>
 	<form method="post" name="join" action="${pageContext.request.contextPath}/member/joinPro.do?"
 	onsubmit="return joinSave()">
 	<b>회원 가입</b>
+	<br><br>
 
 	<input type="hidden" name="page" value="${page }">
 	<input type="hidden" name="idcheck" value="0" >
@@ -49,11 +64,14 @@
 			<td><input type="button" value="이메일 인증" onClick="emailCheck(this.form.email.value)"></td>
 		</tr>
 	</table>
+	<br><br>
 	<table class="joinbutton">
-	<tr><td><input type="submit" value="회원가입"></td></tr>
+	<tr><td colspan="3"><input type="submit" value="회원가입"></td></tr>
 	</table>
 	</form>
 </section>
-
+<div id="footer">
+<%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>

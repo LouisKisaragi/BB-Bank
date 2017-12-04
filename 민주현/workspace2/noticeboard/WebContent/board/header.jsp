@@ -40,7 +40,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=1">
             <span class="nav-link-text">자유 게시판</span>
           </a>
         </li>
@@ -77,7 +77,7 @@
         <c:choose>
             	<c:when test="${login eq 1 }">
             <li class="nav-item">
-            	<a class="nav-link" href="${pageContext.request.contextPath }/member/viewMemberInformation.do?viewNick=${logNick}">회원정보</a>
+            	<a class="nav-link" data-toggle="modal" data-target="#exampleModal">회원정보</a>
             </li>
             <li class="nav-item">
 				<a class="nav-link" href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
@@ -98,7 +98,25 @@
         </div>
       </div>
     </nav>
-   
+   <!-- MemberInfo Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">회원 정보</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <%@ include file="/member/viewMemberInformation.jsp" %>
+          </div>
+          <div class="modal-footer">
+            <button class="close" type="button" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
 	<!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/Resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

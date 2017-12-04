@@ -21,8 +21,6 @@ history.go(-1);
 <section>
 <c:choose>
 <c:when test="${check eq 1 }">
-<%-- <p><br><br>${logNick}<br><br><p> --%>
-<%-- 	<input type ="button" value="이전페이지로 가기" onClick="location.href='${page}'"> --%>
 	<meta http-equiv="Refresh" content="0;url=${page}">
 </c:when>
 <c:otherwise>
