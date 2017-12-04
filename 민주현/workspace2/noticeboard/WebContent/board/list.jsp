@@ -22,7 +22,9 @@ rel="stylesheet" type="text/css"/>
 
     height:70px;   
 }
+
 </style>
+
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -34,11 +36,7 @@ rel="stylesheet" type="text/css"/>
 	(${logNick}님 안녕하세요)
 	</c:if>
 	</p>
-	<table class="returnmain">
-		<tr>
-		<td><a href="${pageContext.request.contextPath }/board/main.do">메인으로 가기</a>
-		</tr>
-	</table>
+
 		<c:if test="${login eq 1 and super_m eq '1'}">
 			<table class="listwritebutton">
 				<tr>

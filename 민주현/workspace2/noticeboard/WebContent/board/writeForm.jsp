@@ -9,8 +9,22 @@
 <script src="${pageContext.request.contextPath}/board/script.js"></script>
 <link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/board/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <section>
 <article>
 <b>글쓰기</b>
@@ -88,5 +102,8 @@
 </form>
 </article>
 </section>
+<div id="footer">
+<%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>
