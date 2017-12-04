@@ -2,7 +2,7 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//¿©±â¼­ ¸¸µç interface°¡ ³ªÁß¿¡ ¿Â°® Å¬·¡½ºµéÀÌ »ó¼Ó¹Ş°Ô µÇ´Â interface´Ù.
+//ì—¬ê¸°ì„œ ë§Œë“  interfaceê°€ ë‚˜ì¤‘ì— ì˜¨ê°– í´ë˜ìŠ¤ë“¤ì´ ìƒì†ë°›ê²Œ ë˜ëŠ” interfaceë‹¤.
 public interface J005_CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable;
 

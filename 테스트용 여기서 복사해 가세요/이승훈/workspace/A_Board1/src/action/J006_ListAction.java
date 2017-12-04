@@ -9,17 +9,17 @@ import model.J003_DAO;
 
 public class J006_ListAction implements J005_CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		request.setCharacterEncoding("UTF-8");				// ÇÑ±Û ÀÎ½ÄÀÌ Àß µÇµµ·Ï ÇÏ´Â °Í
-		String pageNum = request.getParameter("pageNum");	// ÆäÀÌÁö ¹øÈ£
-		String prefaces = request.getParameter("prefaces"); // ºĞ·ù ±¸ºĞÀÚ
-		String keywords = request.getParameter("keywords"); // °Ë»ö¿¡¼­ ÀÔ·ÂÇÑ Å°¿öµå
-		String jogun = request.getParameter("jogun");		// ÄŞº¸¹Ú½º
-		String bn = "5";			// °Ô½ÃÆÇ ¹øÈ£
-		String tempdata = "abccc";	// ³Í¹¹¾ß
+		request.setCharacterEncoding("UTF-8");				// í•œê¸€ ì¸ì‹ì´ ì˜ ë˜ë„ë¡ í•˜ëŠ” ê²ƒ
+		String pageNum = request.getParameter("pageNum");	// í˜ì´ì§€ ë²ˆí˜¸
+		String prefaces = request.getParameter("prefaces"); // ë¶„ë¥˜ êµ¬ë¶„ì
+		String keywords = request.getParameter("keywords"); // ê²€ìƒ‰ì—ì„œ ì…ë ¥í•œ í‚¤ì›Œë“œ
+		String jogun = request.getParameter("jogun");		// ì½¤ë³´ë°•ìŠ¤
+		String bn = "5";			// ê²Œì‹œíŒ ë²ˆí˜¸
+		String tempdata = "abccc";	// ë„Œë­ì•¼
 		
-		// ÀÓÀÇÀÇ ¼¼¼Ç»ı¼º
-		HttpSession session = request.getSession(true);		//¼¼¼ÇÀÌ ÀÖ´ÂÁö ¾ø´ÂÁö¸¦ È®ÀÎ 
-		// ÀÖÀ¸¸é ¼¼¼ÇÀ» ¹İÈ¯½ÃÅ°°í, ¾øÀ¸¸é »ı¼ºÇÑ´Ù.
+		// ì„ì˜ì˜ ì„¸ì…˜ìƒì„±
+		HttpSession session = request.getSession(true);		//ì„¸ì…˜ì´ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ë¥¼ í™•ì¸ 
+		// ìˆìœ¼ë©´ ì„¸ì…˜ì„ ë°˜í™˜ì‹œí‚¤ê³ , ì—†ìœ¼ë©´ ìƒì„±í•œë‹¤.
 		
 		if(pageNum == null) {
 			pageNum = "1";
@@ -30,45 +30,45 @@ public class J006_ListAction implements J005_CommandAction {
 		if(jogun == null) {
 			jogun = "etc";
 		}
-		if (keywords == "") { // keywords°¡ ¾µµ¥¾ø´Â °ªÀ¸·Î ÀÔ·ÂµÇ¾úÀ» °æ¿ì null·Î °íÃÄÁØ´Ù.
+		if (keywords == "") { // keywordsê°€ ì“¸ë°ì—†ëŠ” ê°’ìœ¼ë¡œ ì…ë ¥ë˜ì—ˆì„ ê²½ìš° nullë¡œ ê³ ì³ì¤€ë‹¤.
 			keywords = null;
 		}
-		// ÇÑ ÆäÀÌÁö´ç ±ÛÀÇ °³¼ö, DAOÀÇ getArticles() ¸Ş¼Òµå¿¡ ÀÖ´Â articleList = new ArrayList<J002_BoardDTO>(5)¿Í ¼ıÀÚ°¡ °°¾Æ¾ßÇÑ´Ù.
+		// í•œ í˜ì´ì§€ë‹¹ ê¸€ì˜ ê°œìˆ˜, DAOì˜ getArticles() ë©”ì†Œë“œì— ìˆëŠ” articleList = new ArrayList<J002_BoardDTO>(5)ì™€ ìˆ«ìê°€ ê°™ì•„ì•¼í•œë‹¤.
 		int pageSize = 5;
-		int currentPage = Integer.parseInt(pageNum); // ÆäÀÌÁö ¹øÈ£
-		int startRow = (currentPage - 1) * pageSize + 1; // ÆäÀÌÁöÀÇ ½ÃÀÛ ±Û ¹øÈ£
-		int endRow = currentPage * pageSize; // ÇÑ ÆäÀÌÁöÀÇ ¸¶Áö¸· ±Û ¹øÈ£
+		int currentPage = Integer.parseInt(pageNum); // í˜ì´ì§€ ë²ˆí˜¸
+		int startRow = (currentPage - 1) * pageSize + 1; // í˜ì´ì§€ì˜ ì‹œì‘ ê¸€ ë²ˆí˜¸
+		int endRow = currentPage * pageSize; // í•œ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ ë²ˆí˜¸
 		int count = 0;
 		int number = 0;
-		// ÄÜ¼Ö¿¡ Å×½ºÆ®¿ëÀ¸·Î Ãâ·Â
+		// ì½˜ì†”ì— í…ŒìŠ¤íŠ¸ìš©ìœ¼ë¡œ ì¶œë ¥
 		System.out.println("=========[]===========");
-		System.out.println("ÇÑÆäÀÌÁö´ç ±Û °³¼ö : " + pageSize);
+		System.out.println("í•œí˜ì´ì§€ë‹¹ ê¸€ ê°œìˆ˜ : " + pageSize);
 		System.out.println("currentPage : " + currentPage);
-		System.out.println("ÆäÀÌÁöÀÇ ½ÃÀÛ ±Û ¹øÈ£ : " + startRow);
-		System.out.println("ÆäÀÌÁöÀÇ ¸¶Áö¸· ±Û ¹øÈ£ : " + endRow);
+		System.out.println("í˜ì´ì§€ì˜ ì‹œì‘ ê¸€ ë²ˆí˜¸ : " + startRow);
+		System.out.println("í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ ë²ˆí˜¸ : " + endRow);
 		
-		List<J002_BoardDTO> articleList = null;	// ÀÏ¹İ ±ÛÀ» ÀúÀåÇÏ±â À§ÇÑ DTO
-		List<J002_BoardDTO> noticeList = null;	// °øÁö ±ÛÀ» ÀúÀåÇÏ±â À§ÇÑ DTO
-		J003_DAO dbPro = J003_DAO.getInstance(); // DB ¿¬°á
-		count = dbPro.getArticleCount(prefaces); // ÀüÃ¼ ±Û °³¼ö
-		if(count > 0) {				// ±ÛÀÌ ÇÏ³ª¶óµµ Á¸ÀçÇÒ¶§
-			noticeList = dbPro.getArticlesNotice(startRow, endRow);
-			if(keywords == null) {	// °Ë»ö ´Ü¾î°¡ ¾øÀ» ¶§(°Ë»ö ±â´É »ç¿ë ¾ÈÇÔ)
-				articleList = dbPro.getArticles(prefaces, startRow, endRow); // °Ë»ö Å°¿öµå°¡ ¾ø´Â ±Û ¸ñ·Ï Ãâ·Â
-			} else {				// °Ë»ö ´Ü¾î°¡ ÀÖÀ» ¶§(°Ë»ö ±â´É »ç¿ëÇÔ)
-				count = dbPro.getArticleCounts(prefaces, keywords, jogun);		// °Ë»ö Å°¿öµå°¡ Æ÷ÇÔµÈ ÀüÃ¼ ±Û °³¼ö
-				articleList = dbPro.getArticless(prefaces, keywords, jogun, startRow, endRow); // °Ë»ö Å°¿öµå¸¦ Æ÷ÇÔÇÑ ±Û ¸ñ·Ï Ãâ·Â
+		List<J002_BoardDTO> articleList = null;	// ì¼ë°˜ ê¸€ì„ ì €ì¥í•˜ê¸° ìœ„í•œ DTO
+		List<J002_BoardDTO> noticeList = null;	// ê³µì§€ ê¸€ì„ ì €ì¥í•˜ê¸° ìœ„í•œ DTO
+		J003_DAO dbPro = J003_DAO.getInstance(); // DB ì—°ê²°
+		count = dbPro.getArticleCount(prefaces); // ì „ì²´ ê¸€ ê°œìˆ˜
+		if(count > 0) {				// ê¸€ì´ í•˜ë‚˜ë¼ë„ ì¡´ì¬í• ë•Œ
+			noticeList = dbPro.getArticlesNotice(bn);
+			if(keywords == null) {	// ê²€ìƒ‰ ë‹¨ì–´ê°€ ì—†ì„ ë•Œ(ê²€ìƒ‰ ê¸°ëŠ¥ ì‚¬ìš© ì•ˆí•¨)
+				articleList = dbPro.getArticles(prefaces, startRow, endRow); // ê²€ìƒ‰ í‚¤ì›Œë“œê°€ ì—†ëŠ” ê¸€ ëª©ë¡ ì¶œë ¥
+			} else {				// ê²€ìƒ‰ ë‹¨ì–´ê°€ ìˆì„ ë•Œ(ê²€ìƒ‰ ê¸°ëŠ¥ ì‚¬ìš©í•¨)
+				count = dbPro.getArticleCounts(prefaces, keywords, jogun);		// ê²€ìƒ‰ í‚¤ì›Œë“œê°€ í¬í•¨ëœ ì „ì²´ ê¸€ ê°œìˆ˜
+				articleList = dbPro.getArticless(prefaces, keywords, jogun, startRow, endRow); // ê²€ìƒ‰ í‚¤ì›Œë“œë¥¼ í¬í•¨í•œ ê¸€ ëª©ë¡ ì¶œë ¥
 			}
-		} else {					// ±ÛÀÌ ÇÏ³ªµµ ¾øÀ» ¶§
+		} else {					// ê¸€ì´ í•˜ë‚˜ë„ ì—†ì„ ë•Œ
 			articleList = Collections.emptyList();
 			noticeList = Collections.emptyList();
 		}
-		number = count - (currentPage - 1) * pageSize; // ±Û ¸ñ·Ï¿¡ Ç¥½ÃÇÒ ¹øÈ£
-		// ÀçÈ®ÀÎ
+		number = count - (currentPage - 1) * pageSize; // ê¸€ ëª©ë¡ì— í‘œì‹œí•  ë²ˆí˜¸
+		// ì¬í™•ì¸
 		System.out.println("count : " + count);
 		System.out.println("number : " + number);
 		
-		// ÇØ´ç ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// í•´ë‹¹ ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("startRow", new Integer(startRow));
@@ -84,8 +84,8 @@ public class J006_ListAction implements J005_CommandAction {
 		request.setAttribute("jogun", jogun);
 		
 		session.setAttribute("tempdata", tempdata);
-		// ÀÌ·¸°Ô ÇÊ¿äÇÑ ¿ä¼ÒµéÀ» DAO¿¡¼­ Ã£¾Æ¼­ ÇÏ³ªÇÏ³ª Ãß°¡ÇÏÀÚ. ÀÌ°Å À§¿¡ ÀÖ´Â°Ç ¿¹½Ã´Ù.
+		// ì´ë ‡ê²Œ í•„ìš”í•œ ìš”ì†Œë“¤ì„ DAOì—ì„œ ì°¾ì•„ì„œ í•˜ë‚˜í•˜ë‚˜ ì¶”ê°€í•˜ì. ì´ê±° ìœ„ì— ìˆëŠ”ê±´ ì˜ˆì‹œë‹¤.
 		
-		return "/aboard/m001_list.jsp"; // ÇØ´çÇÏ´Â ºä °æ·Î ¹İÈ¯
+		return "/aboard/m001_list.jsp"; // í•´ë‹¹í•˜ëŠ” ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

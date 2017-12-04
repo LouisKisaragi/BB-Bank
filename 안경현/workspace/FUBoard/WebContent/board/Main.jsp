@@ -13,6 +13,8 @@
 <body>
 <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2&preface=all">
 				게시판2!</a>
+<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=1&preface=all">
+				게임</a>
 				<c:choose>
 	<c:when test="${login eq 1 }">
 		<a href="${pageContext.request.contextPath }/member/memberOut.do">회원탈퇴</a>

@@ -9,9 +9,9 @@ public class J012_DeleteFormAction implements J005_CommandAction {
 		String pageNum = request.getParameter("pageNum");
 		System.out.println(pageNum);
 
-		// ºä¿¡¼­ »ç¿ëÇÒ ¼Ó¼º
+		// ë·°ì—ì„œ ì‚¬ìš©í•  ì†ì„±
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));
-		return "/aboard/m007_deleteForm.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m007_deleteForm.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

@@ -8,9 +8,9 @@ import model.J003_DAO;
 public class J008_WriteProAction implements J005_CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
-		J002_BoardDTO article = new J002_BoardDTO();	// µ¥ÀÌÅÍ¸¦ Ã³¸®ÇÒ Bean
+		J002_BoardDTO article = new J002_BoardDTO();	// ë°ì´í„°ë¥¼ ì²˜ë¦¬í•  Bean
 		article.setNum(Integer.parseInt(request.getParameter("num")));
-		article.setBn(Integer.parseInt(request.getParameter("bn")));	// °Ô½ÃÆÇ ¹øÈ£
+		article.setBn(Integer.parseInt(request.getParameter("bn")));	// ê²Œì‹œíŒ ë²ˆí˜¸
 		article.setWriter(request.getParameter("writer"));
 		article.setSubject(request.getParameter("subject"));
 		article.setPass(request.getParameter("pass"));
@@ -25,8 +25,8 @@ public class J008_WriteProAction implements J005_CommandAction {
 		System.out.println("mem ? : " + request.getParameter("mem"));
 		article.setIp(request.getRemoteAddr());
 		
-		J003_DAO dbPro = J003_DAO.getInstance(); // DB ¿¬°á
+		J003_DAO dbPro = J003_DAO.getInstance(); // DB ì—°ê²°
 		dbPro.insertArticle(article);
-		return "/aboard/m004_writePro.jsp";	// ÇØ´ç ºä °æ·Î ¹İÈ¯
+		return "/aboard/m004_writePro.jsp";	// í•´ë‹¹ ë·° ê²½ë¡œ ë°˜í™˜
 	}
 }

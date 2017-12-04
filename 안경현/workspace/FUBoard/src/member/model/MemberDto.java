@@ -12,7 +12,7 @@ public class MemberDto {
 	private String super_m;
 	private Timestamp joindate;
 	private String nickname;
-	
+	private String logindate;
 	
 	public String getPass() {
 		return pass;
@@ -68,6 +68,12 @@ public class MemberDto {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getLogindate() {
+		return logindate;
+	}
+	public void setLogindate(String logindate) {
+		this.logindate = logindate;
 	}
 
 	

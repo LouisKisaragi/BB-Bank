@@ -1,6 +1,9 @@
 package member.action;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,12 +31,19 @@ public class LoginProAction implements CommandAction{
 		System.out.println("url::="+page);
 		System.out.println("id=="+request.getParameter("id"));
 		System.out.println("pass=="+request.getParameter("pass"));
+		Date d =new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		String now= sdf.format(d);
+		MemberDao dbPro = MemberDao.getInstance(); //DB 연결
+		
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
 		article.setId(request.getParameter("id"));
 		article.setPass(request.getParameter("pass"));
-		MemberDao dbPro = MemberDao.getInstance(); //DB 연결
 		int check = dbPro.loginArticle(id,pass);
+		if(check==1) {
+			
+		}
 		request.setAttribute("check", check);
 		request.setAttribute("page",page);
 		
@@ -46,7 +56,16 @@ public class LoginProAction implements CommandAction{
 			String lognick=article1.getNickname();
 			String logemail=article1.getEmail();
 			Timestamp logjoin=article1.getJoindate();
-			
+			String logdate=article1.getLogindate();
+			System.out.println("현재날짜:"+now);
+			System.out.println("최종로그일:"+logdate);
+			dbPro.MemberLogin(loginid, now);
+			if(now.equals(logdate)) {
+				
+			}else {
+				Object nick = lognick;
+				dbPro.MemberPoint(nick,10);
+			}
 		session.setAttribute("logNick",lognick);
 		session.setAttribute("logId",loginid);
 		session.setAttribute("logPass",loginpass);

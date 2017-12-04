@@ -511,6 +511,7 @@ public class BoardDao {
 				article.setBn(rs.getInt("bn"));
 				article.setPreface(rs.getString("preface"));
 				article.setMem(rs.getInt("mem"));
+				
 			}
 		} catch (Exception e){
 			e.printStackTrace();
