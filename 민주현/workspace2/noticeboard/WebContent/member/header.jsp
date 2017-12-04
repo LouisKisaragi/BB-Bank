@@ -25,10 +25,9 @@
 </head>
 <body>
 <!-- Navigation -->
-<!--     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top"> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath }/board/main.do">BBpark</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath }/board/main.do">BBBANK</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,12 +39,12 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=1">
+          <a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=4">
             <span class="nav-link-text">자유 게시판</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=2">
             <span class="nav-link-text">Q&A</span>
           </a>
         </li>
@@ -55,13 +54,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">KBO</a>
+              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=51">KBO</a>
             </li>
             <li>
-              <a href="cards.html">MLB</a>
+              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=52">MLB</a>
             </li>
             <li>
-              <a href="cards.html">NPB</a>
+              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=53">NPB</a>
             </li>
           </ul>
         </li>

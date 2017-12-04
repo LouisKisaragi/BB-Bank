@@ -6,6 +6,10 @@ public class GameDto {
 	private String team2;
 	private String startday;
 	private String endday;
+	private String play;
+	private String winner;
+	private String league;
+	private String title;
 	public int getGnum() {
 		return gnum;
 	}
@@ -35,5 +39,29 @@ public class GameDto {
 	}
 	public void setEndday(String endday) {
 		this.endday = endday;
+	}
+	public String getPlay() {
+		return play;
+	}
+	public void setPlay(String play) {
+		this.play = play;
+	}
+	public String getWinner() {
+		return winner;
+	}
+	public void setWinner(String winner) {
+		this.winner = winner;
+	}
+	public String getLeague() {
+		return league;
+	}
+	public void setLeague(String league) {
+		this.league = league;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}	
 }

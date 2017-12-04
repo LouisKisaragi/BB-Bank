@@ -42,92 +42,49 @@
 <tr>
 	<td colspan="10">
 	<c:choose>
-		<c:when test="${preface eq 'all'}">
+		<c:when test="${preface eq 'all' and login eq 1}">
 			[전부]&nbsp;&nbsp;&nbsp;		
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>
 		</c:when>
-		<c:when test="${preface eq 'solution' }">
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-			[응원한 경기]
+		<c:when test="${preface eq 'me' and login eq 1 }">
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;&nbsp;&nbsp;
+			[응원 안한 경기만 보기]
 		</c:when>
-		<c:when test="${preface eq 'problem' }">
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-			[응원하지않은 경기]&nbsp;&nbsp;&nbsp;
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
+		<c:when test="${preface eq 'notme' and login eq 1}">
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			[응원한 경기만 보기]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>
 		</c:when>
 		<c:otherwise>
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:otherwise>
 	</c:choose>
 	</td>
 </tr>
-	<tr>
-		<th id="num">번 호</th>
-		<th id="preface" width="10%">분 류</th>
-		<th id="title">제 목</th>
-		<th id="writer">업로더</th>
-		<th id="filename">파일이름</th>
-		<th id="date">작성일</th>
-		<th id="counter">조 회</th>
-	</tr>
-	<c:forEach var="marticle" items="${MarticleList}">
-	<tr>
-		<td align="center" width="50">
-			<c:out value="1"/>
-			<c:set var="number" value="${number - 1}"/>
-		</td>
-		<td class="preface">
-			[공지]
-		</td>
-		<td class="titletd">
-		<a href="${pageContext.request.contextPath}/board/content.do?num=${marticle.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}'">${marticle.subject }</a>
-		</td>
-		<td>
-		
-			<c:out value="${marticle.writer}"/>
-			
-		</td>
-		<td>${marticle.origin_filename }</td>
-		<td>${marticle.regdate}</td>
-		<td>${marticle.readcount}</td>
-	</tr>
-	</c:forEach>
 	<c:forEach var="article" items="${articleList}">
 	<tr>
-		<td align="center" width="50">
+		<td align="center" width="50" rowspan="2">
 			<c:out value="${number}"/>
-			<c:set var="number" value="${number - 1}"/>
+			<c:set var="number" value="No.${number - 1}"/>
 		</td>
-		<td class="preface">
-			<c:set var="preface" value="${article.preface }"/>
+		<td class="league" rowspan="2">
+			<c:set var="league" value="${article.league }"/>
 			<c:choose>
-				<c:when test="${article.preface eq 'problem' }">
-				[문제]
+				<c:when test="${article.league eq 'KBO' }">
+				<img src="${pageContext.request.contextPath}/game/images/KBO.jpg">
 				</c:when>
-				<c:when test="${article.preface eq 'solution' }">
-				[해결]
+				<c:when test="${article.preface eq 'NLB' }">
+				<img src="${pageContext.request.contextPath}/game/images/NPB.JPG">
 				</c:when>
+				<c:when test="${article.league eq 'MLB' }">
+				<img src="${pageContext.request.contextPath}/game/images/MLB.JPG">
+				</c:when>
+				
 			</c:choose>
 		</td>
 		<td class="titletd">
-			<c:if test="${article.depth > 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
-					width="${5 * article.depth}">
-				<img src="${pageContext.request.contextPath}/board/images/re.gif">
-			</c:if>
-			<c:if test="${article.depth == 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
-					width="${5 * article.depth}">
-			</c:if>
-			<a href="${pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}">
-				${article.subject}</a>
-			<c:if test="${article.readcount >= 20}">
-				<img src="${pageContext.request.contextPath}/board/images/hot.gif">
-			</c:if>
+			${article.title }
 		</td>
 		<td>	
 			<c:choose>
@@ -139,16 +96,7 @@
 				</c:otherwise>
 			</c:choose>
 			<p>
-			<c:set value="${article.ip }" var="ipcut"/>
-			(
-			<script language="javascript">
-				var ipcutt="<c:out value="${ipcut}"/>";
-				var ipc = ipcutt.split('.');
-				document.write(ipc[0]);
-				document.write(".");
-				document.write(ipc[1]);
-			</script>
-			)
+			
 		</td>
 		<td>${article.origin_filename }</td>
 		<td>${article.regdate}</td>
