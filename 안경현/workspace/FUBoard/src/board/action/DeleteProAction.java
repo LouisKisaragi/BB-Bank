@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import board.model.BoardDao;
 import board.model.BoardDto;
 import member.model.MemberDao;
+import member.model.MemberDto;
 
 public class DeleteProAction implements CommandAction{
 
@@ -19,22 +20,29 @@ public class DeleteProAction implements CommandAction{
 		String pageNum = request.getParameter("pageNum");
 		HttpSession session = request.getSession(false);
 		String pass = null;
-		if(session.equals(null)) {
+		//System.out.println("pass"+session.getAttribute("logPass"));
+		if(session.getAttribute("logPass")==null) {
 			pass = request.getParameter("pass");
 		}else {
 			pass=(String)session.getAttribute("logPass");
 		}
 		String location=request.getSession().getServletContext().getRealPath("/upload/");
 		BoardDao dbPro = BoardDao.getInstance();
-		
-		int check = dbPro.deleteArticle(num, pass, location);
 		BoardDto article=dbPro.getArticle(num);
 		int mem=article.getMem();
+		int check = dbPro.deleteArticle(num, pass, location);
+		
+		//System.out.println("check"+check);
+		//System.out.println("num"+num);
+		//System.out.println("pass"+pass);
+		
 		if(check==1) {
 			if(mem==1) {
 				MemberDao dbMPro= MemberDao.getInstance();//회원 DB연결
-				String Mwriter=article.getWriter();
-				dbMPro.MemberPoint(Mwriter,-10);
+				dbMPro.MemberPoint(session.getAttribute("logNick"),-10);
+				String id=article.getWriter();
+				MemberDto articleM = dbMPro.memberSeeArticle(id);
+				session.setAttribute("logPoint", articleM.getPoint());
 				}
 		}
 		//뷰에서 사용할 속성

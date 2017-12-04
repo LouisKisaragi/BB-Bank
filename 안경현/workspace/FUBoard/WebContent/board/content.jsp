@@ -103,6 +103,7 @@
 		<td colspan="10">
 		<c:choose>
 	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logNick}">
+	<!--회원이 쓴글 + 로그인상태 +작성자=로그인회원-->
 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
@@ -111,14 +112,22 @@
 				&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logNick }">
+	<!-- 회원이쓴글 + 로그인상태 + 작성자!=로그인회원 -->
 				<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 	</c:when>
-	<c:when test="${article.mem eq '1' and login eq 0 }">
+	<c:when test="${article.mem eq '1' and login ne 1 }">
+	<!-- 회원이쓴글 + 로그인상태가 아님 -->
 	 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq '2' }">
+	<!-- 관리자가쓴글 -->
+	</c:when>
+	<c:when test="${article.mem eq '0' and login eq 1}">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+			&nbsp;&nbsp;
+	<!-- 비회원이쓴글 + 로그인상태 -->
 	</c:when>
 	<c:otherwise>
 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">

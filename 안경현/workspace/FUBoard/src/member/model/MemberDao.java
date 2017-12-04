@@ -18,8 +18,44 @@ public class  MemberDao{
 		}
 		return instance;
 	}
+	//로그인시 최종접속일 갱신
+	public int MemberLogin(String id,String now) {
+		int result=0; 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbLogin = "";
+		try{
+			System.out.println("id:"+id);
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select LOGINDATE from MEMBER where ID = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dbLogin = rs.getString("logindate");
+				System.out.println("rs.getDBlogin="+dbLogin);
+				dbLogin=now;
+				System.out.println("login:"+now);
+				pstmt.close();
+				pstmt = conn.prepareStatement(
+						"update MEMBER set LOGINDATE=? where ID=?");
+				pstmt.setString(1,now);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+				result=1;
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return result;
+	}
 	//포인트 증감기능
-	public int MemberPoint(String id, int P) {
+	public int MemberPoint(Object n, int P) {
 		int point = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -27,20 +63,23 @@ public class  MemberDao{
 		String dbPoint = "";
 		int result = -1;
 		try{
+			String nick=n.toString();
+			System.out.println("id:"+nick);
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement(
-					"select POINT from MEMBER where ID = ?");
-			pstmt.setString(1, id);
+					"select POINT from MEMBER where NICKNAME = ?");
+			pstmt.setString(1, nick);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()){
-				dbPoint = rs.getString("pass");
+				dbPoint = rs.getString("point");
+				System.out.println("rs.getDBpoint="+dbPoint);
 				point=Integer.parseInt(dbPoint)+P;
+				System.out.println("point:"+point);
 				pstmt.close();
 				pstmt = conn.prepareStatement(
-						"update MEMBER set POINT=? where ID=?");
+						"update MEMBER set POINT=? where NICKNAME=?");
 				pstmt.setInt(1,point);
-				pstmt.setString(2, id);
+				pstmt.setString(2, nick);
 				pstmt.executeUpdate();
 				result=1;
 			}
@@ -334,6 +373,7 @@ public class  MemberDao{
 				article.setPoint(rs.getInt("point"));
 				article.setSuper_m(rs.getString("super_m"));
 				article.setNickname(rs.getString("nickname"));
+				article.setLogindate(rs.getString("logindate"));
 			}
 			
 			
@@ -409,6 +449,7 @@ public class  MemberDao{
 				article.setPoint(rs.getInt("point"));
 				article.setSuper_m(rs.getString("super_m"));
 				article.setNickname(rs.getString("nickname"));
+				article.setLogindate(rs.getString("logindate"));
 				
 			}
 			

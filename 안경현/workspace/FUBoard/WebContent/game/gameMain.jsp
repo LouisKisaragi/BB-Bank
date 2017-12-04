@@ -4,34 +4,27 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.lang.String.*" %>
 <!DOCTYPE html>
-
-
-
 <html>
 <head>
-
+<script src="script.js"></script>
+<link href="${pageContext.request.contextPath}/game/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/game/css/liststyle.css" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판</title>
-
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/board/css/liststyle.css" rel="stylesheet" type="text/css"/>
-<script src="${pageContext.request.contextPath}/board/script.js"></script>
+<title></title>
 </head>
 <body>
 <section>
-<c:set var="bn" value="2"/>
-<b>글목록(전체 글:${count})</b>
-<p><c:if test="${login eq 1 }">(${logNick }님 안녕하세요)</c:if></p>
 
-<table class="listwritebutton">
-	<tr>
-		<td>
-			<a href="${pageContext.request.contextPath}/board/writeForm.do?pageNum=${pageNum}&bn=${bn}&preface=${preface}">글쓰기</a>
-		</td>
-	</tr>
-</table>
+팀 응원<p>
+<c:if test="${login eq 1}">
+	${logNick }님의 보유 포인트는 ${logPoint }점 입니다.
+</c:if>
+
 <c:if test="${count == 0}">
-<table  class="listtable">
+
+
+<table class="gameMain">
+
 	<tr>
 		<td>
 			게시판에 저장된 글이 없습니다.
@@ -44,24 +37,24 @@
 
 	
 
-<table class="listtable">
+<table class="gamelisttable">
 	
 <tr>
 	<td colspan="10">
 	<c:choose>
 		<c:when test="${preface eq 'all'}">
 			[전부]&nbsp;&nbsp;&nbsp;		
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:when>
 		<c:when test="${preface eq 'solution' }">
 			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
 			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-			[해결]
+			[응원한 경기]
 		</c:when>
 		<c:when test="${preface eq 'problem' }">
 			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-			[문제]&nbsp;&nbsp;&nbsp;
+			[응원하지않은 경기]&nbsp;&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:when>
 		<c:otherwise>

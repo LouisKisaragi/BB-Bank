@@ -19,7 +19,7 @@ public class ViewMemberInformationAction  implements CommandAction{
 		
 		request.setAttribute("viewNick", viewNick);
 		request.setAttribute("article",article);
-		
+
 		return "/member/viewMemberInformation.jsp";
 	}
 
