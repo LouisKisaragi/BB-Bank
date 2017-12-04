@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import board.model.ConnUtil;
 
 public class  GameDao{
 	private static GameDao instance = null;
 	private GameDao(){}
+	
 	public static GameDao getInstance(){
 		if(instance == null){
 			synchronized(GameDao.class){
@@ -17,6 +20,137 @@ public class  GameDao{
 			}
 		}
 		return instance;
+	}
+	//글 목록을 가져와서 List로 반환하는 메서드(비회원용)
+	public List<GameDto> getNArticles(int start, int end){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<GameDto> articleList = null;
+		try{
+			conn = ConnUtil.getConnection();
+			String sql=null;
+				sql="select * from(select * from "
+						+"(select rownum RNUM, GNUM, TEAM1,"
+						+"TEAM2, STARTDAY, ENDDAY, PLAY,"
+						+"WINNER,LEAGUE,TITLE from" 
+						+"(select * from GAME order by GNUM)))"
+						+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+					rs = pstmt.executeQuery();
+		
+			if(rs.next()){
+				articleList = new ArrayList<GameDto>(5);
+				do {
+					GameDto article = new GameDto();
+					article.setGnum(rs.getInt("gnum"));
+					article.setTeam1(rs.getString("team1"));
+					article.setTeam2(rs.getString("team2"));
+					article.setStartday(rs.getString("startday"));
+					article.setEndday(rs.getString("endday"));
+					articleList.add(article);
+				} while(rs.next());
+			}
+		} catch(Exception e){
+				e.printStackTrace();
+		} finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return articleList;
+	}
+	//글 목록을 가져와서 List로 반환하는 메서드+분류별
+	public List<GameDto> getArticles(int start, int end, String preface, String id){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<GameDto> articleList = null;
+		try{
+			conn = ConnUtil.getConnection();
+			String sql=null;
+			if(preface.equals("all")) {
+				 sql="select * from(select * from "
+						+"(select rownum RNUM, GNUM, TEAM1,"
+						+"TEAM2, STARTDAY, ENDDAY, PLAY,"
+						+"WINNER from" 
+						+"(select * from GAME order by GNUM)))"
+						+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+					rs = pstmt.executeQuery();
+			}else if(preface.equals("me")) {
+				 sql="select * from(select * from "
+							+"(select rownum RNUM, GNUM, TEAM1,"
+							+"TEAM2, STARTDAY, ENDDAY, PLAY,"
+							+"WINNER, LEAGUE, TITLE from" 
+							+"(select * from GAME order by GNUM)where GNUM in (select VOTEGAMENUM from VOTEPLAYER where VOTEID=?))"
+							+"where RNUM >= ? and RNUM <= ?";
+	
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, id);
+						pstmt.setInt(2, start);
+						pstmt.setInt(3, end);
+						rs = pstmt.executeQuery();
+				}else if(preface.equals("notme")) {
+					sql="select * from(select * from "
+							+"(select rownum RNUM, GNUM, TEAM1,"
+							+"TEAM2, STARTDAY, ENDDAY, PLAY,"
+							+"WINNER from" 
+							+"(select * from GAME order by GNUM)where GNUM in (select VOTEGAMENUM from VOTEPLAYER where VOTEGAMENUM not in(select VOTEGAMENUM from VOTEPLAYER where VOTEID=?))"
+							+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
+					rs = pstmt.executeQuery();
+				}
+		
+			if(rs.next()){
+				articleList = new ArrayList<GameDto>(5);
+				do {
+					GameDto article = new GameDto();
+					article.setGnum(rs.getInt("gnum"));
+					article.setTeam1(rs.getString("team1"));
+					article.setTeam2(rs.getString("team2"));
+					article.setStartday(rs.getString("startday"));
+					article.setEndday(rs.getString("endday"));
+					articleList.add(article);
+				} while(rs.next());
+			}
+		} catch(Exception e){
+				e.printStackTrace();
+		} finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return articleList;
+	}
+	//응원글 전체 개수(비회원용)
+	public int getArticleNCount(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try{
+			conn = ConnUtil.getConnection();
+				pstmt = conn.prepareStatement("select count(*) from GAME");
+					rs = pstmt.executeQuery();
+		if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return count;
 	}
 	//응원글 전체 개수
 	public int getArticleCount(String preface, String id){
@@ -30,11 +164,11 @@ public class  GameDao{
 					pstmt = conn.prepareStatement("select count(*) from GAME");
 					rs = pstmt.executeQuery();
 			}else if(preface.equals("me")){
-				pstmt = conn.prepareStatement("select count(*) from VOTEPLAYER where VOTEID=?");
+				pstmt = conn.prepareStatement("select count(*) from game where gnum in(select votegamenum from voteplayer where voteid=?);");
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
-			}else {
-				pstmt = conn.prepareStatement("select count(*) from VOTEPLAYER where VOTEID!=?");
+			}else if(preface.equals("notme")){
+				pstmt = conn.prepareStatement("select count(*) from game where gnum in(select votegamenum from voteplayer where votegamenum not in(select votegamenum from voteplayer where voteid=?));");
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 			}
