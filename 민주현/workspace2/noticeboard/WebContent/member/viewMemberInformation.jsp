@@ -47,8 +47,10 @@ section{
 				<th>가입날짜</th><td>[${logJoin }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
+				<td><input type="button" value="탈퇴" onclick="document.location.href=''${pageContext.request.contextPath }/member/memberOut.do'"></td>
 				</tr>
+				
 				</table>
 				</c:when>
 			<c:when test="${login eq 1 and logNick ne viewNick}">
