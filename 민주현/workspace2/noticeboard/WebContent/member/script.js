@@ -215,3 +215,7 @@ function login(){
 		return false;
 	}
 }
+function openView(nick){
+	url="../member/viewMemberInformation.do?viewNick="+nick;
+	window.open(url,"_blank","width=300,height=300;");
+}

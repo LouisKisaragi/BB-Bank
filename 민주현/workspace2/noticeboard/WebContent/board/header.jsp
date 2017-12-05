@@ -11,7 +11,7 @@
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<script src="${pageContext.request.contextPath}/member/script.js"></script>
 <!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/Resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -81,7 +81,7 @@
         <c:choose>
             	<c:when test="${login eq 1 }">
             <li class="nav-item">
-            	<a class="nav-link" data-toggle="modal" data-target="#exampleModal">회원정보</a>
+            	<a class="nav-link" href="javascript:openView('${logNick }');" target="_blank">회원정보</a>
             </li>
             <li class="nav-item">
 				<a class="nav-link" href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
@@ -102,25 +102,7 @@
         </div>
       </div>
     </nav>
-   <!-- MemberInfo Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">회원 정보</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-          <%@ include file="/member/viewMemberInformation.jsp" %>
-          </div>
-          <div class="modal-footer">
-            <button class="close" type="button" data-dismiss="modal">닫기</button>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 	<!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/Resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
