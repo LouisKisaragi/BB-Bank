@@ -54,15 +54,20 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=51">KBO</a>
+              <a href="#">KBO</a>
             </li>
             <li>
-              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=52">MLB</a>
+              <a href="#">MLB</a>
             </li>
             <li>
-              <a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=53">NPB</a>
+              <a href="#">NPB</a>
             </li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="nav-link-text">응원 게시판</span>
+          </a>
         </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">

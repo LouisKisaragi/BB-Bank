@@ -16,6 +16,7 @@ public class BoardDto {
 	private Timestamp regdate;
 	private String content;
 	private String ip;
+	private int mem;
 
 	public int getNum() {
 		return num;
@@ -121,6 +122,13 @@ public class BoardDto {
 
 	public void setBn(int bn) {
 		this.bn = bn;
+	}
+	public int getMem() {
+		return mem;
+	}
+	
+	public void setMem(int mem) {
+		this.mem = mem;
 	}
 
 }

@@ -35,10 +35,10 @@
 			<td class="attr">구 분</td>
 			<td>
 				<select name="preface" size="1">
-				<option value="1" selected>1
-				<option value="2">2
-				<option value="3">3
-				<option value="4">4
+				<option value="1" selected>연예
+				<option value="2">정치
+				<option value="3">스포츠
+				<option value="4">뻘글
 				</select>
 			</td>
 		</tr>	
