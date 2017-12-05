@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "bb.dto.BoardDTO" %>
 <<<<<<< HEAD
-<%@ page import = "bb.service.BoardService" %>
+<%@ page import = "bb.board.BoardService" %>
 <%@ page import = "java.util.*" %>
 
 <% 

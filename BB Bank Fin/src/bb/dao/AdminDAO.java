@@ -1,5 +1,6 @@
 package bb.dao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -105,7 +106,7 @@ public class AdminDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				dto = new MemberDTO(rs.getString("id"), rs.getString("pass"), rs.getString("name"), rs.getString("email"), rs.getInt("point"), rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
+				dto = new PointManagerDTO(String guest_id, int p_calcul, String p_cont, Date p_date);
 				
 				list.add(dto);
 			}

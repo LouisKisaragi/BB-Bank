@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "bb.dto.MemberDTO" %>
-<%@ page import = "bb.service.GuestService" %>
+<%@ page import = "bb.board.MemberService" %>
     
 <%
 //id name address phone point joindate visiable
@@ -23,8 +23,7 @@ ArrayList<MemberDTO> list = service.getAllGuestList();
 			</tr>
 			
 			<%
-				for(int i=0; i<list.size(); i++)
-				{
+				for(int i=0; i<list.size(); i++) {
 					MemberDTO temp = list.get(i); %>
 					<tr>
 						<td><%=temp.getId() %></td>
