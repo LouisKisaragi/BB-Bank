@@ -1,7 +1,6 @@
 package bb.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -45,7 +44,7 @@ public class BoardWriteServlet extends HttpServlet {
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 
 		String id = dto.getId();
-		String savePath = "/IMAGE/";
+		String savePath = "/hairIMAGE/hairSELF";
 		int uploadFileSizeLimit = 5 * 1024 * 1024;
 		String encType = "utf-8";
 		ServletContext context = getServletContext();
@@ -74,6 +73,14 @@ public class BoardWriteServlet extends HttpServlet {
 		}
 
 		PrintWriter out = response.getWriter();
+		if(result > 0)	{
+			// 게시글 등록 성공
+			out.println("<script language='javascript'>");
+			out.println("alert('글 작성 성공! 10P가 지급 되었습니다.');");
+			out.println("</script>");
+			PointService service = new PointService();
+			service.ModifyPoint(dto.getId(), 10, "작성완료");
+		}
 
 		RequestDispatcher rdp = request.getRequestDispatcher(url);
 		rdp.forward(request, response);

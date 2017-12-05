@@ -162,7 +162,7 @@ public class J003_DAO {
 				}
 			}
 			res = pstmt.executeQuery();
-			// System.out.println("카운트가 사용한 SQL : " + sql);
+			 System.out.println("카운트가 사용한 SQL : " + sql);
 			if(res.next()) {
 				count = res.getInt(1);
 			}
@@ -408,7 +408,7 @@ public class J003_DAO {
 				}
 			}
 			res = pstmt.executeQuery();
-			// System.out.println("리스트가 사용한 SQL : " + sql);
+			 System.out.println("리스트가 사용한 SQL : " + sql);
 			if(res.next()) {
 				articleList = new ArrayList<J002_BoardDTO>(5); // ListAction에 선언된 pageSize와 같은 수로 리스트크기를 정하자.
 				do {

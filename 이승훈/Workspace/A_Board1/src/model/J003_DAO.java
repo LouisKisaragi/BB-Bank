@@ -131,6 +131,8 @@ public class J003_DAO {
 						pstmt.setString(1, prefaces);
 						pstmt.setString(2, keywords);
 					}
+					
+					//2017-12-04
 				} else {
 					if(jogun.equals("a")) {
 						sql = "select count(*) from BOARD where bn=5 and mem!=2 and subject like ?";

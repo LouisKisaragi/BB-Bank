@@ -12,27 +12,27 @@ public class PointManagerDTO {
 	포인트
 	최초 가입 : 100, 로그인 & 글 작성 : 10, 댓글 : 5, 투표(승부예측) : 50 */
 	
-		private String guest_id;
+		private String member_id;
 		private int p_calcul;
 		private String p_cont;
 		private Date p_date;
 		
 		public PointManagerDTO () {}
 
-		public PointManagerDTO(String guest_id, int p_calcul, String p_cont, Date p_date) {
+		public PointManagerDTO(String member_id, int p_calcul, String p_cont, Date p_date) {
 			super();
-			this.guest_id = guest_id;
+			this.member_id = member_id;
 			this.p_calcul = p_calcul;
 			this.p_cont = p_cont;
 			this.p_date = p_date;
 		}
 
-		public String getGuest_id() {
-			return guest_id;
+		public String getMember_id() {
+			return member_id;
 		}
 
-		public void setGuest_id(String guest_id) {
-			this.guest_id = guest_id;
+		public void setMember_id(String member_id) {
+			this.member_id = member_id;
 		}
 
 		public int getP_calcul() {

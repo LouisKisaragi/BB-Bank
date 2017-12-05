@@ -15,22 +15,44 @@
 </head>
 <body>
 	<section>
-		<b>글목록(전체 글:${count})</b>
+		<%
+			request.setCharacterEncoding("UTF-8");
+		%>
+		<b> <c:choose>
+				<c:when
+					test="${prefaces eq '1' or prefaces eq '2' or prefaces eq '3' or prefaces eq '4'}">
+		${prefaces}
+	</c:when>
+				<c:otherwise>
+		전체
+	</c:otherwise>
+			</c:choose> 
+			글목록(전체 글:${count})</b>
+		<!-- 검색어 -->
+		<c:if test="${keywords ne null}">
+			<br>검색어 : ${keywords}
+</c:if>
 		<table>
 			<tr>
 				<td>
-				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=0">[전체목록] </a>
-				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=1">[1] </a>
-				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=2">[2] </a>
-				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=3">[3] </a>
-				<a href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=4">[4] </a>
-				</td>
+				<!-- 해당하는 preface일 경우, 링크를 제거하자 -->
+				<a
+					href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=0">[전체목록]
+				</a> <a
+					href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=1">[연예]
+				</a> <a
+					href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=2">[정치]
+				</a> <a
+					href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=3">[스포츠]
+				</a> <a
+					href="${pageContext.request.contextPath}/board/list.do?bn=4&prefaces=4">[뻘글]
+				</a></td>
 			</tr>
 		</table>
 		<table class="listwritebutton">
 			<tr>
 				<td><a
-					href="${pageContext.request.contextPath}/board/writeForm.do?bn=4">글쓰기</a>
+					href="${pageContext.request.contextPath}/board/writeForm.do?">글쓰기</a>
 				</td>
 			</tr>
 		</table>
@@ -51,7 +73,7 @@
 					<th id="writer">작성자</th>
 					<th id="date">작성일</th>
 					<th id="counter">조 회</th>
-					<th id="ip">IP</th>
+					<th id="ip">조 회</th>
 				</tr>
 				<c:forEach var="article" items="${articleList}">
 					<tr>
@@ -90,12 +112,16 @@
 				</c:forEach>
 			</table>
 		</c:if>
-		
+
 		<!--페이징 처리  -->
-		<c:if test="${count > 0}"> <!-- 게시글이 하나라도 있으면 페이징 처리 화면이 뜬다. -->
-			<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }" /> <!-- 아래의 pageCount를 제어하는 삼항연산자. -->
-			<c:set var="pageCount" value="${count / pageSize + imsi }" /> <!-- 정수 부분이 중요하다. 정수 부분만 확인하자. -->
-			<c:set var="pageBlock" value="${3}" /> <!-- 페이징 처리에서 표시할 페이지의 수 -->
+		<c:if test="${count > 0}">
+			<!-- 게시글이 하나라도 있으면 페이징 처리 화면이 뜬다. -->
+			<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1 }" />
+			<!-- 아래의 pageCount를 제어하는 삼항연산자. -->
+			<c:set var="pageCount" value="${count / pageSize + imsi }" />
+			<!-- 정수 부분이 중요하다. 정수 부분만 확인하자. -->
+			<c:set var="pageBlock" value="${3}" />
+			<!-- 페이징 처리에서 표시할 페이지의 수 -->
 			<fmt:parseNumber var="result" value="${(currentPage-1) / pageBlock}"
 				integerOnly="true" />
 			<c:set var="startPage" value="${result * pageBlock + 1 }" />
@@ -105,7 +131,8 @@
 				<c:set var="endPage" value="${pageCount}" />
 			</c:if>
 
-			<c:if test="${startPage > pageBlock}"><!-- startPage 값이 pageBlock보다 클 때부터 작동한다. -->
+			<c:if test="${startPage > pageBlock}">
+				<!-- startPage 값이 pageBlock보다 클 때부터 작동한다. -->
 				<a
 					href="${pageContext.request.contextPath}/board/list.do?pageNum=
 ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
@@ -120,25 +147,26 @@ ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
 				<a
 					href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock }&prefaces=${prefaces}">다음</a>
 			</c:if>
-			<p>
-			<!-- 검색기능  -->
-			<form>
-				<tr>
-					<td>
-				<select name="kind">
-				<option value="1" selected >작성자
-				<option value="2" >제목
-				<option value="3">내용
-				<option value="4">제목+내용
-				</select>
-					</td>
-				</tr>
-			</form>
-			<form method=post name=search action="${pageContext.request.contextPath}/list.do">
-				<input type=text name=search><input type=submit value=찾기>
-			</form>	
-			
 		</c:if>
+		<p>
+			<!-- 검색기능  -->
+		<form method=post name=search
+			action="${pageContext.request.contextPath}/board/list.do?&prefaces=${prefaces}&bn=${bn}"
+			onsubmit="return searchGuard()">
+			<table>
+				<tr>
+				
+					<td><select name="condition">
+							<option value="1" selected>작성자
+							<option value="2">제목
+							<option value="3">내용
+							<option value="4">제목+내용
+					</select></td>
+					<td><input type=text name=keywords></td>
+					<td><input type=submit value=찾기></td>
+				</tr>
+			</table>
+		</form>
 	</section>
 </body>
 </html>

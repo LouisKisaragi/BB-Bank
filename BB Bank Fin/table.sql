@@ -20,10 +20,8 @@ create table member(
 	joindate date default sysdate,
 	admin number(1) default 0,
 	super_m number(1) default 1,
-	login
     -- 유저와 관리자를 구분하는 키, 가입하면 유저는 1만 받는다.
-	primary key()
-	foreign key(member_id)
+	primary key(id)
 );
 
 CREATE SEQUENCE MEMBER_SEQ

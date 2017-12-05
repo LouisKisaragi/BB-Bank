@@ -384,6 +384,7 @@ public class  MemberDao{
 			return result;
 		}
 
+		
 		//회원정보 가져오기
 		public MemberDto memberArticle(String id,String pass) {
 			Connection conn = null;

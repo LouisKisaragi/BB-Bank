@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "bb.dto.MemberDTO" %>
-<%@ page import = "bb.board.MemberService" %>
+<%@ page import = "bb.mamber.MemberService" %>
     
 <%
 //id name address phone point joindate visiable
 MemberService service = new MemberService();
-ArrayList<MemberDTO> list = service.getAllGuestList();
+ArrayList<MemberDTO> list = service.getAllMemberList();
 %>
 
 <h3 align="center">회원관리페이지</h3>
