@@ -39,7 +39,7 @@ public class DownloadFAction  implements CommandAction{
 		//DB에있는 정보가져오기
 		String fileName = null;
 		fileName=article.getServer_filename();
-		File downfile = new File("D:\\자바JSP\\jsp프로잭트\\workspace\\FUBoard\\WebContent\\board\\upload\\"+fileName);
+		File downfile = new File("C:\\Users\\IT64\\Documents\\GitHub\\BB\\BB-Bank\\안경현\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\FUBoard\\upload\\"+fileName);
 		if(!downfile.exists()) {
 			throw new FileNotFoundException();
 		}

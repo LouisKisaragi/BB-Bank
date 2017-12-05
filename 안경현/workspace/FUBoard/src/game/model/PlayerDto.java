@@ -1,39 +1,47 @@
 package game.model;
 
 public class PlayerDto {
-	private int gnum;
-	private String team1;
-	private String team2;
-	private String startday;
-	private String endday;
-	public int getGnum() {
-		return gnum;
+	private int votenum;
+	private String votenick;
+	private String voteid;
+	private int votegamenum;
+	private String voteteam;
+	private String votecomment;
+	public int getVotenum() {
+		return votenum;
 	}
-	public void setGnum(int gnum) {
-		this.gnum = gnum;
+	public void setVotenum(int votenum) {
+		this.votenum = votenum;
 	}
-	public String getTeam1() {
-		return team1;
+	public String getVotenick() {
+		return votenick;
 	}
-	public void setTeam1(String team1) {
-		this.team1 = team1;
+	public void setVotenick(String votenick) {
+		this.votenick = votenick;
 	}
-	public String getTeam2() {
-		return team2;
+	public String getVoteid() {
+		return voteid;
 	}
-	public void setTeam2(String team2) {
-		this.team2 = team2;
+	public void setVoteid(String voteid) {
+		this.voteid = voteid;
 	}
-	public String getStartday() {
-		return startday;
+	public int getVotegamenum() {
+		return votegamenum;
 	}
-	public void setStartday(String startday) {
-		this.startday = startday;
+	public void setVotegamenum(int votegamenum) {
+		this.votegamenum = votegamenum;
 	}
-	public String getEndday() {
-		return endday;
+	public String getVoteteam() {
+		return voteteam;
 	}
-	public void setEndday(String endday) {
-		this.endday = endday;
-	}	
+	public void setVoteteam(String voteteam) {
+		this.voteteam = voteteam;
+	}
+	public String getVotecomment() {
+		return votecomment;
+	}
+	public void setVotecomment(String votecomment) {
+		this.votecomment = votecomment;
+	}
+	
 }

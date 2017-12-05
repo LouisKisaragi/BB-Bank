@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.model.BoardDto;
 import board.model.ConnUtil;
 
 public class  GameDao{
@@ -21,6 +22,41 @@ public class  GameDao{
 		}
 		return instance;
 	}
+	//응원글 내용
+	public GameDto getGArticle(int gnum){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		GameDto article = null;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from Game where GNUM = ?");
+			pstmt.setInt(1, gnum);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				article = new GameDto();
+				article.setGnum(rs.getInt("gnum"));
+				article.setTeam1(rs.getString("team1"));
+				article.setTeam2(rs.getString("team2"));
+				article.setStartday(rs.getString("startday"));
+				article.setEndday(rs.getString("endday"));
+				article.setLeague(rs.getString("league"));
+				article.setTitle(rs.getString("title"));
+				article.setTeam1vote(rs.getInt("team1vote"));
+				article.setTeam2vote(rs.getInt("team2vote"));
+				article.setTeam1votetime(rs.getString("team1votetime"));
+				article.setTeam2votetime(rs.getString("team2votetime"));
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return article;
+	}
 	//글 목록을 가져와서 List로 반환하는 메서드(비회원용)
 	public List<GameDto> getNArticles(int start, int end){
 		Connection conn = null;
@@ -33,7 +69,7 @@ public class  GameDao{
 				sql="select * from(select * from "
 						+"(select rownum RNUM, GNUM, TEAM1,"
 						+"TEAM2, STARTDAY, ENDDAY, PLAY,"
-						+"WINNER,LEAGUE,TITLE from" 
+						+"WINNER,LEAGUE,TITLE, TEAM1VOTE, TEAM2VOTE, TEAM1VOTETIME, TEAM2VOTETIME from" 
 						+"(select * from GAME order by GNUM)))"
 						+"where RNUM >= ? and RNUM <= ?";
 					pstmt = conn.prepareStatement(sql);
@@ -50,6 +86,13 @@ public class  GameDao{
 					article.setTeam2(rs.getString("team2"));
 					article.setStartday(rs.getString("startday"));
 					article.setEndday(rs.getString("endday"));
+					article.setLeague(rs.getString("league"));
+					article.setTitle(rs.getString("title"));
+					article.setTeam1vote(rs.getInt("team1vote"));
+					article.setTeam2vote(rs.getInt("team2vote"));
+
+					article.setTeam1votetime(rs.getString("team1votetime"));
+					article.setTeam2votetime(rs.getString("team2votetime"));
 					articleList.add(article);
 				} while(rs.next());
 			}
@@ -75,7 +118,7 @@ public class  GameDao{
 				 sql="select * from(select * from "
 						+"(select rownum RNUM, GNUM, TEAM1,"
 						+"TEAM2, STARTDAY, ENDDAY, PLAY,"
-						+"WINNER from" 
+						+"WINNER,LEAGUE, TITLE, TEAM1VOTE, TEAM2VOTE, TEAM1VOTETIME, TEAM2VOTETIME from" 
 						+"(select * from GAME order by GNUM)))"
 						+"where RNUM >= ? and RNUM <= ?";
 					pstmt = conn.prepareStatement(sql);
@@ -86,7 +129,7 @@ public class  GameDao{
 				 sql="select * from(select * from "
 							+"(select rownum RNUM, GNUM, TEAM1,"
 							+"TEAM2, STARTDAY, ENDDAY, PLAY,"
-							+"WINNER, LEAGUE, TITLE from" 
+							+"WINNER, LEAGUE, TITLE, TEAM1VOTE, TEAM2VOTE, TEAM1VOTETIME, TEAM2VOTETIME from" 
 							+"(select * from GAME order by GNUM)where GNUM in (select VOTEGAMENUM from VOTEPLAYER where VOTEID=?))"
 							+"where RNUM >= ? and RNUM <= ?";
 	
@@ -99,7 +142,7 @@ public class  GameDao{
 					sql="select * from(select * from "
 							+"(select rownum RNUM, GNUM, TEAM1,"
 							+"TEAM2, STARTDAY, ENDDAY, PLAY,"
-							+"WINNER from" 
+							+"WINNER,LEAGUE, TITLE, TEAM1VOTE, TEAM2VOTE, TEAM1VOTETIME, TEAM2VOTETIME from" 
 							+"(select * from GAME order by GNUM)where GNUM in (select VOTEGAMENUM from VOTEPLAYER where VOTEGAMENUM not in(select VOTEGAMENUM from VOTEPLAYER where VOTEID=?))"
 							+"where RNUM >= ? and RNUM <= ?";
 					pstmt = conn.prepareStatement(sql);
@@ -118,6 +161,13 @@ public class  GameDao{
 					article.setTeam2(rs.getString("team2"));
 					article.setStartday(rs.getString("startday"));
 					article.setEndday(rs.getString("endday"));
+					article.setLeague(rs.getString("league"));
+					article.setTitle(rs.getString("title"));
+					article.setTeam1vote(rs.getInt("team1vote"));
+					article.setTeam2vote(rs.getInt("team2vote"));
+
+					article.setTeam1votetime(rs.getString("team1votetime"));
+					article.setTeam2votetime(rs.getString("team2votetime"));
 					articleList.add(article);
 				} while(rs.next());
 			}

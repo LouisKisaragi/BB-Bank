@@ -26,7 +26,7 @@ public class  MemberDao{
 		ResultSet rs = null;
 		String dbLogin = "";
 		try{
-			System.out.println("id:"+id);
+			//System.out.println("id:"+id);
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement(
 					"select LOGINDATE from MEMBER where ID = ?");
@@ -34,9 +34,9 @@ public class  MemberDao{
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbLogin = rs.getString("logindate");
-				System.out.println("rs.getDBlogin="+dbLogin);
+				//System.out.println("rs.getDBlogin="+dbLogin);
 				dbLogin=now;
-				System.out.println("login:"+now);
+				//System.out.println("login:"+now);
 				pstmt.close();
 				pstmt = conn.prepareStatement(
 						"update MEMBER set LOGINDATE=? where ID=?");
@@ -64,7 +64,7 @@ public class  MemberDao{
 		int result = -1;
 		try{
 			String nick=n.toString();
-			System.out.println("id:"+nick);
+			//System.out.println("id:"+nick);
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement(
 					"select POINT from MEMBER where NICKNAME = ?");
@@ -72,9 +72,9 @@ public class  MemberDao{
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dbPoint = rs.getString("point");
-				System.out.println("rs.getDBpoint="+dbPoint);
+				//System.out.println("rs.getDBpoint="+dbPoint);
 				point=Integer.parseInt(dbPoint)+P;
-				System.out.println("point:"+point);
+				//System.out.println("point:"+point);
 				pstmt.close();
 				pstmt = conn.prepareStatement(
 						"update MEMBER set POINT=? where NICKNAME=?");
@@ -295,8 +295,8 @@ public class  MemberDao{
 		try{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
-			System.out.println("name"+name);
-			System.out.println("email"+email);
+			//System.out.println("name"+name);
+			//System.out.println("email"+email);
 			
 			sql = "select id from MEMBER where NAME=? and EMAIL=?";
 			pstmt = conn.prepareStatement(sql);
@@ -314,7 +314,7 @@ public class  MemberDao{
 				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
 				if(conn != null) try { conn.close(); } catch (SQLException e){}
 			}
-		System.out.println("sq+l"+sql);
+		//System.out.println("sq+l"+sql);
 		return id;
 	}
 	//비밀번호 찾아서 출력
@@ -327,8 +327,8 @@ public class  MemberDao{
 		try{
 			conn = ConnUtil.getConnection();
 			//쿼리 작성
-			System.out.println("id="+id);
-			System.out.println("email="+email);
+			//System.out.println("id="+id);
+			//System.out.println("email="+email);
 			sql = "select pass from MEMBER where ID=? and EMAIL=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -337,7 +337,7 @@ public class  MemberDao{
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				pass=rs.getString("pass");
-				System.out.println("pass:::"+pass);
+				//System.out.println("pass:::"+pass);
 			}
 			}catch(Exception e){
 				e.printStackTrace();
@@ -357,7 +357,7 @@ public class  MemberDao{
 		MemberDto article = null;
 		try{
 			conn = ConnUtil.getConnection();
-			System.out.println("1");
+			//System.out.println("1");
 			//쿼리 작성
 			sql = "select * from MEMBER where NICKNAME=?";
 			pstmt = conn.prepareStatement(sql);

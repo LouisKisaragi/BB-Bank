@@ -8,9 +8,9 @@
 <head>
 <script src="script.js"></script>
 <link href="${pageContext.request.contextPath}/game/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/game/css/liststyle.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/game/css/gamestyle.css" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>응원</title>
 </head>
 <body>
 <section>
@@ -47,12 +47,12 @@
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>
 		</c:when>
-		<c:when test="${preface eq 'me' and login eq 1 }">
+		<c:when test="${preface eq 'notme' and login eq 1 }">
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;&nbsp;&nbsp;
 			[응원 안한 경기만 보기]
 		</c:when>
-		<c:when test="${preface eq 'notme' and login eq 1}">
+		<c:when test="${preface eq 'me' and login eq 1}">
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
 			[응원한 경기만 보기]&nbsp;&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>
@@ -64,60 +64,42 @@
 </tr>
 	<c:forEach var="article" items="${articleList}">
 	<tr>
-		<td align="center" width="50" rowspan="2">
+		<td align="center" width="50">
 			<c:out value="${number}"/>
-			<c:set var="number" value="No.${number - 1}"/>
+			<c:set var="number" value="${number - 1}"/>
 		</td>
-		<td class="league" rowspan="2">
+		<td class="league">
 			<c:set var="league" value="${article.league }"/>
 			<c:choose>
 				<c:when test="${article.league eq 'KBO' }">
-				<img src="${pageContext.request.contextPath}/game/images/KBO.jpg">
+				<img src="${pageContext.request.contextPath}/game/images/KBO.JPG" width="50px" height="50px">
 				</c:when>
-				<c:when test="${article.preface eq 'NLB' }">
-				<img src="${pageContext.request.contextPath}/game/images/NPB.JPG">
+				<c:when test="${article.league eq 'NLB' }">
+				<img src="${pageContext.request.contextPath}/game/images/NPB.JPG" width="50px" height="50px">
 				</c:when>
 				<c:when test="${article.league eq 'MLB' }">
-				<img src="${pageContext.request.contextPath}/game/images/MLB.JPG">
+				<img src="${pageContext.request.contextPath}/game/images/MLB.JPG" width="50px" height="50px">
 				</c:when>
 				
 			</c:choose>
 		</td>
 		<td class="titletd">
-			${article.title }
+		<a href="${pageContext.request.contextPath}/game/gameView.do?gnum=${article.gnum}&pageNum=${pageNum}&preface=${preface}">${article.title }</a>
 		</td>
 		<td>	
-			<c:choose>
-				<c:when test="${article.mem eq 1 }">	
-					<a href="javascript:openView('${article.writer }');" target="_blank"><c:out value="${article.writer}"/></a>
-				</c:when>
-				<c:otherwise>
-					<c:out value="${article.writer}"/>
-				</c:otherwise>
-			</c:choose>
-			<p>
+			<c:out value="${article.team1}"/>
+		<p>
 			
 		</td>
-		<td>${article.origin_filename }</td>
-		<td>${article.regdate}</td>
-		<td>${article.readcount}</td>
+		<td>${article.team1vote }%</td>
+		<td>${article.team2vote }%</td>
+		<td>	<c:out value="${article.team2}"/></td>
 	</tr>
 	</c:forEach>
 </table>
 
 </c:if>
-	<form method="post" name="listSearch" action="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=${bn }&preface=${preface }" 
-	onsubmit="return listSearchSave()">
-	<select name="details">
-		<option value="subject">제목</option>
-		<option value="content">내용</option>
-		<option value="subjectcontent">제목+내용</option>
-		<option value="writer">글쓴이</option>
-	</select>
-	<input type="text" name="search" value="${search }">
-	<input type="submit" value="검색" >
-	<p>
-	</form>
+	
 <c:if test="${count > 0}"><!-- 게시글이 하나라도 있으면 페이징 처리 화면이 뜬다. -->
 	<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}"/><!-- 아래의 pageCount를 제어하는 삼항연산자. -->
 	<c:set var="pageCount" value="${count / pageSize + imsi}"/><!-- 정수 부분이 중요하다. 정수 부분만 확인하자. -->

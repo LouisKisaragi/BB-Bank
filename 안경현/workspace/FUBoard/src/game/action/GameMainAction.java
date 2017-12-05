@@ -44,14 +44,13 @@ public class GameMainAction  implements CommandAction{
 				count = dbPro.getArticleNCount(); //전체 글 개수
 				if(count > 0){ //현재 페이지의 글 목록
 					articleList = dbPro.getNArticles(startRow, endRow);
-					System.out.println("5");
 				} else {
 					articleList = Collections.emptyList();
 				}
 			
 			}
 			number = count - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
-			
+
 			//해당 뷰에서 사용할 속성
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("currentPage", new Integer(currentPage));

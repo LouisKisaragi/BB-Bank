@@ -17,7 +17,7 @@
 		<param-value>commandPro.properties</param-value>
 	</init-param>
 	<multipart-config>
-			<location>D:/자바JSP/jsp프로잭트/workspace/FUBoard/WebContent/board/upload</location>
+			<location>C:/Users/IT64/Documents/GitHub/BB/BB-Bank/안경현/workspace/FUBoard/WebContent/board/upload</location>
 			<file-size-threshold>1024</file-size-threshold>
 	</multipart-config>
   </servlet>

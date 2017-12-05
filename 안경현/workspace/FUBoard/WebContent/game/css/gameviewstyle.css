@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width:500px;
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
+.gameviewtable{
+	text-align:center;
+	border-collapse:collapse;
+}
+.gameviewtable th{
+	color: #ffffff;
+	border:1px solid #333;
+	background-color: #4aa8b5; 
+	height:30px;
+	width:125px;
+}
+.title tr{
+	color: #ffffff;
+	border:1px solid #333;
+	background-color: #4aa8b5; 
+	height:30px;
+	width:125px;
+}
+.gameviewtable td {
+	border:1px solid #333;
+	text-align:center;
+	width:125px;	
+	height:30px;
+	border:1px solid #333;
+}
+.voteteam1table{
+	text-align:center;
+	border-collapse:collapse;
+}
+
+table .gameviewtitle{
+	text-align:left;
+}
+table .gameview{
+	text-align:left;
+	height:200px;
+}
+table .vote{
+	text-align:left;
+	height:200px;
+}
