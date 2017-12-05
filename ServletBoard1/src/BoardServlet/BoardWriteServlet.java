@@ -56,7 +56,7 @@ public class BoardWriteServlet extends HttpServlet {
 			String title = multi.getParameter("title");
 			String contents = multi.getParameter("contents");
 			
-			BoardDTO board_dto = new BoardDTO(id, title, contents, fileName);
+			BoardDTO board_dto = new BoardDTO(name, title, contents, fileName);
 			BoardDAO dao = BoardDAO.getinstance();
 			result = dao.writeBoard(board_dto);
 					
