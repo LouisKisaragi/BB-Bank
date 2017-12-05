@@ -17,7 +17,7 @@ if(request.getParameter("pageno") != null)
 }
 %>
     
-<h3 align="center">ポイント管理ページ</h3>
+<h3 align="center">포인트 관리</h3>
 
 <!-- 이 페이지에서 하는 작업
 기존 기능은 포인트 입/차감 기능을 갖고 있으으로

@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <%
 	String pageindex = null;
 	if(request.getAttribute("pageindex")!= null)
 	{
 		pageindex = (String) request.getAttribute("pageindex");
-	} else pageindex = "memberMenagerment.jsp";
+	} else pageindex = "memberMenagement.jsp";
 %>
 
 <!DOCTYPE html>
