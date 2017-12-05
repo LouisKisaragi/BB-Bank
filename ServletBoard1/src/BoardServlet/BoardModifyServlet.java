@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 //import com.oreilly.servlet.MultipartRequest;
 //import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-//import dao.BoardDAO;
-//import dto.BoardDTO;
+import dao.BoardDAO;
+import dto.BoardDTO;
 
 @WebServlet("/modify_board")
 public class BoardModifyServlet extends HttpServlet
