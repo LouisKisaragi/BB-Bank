@@ -37,7 +37,7 @@ public class BoardModifyServlet extends HttpServlet
 	HttpSession session = request.getSession();
     
 	String id = dto.getId();
-	String savePath = "/hairIMAGE/hairSELF";
+	String savePath = "/IMAGE/";
 	int uploadFileSizeLimit = 5 * 1024 * 1024;
 	String encType = "utf-8";
 	ServletContext context = getServletContext();
