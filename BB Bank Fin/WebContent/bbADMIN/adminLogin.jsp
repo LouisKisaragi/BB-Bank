@@ -27,7 +27,7 @@
 			  	<p><small>관리자 로그인 페이지 입니다.<br />
 			  			관리 권한이 없으면 로그인이 불가능합니다.
 			  		</small></p><hr />
-				<form action="/JSL_salong/adminLogin.do" method="post">
+				<form action="/adminLogin.do" method="post">
 				<div class="form-group">
 					<label class="control-label">ID</label>
 					<input class="form-control" type="text" name="id" placeholder="ID를 입력 하세요" />

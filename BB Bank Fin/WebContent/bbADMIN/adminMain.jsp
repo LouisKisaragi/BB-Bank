@@ -28,7 +28,7 @@
 		{ %>
 			<script type="text/javascript">
 				alert("Auth가 없습니다. 메인으로 이동합니다.");
-				location.href = "./FrontController?src=main";
+				location.href = "../FrontController?src=main";
 			</script>
 		<% } %>
 		

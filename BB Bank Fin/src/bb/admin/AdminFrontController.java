@@ -39,8 +39,7 @@ public class AdminFrontController extends HttpServlet {
 		else if (src.equals("guest"))
 		{
 			url = null;
-		}
-		
+		}		
 		request.setAttribute("pageindex", url);		
 		RequestDispatcher rdp = request.getRequestDispatcher("bbADMIN/adminMain.jsp");
 		rdp.forward(request, response);
@@ -50,5 +49,4 @@ public class AdminFrontController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
