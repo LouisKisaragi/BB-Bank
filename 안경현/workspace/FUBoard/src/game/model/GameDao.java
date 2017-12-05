@@ -22,6 +22,86 @@ public class  GameDao{
 		}
 		return instance;
 	}
+	//닉네임이 존제하는가 확인
+	public boolean getGNick(String nick, int gnum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean result=false;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select * from VOTEPLAYER where VOTEGAMENUM = ? and VOTENICK=?");
+			pstmt.setInt(1, gnum);
+			pstmt.setString(2, nick);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result=true;
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return result;
+	}
+	//응원글 댓글 작성시 갱신사항 불러오기
+	//응원 팀별 응원글수
+	public int getPArticle(int gnum, String team) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result=0;
+		try{
+			conn = ConnUtil.getConnection();
+			pstmt = conn.prepareStatement(
+					"select count(*) from VOTEPLAYER where VOTEGAMENUM = ? and VOTETEAM=?");
+			pstmt.setInt(1, gnum);
+			pstmt.setString(2, team);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result = rs.getInt(1);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		
+		return result;
+	}
+	//응원시 투표율+배율 갱신
+	public void updateBArticle(int gnum, int team1vote, int team2vote, String team1votetime, String team2votetime){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			try{
+				conn = ConnUtil.getConnection();
+				
+				//쿼리 작성
+				sql = "update GAME set"
+						+ "TEAM1VOTE=?, TEAM2VOTE=?, TEAM1VOTETIME=?, TEAM2VOTETIME=?"
+						+ "where GNUM=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, team1vote);
+				pstmt.setInt(2, team2vote);
+				pstmt.setString(3, team1votetime);
+				pstmt.setString(4, team2votetime);
+				pstmt.setInt(5, gnum);
+				pstmt.executeUpdate();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				if(rs != null) try { rs.close(); } catch (SQLException e){}
+				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+				if(conn != null) try { conn.close(); } catch (SQLException e){}
+			}
+		}
 	//응원글 내용
 	public GameDto getGArticle(int gnum){
 		Connection conn = null;

@@ -30,11 +30,30 @@ section{
 	height:30px;
 	border:1px solid #333;
 }
+.voteteam1table td{
+	border:1px solid #333;
+	text-align:center;
+	width:125px;	
+	height:30px;
+	border:1px solid #333;
+}
+.voteteam2table td{
+	border:1px solid #333;
+	text-align:center;
+	width:125px;	
+	height:30px;
+	border:1px solid #333;
+}
 .voteteam1table{
+
 	text-align:center;
 	border-collapse:collapse;
 }
+.voteteam2table{
 
+	text-align:center;
+	border-collapse:collapse;
+}
 table .gameviewtitle{
 	text-align:left;
 }

@@ -16,26 +16,29 @@
 <section>
 <b>경기보기</b>
 <br>
-<form method="post" name="content" action="${pageContext.request.contextPath}/game/vote.do?gnum=${gnum }&pageNum=${pageNum }&preface=${preface}"
-	onsubmit="return contentSave()">
+<form method="post" name="vote" action="${pageContext.request.contextPath}/game/vote.do?gnum=${gnum }&pageNum=${pageNum }&preface=${preface}"
+	onsubmit="return voteSave()">
 <input type="hidden" name="gnum" value="${gnum}">
 <input type="hidden" name="id" value="${logId }">
 <input type="hidden" name="nick" value="${logNick }">
+<input type="hidden" name="article.team1" value="${article.team1 }">
+<input type="hidden" name="article.team2" value="${article.team2 }">
 <table  class="gameviewtable">
 	<tr>
 		<th>내가 가진 포인트</th>
 		<c:choose>
 			<c:when test="${login eq 1 }">
 				<td>${logPoint}P</td>
+				<input type="hidden" name="mypoint" value="${logPoint }">
 			</c:when>
 			<c:otherwise>
 				<td>0P</td>
 			</c:otherwise>
 		</c:choose>
-		<th>사용가능 포인트</th>
+		<th>최대응원 포인트</th>
 		<c:choose>
 			<c:when test="${login eq 1 }">
-				<td>${canPoint }P</td>
+				<td>500P</td>
 			</c:when>
 			<c:otherwise>
 				<td>0P</td>
@@ -156,25 +159,45 @@
 	</tr>
 </table>
 </c:if>
+<div style="border: 1px solid blue; float: left; width: 45%;">
+	<table class="voteTeam1Table">
+		<tr>
+			<td>${article.team1vote}%<p>
+			참여인원 : <p>누적포인트 : P<p>배당률 : 배<p>
+		</tr>
+		<c:choose>
+			<c:when test="${vote eq 'true' }"><!-- 이미 응원한 글일때 -->
+				
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td><textarea name="commentTeam1" rows="4" cols="20"></textarea><p><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" value="등록"></td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+	</table>
+</div>
+<div style="border: 1px solid red; float: right; width: 45%;">
+	<table class="voteTeam2Table">
+		<tr>
+			<td>${article.team2vote}%<p>
+			참여인원 : <p>누적포인트 : P<p>배당률 : 배<p>
+		</tr>
+		<c:choose>
+			<c:when test="${vote eq 'true' }"><!-- 이미 응원한 글일때 -->
+				
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td><textarea name="commentTeam2" rows="4" cols="20"></textarea><p><input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" value="등록"></td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+	</table>
+</div>
 
-<table class="votetable">
-	<tr>
-	</tr>
-	<tr>
-		<td>${article.team1vote}%<p>
-		참여인원 : <p>누적포인트 : P<p>배당률 : 배<p>
-		<textarea name="commentTeam1" rows="4" cols="20"></textarea><p>
-		<input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" value="등록"></td>
-		<td>
-		</td>
-		<td>
-		<td>${article.team2vote}%<p>
-		참여인원 : <p>누적포인트 : P<p>배당률 : 배<p>
-		<textarea name="commentTeam2" rows="4" cols="20"></textarea><p>
-		<input type="submit"   style="WIDTH: 130pt; HEIGHT: 60pt" value="등록"></td>
-	</tr>
 	<c:if test="${count > 0}">
-	<div style="border: 1px solid blue; float: left; width: 50%;">
+	<div style="border: 1px solid blue; float: left; width: 45%;">
 		<table class="voteteam1table">
 			<c:forEach var="articlec" items="${articleList}">
 				<c:if test="${articlec.voteteam eq article.team1 }">	
@@ -189,7 +212,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	<div style="border: 1px solid red; float: left; width: 50%;">
+	<div style="border: 1px solid red; float: right; width: 45%;">
 		<table class="voteteam2table">
 			<c:forEach var="articlec" items="${articleList}">
 				<c:if test="${articlec.voteteam eq article.team2 }">	
@@ -205,7 +228,7 @@
 		</table>
 	</div>
 </c:if>
-</table>
+
 </form>
 </section>
 </body>

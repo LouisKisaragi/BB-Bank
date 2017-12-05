@@ -86,29 +86,25 @@ public class  PlayerDao{
 	public void insertPArticle(PlayerDto article){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql=null;
 			//쿼리 작성
 		try {
 			conn = ConnUtil.getConnection();
 			pstmt = conn.prepareStatement("select max(num) from VOTEPLAYER");
-			rs = pstmt.executeQuery();
 			sql = "insert into VOTEPLAYER"
 					+ "(VOTENUM, VOTENICK, VOTEID, "
 					+ "VOTEGAMENUM, VOTETEAM, VOTECOMMENT) "
-					+ "values(VOTEPLAYER_SEQ.nextval, ?, ?, ?, ?, ?)";
+					+ "values(VOTENUM_SEQ.nextval, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, article.getVotenum());
-			pstmt.setString(2, article.getVotenick());
-			pstmt.setString(3, article.getVoteid());
-			pstmt.setInt(4, article.getVotegamenum());
-			pstmt.setString(5, article.getVoteteam());
-			pstmt.setString(6, article.getVotecomment());
+			pstmt.setString(1, article.getVotenick());
+			pstmt.setString(2, article.getVoteid());
+			pstmt.setInt(3, article.getVotegamenum());
+			pstmt.setString(4, article.getVoteteam());
+			pstmt.setString(5, article.getVotecomment());
 			pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			if(rs != null) try { rs.close(); } catch (SQLException e){}
 			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
 			if(conn != null) try { conn.close(); } catch (SQLException e){}
 		}

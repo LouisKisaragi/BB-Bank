@@ -236,7 +236,7 @@ public class  MemberDao{
 			//쿼리 작성
 			sql = "insert into MEMBER"
 					+ "(PNUM, ID, PASS, NAME, EMAIL, NICKNAME, JOINDATE, SUPER_M)"					
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ? ,? ,?)";
+					+ "values(MEMBER_SEQ.nextval, ?, ?, ?, ?, ? ,? ,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getId());
 			pstmt.setString(2, article.getPass());

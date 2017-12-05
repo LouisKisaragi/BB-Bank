@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.action.CommandAction;
-import board.model.BoardDto;
 import game.model.GameDao;
 import game.model.GameDto;
 import game.model.PlayerDao;
@@ -17,22 +16,32 @@ public class VoteAction implements CommandAction{
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
-		
-	int ref,depth,step;
+		int gnum = Integer.parseInt(request.getParameter("gnum"));
+		String team1Name=null;
+		String team2Name=null;
 
-	
+		team1Name=request.getParameter("article.team1");
+		team2Name=request.getParameter("article.team2");
 		
 		PlayerDto article = new PlayerDto();	//데이터를 처리할 빈
-	
+
 		article.setVotegamenum(Integer.parseInt(request.getParameter("gnum")));
 		article.setVoteid(request.getParameter("id"));
 		article.setVotenick(request.getParameter("nick"));
+		GameDao d1bPro = GameDao.getInstance();
+		int team1vote = d1bPro.getPArticle(gnum, team1Name);
+		int team2vote = d1bPro.getPArticle(gnum, team2Name);
+		System.out.println("저장된1팀응원사람수:"+team1vote);
+		System.out.println("저장된2팀응원사람수:"+team2vote);
 		if(request.getParameter("commentTeam1")!="") {
 			//team1일때
-			article.setVoteteam("team1");
+			team1vote=team1vote+1;
+			article.setVoteteam(request.getParameter("article.team1"));
 			article.setVotecomment(request.getParameter("commentTeam1"));
 		}else {
-			article.setVoteteam("team2");
+			team2vote=team2vote+1;
+			//team2일때
+			article.setVoteteam(request.getParameter("article.team2"));
 			article.setVotecomment(request.getParameter("commentTeam2"));
 		}
 		
@@ -41,27 +50,32 @@ public class VoteAction implements CommandAction{
 		
 		
 		
-		int gnum = Integer.parseInt(request.getParameter("gnum"));
+	
 		
 		//해당 페이지 번호
 		String pageNum = request.getParameter("pageNum");
-		GameDao d1bPro = GameDao.getInstance();
 		
 		//해당 글번호에 대한 레코드
 		GameDto a1rticle = d1bPro.getGArticle(gnum);
-		int team1vote = a1rticle.getTeam1vote();
-		int team2vote = a1rticle.getTeam2vote();
+		System.out.println("변경된1팀응원사람수:"+team1vote);
+		System.out.println("변경된2팀응원사람수:"+team2vote);
+		
 		int sum=team1vote+team2vote;
-		System.out.println("1팀배당률:"+(sum/team1vote)+"배");
-		System.out.println("1팀퍼센트:"+(team1vote/sum)+"%");
-		System.out.println("2팀배당률:"+(sum/team2vote)+"배");
-		System.out.println("2팀퍼센트:"+(team2vote/sum)+"%");
-		//dbPro.getPArticle(gnum,여기 팀이름);여기서 해당 글안에 팀별로 사람수 구하기 2개다구해서 각각 넣어야됨
-		//배당률 (전체/본인팀사람수) 배
-		//전체 퍼센테이지 (본인팀사람수/전체)%
-		//소수점 다버림
+		float bat1team=sum/team1vote;
+		float bat2team=sum/team2vote;
+		System.out.println("1팀배당률:"+(bat1team)+"배");
+		System.out.println("1팀퍼센트:"+(team1vote*100/sum)+"%");
+		System.out.println("2팀배당률:"+(bat2team)+"배");
+		System.out.println("2팀퍼센트:"+(team2vote*100/sum)+"%");
+		team1vote=(team1vote*100/sum);
+		team2vote=(team2vote*100/sum);
+		String team1votetime=String.format("%.1f", bat1team);
+		String team2votetime=String.format("%.1f", bat2team);
+		System.out.println("1팀저장될거 : "+team1votetime);
+		System.out.println("2팀저장될거 : "+team2votetime);
+		d1bPro.updateBArticle(gnum, team1vote, team2vote, team1votetime, team2votetime);
 		//뷰에서 사용할 속성
-		request.setAttribute("num", new Integer(gnum));
+		request.setAttribute("gnum", new Integer(gnum));
 		request.setAttribute("preface", request.getParameter("preface"));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("article", a1rticle);

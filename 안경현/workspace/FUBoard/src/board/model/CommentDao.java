@@ -128,7 +128,7 @@ public class CommentDao {
 			sql = "insert into BOARDCOMMENT"
 					+ "(NUM, WRITER, PASS, "
 					+ "REGDATE, REF, STEP, DEPTH, CONTENT, IP, BN, MEM) "
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "values(BOARDCOMMENT_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getPass());
