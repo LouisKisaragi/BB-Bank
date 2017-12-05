@@ -1,7 +1,5 @@
 package bb.point;
-
 import java.util.*;
-
 import bb.dao.AdminDAO;
 import bb.dao.MemberDAO;
 import bb.dto.PointManagerDTO;

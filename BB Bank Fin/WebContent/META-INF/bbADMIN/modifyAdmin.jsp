@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = bb.dto.MemberDTO" %>
 <%
-	GuestDTO admin = (GuestDTO) session.getAttribute("AdminAuthority");
+	MemberDTO admin = (MemberDTO) session.getAttribute("AdminAuthority");
 
 %>
 
@@ -26,18 +26,6 @@
 			<label class="control-label col-sm-2" for="email">名前 : </label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="name" placeholder="<%=admin.getName()%>" value="<%=admin.getName()%>">
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">住所 : </label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="address" placeholder="<%=admin.getAddress()%>" value="<%=admin.getAddress()%>">
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">連絡先 : </label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="phone" placeholder="<%=admin.getPhone()%>" value="<%=admin.getPhone()%>">
 			</div>
 		</div>
 		<div class="form-group"> 

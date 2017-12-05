@@ -29,7 +29,7 @@ ArrayList<MemberDTO> list = service.getAllGuestList();
 					<tr>
 						<td><%=temp.getId() %></td>
 						<td><%=temp.getName() %></td>
-						<td><%=temp.getemail() %></td>
+						<td><%=temp.getEmail() %></td>
 						<td><%=temp.getPoint() %></td>
 						<td><%=temp.getJoindate() %></td>
 						<td>

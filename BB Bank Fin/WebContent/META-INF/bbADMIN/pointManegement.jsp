@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "bb.dto.PointManagerDTO" %>
 <%@ page import = "bb.point.PointService" %>
@@ -55,20 +54,20 @@ if(request.getParameter("pageno") != null)
 			<th>内容</th>
 			<th>与えた日</th>
 		</tr>
-		<!-- <% for(int i = x; i<list.size(); i++) { %>
+		<%-- <% for(int i = x; i<list.size(); i++) { %>
 			<tr>
 				<td><%=list.get(i).getMember_id() %></td>
 				<td><%=list.get(i).getP_calcul() %></td>
-				<!-- 포인트의 증감치 -->
+				포인트의 증감치
 				<td><%=list.get(i).getP_cont() %></td>
 				<td>
 					<%=list.get(i).getP_date() %>
 				</td>
-			</tr>	-->	
-		<% 
+			</tr>
+			<% 
 			count++;
 			if (count%10 == 0) break;
-		} %> 
+		} %>  --%>
 		
 	</table>
 	<ul class="pagination">

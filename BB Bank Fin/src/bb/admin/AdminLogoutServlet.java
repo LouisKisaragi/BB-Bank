@@ -45,7 +45,7 @@ public class AdminLogoutServlet extends HttpServlet {
 			session.invalidate();
 		}
 
-		request.setAttribute("message", "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.");
+		request.setAttribute("message", "ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		RequestDispatcher rdp = request.getRequestDispatcher("bbADMIN/adminLogin.jsp");
 		rdp.forward(request, response);
 	}

@@ -1,12 +1,10 @@
 package bb.admin;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bb.dao.BoardDAO;
 import bb.dto.BoardDTO;
@@ -27,7 +27,7 @@ import bb.dto.MemberDTO;
 @WebServlet("/Modify_board")
 public class BoardModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +46,7 @@ public class BoardModifyServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-	    
+
 		String id = dto.getId();
 		String savePath = "/bbIMAGE/adminset";
 		int uploadFileSizeLimit = 5 * 1024 * 1024;
@@ -54,37 +54,30 @@ public class BoardModifyServlet extends HttpServlet {
 		ServletContext context = getServletContext();
 		String uploadFilePath = context.getRealPath(savePath);
 		String url = "./FrontController?src=board";
-	    
+
 		try {
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			String fileName = multi.getFilesystemName("uploadFile");
 			String image = multi.getParameter("image");
-			if(fileName == null)
-			{
+			if(fileName == null) {
 				System.out.println("파일 업로드 실패");
-			}
-			else
-			{
+			} else {
 				System.out.println("파일 업로드 성공");
 				image = fileName;
 			}
-			
 			String title = multi.getParameter("title");
 			String contents = multi.getParameter("contents");
-			//int visiable = Integer.parseInt(multi.getParameter("visiable"));
+			int visiable = Integer.parseInt(multi.getParameter("visiable"));
 			int num = Integer.parseInt(multi.getParameter("num"));
-			
-			BoardDTO board_dto = new BoardDTO(num, id, title, contents, image);
+
+			BoardDTO board_dto = new BoardDTO(num, id, title, contents, image, visiable);
 			BoardDAO dao = BoardDAO.getinstance();
 			dao.modifyBoard(board_dto);
-					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		RequestDispatcher rdp = request.getRequestDispatcher(url);
 		rdp.forward(request, response);
-	  }
 	}
-
 }

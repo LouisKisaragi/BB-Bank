@@ -1,16 +1,13 @@
 package bb.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-//import bb.dto.BoardDTO;
+import bb.dto.BoardDTO;
 
 public class BoardDAO
 {
@@ -100,7 +97,7 @@ public class BoardDAO
 		return list;
 	}
 	
-	public ArrayList<QnADTO> getAllQnA() {
+/*	public ArrayList<QnADTO> getAllQnA() {
 		ArrayList<QnADTO> list = new ArrayList<QnADTO>();
 		String sql = "select * from board2 order by num desc";
 		Connection conn = null;
@@ -127,11 +124,7 @@ public class BoardDAO
 			close(rs, pstmt, conn);
 		}
 		return list;
-	}
-	
-
-	
-	
+	}*/
 	
 	
 /////////////////////////////////// 글삭제&복구 /////////////////////////////////////

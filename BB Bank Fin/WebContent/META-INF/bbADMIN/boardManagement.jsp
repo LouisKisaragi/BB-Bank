@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "bb.dto.BoardDTO" %>
-<!-- <%@ page import = "bb.service.BoardService" %>
-<%@ page import = "java.util.*" %>  -->
+<%@ page import = "bb.service.BoardService" %>
+<%@ page import = "java.util.*" %>
 
 <% 
 	BoardService service = new BoardService();

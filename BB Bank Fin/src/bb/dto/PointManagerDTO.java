@@ -12,7 +12,7 @@ public class PointManagerDTO {
 	포인트
 	최초 가입 : 100, 로그인 & 글 작성 : 10, 댓글 : 5, 투표(승부예측) : 50 */
 	
-		/*private String guest_id;
+		private String guest_id;
 		private int p_calcul;
 		private String p_cont;
 		private Date p_date;
@@ -57,6 +57,6 @@ public class PointManagerDTO {
 
 		public void setP_date(Date p_date) {
 			this.p_date = p_date;
-		}*/
+		}
 	}
 

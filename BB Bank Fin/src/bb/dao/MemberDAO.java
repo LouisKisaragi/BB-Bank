@@ -30,7 +30,7 @@ public class MemberDAO {
 		return conn;
 	}
 	
-	//////////////// ID Áßº¹ Ã¼Å© ///////////////
+	//////////////// ID ì¤‘ë³µ ì²´í¬ ///////////////
 	public int idCheck(String id)
 	{
 		Connection conn = null;
@@ -57,13 +57,13 @@ public class MemberDAO {
 		return result;
 	}
 	
-	///////////////////// ·Î±×ÀÎ Ã¼Å© /////////////////////////
+	///////////////////// ë¡œê·¸ì¸ ì²´í¬ /////////////////////////
 	public int checkLogin(String id, String pass)
 	{
 		int result = -1; 
-		// -1 : ¾ÆÀÌµğ ´Ù¸§
-		// 0 : ºñ¹Ğ¹øÈ£°¡ ´Ù¸§
-		// 1 : ·Î±×ÀÎ ¼º°ø
+		// -1 : ì•„ì´ë”” ë‹¤ë¦„
+		// 0 : ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦„
+		// 1 : ë¡œê·¸ì¸ ì„±ê³µ
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -78,16 +78,16 @@ public class MemberDAO {
 			
 			rs = pstmt.executeQuery();
 
-			if(rs.next()) // Äõ¸® ¼º°ø Ã¼Å©
+			if(rs.next()) // ì¿¼ë¦¬ ì„±ê³µ ì²´í¬
 			{ 
 				if(rs.getString("pass").equals(pass)) 
-				{ // ¼º°øÇß´Ù¸é dbºñ¹ø°ú ÀÔ·Â¹ŞÀº ºñ¹øÀ» ºñ±³
+				{ // ì„±ê³µí–ˆë‹¤ë©´ dbë¹„ë²ˆê³¼ ì…ë ¥ë°›ì€ ë¹„ë²ˆì„ ë¹„êµ
 					result = 1;
 				}else 
-				{ // ºñ¹øÀÌ ¸ÂÁö ¾ÊÀ» ½Ã 0 ¹İÈ¯ 
+				{ // ë¹„ë²ˆì´ ë§ì§€ ì•Šì„ ì‹œ 0 ë°˜í™˜ 
 					result = 0;
 				}
-			}else // Äõ¸® °á°ú°¡ ¾ø´Ù¸é id°ªÀÌ Àß¸ø µÊ.
+			}else // ì¿¼ë¦¬ ê²°ê³¼ê°€ ì—†ë‹¤ë©´ idê°’ì´ ì˜ëª» ë¨.
 			{ 
 				result = -1;
 			}			
@@ -103,7 +103,7 @@ public class MemberDAO {
 		return result;
 	}
 	
-	///////////////////// ·Î±×ÀÎ Ã¼Å© ÈÄ¿¡ ÇØ´ç idÀÇ Á¤º¸ ÀüºÎ °¡Á®¿È //////////////////////
+	///////////////////// ë¡œê·¸ì¸ ì²´í¬ í›„ì— í•´ë‹¹ idì˜ ì •ë³´ ì „ë¶€ ê°€ì ¸ì˜´ //////////////////////
 	public MemberDTO successLogin(String id){
 		
 		Connection conn = null;
@@ -138,14 +138,14 @@ public class MemberDAO {
 		return MemberDTO;
 	}
 	
-	///////////////////////////// È¸¿ø Æ÷ÀÎÆ® ÃßÃâ /////////////////////////////////
+	///////////////////////////// íšŒì› í¬ì¸íŠ¸ ì¶”ì¶œ /////////////////////////////////
 	public int getUserPoint(String id)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select point from Member where id=?";
-		int resultPoint = -1; // ±âº»°ª false
+		int resultPoint = -1; // ê¸°ë³¸ê°’ false
 		
 		try	{
 			conn = getConnection();
@@ -164,7 +164,7 @@ public class MemberDAO {
 		return resultPoint;
 	}
 	
-	///////////////////////////// È¸¿ø Æ÷ÀÎÆ® ¼öÁ¤ ////////////////////////////
+	///////////////////////////// íšŒì› í¬ì¸íŠ¸ ìˆ˜ì • ////////////////////////////
 	public void modifyPoint(String id, int point)
 	{
 		Connection conn = null;
@@ -172,7 +172,7 @@ public class MemberDAO {
 		String sql_Member = "update Member set point=? where id=?";
 		
 		try
-		{ // ¼öÁ¤ÇÑ Æ÷ÀÎÆ®¸¦ DB¿¡ ÀÔ·ÂÇÔ.
+		{ // ìˆ˜ì •í•œ í¬ì¸íŠ¸ë¥¼ DBì— ì…ë ¥í•¨.
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql_Member);
 
@@ -190,7 +190,7 @@ public class MemberDAO {
 		}
 	}
 	
-	/////////////////////////////////// È¸¿ø °¡ÀÔ /////////////////////////////////
+	/////////////////////////////////// íšŒì› ê°€ì… /////////////////////////////////
 	public boolean insertMember(MemberDTO Member)
 	{
 		Connection conn = null;
@@ -222,7 +222,7 @@ public class MemberDAO {
 		return returnValue;
 	}
 	
-	/////////////////////////////////// È¸¿ø Á¤º¸ ¼öÁ¤ /////////////////////////////////
+	/////////////////////////////////// íšŒì› ì •ë³´ ìˆ˜ì • /////////////////////////////////
 	public int modifyMember(MemberDTO MemberDTO)
 	{		
 		Connection conn = null;
@@ -255,7 +255,7 @@ public class MemberDAO {
 		return result;
 	}
 	
-	///////////////////////////// È¸¿ø »èÁ¦ ////////////////////////////////	
+	///////////////////////////// íšŒì› ì‚­ì œ ////////////////////////////////	
 	public int deleteMember(String id, int visiable)
 	{
 		Connection conn = null;
@@ -284,7 +284,7 @@ public class MemberDAO {
 		return result;
 	}
 	
-	//////////////////////////// ¾´°Å ´İ±â ////////////////////////////////
+	//////////////////////////// ì“´ê±° ë‹«ê¸° ////////////////////////////////
 	public void close(ResultSet rs, PreparedStatement pstmt, Connection conn)
 	{
 		if(rs!=null) // ResultSet

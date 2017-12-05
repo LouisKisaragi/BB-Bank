@@ -1,15 +1,12 @@
 package bb.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
 import bb.dto.MemberDTO;
 import bb.dto.PointManagerDTO;
 
@@ -17,13 +14,11 @@ public class AdminDAO {
 	
 	private AdminDAO() {}
 	private static AdminDAO instance = new AdminDAO();
-	public static AdminDAO getinstance()
-	{
+	public static AdminDAO getinstance() {
 		return instance;
 	}
 	
-	public Connection getConnection() throws Exception
-	{
+	public Connection getConnection() throws Exception {
 		Connection conn = null;
 		Context initContext = new InitialContext();
 		Context envContext = (Context)initContext.lookup("java:/comp/env");
@@ -34,8 +29,7 @@ public class AdminDAO {
 	}
 	
 	/////// 관리자 계정 로그인 처리//////
-	public int checkLogin(String id, String pass)
-	{
+	public int checkLogin(String id, String pass) {
 		int result = -1;
 		// 기본값 -1. 인증 안됨.
 		Connection conn = null;
@@ -50,10 +44,8 @@ public class AdminDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next())
-			{
-				if(rs.getString("pass").equals(pass))
-				{
+			if(rs.next()) {
+				if(rs.getString("pass").equals(pass)) {
 					result = 1;
 				}
 			}
@@ -66,8 +58,7 @@ public class AdminDAO {
 	}
 	
 	/////// 모든 회원의 정보를 가져옴 //////
-	public ArrayList<MemberDTO> listMember()
-	{
+	public ArrayList<MemberDTO> listMember() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -77,25 +68,21 @@ public class AdminDAO {
 		
 		String sql = "select * from Menber order by id desc";
 		
-		try
-		{
+		try	{
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next())
-			{
+			while(rs.next()) {
 				menberDTO = new MemberDTO(rs.getString("id"), rs.getString("pass"), rs.getString("name"), 
 				        rs.getString("email"), rs.getInt("point"), rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
 				
 				list.add(menberDTO);
 			}
 			
-		}catch(Exception e)
-		{
+		} catch(Exception e) {
 			e.printStackTrace();
-		}finally
-		{
+		} finally {
 			close(rs, pstmt, conn);
 		}
 		
@@ -103,8 +90,7 @@ public class AdminDAO {
 	}
 	
 	///// 모든 포인트 로그의 정보를 가져옴. /////
-	/*public ArrayList<PointManagerDTO> LoadPointLog()
-	{
+	public ArrayList<PointManagerDTO> LoadPointLog() {
 		ArrayList<PointManagerDTO> list = new ArrayList<PointManagerDTO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -118,10 +104,8 @@ public class AdminDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next())
-			{
-				dto = new MenberDTO(rs.getString("id"), rs.getString("pass"), rs.getString("name"), 
-				        rs.getString("email"), rs.getInt("point"), rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
+			while(rs.next()) {
+				dto = new MemberDTO(rs.getString("id"), rs.getString("pass"), rs.getString("name"), rs.getString("email"), rs.getInt("point"), rs.getDate("joindate"), rs.getInt("admin"), rs.getInt("visiable"));
 				
 				list.add(dto);
 			}
@@ -134,8 +118,7 @@ public class AdminDAO {
 		return list;
 	}
 	
-	public void insertPointlog(String id, int addPoint, String pointlog)
-	{
+	public void insertPointlog(String id, int addPoint, String pointlog) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql_pointlog = "insert into pointlog values(?,?,?,sysdate)";
@@ -153,10 +136,9 @@ public class AdminDAO {
 		} finally {
 			close(null, pstmt, conn);
 		}
-	}*/
+	}
 	
-	public void insertAnswer(String answer, int num)
-	{
+	public void insertAnswer(String answer, int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "update board2 set answer=? where num = ?";
@@ -177,8 +159,7 @@ public class AdminDAO {
 		}
 	}
 
-	public void deleteQnA(String num)
-	{
+	public void deleteQnA(String num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "delete from board2 where num=?";
@@ -186,11 +167,8 @@ public class AdminDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setInt(1, Integer.parseInt(num));
-			
 			pstmt.executeUpdate();
-			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -199,23 +177,19 @@ public class AdminDAO {
 		}
 	}
 	
-	public void close(ResultSet rs, PreparedStatement pstmt, Connection conn)
-	{
-		if(rs!=null) // ResultSet 있을 경우
+	public void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
+		if(rs != null) // ResultSet 있을 경우
 		{
-			try 
-			{
+			try {
 				rs.close();
-			} catch (SQLException e) 
-			{
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		if(pstmt!=null)  // PreparedStatement 있을 경우
 		{
-			try
-			{
+			try	{
 				pstmt.close();
 			} catch (SQLException e) 
 			{

@@ -1,7 +1,5 @@
 package bb.admin;
-
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,29 +24,17 @@ public class AdminFrontController extends HttpServlet {
 		{
 			url = "boardManagerment.jsp";
 		}
-		else if (src.equals("qna"))
+		/*else if (src.equals("qna"))
 		{
 			url = "qnaManagerment.jsp";
-		}
+		}*/
 		else if (src.equals("point"))
 		{
 			url = "pointManagerment.jsp";
 		}
-		else if (src.equals("style"))
-		{
-			url = "styleManagerment.jsp";
-		}
-		else if (src.equals("event"))
-		{
-			url = "eventManagerment.jsp";
-		}
 		else if (src.equals("modify"))
 		{
 			url = "modifyAdmin.jsp";
-		}
-		else if (src.equals("booking"))
-		{
-			url = "bookingAdmin.jsp";
 		}
 		else if (src.equals("guest"))
 		{
@@ -56,7 +42,7 @@ public class AdminFrontController extends HttpServlet {
 		}
 		
 		request.setAttribute("pageindex", url);		
-		RequestDispatcher rdp = request.getRequestDispatcher("hairADMIN/adminMain.jsp");
+		RequestDispatcher rdp = request.getRequestDispatcher("bbADMIN/adminMain.jsp");
 		rdp.forward(request, response);
 	}
 
