@@ -23,65 +23,40 @@
 <style type="text/css">
 
 section {
-	padding:0;
+
 	height:100%;
 	width: 1000px; 
 	margin: auto;
-	left:20; top:80; right:0; bottom:0;
+	left:30; top:0; right:0; bottom:0;
 	font-size: 15px;
 	color:#ce16e9;
 	text-align: center;
 }
 
-
 </style>
 </head>
 <body>
-<section>
-<br><br>
+
 <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-item active" style="background-image: url(' ${pageContext.request.contextPath}/upload/o-BASEBALL-facebook.jpg'); background-size: 1000px 300px;">
             <div class="carousel-caption d-none d-md-block">
               <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
     </header>
-    <br><br>
+<section>
+    <article>
+    
+   
+    
     <div class="row">
                 <!-- /.col-lg-6 -->
+ 
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -92,6 +67,7 @@ section {
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
+                           
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -101,21 +77,54 @@ section {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="article" items="${articleList1}">
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>                                     
+                                        <td>
+												<c:set var="preface" value="${article.preface }"/>
+												<c:choose>
+													<c:when test="${article.preface eq '공지' }">
+													[공지]
+													</c:when>
+													<c:when test="${article.preface eq '점검' }">
+													[점검]
+													</c:when>
+													<c:when test="${article.preface eq '이벤트' }">
+													[이벤트]
+													</c:when>
+													<c:when test="${article.preface eq '발표' }">
+													[발표]
+													</c:when>
+													
+												</c:choose>
+											</td>
+											<td class="titletd" >
+												<c:if test="${ article.depth > 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												<img src="${ pageContext.request.contextPath }/board/images/re.gif">
+												</c:if>
+												<c:if test="${ article.depth == 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												</c:if>
+												<a href="${ pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${currentPage}&bn=${bn1}">
+												${ article.subject }</a>
+												<c:if test="${ article.readcount >= 20 }">
+												<img src = "${ pageContext.request.contextPath}/board/images/hot.gif">
+												</c:if>		
+											</td>
+											<td>${ article.writer }
+											<c:set value="${article.ip }" var="ipcut"/>
+												(
+												<script type="text/javascript">
+													var ipcutt="<c:out value="${ipcut}"/>";
+													var ipc = ipcutt.split('.');
+													document.write(ipc[0]);
+													document.write(".");
+													document.write(ipc[1]);
+												</script>
+												)
+											</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -125,6 +134,7 @@ section {
                     </div>
                     <!-- /.panel -->
                 </div>
+                   
                 <!-- /.col-lg-6 -->
                  <!-- /.col-lg-6 -->
                 <div class="col-lg-6">
@@ -146,21 +156,54 @@ section {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="article" items="${articleList4}">
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
+                                        <td>
+												<c:set var="preface" value="${article.preface }"/>
+												<c:choose>
+													<c:when test="${article.preface eq '공지' }">
+													[공지]
+													</c:when>
+													<c:when test="${article.preface eq '점검' }">
+													[점검]
+													</c:when>
+													<c:when test="${article.preface eq '이벤트' }">
+													[이벤트]
+													</c:when>
+													<c:when test="${article.preface eq '발표' }">
+													[발표]
+													</c:when>
+													
+												</c:choose>
+											</td>
+											<td class="titletd" >
+												<c:if test="${ article.depth > 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												<img src="${ pageContext.request.contextPath }/board/images/re.gif">
+												</c:if>
+												<c:if test="${ article.depth == 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												</c:if>
+												<a href="${ pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${currentPage}&bn=${bn4}">
+												${ article.subject }</a>
+												<c:if test="${ article.readcount >= 20 }">
+												<img src = "${ pageContext.request.contextPath}/board/images/hot.gif">
+												</c:if>		
+											</td>
+											<td>${ article.writer }
+											<c:set value="${article.ip }" var="ipcut"/>
+												(
+												<script type="text/javascript">
+													var ipcutt="<c:out value="${ipcut}"/>";
+													var ipc = ipcutt.split('.');
+													document.write(ipc[0]);
+													document.write(".");
+													document.write(ipc[1]);
+												</script>
+												)
+											</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -191,21 +234,54 @@ section {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="article" items="${articleList2}">
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
+                                        <td>
+												<c:set var="preface" value="${article.preface }"/>
+												<c:choose>
+													<c:when test="${article.preface eq '공지' }">
+													[공지]
+													</c:when>
+													<c:when test="${article.preface eq '점검' }">
+													[점검]
+													</c:when>
+													<c:when test="${article.preface eq '이벤트' }">
+													[이벤트]
+													</c:when>
+													<c:when test="${article.preface eq '발표' }">
+													[발표]
+													</c:when>
+													
+												</c:choose>
+											</td>
+											<td class="titletd" >
+												<c:if test="${ article.depth > 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												<img src="${ pageContext.request.contextPath }/board/images/re.gif">
+												</c:if>
+												<c:if test="${ article.depth == 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												</c:if>
+												<a href="${ pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${currentPage}&bn=${bn2}">
+												${ article.subject }</a>
+												<c:if test="${ article.readcount >= 20 }">
+												<img src = "${ pageContext.request.contextPath}/board/images/hot.gif">
+												</c:if>		
+											</td>
+											<td>${ article.writer }
+											<c:set value="${article.ip }" var="ipcut"/>
+												(
+												<script type="text/javascript">
+													var ipcutt="<c:out value="${ipcut}"/>";
+													var ipc = ipcutt.split('.');
+													document.write(ipc[0]);
+													document.write(".");
+													document.write(ipc[1]);
+												</script>
+												)
+											</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -236,21 +312,54 @@ section {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="article" items="${articleList5}">
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
+                                        <td>
+												<c:set var="preface" value="${article.preface }"/>
+												<c:choose>
+													<c:when test="${article.preface eq '공지' }">
+													[공지]
+													</c:when>
+													<c:when test="${article.preface eq '점검' }">
+													[점검]
+													</c:when>
+													<c:when test="${article.preface eq '이벤트' }">
+													[이벤트]
+													</c:when>
+													<c:when test="${article.preface eq '발표' }">
+													[발표]
+													</c:when>
+													
+												</c:choose>
+											</td>
+											<td class="titletd" >
+												<c:if test="${ article.depth > 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												<img src="${ pageContext.request.contextPath }/board/images/re.gif">
+												</c:if>
+												<c:if test="${ article.depth == 0 }">
+												<img src="${ pageContext.request.contextPath }/board/images/level.gif" width="${5* article.depth }">
+												</c:if>
+												<a href="${ pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${currentPage}&bn=${bn5}">
+												${ article.subject }</a>
+												<c:if test="${ article.readcount >= 20 }">
+												<img src = "${ pageContext.request.contextPath}/board/images/hot.gif">
+												</c:if>		
+											</td>
+											<td>${ article.writer }
+											<c:set value="${article.ip }" var="ipcut"/>
+												(
+												<script type="text/javascript">
+													var ipcutt="<c:out value="${ipcut}"/>";
+													var ipc = ipcutt.split('.');
+													document.write(ipc[0]);
+													document.write(".");
+													document.write(ipc[1]);
+												</script>
+												)
+											</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -263,8 +372,8 @@ section {
                 <!-- /.col-lg-6 -->
                 
             </div>
- 
-        
+ 	</article>
+ 	<br><br>
 </section>    
 <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/vendor/jquery/jquery.min.js"></script>
