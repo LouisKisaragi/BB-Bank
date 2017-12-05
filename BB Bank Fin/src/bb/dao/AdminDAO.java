@@ -106,7 +106,7 @@ public class AdminDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				dto = new PointManagerDTO(String guest_id, int p_calcul, String p_cont, Date p_date);
+				dto = new PointManagerDTO(rs.getString("member_id"), rs.getInt("p_calcul"), rs.getString("p_cont"), rs.getDate("p_date"));
 				
 				list.add(dto);
 			}
