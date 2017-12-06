@@ -1,0 +1,5 @@
+package bb.admin;
+
+public class BoardWriteServlet {
+
+}

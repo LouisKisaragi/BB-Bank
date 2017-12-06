@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:17:02 +0900] "GET /BB_Bank_Fin/adminLogin.do HTTP/1.1" 405 1119
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:18:49 +0900] "GET /favicon.ico HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:24:34 +0900] "GET /BB_Bank_Fin/bbADMIN/adminLogin.jsp HTTP/1.1" 200 1796
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:25:07 +0900] "GET /favicon.ico HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:26:20 +0900] "POST /BB_Bank_Fin/adminLogin.do HTTP/1.1" 200 1808
+0:0:0:0:0:0:0:1 - - [06/Dec/2017:00:26:32 +0900] "POST /adminLogin.do HTTP/1.1" 404 1086
