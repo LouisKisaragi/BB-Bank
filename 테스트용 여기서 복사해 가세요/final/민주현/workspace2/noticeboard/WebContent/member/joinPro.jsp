@@ -15,6 +15,7 @@
 <script src="${pageContext.request.contextPath}/member/script.js"></script>
 <body>
 	<p><br><br>회원가입을 축하 드립니다<br><br><p>
-	<input type ="button" value="이전페이지로 가기" onClick="location.href='${page}'">
+<%-- 	<input type ="button" value="이전페이지로 가기" onClick="location.href='${page}'"> --%>
+	<input type ="button" value="메인페이지로 가기" onClick="location.href='${pageContext.request.contextPath }/board/main.do'">
 </body>
 </html>

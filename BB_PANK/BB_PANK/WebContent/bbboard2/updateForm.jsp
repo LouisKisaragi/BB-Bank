@@ -7,16 +7,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<script src="${pageContext.request.contextPath}/board/script.js"></script>
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/board/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
+<script src="${pageContext.request.contextPath}/bbboard2/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/bbboard2/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <section>
 <b>글수정</b>
 <article>
 	<form method="post" name="writeForm" action=
-		"${pageContext.request.contextPath}/board/updatePro.do?pageNum=${pageNum}&bn=${bn}" onsubmit="return writeSave()"  enctype="multipart/form-data">
+		"${pageContext.request.contextPath}/bbboard2/updatePro.do?pageNum=${pageNum}&bn=${bn}" onsubmit="return writeSave()"  enctype="multipart/form-data">
 		<table class="board">
 		<tr>
 			<td>
@@ -80,7 +80,7 @@
 				<input type="submit" value="글수정">
 				<input type="reset" value="다시작성">
 				<input type="button" value="목록보기" 
-				OnClick="window.location='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn}'">
+				OnClick="window.location='${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${pageNum}&bn=${bn}'">
 			</td>
 		</tr>
 		</table>

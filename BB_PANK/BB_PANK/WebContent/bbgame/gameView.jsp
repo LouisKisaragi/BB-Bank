@@ -8,15 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>경기응원</title>
-<link href="${pageContext.request.contextPath}/game/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/game/css/gameviewstyle.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/game/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbgame/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbgame/css/gameviewstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/bbgame/script.js"></script>
 </head>
 <body>
 <section>
 <b>경기보기</b>
 <br>
-<form method="post" name="vote" action="${pageContext.request.contextPath}/game/vote.do?gnum=${gnum }&pageNum=${pageNum }&preface=${preface}"
+<form method="post" name="vote" action="${pageContext.request.contextPath}/bbgame/vote.do?gnum=${gnum }&pageNum=${pageNum }&preface=${preface}"
 	onsubmit="return voteSave()">
 <input type="hidden" name="gnum" value="${gnum}">
 <input type="hidden" name="id" value="${logId }">
@@ -58,91 +58,91 @@
 			<td>
 			<c:choose>
 				<c:when test="${article.team1 eq 'lotte' }">
-					<img src="${pageContext.request.contextPath}/game/images/LOTTE.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/LOTTE.JPG" width="50px" height="50px"><p>
 					롯데 자이언츠
 				</c:when>
 				<c:when test="${article.team1 eq 'samsung' }">
-					<img src="${pageContext.request.contextPath}/game/images/SAMSUNG.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/SAMSUNG.JPG" width="50px" height="50px"><p>
 					삼성 라이온즈
 				</c:when>
 				<c:when test="${article.team1 eq 'kia' }">
-					<img src="${pageContext.request.contextPath}/game/images/KIA.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/KIA.JPG" width="50px" height="50px"><p>
 					KIA 타이거즈
 				</c:when>
 				<c:when test="${article.team1 eq 'dusan' }">
-					<img src="${pageContext.request.contextPath}/game/images/DUSAN.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/DUSAN.JPG" width="50px" height="50px"><p>
 					두산 베어스
 				</c:when>
 				<c:when test="${article.team1 eq 'nc' }">
-					<img src="${pageContext.request.contextPath}/game/images/NC.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/NC.JPG" width="50px" height="50px"><p>
 					NC 다이노스
 				</c:when>
 				<c:when test="${article.team1 eq 'sk' }">
-					<img src="${pageContext.request.contextPath}/game/images/SK.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/SK.JPG" width="50px" height="50px"><p>
 					SK 와이번스
 				</c:when>
 				<c:when test="${article.team1 eq 'lg' }">
-					<img src="${pageContext.request.contextPath}/game/images/LG.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/LG.JPG" width="50px" height="50px"><p>
 					LG 트윈스
 				</c:when>
 				<c:when test="${article.team1 eq 'nexen' }">
-					<img src="${pageContext.request.contextPath}/game/images/NEXEN.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/NEXEN.JPG" width="50px" height="50px"><p>
 					넥센 히어로즈
 				</c:when>
 				<c:when test="${article.team1 eq 'hanhwa' }">
-					<img src="${pageContext.request.contextPath}/game/images/HANHWA.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/HANHWA.JPG" width="50px" height="50px"><p>
 					한화 이글스
 				</c:when>
 				<c:when test="${article.team1 eq 'kt' }">
-					<img src="${pageContext.request.contextPath}/game/images/KT.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/KT.JPG" width="50px" height="50px"><p>
 					KT wiz
 				</c:when>
 			</c:choose>
 			</td>
 			<td colspan="2">
-				<img src="${pageContext.request.contextPath}/game/images/VS.JPG" width="50px" height="50px"><p>
+				<img src="${pageContext.request.contextPath}/bbgame/images/VS.JPG" width="50px" height="50px"><p>
 					총 참여 인원 : ${count }<p>총 누적 포인트 : ${count*500 }P<p>응원 포인트 한도 : 500P
 			</td>
 			<td>
 			<c:choose>
 				<c:when test="${article.team2 eq 'lotte' }">
-					<img src="${pageContext.request.contextPath}/game/images/LOTTE.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/LOTTE.JPG" width="50px" height="50px"><p>
 					롯데 자이언츠
 				</c:when>
 				<c:when test="${article.team2 eq 'samsung' }">
-					<img src="${pageContext.request.contextPath}/game/images/SAMSUNG.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/SAMSUNG.JPG" width="50px" height="50px"><p>
 					삼성 라이온즈
 				</c:when>
 				<c:when test="${article.team2 eq 'kia' }">
-					<img src="${pageContext.request.contextPath}/game/images/KIA.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/KIA.JPG" width="50px" height="50px"><p>
 					KIA 타이거즈
 				</c:when>
 				<c:when test="${article.team2 eq 'dusan' }">
-					<img src="${pageContext.request.contextPath}/game/images/DUSAN.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/DUSAN.JPG" width="50px" height="50px"><p>
 					두산 베어스
 				</c:when>
 				<c:when test="${article.team2 eq 'nc' }">
-					<img src="${pageContext.request.contextPath}/game/images/NC.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/NC.JPG" width="50px" height="50px"><p>
 					NC 다이노스
 				</c:when>
 				<c:when test="${article.team2 eq 'sk' }">
-					<img src="${pageContext.request.contextPath}/game/images/SK.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/SK.JPG" width="50px" height="50px"><p>
 					SK 와이번스
 				</c:when>
 				<c:when test="${article.team2 eq 'lg' }">
-					<img src="${pageContext.request.contextPath}/game/images/LG.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/LG.JPG" width="50px" height="50px"><p>
 					LG 트윈스
 				</c:when>
 				<c:when test="${article.team2 eq 'nexen' }">
-					<img src="${pageContext.request.contextPath}/game/images/NEXEN.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/NEXEN.JPG" width="50px" height="50px"><p>
 					넥센 히어로즈
 				</c:when>
 				<c:when test="${article.team2 eq 'hanhwa' }">
-					<img src="${pageContext.request.contextPath}/game/images/HANHWA.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/HANHWA.JPG" width="50px" height="50px"><p>
 					한화 이글스
 				</c:when>
 				<c:when test="${article.team2 eq 'kt' }">
-					<img src="${pageContext.request.contextPath}/game/images/KT.JPG" width="50px" height="50px"><p>
+					<img src="${pageContext.request.contextPath}/bbgame/images/KT.JPG" width="50px" height="50px"><p>
 					KT wiz
 				</c:when>
 			</c:choose>

@@ -13,9 +13,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
 
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/board/css/liststyle.css" rel="stylesheet" type="text/css"/>
-<script src="${pageContext.request.contextPath}/board/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbboard2/css/liststyle.css" rel="stylesheet" type="text/css"/>
+<script src="${pageContext.request.contextPath}/bbboard2/script.js"></script>
 </head>
 <body>
 <section>
@@ -26,7 +26,7 @@
 <table class="listwritebutton">
 	<tr>
 		<td>
-			<a href="${pageContext.request.contextPath}/board/writeForm.do?pageNum=${pageNum}&bn=${bn}&preface=${preface}">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/bbboard2/writeForm.do?pageNum=${pageNum}&bn=${bn}&preface=${preface}">글쓰기</a>
 		</td>
 	</tr>
 </table>
@@ -51,23 +51,23 @@
 	<c:choose>
 		<c:when test="${preface eq 'all'}">
 			[전부]&nbsp;&nbsp;&nbsp;		
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:when>
 		<c:when test="${preface eq 'solution' }">
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
 			[해결]
 		</c:when>
 		<c:when test="${preface eq 'problem' }">
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
 			[문제]&nbsp;&nbsp;&nbsp;
-			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
+			<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:when>
 		<c:otherwise>
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
+		<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+		<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=problem">[문제]</a>&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/bbboard2/list.do?pageNum=1&bn=${bn}&preface=solution">[해결]</a>
 		</c:otherwise>
 	</c:choose>
 	</td>
@@ -91,7 +91,7 @@
 			[공지]
 		</td>
 		<td class="titletd">
-		<a href="${pageContext.request.contextPath}/board/content.do?num=${marticle.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}'">${marticle.subject }</a>
+		<a href="${pageContext.request.contextPath}/bbboard2/content.do?num=${marticle.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}'">${marticle.subject }</a>
 		</td>
 		<td>
 		
@@ -122,18 +122,18 @@
 		</td>
 		<td class="titletd">
 			<c:if test="${article.depth > 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+				<img src="${pageContext.request.contextPath}/bbboard2/images/level.gif"
 					width="${5 * article.depth}">
-				<img src="${pageContext.request.contextPath}/board/images/re.gif">
+				<img src="${pageContext.request.contextPath}/bbboard2/images/re.gif">
 			</c:if>
 			<c:if test="${article.depth == 0}">
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+				<img src="${pageContext.request.contextPath}/bbboard2/images/level.gif"
 					width="${5 * article.depth}">
 			</c:if>
-			<a href="${pageContext.request.contextPath}/board/content.do?num=${article.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}">
+			<a href="${pageContext.request.contextPath}/bbboard2/content.do?num=${article.num}&pageNum=${pageNum }&bn=${bn}&preface=${preface}&details=${details }&search=${search}">
 				${article.subject}</a>
 			<c:if test="${article.readcount >= 20}">
-				<img src="${pageContext.request.contextPath}/board/images/hot.gif">
+				<img src="${pageContext.request.contextPath}/bbboard2/images/hot.gif">
 			</c:if>
 		</td>
 		<td>	
@@ -165,7 +165,7 @@
 </table>
 
 </c:if>
-	<form method="post" name="listSearch" action="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=${bn }&preface=${preface }" 
+	<form method="post" name="listSearch" action="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=1&bn=${bn }&preface=${preface }" 
 	onsubmit="return listSearchSave()">
 	<select name="details">
 		<option value="subject">제목</option>
@@ -191,20 +191,20 @@
 	</c:if>
 	
 	<c:if test="${pageNum > 1}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=1&bn=${bn}&preface=${preface}&details=${details }&search=${search}">[처음]</a>
+		<a href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=1&bn=${bn}&preface=${preface}&details=${details }&search=${search}">[처음]</a>
 		<c:if test="${startPage > pageBlock}"> <!-- startPage 값이 pageBlock보다 클 때부터 작동한다. -->
-			<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage - pageBlock}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[이전]</a>
+			<a href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${startPage - pageBlock}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[이전]</a>
 		</c:if>
 	</c:if>
 	
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[${i}]</a>
+		<a href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${i}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[${i}]</a>
 	</c:forEach>
 	
 	<c:if test="${endPage < pageCount}">
 		<c:choose>
 			<c:when test="${(startPage + pageBlock) <= lastPage}">
-				<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${startPage + pageBlock}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[다음]</a>
+				<a href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${startPage + pageBlock}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[다음]</a>
 			</c:when>
 		</c:choose>
 	</c:if>
@@ -212,7 +212,7 @@
 	<c:choose>
 		<c:when test="${lastPage eq pageNum}"></c:when>
 		<c:otherwise>
-			<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${lastPage}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[끝]</a>
+			<a href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${lastPage}&bn=${bn}&preface=${preface}&search=${search}&details=${details }">[끝]</a>
 		</c:otherwise>
 	</c:choose>
 	

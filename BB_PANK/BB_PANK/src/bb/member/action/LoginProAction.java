@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bb.board.action2.CommandAction;
+import bb.board.action.CommandAction;
 import bb.member.model.MemberDao;
 import bb.member.model.MemberDto;
 

@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width:500px;
+	margin: auto;
+	left:0; top:0; righr:0; bottom:0;
+}
+
+.board{
+	text-align:center;
+	border-collapse:collapse;
+}
+
+.board td {
+	border:1px solid #333;
+	text-align:left;
+	width:330px;
+	hegith:30px;
+	border:1px solid #333;
+}
+.board td .input{
+	width:97%;
+}
+.board .attr{
+	width: 100px;
+	text-align:center;
+}

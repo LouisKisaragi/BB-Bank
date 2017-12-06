@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bb.board.action2.CommandAction;
+import bb.board.action.CommandAction;
+
+
 
 public class ControllerAction extends HttpServlet{
 

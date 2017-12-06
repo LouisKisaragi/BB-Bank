@@ -8,15 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/board/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbboard2/css/contentstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/bbboard2/script.js"></script>
 </head>
 <body>
 <section>
 <b>답글 달기</b>
 <br>
-<form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}&cnum=${cnum}"
+<form method="post" name="content" action="${pageContext.request.contextPath}/bbboard2/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}&cnum=${cnum}"
 	onsubmit="return contentSave()">
 
 <table class="contenttable">

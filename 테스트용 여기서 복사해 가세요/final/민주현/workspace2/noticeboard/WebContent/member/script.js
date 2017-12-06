@@ -215,3 +215,18 @@ function login(){
 		return false;
 	}
 }
+function outSave(){
+	if(document.memberOut.pass.value==""){
+		alert("비밀번호를 입력해주세요.");
+		document.memberOut.pass.focus();
+		return false;
+	}
+}
+function openView(nick){
+	url="../member/viewMemberInformation.do?viewNick="+nick;
+	window.open(url,"_blank","width=300,height=300, screenX=550, screenY=300;");
+}
+function openMemberOut(nick){
+	url="../member/memberOut.do?viewNick="+nick;
+	window.open(url,"_blank","width=400,height=400, screenX=550, screenY=300;");	
+}

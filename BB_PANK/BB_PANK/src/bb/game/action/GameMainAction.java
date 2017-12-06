@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bb.board.action2.CommandAction;
+import bb.board.action.CommandAction;
 import bb.game.model.GameDao;
 import bb.game.model.GameDto;
 
@@ -22,7 +22,7 @@ public class GameMainAction  implements CommandAction{
 		int pageSize = 5; //한 페이지 당 글의 개수
 		int currentPage = Integer.parseInt(pageNum);
 		//페이지의 시작 글 번호
-		
+
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = currentPage * pageSize; //한 페이지의 마지막 글 번호
 		int count = 0;
@@ -30,8 +30,9 @@ public class GameMainAction  implements CommandAction{
 		List<GameDto> articleList = null;
 			String id=null;
 			GameDao dbPro = GameDao.getInstance(); //DB연결
-			if(session.getAttribute("loginId")!=null) {
-			id = (String)session.getAttribute("loginId");
+	
+			if(session.getAttribute("logId")!=null) {
+			id = (String)session.getAttribute("logId");
 			}
 			if(id!=null) {
 				count = dbPro.getArticleCount(preface,id); //전체 글 개수
@@ -51,6 +52,7 @@ public class GameMainAction  implements CommandAction{
 			
 			}
 			number = count - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
+		
 			
 			//end기간이 지났을경우 true값이 나온다
 			//해당 뷰에서 사용할 속성

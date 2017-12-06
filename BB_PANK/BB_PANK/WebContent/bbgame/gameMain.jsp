@@ -7,8 +7,8 @@
 <html>
 <head>
 <script src="script.js"></script>
-<link href="${pageContext.request.contextPath}/game/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/game/css/gamestyle.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/bbgame/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbgame/css/gamestyle.css" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>응원</title>
 </head>
@@ -44,45 +44,45 @@
 	<c:choose>
 		<c:when test="${preface eq 'all' and login eq 1}">
 			[전부]&nbsp;		
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
 		</c:when>
 		<c:when test="${preface eq 'notme' and login eq 1 }">
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
 			[응원 안한 경기만 보기]
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
 		</c:when>
 		<c:when test="${preface eq 'me' and login eq 1}">
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
 			[응원한 경기만 보기]&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
 		</c:when>
 		<c:when test="${preface eq 'endgame' and login eq 1}">
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
 			[끝난 경기만 보기]
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endmygame">[응원한 끝난 경기만 보기]</a>&nbsp;
 		</c:when>
 		<c:when test="${preface eq 'endmygame' and login eq 1}">
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=me">[응원한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=notme">[응원 안한 경기만 보기]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>&nbsp;
 			[응원한 끝난 경기만 보기]
 		</c:when>
 		<c:when test="${preface eq 'all' and login ne 1 }">
 			[전부]
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=endgame">[끝난 경기만 보기]</a>
 		</c:when>
 		<c:when test="${preface eq 'endgame' and login ne 1 }">
-			<a href="${pageContext.request.contextPath }/game/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;
+			<a href="${pageContext.request.contextPath }/bbgame/gameMain.do?pageNum=1&preface=all">[전부]</a>&nbsp;
 			[끝난 경기만 보기]
 		</c:when>
 		<c:otherwise>
@@ -106,19 +106,19 @@
 			<c:set var="league" value="${article.league }"/>
 			<c:choose>
 				<c:when test="${article.league eq 'KBO' }">
-				<img src="${pageContext.request.contextPath}/game/images/KBO.JPG" width="50px" height="50px">
+				<img src="${pageContext.request.contextPath}/bbgame/images/KBO.JPG" width="50px" height="50px">
 				</c:when>
 				<c:when test="${article.league eq 'NLB' }">
-				<img src="${pageContext.request.contextPath}/game/images/NPB.JPG" width="50px" height="50px">
+				<img src="${pageContext.request.contextPath}/bbgame/images/NPB.JPG" width="50px" height="50px">
 				</c:when>
 				<c:when test="${article.league eq 'MLB' }">
-				<img src="${pageContext.request.contextPath}/game/images/MLB.JPG" width="50px" height="50px">
+				<img src="${pageContext.request.contextPath}/bbgame/images/MLB.JPG" width="50px" height="50px">
 				</c:when>
 				
 			</c:choose>
 		</td>
 		<td class="titletd">
-		<a href="${pageContext.request.contextPath}/game/gameView.do?gnum=${article.gnum}&pageNum=${pageNum}&preface=${preface}">${article.title }</a>
+		<a href="${pageContext.request.contextPath}/bbgame/gameView.do?gnum=${article.gnum}&pageNum=${pageNum}&preface=${preface}">${article.title }</a>
 		</td>
 		<td>
 			${article.startday }
@@ -162,20 +162,20 @@
 	</c:if>
 	
 	<c:if test="${pageNum > 1}">
-		<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=1&preface=${preface}">[처음]</a>
+		<a href="${pageContext.request.contextPath}/bbgame/gameMain.do?pageNum=1&preface=${preface}">[처음]</a>
 		<c:if test="${startPage > pageBlock}"> <!-- startPage 값이 pageBlock보다 클 때부터 작동한다. -->
-			<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=${startPage - pageBlock}&preface=${preface}">[이전]</a>
+			<a href="${pageContext.request.contextPath}/bbgame/gameMain.do?pageNum=${startPage - pageBlock}&preface=${preface}">[이전]</a>
 		</c:if>
 	</c:if>
 	
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=${i}&preface=${preface}">[${i}]</a>
+		<a href="${pageContext.request.contextPath}/bbgame/gameMain.do?pageNum=${i}&preface=${preface}">[${i}]</a>
 	</c:forEach>
 	
 	<c:if test="${endPage < pageCount}">
 		<c:choose>
 			<c:when test="${(startPage + pageBlock) <= lastPage}">
-				<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=${startPage + pageBlock}&preface=${preface}">[다음]</a>
+				<a href="${pageContext.request.contextPath}/bbgame/gameMain.do?pageNum=${startPage + pageBlock}&preface=${preface}">[다음]</a>
 			</c:when>
 		</c:choose>
 	</c:if>
@@ -183,7 +183,7 @@
 	<c:choose>
 		<c:when test="${lastPage eq pageNum}"></c:when>
 		<c:otherwise>
-			<a href="${pageContext.request.contextPath}/game/gameMain.do?pageNum=${lastPage}}&preface=${preface}">[끝]</a>
+			<a href="${pageContext.request.contextPath}/bbgame/gameMain.do?pageNum=${lastPage}}&preface=${preface}">[끝]</a>
 		</c:otherwise>
 	</c:choose>
 	

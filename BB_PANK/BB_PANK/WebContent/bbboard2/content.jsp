@@ -8,15 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/board/css/contentstyle.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/board/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbboard2/css/contentstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/bbboard2/script.js"></script>
 </head>
 <body>
 <section>
 <b>자료 보기</b>
 <br>
-<form method="post" name="content" action="${pageContext.request.contextPath}/board/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
+<form method="post" name="content" action="${pageContext.request.contextPath}/bbboard2/comment.do?num=${num }&pageNum=${pageNum }&bn=${bn}"
 	onsubmit="return contentSave()">
 <input type="hidden" name="num" value="${num}">
 <c:choose>
@@ -95,7 +95,7 @@
 	</tr>
 	<tr>
 		<th>파일이름</th>
-		<td colspan ="8"><a href="${pageContext.request.contextPath}/board/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
+		<td colspan ="8"><a href="${pageContext.request.contextPath}/bbboard2/download.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}">
 				${article.origin_filename}</a></td>
 		<td><fmt:formatNumber value="${article.filesize/1024}" pattern="#,###"/>KB</td>
 	</tr>
@@ -104,42 +104,42 @@
 		<c:choose>
 	<c:when test="${article.mem eq '1' and login eq 1 and article.writer eq logNick}">
 	<!--회원이 쓴글 + 로그인상태 +작성자=로그인회원-->
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
-		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
-		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq'1' and login eq 1 and article.writer ne logNick }">
 	<!-- 회원이쓴글 + 로그인상태 + 작성자!=로그인회원 -->
-				<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+				<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq '1' and login ne 1 }">
 	<!-- 회원이쓴글 + 로그인상태가 아님 -->
-	 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+	 		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 	</c:when>
 	<c:when test="${article.mem eq '2' }">
 	<!-- 관리자가쓴글 -->
 	</c:when>
 	<c:when test="${article.mem eq '0' and login eq 1}">
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
 	<!-- 비회원이쓴글 + 로그인상태 -->
 	</c:when>
 	<c:otherwise>
-		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
+		<input type="button" value="답 글" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}&pageNum=${pageNum }&bn=${bn}'">
 			&nbsp;&nbsp;
-		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/board/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+		<input type="button" value="수 정" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/updateForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
-		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
+		<input type="button" value="삭 제" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/deleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn }'">
 				&nbsp;&nbsp;
 	</c:otherwise>
 	</c:choose>
 	
-		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn }'">
+		<input type="button" value="목 록" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${pageNum}&bn=${bn }'">
 			&nbsp;&nbsp;
 		</td>
 	</tr>
@@ -163,9 +163,9 @@
 	<c:choose>
 		<c:when test="${articlec.depth>0}">
 			<td>
-				<img src="${pageContext.request.contextPath}/board/images/level.gif"
+				<img src="${pageContext.request.contextPath}/bbboard2/images/level.gif"
 					width="${5 * article.depth}">
-				<img src="${pageContext.request.contextPath}/board/images/re.gif">
+				<img src="${pageContext.request.contextPath}/bbboard2/images/re.gif">
 			</td>
 		</c:when>
 		</c:choose>
@@ -183,14 +183,14 @@
 	<td colspan ="10">${articlec.content }</td><td>${articlec.regdate }<p></td>
 	<c:choose>
 		<c:when test="${articlec.mem eq '1' and login eq 1 and articlec.writer eq logNick}">
-			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 		</c:when>
 		<c:when test="${articlec.mem eq '0' and login ne 1 }">
-			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/board/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
+			<td><input type="button" value="x" onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/CommentDeleteForm.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"><p><input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'"></td>
 		</c:when>		
 		<c:otherwise>
 			<td>
-			<input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/board/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'">
+			<input type="button" value="답글"onClick="document.location.href='${pageContext.request.contextPath}/bbboard2/recomment.do?num=${article.num}&pageNum=${pageNum}&bn=${bn}&cnum=${articlec.num}'">
 			</td>
 		</c:otherwise>
 	</c:choose>

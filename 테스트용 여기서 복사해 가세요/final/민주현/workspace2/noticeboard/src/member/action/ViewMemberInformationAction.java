@@ -16,6 +16,7 @@ public class ViewMemberInformationAction  implements CommandAction{
 		MemberDao dbPro = MemberDao.getInstance();
 		
 		String viewNick= request.getParameter("viewNick");
+		System.out.println(viewNick);
 		MemberDto article = dbPro.memberSeeArticle(viewNick);
 		
 		request.setAttribute("viewNick", viewNick);

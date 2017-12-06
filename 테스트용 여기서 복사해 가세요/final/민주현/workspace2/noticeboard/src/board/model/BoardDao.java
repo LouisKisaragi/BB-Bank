@@ -58,6 +58,35 @@ public class BoardDao {
 			}
 			return count;
 		}
+		//전체 글 개수를 알아오는 메서드 메인 사용
+		
+		public int getMainArticleCount(int bn) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int count = 0;
+			String sql = null;
+			try {
+				conn = ConnUtil.getConnection();
+				
+				sql = "select count(*) from BOARD where BN=?";
+				pstmt = conn.prepareStatement(sql);						
+				pstmt.setInt(1, bn);
+				
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(rs != null)try {rs.close();} catch(SQLException e) {}
+				if(pstmt != null)try {pstmt.close();} catch(SQLException e) {}
+				if(conn != null)try {conn.close();} catch(SQLException e) {}
+			}
+			return count;
+		}
 		
 		// 글 목록을 가져와서 List로 반환하는 메서드
 		public List<BoardDto> getArticles(int start, int end, int bn, String keyField, String keyWord){
@@ -120,6 +149,63 @@ public class BoardDao {
 								articleList.add(article);								
 							} while (rs.next());
 					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(rs != null)try {rs.close();} catch(SQLException e) {}
+				if(pstmt != null)try {pstmt.close();} catch(SQLException e) {}
+				if(conn != null)try {conn.close();} catch(SQLException e) {}
+			}
+			return articleList;
+		}
+		// 글 목록을 가져와서 MainContent로 반환하는 메서드
+		public List<BoardDto> getMainArticles(int start, int end, int bn){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<BoardDto> articleList = null;
+			String sql = null;
+			try {
+				conn = ConnUtil.getConnection();
+				
+					sql = "select * from "
+							+"(select rownum RNUM, NUM, WRITER,"
+							+"SUBJECT, PASS, REGDATE,"
+							+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+							+"(select * from BOARD order by REF desc, STEP asc) where BN=?)"
+							+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					System.out.println(sql);
+					pstmt.setInt(1, bn);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);						
+				
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					articleList =new ArrayList<BoardDto>(5);
+					do {
+						BoardDto article = new BoardDto();
+						article.setNum(rs.getInt("num"));
+						article.setWriter(rs.getString("writer"));
+						article.setSubject(rs.getString("subject"));
+						article.setPass(rs.getString("pass"));
+						article.setRegdate(rs.getTimestamp("regdate"));
+						article.setReadcount(rs.getInt("readCount"));
+						article.setRef(rs.getInt("ref"));
+						article.setStep(rs.getInt("step"));
+						article.setDepth(rs.getInt("depth"));
+						article.setContent(rs.getString("content"));
+						article.setIp(rs.getString("ip"));
+						article.setBn(rs.getInt("bn"));
+						article.setOrigin_filename(rs.getString("origin_filename"));
+						article.setServer_filename(rs.getString("server_filename"));
+						article.setFilesize(rs.getInt("filesize"));
+						article.setFiletype(rs.getString("filetype"));
+						article.setPreface(rs.getString("preface"));
+						article.setMem(rs.getInt("mem"));
+						articleList.add(article);								
+					} while (rs.next());
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

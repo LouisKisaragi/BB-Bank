@@ -4,14 +4,14 @@
 
 <c:if test="${check == 1}">
 	<meta http-equiv="Refresh"
-	content="0;url=${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum}&bn=${bn}">
+	content="0;url=${pageContext.request.contextPath}/bbboard2/list.do?pageNum=${pageNum}&bn=${bn}">
 </c:if>
 <c:if test="${check == 0}">
 <!doctype html>
 <html>
 <head>
-<link href="${pageContext.request.contextPath}/board/css/style.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/board/css/deleteFormstyle.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/bbboard2/css/deleteFormstyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <br><br>
