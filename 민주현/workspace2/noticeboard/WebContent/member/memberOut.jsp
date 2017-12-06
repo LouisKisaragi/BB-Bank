@@ -13,7 +13,7 @@ function back(){
 history.go(-1);
 }
 </script>
-
+<script src="${pageContext.request.contextPath }/member/script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원탈퇴</title>
 <link href="${pageContext.request.contextPath}/member/css/style.css" rel="stylesheet" type="text/css">
@@ -33,12 +33,12 @@ history.go(-1);
 				탈퇴를 위해 비밀번호를 다시 입력해주세요<p>
 				비밀번호<input type="password" name="pass"><p>
 				<input type="submit" value="탈퇴하기"><p>
-				
-				<input type="button" value="메인으로 돌아가기" onClick="document.location.href='${pageContext.request.contextPath}/board/main.do'">
+				<a href="javascript:self.close()"><input type="button" value="닫기"></a>
+<%-- 				<input type="button" value="메인으로 돌아가기" onClick="document.location.href='${pageContext.request.contextPath}/board/main.do'"> --%>
 		
 	
 	</form>
 </section>
-<script src="${pageContext.request.contextPath }/member/script.js"></script>
+
 </body>
 </html>
