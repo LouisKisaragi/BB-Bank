@@ -23,7 +23,7 @@ public class ListAction implements CommandAction {
 		HttpSession session = request.getSession(true);		//세션이 있는지 없는지를 확인 
 		// 있으면 세션을 반환시키고, 없으면 생성한다.
 		
-		if(pageNum == null) {
+		if(pageNum == null) { 
 			pageNum = "1";
 		}
 		if(prefaces == null) {

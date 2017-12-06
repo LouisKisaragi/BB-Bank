@@ -21,16 +21,25 @@
 <input type="hidden" name="step" value="${step}">
 <input type="hidden" name="depth" value="${depth}">
 <input type="hidden" name="bn" value=4>
-
-
-
+<c:if test="${login eq 1 }">
+<input type="hidden" name="mem" value=1>
+</c:if>
+<c:if test="${login ne 1 }">
+<input type="hidden" name="mem" value=0>
+</c:if>
 <table class="board">
-	<tr>
+	
+		<c:if test="${login ne 1 }">
+		<tr>
 		<td class="attr">이 름</td>
-		<td>
-			<input type = "text" name="writer">
-			</td>
+		<td><input type = "text" name="writer"></td>
 		</tr>
+			
+		</c:if>
+			<c:if test="${login eq 1 }">
+				<input type = "hidden" name="writer" value="${logNick }">
+			</c:if>
+			
 		<tr>
 			<td class="attr">구 분</td>
 			<td>

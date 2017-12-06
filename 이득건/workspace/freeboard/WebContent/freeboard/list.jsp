@@ -81,7 +81,22 @@
 						<td align="center" width="50"><c:out value="${number}" /> <c:set
 								var="number" value="${number - 1}" /></td>
 						<!-- 구분 -->
-						<td>${article.preface}</td>
+						<td>
+						<c:choose>
+						<c:when test="${article.preface==1}">
+						연예
+						</c:when>
+						<c:when test="${article.preface==2}">
+						정치
+						</c:when>
+						<c:when test="${article.preface==3}">
+						스포츠
+						</c:when>
+						<c:when test="${article.preface==4}">
+						뻘글
+						</c:when>
+						</c:choose>
+						</td>
 						<!-- 제목 -->
 						<td class="titletd"><c:if test="${article.depth > 0}">
 								<img
@@ -167,6 +182,9 @@ ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
 				</tr>
 			</table>
 		</form>
+		
+		prefaces: ${prefaces}<br>
+		article.preface: ${article.preface}
 	</section>
 </body>
 </html>
