@@ -1,0 +1,43 @@
+﻿관리자 페이지의 흐름~
+
+bb.controller 의 Index.java를 실행
+
+RequestDispatcher rdp = request.getRequestDispatcher("bbJSP/index.jsp"); 가 실행되어서 bbJSP/index.jsp가 실행된다.
+
+
+
+index.jsp의 실행 과정 :
+
+String pageindex = null;
+    if(request.getAttribute("pageindex") != null) {
+    	pageindex = (String) request.getAttribute("pageindex");
+    } else {
+    	pageindex = "../bbJSP/무언가.jsp";
+    }
+
+pageindex가 null 이므로 else 조건이 실행되고 String 값인 pageindex는 "../bbJSP/무언가.jsp"로 설정되었다
+
+<jsp:include page = "<%=pageindex %>"/> 조건으로 해당 경로의 jsp가 같이 실행된다.
+
+
+
+FrontController 사용법:
+
+<a href="./FrontController?src=tiramisu">Logout</a>
+jsp에서 위와 같이 FrontController 경로를 올바르게 지정해주고 적절한 src 값을 지정해주면
+
+FrontController에서
+String url = null;
+String src = request.getParameter("src");
+위와 같이 src 값을 받아와서 src 값에 따른 조건을 확인한다.
+src 조건에 따라서 url 값이 바뀌고
+
+request.setAttribute("pageindex", url);
+RequestDispatcher rdp = request.getRequestDispatcher("bbJSP/index.jsp");
+
+url값을 pageindex라는 이름으로 request 한다.
+
+위 작업이 다 끝난 후에 다시 index.jsp로 이동한다.
+
+
+~.do는 session 생성되는 동안에만 임시로 생성되는 것이다.
