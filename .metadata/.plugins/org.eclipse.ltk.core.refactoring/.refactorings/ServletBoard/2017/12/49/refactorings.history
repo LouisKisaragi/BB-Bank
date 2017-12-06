@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;board&apos; to &apos;command&apos;&#x0D;&#x0A;- Original project: &apos;ServletBoard&apos;&#x0D;&#x0A;- Original element: &apos;ServletBoard/src/board&apos;&#x0D;&#x0A;- Renamed element: &apos;ServletBoard/src/command&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;board&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;board" name="command" qualified="false" references="true" stamp="1512436221958" textual="false" version="1.0"/>
+</session>

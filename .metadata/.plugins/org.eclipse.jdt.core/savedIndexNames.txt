@@ -1,0 +1,12 @@
+INDEX VERSION 1.130+C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.jdt.core
+1798542854.index
+1515668066.index
+2756224536.index
+3221538627.index
+1522332657.index
+4247924290.index
+428138244.index
+3831526318.index
+368730517.index
+1140592079.index
+798981942.index

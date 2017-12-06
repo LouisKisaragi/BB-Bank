@@ -1,0 +1,5 @@
+LineReader.MAX_LINE_LEN=1000
+eclipse.preferences.version=1
+ignored.extensions=.class, .gif, .exe, .png, .jpg, .zip, .jar, .svg, .psd, ~, .CLASS, .GIF, .EXE, .PNG, .JPG, .ZIP, .JAR, .SVG, .PSD, .pdf, .p12, .odt, .odp, .doc, .pptx, .ppt, .bin, .docx, .xls, .xlsx, .PDF, .P12, .ODT, .ODP, .DOC, .PPTX, .PPT, .BIN, .DOCX, .XLS, .XLSX
+ignored.names=bin, target, build
+ignored.prefixes=.
