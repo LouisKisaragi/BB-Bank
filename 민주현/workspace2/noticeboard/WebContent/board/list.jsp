@@ -57,6 +57,7 @@ rel="stylesheet" type="text/css"/>
 </c:if>	
 
 <c:if test="${count > 0 }">
+
 <table class="listtable">
 	<tr>
 		<th id="num">번호</th>
@@ -105,7 +106,16 @@ rel="stylesheet" type="text/css"/>
 			<img src = "${ pageContext.request.contextPath}/board/images/hot.gif">
 			</c:if>		
 		</td>
-		<td>${ article.writer }
+		<td>
+			<c:choose>
+				<c:when test="${article.mem eq 1 }">	
+					<a href="javascript:openView('${article.writer }');" target="_blank"><c:out value="${article.writer}"/></a>
+				</c:when>
+				<c:otherwise>
+					<c:out value="${article.writer}"/>
+				</c:otherwise>
+			</c:choose>
+			<p>
 		<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script type="text/javascript">

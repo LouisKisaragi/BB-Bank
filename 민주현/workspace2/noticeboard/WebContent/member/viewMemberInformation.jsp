@@ -69,7 +69,7 @@ section{
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()"><button>닫기</button></a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 				</c:when>
@@ -88,7 +88,7 @@ section{
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()"><button>닫기</button></a></td>
+			<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 			</c:otherwise>
