@@ -19,6 +19,8 @@ create table member(
 	email varchar2(200) not null,
 	point number(7,0) default 100 not null,
 	joindate timestamp default sysdate not null,
+	--admin number(1) default 1,
+	--어드민 로그인 안될 경우 넣을 것.
 	logindate varchar2(20) default 0,
 	super_m number(1) default 1,
     -- 유저와 관리자를 구분하는 키, 가입하면 유저는 1만 받는다.
@@ -26,6 +28,8 @@ create table member(
 	-- 만약에 기존의 설계대로 안될경우 아래의 문장으로 바꾸시오.
 	--primary key(id) foreign key(pnum)
 );
+
+drop table member;
 
 CREATE SEQUENCE MEMBER_SEQ
 	START WITH 1
