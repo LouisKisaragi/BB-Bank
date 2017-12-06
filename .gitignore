@@ -20,8 +20,8 @@ adminpage/RemoteSystemsTempFiles/
 adminpage/Servers
 /.metadata/
 
-BB PANK/workspace/.metadata/
-BB PANK/workspace/.recommenders/
-BB PANK/workspace/RemoteSystemsTempFiles/
-BB PANK/workspace/Servers/
+BB_PANK/workspace/.metadata/
+BB_PANK/workspace/.recommenders/
+BB_PANK/workspace/RemoteSystemsTempFiles/
+BB_PANK/workspace/Servers/
 /.recommenders/
