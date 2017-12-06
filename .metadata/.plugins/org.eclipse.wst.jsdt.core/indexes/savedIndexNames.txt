@@ -1,4 +1,2 @@
 INDEX VERSION 1.4+C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 1140592079.index
-2493244762.index
-368730517.index
