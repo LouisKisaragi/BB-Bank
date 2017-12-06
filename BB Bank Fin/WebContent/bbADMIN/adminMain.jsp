@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%
 	String pageindex = null;
 	if(request.getAttribute("pageindex")!= null)
@@ -54,6 +53,7 @@
 						  <li><a href="./AdminFrontController?src=board&contentno=0&pageno=0">게시판 관리</a></li>
 						  <li><a href="./AdminFrontController?src=qna&contentno=0&pageno=0">Q&A관리</a></li>
 						  <li><a href="./AdminFrontController?src=point&contentno=0&pageno=0">포인트 관리</a></li>
+						  
 						  <!-- <li><a href="./AdminFrontController?src=style"></a></li>  -->
 						  <!-- 페이지 연결 코드입니다. 필요하면 가져다 쓰세요.  -->
 						<ul class = "nav navbar-nav navbar-right">
