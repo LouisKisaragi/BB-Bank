@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Users\user\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 1982795016.index
 47172373.index
@@ -6,3 +7,9 @@ INDEX VERSION 1.4+C:\Users\user\Documents\GitHub\BB-Bank\.metadata\.plugins\org.
 1063577347.index
 1068252183.index
 2163647803.index
+=======
+INDEX VERSION 1.4+C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1140592079.index
+2493244762.index
+368730517.index
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d

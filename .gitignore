@@ -14,7 +14,16 @@
 민주현/workspace/.recommenders/
 민주현/workspace/RemoteSystemsTempFiles/
 민주현/workspace/Servers/
+<<<<<<< HEAD
 adminpage/.metadata/
 adminpage/.recommenders/
 adminpage/RemoteSystemsTempFiles/
 adminpage/Servers
+=======
+
+BB_PANK/workspace/.metadata/
+BB_PANK/workspace/.recommenders/
+BB_PANK/workspace/RemoteSystemsTempFiles/
+BB_PANK/workspace/Servers/
+/.recommenders/
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d

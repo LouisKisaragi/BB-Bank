@@ -1,7 +1,12 @@
 //org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
 //org.eclipse.ui.commands/state/org.eclipse.wst.xml.views.XPathView.processor.xpathprocessor/org.eclipse.ui.commands.radioState=xpath10
+<<<<<<< HEAD
 ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc
 ColorsAndFontsPreferencePage.selectedElement=Torg.eclipse.rse.ui.presentation
+=======
+ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc\tTorg.eclipse.debug.ui.presentation\tTorg.eclipse.egit.ui.GitTheme\tTorg.eclipse.jdt.ui.presentation\tTorg.eclipse.wst.jsdt.ui.presentation\tTorg.eclipse.rse.ui.presentation\tTorg.eclipse.rse.ui.messages.presentation\tTorg.eclipse.rse.ui.remotecommandsview.presentation\tTorg.eclipse.wst.sse.ui\tTorg.eclipse.mylyn.tasks.ui.presentation\tTorg.eclipse.compare.contentmergeviewer.TextMergeViewer\tTorg.eclipse.ui.presentation.default\tTorg.eclipse.mylyn.wikitext.ui.presentation
+ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.jface.textfont
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 PLUGINS_NOT_ACTIVATED_ON_STARTUP=;org.eclipse.m2e.discovery;
 REMOTE_COMMANDS_VIEW_FONT=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 eclipse.preferences.version=1
@@ -20,6 +25,10 @@ org.eclipse.jface.textfont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2
 org.eclipse.mylyn.wikitext.ui.presentation.textFont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.pde.internal.ui.compare.ManifestContentMergeViewer=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.pde.internal.ui.compare.PluginContentMergeViewer=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+<<<<<<< HEAD
+=======
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands/>
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 org.eclipse.ui.workbench.texteditor.blockSelectionModeFont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.wst.jsdt.internal.ui.compare.JavaMergeViewer=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.wst.jsdt.ui.editors.textfont=1|Consolas|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;

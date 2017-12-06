@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=C\:\\Users\\user\\.git;
 GitRepositoriesView.GitDirectories.relative=C\:\\Users\\user\\.git;
+=======
+GitRepositoriesView.GitDirectories=C\:\\Users\\IT63\\Documents\\GitHub\\BB-Bank\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+core_autoIgnoreDerivedResources=false
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 eclipse.preferences.version=1

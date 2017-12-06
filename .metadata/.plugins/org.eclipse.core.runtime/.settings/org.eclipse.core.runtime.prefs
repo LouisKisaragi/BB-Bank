@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 content-types/org.eclipse.jdt.core.javaClass/charset=UTF-8
 content-types/org.eclipse.jdt.core.javaClass/file-names=UTF-8
 content-types/org.eclipse.jpt.common.core.content.jar/charset=UTF-8
+=======
+content-types/org.eclipse.core.runtime.text/charset=UTF-8
+content-types/org.eclipse.jdt.core.javaClass/charset=UTF-8
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 eclipse.preferences.version=1

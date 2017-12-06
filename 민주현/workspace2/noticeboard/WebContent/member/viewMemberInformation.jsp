@@ -17,7 +17,7 @@ section{
 	left:0; top:0; right:0; bottom:0;
 }
 </style>
-
+<script src="${pageContext.request.contextPath}/member/script.js"></script>
 <title>유저 정보 보기</title>  
   
 </head>
@@ -48,7 +48,7 @@ section{
 				</tr>
 				<tr>
 				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
-				<td><input type="button" value="탈퇴" onclick="document.location.href=''${pageContext.request.contextPath }/member/memberOut.do'"></td>
+				<td><a href="javascript:openMemberOut('${logNick }');"  target="_blank"><input type="button" value="회원탈퇴"></a></td>
 				</tr>
 				
 				</table>
@@ -69,7 +69,7 @@ section{
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()"><button>닫기</button></a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 				</c:when>
@@ -88,7 +88,7 @@ section{
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()"><button>닫기</button></a></td>
+			<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 			</c:otherwise>

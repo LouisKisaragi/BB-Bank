@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+<<<<<<< HEAD
 		<item value="" key="selection"/>
+=======
+		<item value="name" key="selection"/>
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+<<<<<<< HEAD
 			<item value="adress"/>
 			<item value="Phone"/>
 			<item value="Guest"/>
@@ -16,6 +21,12 @@
 			<item value="email"/>
 			<item value="Member"/>
 			<item value="Menber"/>
+=======
+			<item value="id"/>
+		</list>
+		<list key="replacehistory">
+			<item value="name"/>
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

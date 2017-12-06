@@ -13,6 +13,7 @@ public class WriteProAction implements CommandAction {
 		request.setCharacterEncoding("UTF-8");
 		BoardDto article = new BoardDto(); // 데이터를 처리할 빈
 		System.out.println("num:"+request.getParameter("num"));
+		article.setMem(Integer.parseInt(request.getParameter("mem")));
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setBn(Integer.parseInt(request.getParameter("bn")));
 		article.setWriter(request.getParameter("writer"));

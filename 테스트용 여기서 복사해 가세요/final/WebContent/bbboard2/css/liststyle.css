@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width: 700px; 
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
+table{
+	width:700px;
+	border-collapse:collapse;
+}
+a{ 
+	text-decoration:none; 
+}
+.listwritebutton{
+	text-align:right;
+}
+.listtable{
+	text-align:center;	
+	border:1px solid #333;
+}
+.listtable td{
+	border:1px solid #333;
+}
+.listtable th{
+	color: #ffffff;
+	border:1px solid #333;
+	background-color: #4aa8b5; 
+	height:30px;
+}
+.listtable .titletd{
+	text-align:left;
+}
+#num{ width:50px;}
+#title{ width:250px;}
+#writer{ width:100px;}
+#date{ width:150px;}
+#counter{ width:50px;}
+#ip{ width:100px;}

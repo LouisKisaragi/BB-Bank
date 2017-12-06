@@ -260,6 +260,7 @@ public class BoardDao {
 					article.setContent(rs.getString("content"));
 					article.setIp(rs.getString("ip"));
 					article.setBn(rs.getInt("bn"));
+					article.setMem(rs.getInt("mem"));
 					articleList.add(article);
 				} while (rs.next());
 			} // end if
@@ -317,6 +318,7 @@ public class BoardDao {
 							article.setContent(rs.getString("content"));
 							article.setIp(rs.getString("ip"));
 							article.setBn(rs.getInt("bn"));
+							article.setMem(rs.getInt("mem"));
 							articleList.add(article);
 						} while(rs.next());
 					}	// end if
@@ -457,6 +459,7 @@ public class BoardDao {
 					article.setContent(rs.getString("content"));
 					article.setIp(rs.getString("ip"));
 					article.setBn(rs.getInt("bn"));
+					article.setMem(rs.getInt("mem"));
 					articleList.add(article);
 				} while (rs.next());
 			} // end if
@@ -525,8 +528,8 @@ public class BoardDao {
 			}
 			// 쿼리 작성
 			sql = "insert into BOARD" + "(NUM, WRITER, PREFACE, SUBJECT, PASS,"
-					+ "REGDATE, REF, STEP, DEPTH, CONTENT, IP, BN) "
-					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "REGDATE, REF, STEP, DEPTH, CONTENT, IP, BN, MEM) "
+					+ "values(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getPreface());
@@ -539,6 +542,7 @@ public class BoardDao {
 			pstmt.setString(9, article.getContent());
 			pstmt.setString(10, article.getIp());
 			pstmt.setInt(11, article.getBn());
+			pstmt.setInt(12, article.getMem());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -591,6 +595,7 @@ public class BoardDao {
 				article.setDepth(rs.getInt("depth"));
 				article.setContent(rs.getString("content"));
 				article.setIp(rs.getString("ip"));
+				article.setMem(rs.getInt("mem"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -642,6 +647,7 @@ public class BoardDao {
 				article.setContent(rs.getString("content"));
 				article.setIp(rs.getString("ip"));
 				article.setBn(rs.getInt("bn"));
+				article.setMem(rs.getInt("mem"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

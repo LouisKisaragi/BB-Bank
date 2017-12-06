@@ -149,7 +149,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
+<<<<<<< HEAD
       <Context docBase="C:\Users\user\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\user\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BB Bank Fin" path="/BB_Bank_Fin" reloadable="true" source="org.eclipse.jst.jee.server:BB Bank Fin"/></Host>
+=======
+      <Context docBase="C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BB_Bank" path="/BB_Bank_Fin" reloadable="true" source="org.eclipse.jst.jee.server:BB_Bank"/></Host>
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
     </Engine>
   </Service>
 </Server>

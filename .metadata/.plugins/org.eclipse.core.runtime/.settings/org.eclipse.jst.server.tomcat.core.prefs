@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 locationorg.eclipse.jst.server.tomcat.runtime.90=C\:/apache-tomcat-9.0/apache-tomcat-9.0.0.M26
+=======
+locationorg.eclipse.jst.server.tomcat.runtime.90=C\:/apache-tomcat-9.0.0
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
