@@ -14,7 +14,7 @@
 <article>
 <b>글쓰기</b>
 <br><br>
-<form method=post name=writeForm action="${pageContext.request.contextPath}/writePro.do" onsubmit="return writeSave()">
+<form method=post name=writeForm action="${pageContext.request.contextPath}/bbboard5/writePro.do" onsubmit="return writeSave()">
 	<input type=hidden name=num value="${num}">
 	<input type=hidden name=ref value="${ref}">
 	<input type=hidden name=step value="${step}">
@@ -35,18 +35,28 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
-			<td class="attr">이름</td>
-			<td>
-				<input type=text name="writer">
-			</td>
-		</tr>
-		<tr>
-			<td class="attr">패스워드</td>
-			<td>
+		<c:choose>
+			<c:when test="${login ne 1 }">
+				<tr>
+					<td class="attr">이름</td>
+					<td>
+					<input type=text name="writer">
+					</td>
+				</tr>
+				<tr>
+					<td class="attr">패스워드</td>
+					<td>
 				<input type=password name="pass">
 			</td>
 		</tr>
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" name="writer" value="${logNick }">
+				<input type="hidden" name="pass" value="${logPass }">
+			</c:otherwise>
+		</c:choose>
+		
+			
 		<tr>
 			<td class=attr>제목</td>
 			<td>
@@ -61,7 +71,7 @@
 			<td colspan=2 class="attr">
 				<input type=submit value="글쓰기">
 				<input type=reset value="다시작성">
-				<input type=button value="목록" onclick="window.location='${pageContext.request.contextPath}/list.do'">
+				<input type=button value="목록" onclick="window.location='${pageContext.request.contextPath}/bbboard5/list.do'">
 			</td>
 		</tr>
 	</table>

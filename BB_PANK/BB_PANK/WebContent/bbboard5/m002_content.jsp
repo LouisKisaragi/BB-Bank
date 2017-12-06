@@ -36,10 +36,10 @@
 	<tr>
 		<td colspan=4>
 			<c:if test="${mem ne 2}">
-				<input type=button value="수정" onclick="document.location.href='${pageContext.request.contextPath}/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
-				<input type=button value="삭제" onclick="document.location.href='${pageContext.request.contextPath}/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
+				<input type=button value="수정" onclick="document.location.href='${pageContext.request.contextPath}/bbboard5/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+				<input type=button value="삭제" onclick="document.location.href='${pageContext.request.contextPath}/bbboard5/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
 			</c:if>
-			<input type=button value="목록" onclick="document.location.href='${pageContext.request.contextPath}/list.do?pageNum=${pageNum}'">
+			<input type=button value="목록" onclick="document.location.href='${pageContext.request.contextPath}/bbboard5/list.do?pageNum=${pageNum}'">
 		</td>
 	</tr>
 </table>

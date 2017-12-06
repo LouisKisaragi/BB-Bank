@@ -12,7 +12,7 @@
 <body>
 <section>
 <b>글 수정</b>
-<form method=post name=writeForm action="${pageContext.request.contextPath}/updatePro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
+<form method=post name=writeForm action="${pageContext.request.contextPath}/bbboard5/updatePro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
 	<table class=board>
 		<tr>
 			<td class="attr">이름</td>
@@ -41,7 +41,7 @@
 			<td colspan=2 class="attr">
 				<input type=submit value="글수정">
 				<input type=reset value="다시작성">
-				<input type=button value="목록" onclick="window.location='${pageContext.request.contextPath}/list.do?pageNum=${pageNum}'">
+				<input type=button value="목록" onclick="window.location='${pageContext.request.contextPath}/bbboard5/list.do?pageNum=${pageNum}'">
 			</td>
 		</tr>
 	</table>

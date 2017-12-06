@@ -20,7 +20,7 @@
 <body>
 <section>
 <b>글삭제</b>
-<form method=post name=delForm action="${pageContext.request.contextPath}/deletePro.do?pageNum=${pageNum}" onsubmit="return deleteSave()">
+<form method=post name=delForm action="${pageContext.request.contextPath}/bbboard5/deletePro.do?pageNum=${pageNum}" onsubmit="return deleteSave()">
 <table class=deletetable>
 	<tr>
 		<td><b>패스워드를 입력해 주시오</b></td>
@@ -29,7 +29,7 @@
 		<td>패스워드 : <input type="password" name="pass"><input type="hidden" name="num" value="${num}"></td>
 	</tr>
 	<tr>
-		<td><input type="submit" value="삭제"> <input type=button value="목록" onClick="document.location.href='${pageContext.request.contextPath}/list.do?pageNum=${pageNum}'">
+		<td><input type="submit" value="삭제"> <input type=button value="목록" onClick="document.location.href='${pageContext.request.contextPath}/bbboard5/list.do?pageNum=${pageNum}'">
 	</tr>
 </table>
 </form>

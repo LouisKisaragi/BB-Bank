@@ -1,9 +1,10 @@
-package bb.board.model5;
+package bb.board.model1;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class J001_ConnUtil {
+public class ConnUtil {
 	public static String ID="scott";
 	public static String PASSWORD="tiger";
 	public static String IP="localhost";
@@ -20,19 +21,3 @@ public class J001_ConnUtil {
 		return DriverManager.getConnection("jdbc:oracle:thin:@"+IP+":1521:xe", ID, PASSWORD);
 	}
 }
-
-/*	public static String ID = "scottt";
-	public static String PASSWORD = "tiger";
-	public static String IP = "localhost";
-	static {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", ID, PASSWORD);
-	}
-}*/
