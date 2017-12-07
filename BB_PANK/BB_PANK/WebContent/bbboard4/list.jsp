@@ -196,9 +196,9 @@ ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
 				</tr>
 			</table>
 		</form>
-		
+		<!-- 
 		prefaces: ${prefaces}<br>
-		article.preface: ${article.preface}
+		article.preface: ${article.preface}-->
 	</section>
 	<div id="footer">
 <%@ include file="../bbboard/footer.jsp" %>

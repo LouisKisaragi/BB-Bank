@@ -161,17 +161,17 @@ section {
                                         <td>
 												<c:set var="preface" value="${article.preface }"/>
 												<c:choose>
-													<c:when test="${article.preface eq '공지' }">
-													[공지]
+													<c:when test="${article.preface eq '1' }">
+													[연예]
 													</c:when>
-													<c:when test="${article.preface eq '점검' }">
-													[점검]
+													<c:when test="${article.preface eq '2' }">
+													[정치]
 													</c:when>
-													<c:when test="${article.preface eq '이벤트' }">
-													[이벤트]
+													<c:when test="${article.preface eq '3' }">
+													[스포츠]
 													</c:when>
-													<c:when test="${article.preface eq '발표' }">
-													[발표]
+													<c:when test="${article.preface eq '4' }">
+													[뻘글]
 													</c:when>
 													
 												</c:choose>

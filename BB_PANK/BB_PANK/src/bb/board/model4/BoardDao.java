@@ -364,7 +364,7 @@ public class BoardDao {
 						if(prefaces.equals("1") || prefaces.equals("2") || prefaces.equals("3") || prefaces.equals("4")) {
 							// 검색 조건에 따라 다른 SQL문을 사용하도록 한다.
 							if(condition.equals("1")) {
-								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and writer like ?)) where RNUM >= ? and RNUM <= ?";
+								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, MEM from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and writer like ?)) where RNUM >= ? and RNUM <= ?";
 								keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 								pstmt = conn.prepareStatement(sql);
 								pstmt.setString(1, prefaces);
@@ -372,7 +372,7 @@ public class BoardDao {
 								pstmt.setInt(3, start);
 								pstmt.setInt(4, end);
 							} else if(condition.equals("2")) {
-								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and subject like ?)) where RNUM >= ? and RNUM <= ?";
+								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, MEM from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and subject like ?)) where RNUM >= ? and RNUM <= ?";
 								keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 								pstmt = conn.prepareStatement(sql);
 								pstmt.setString(1, prefaces);
@@ -380,7 +380,7 @@ public class BoardDao {
 								pstmt.setInt(3, start);
 								pstmt.setInt(4, end);
 							} else if(condition.equals("3")) {
-								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and content like ?)) where RNUM >= ? and RNUM <= ?";
+								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, MEM from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and content like ?)) where RNUM >= ? and RNUM <= ?";
 								keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 								pstmt = conn.prepareStatement(sql);
 								pstmt.setString(1, prefaces);
@@ -388,7 +388,7 @@ public class BoardDao {
 								pstmt.setInt(3, start);
 								pstmt.setInt(4, end);
 							} else if(condition.equals("4")) {
-								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and (subject like ? or content like ?))) where RNUM >= ? and RNUM <= ?";
+								sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, MEM from (select * from BOARD order by REF desc, STEP asc) where bn=4 and mem!=2 and preface=? and (subject like ? or content like ?))) where RNUM >= ? and RNUM <= ?";
 								keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력 가능, 이렇게 별도로 키워드를 지정해줘야 한다.
 								pstmt = conn.prepareStatement(sql);
 								pstmt.setString(1, prefaces);
@@ -400,7 +400,7 @@ public class BoardDao {
 			} else { //preface가 존재하지 않는 모든 글을 볼때
 				// 검색 조건에 따라 다른 SQL문을 사용하도록 한다.
 				if (condition.equals("1")) {
-					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN from (select * from BOARD order by REF desc, STEP asc) where bn=4 and writer like ?)) where RNUM >= ? and RNUM <= ?";
+					sql = "select * from (select * from (select rownum RNUM, NUM, PREFACE, WRITER, SUBJECT, PASS, REGDATE, READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, MEM from (select * from BOARD order by REF desc, STEP asc) where bn=4 and writer like ?)) where RNUM >= ? and RNUM <= ?";
 					keywords = "%" + keywords + "%"; // keywords를 포함한 모든 문자 입력
 														// 가능, 이렇게 별도로 키워드를
 														// 지정해줘야 한다.
