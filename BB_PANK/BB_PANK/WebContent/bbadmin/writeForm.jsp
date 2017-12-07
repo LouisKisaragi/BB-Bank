@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글작성</title>
-<script src="${pageContext.request.contextPath}/bbbadmin/script.js"></script>
-<link href="${pageContext.request.contextPath}/bbbadmin/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/bbbadmin/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
+<script src="${pageContext.request.contextPath}/bbadmin/script.js"></script>
+<link href="${pageContext.request.contextPath}/bbadmin/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/bbadmin/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #footer {
 
@@ -40,14 +40,23 @@
 	<table class="board">
 		<tr>
 			<td>
-				<select name="bn"  onChange="view(this.options[this.selectedIndex].value)">
+				<select name="bn"  onChange="change(this.options[this.selectedIndex].value)">
 						<option value=1>공지사항</option>
+						<option value=2>Q&A</option>
 						<option value=4>자유게시판</option>
 						<option value=5>야구</option>
-						<option value=2>Q&A</option>
 				</select> 
 			</td>
-			<td id="view1">
+			
+			<td class="attr">제  목</td>
+			<td colspan="2">
+				<c:if test="${num == 0}">
+				<input class="input" type="text" name="subject">
+				</c:if>
+			</td>
+		</tr>
+		<tr>
+		<td id="view1"  style="display:none">
 				<select name="preface" >
 						<option value="공지">공지</option>
 						<option value="점검">점검</option>
@@ -55,18 +64,27 @@
 						<option value="발표">발표</option>
 				</select> 
 			</td>
-			<td id="view2">
+			<td id="view2" style="display:none">
 				<select name="preface" >
 						<option value="solution">해결</option>
 						<option value="main">공지</option>
 						<option value="problem">질문</option>
 				</select> 
 			</td>
-			<td class="attr">제  목</td>
-			<td colspan="2">
-				<c:if test="${num == 0}">
-				<input class="input" type="text" name="subject">
-				</c:if>
+			<td id="view4"  style="display:none">
+				<select name="preface" >
+						<option value="공지">공지</option>
+						<option value="점검">점검</option>
+						<option value="이벤트">이벤트</option>
+						<option value="발표">발표</option>
+				</select> 
+			</td>
+			<td id="view5" style="display:none">
+				<select name="preface" >
+						<option value="solution">해결</option>
+						<option value="main">공지</option>
+						<option value="problem">질문</option>
+				</select> 
 			</td>
 		</tr>
 		<tr>
