@@ -9,15 +9,15 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bb.board.model2.BoardDao;
-import bb.board.model2.BoardDto;
+import bb.board.model3.BoardDao;
+import bb.board.model3.BoardDto;
 
-public class _2DownloadFAction  implements CommandAction{
+public class _3DownloadFAction  implements CommandAction{
 	public String requestPro(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws Throwable {
 		//해당 글번호
-		request.setCharacterEncoding("UTF-8");
+		
 		//제목글과 답변글의 구분
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println("pageNum::"+request.getParameter("pageNum"));
@@ -39,8 +39,7 @@ public class _2DownloadFAction  implements CommandAction{
 		//DB에있는 정보가져오기
 		String fileName = null;
 		fileName=article.getServer_filename();
-		System.out.println("filname"+fileName);
-		File downfile = new File("C:\\Users\\IT64\\Documents\\GitHub\\BB\\BB-Bank\\BB_PANK\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BB_PANK\\upload\\"+fileName);
+		File downfile = new File("D:\\자바JSP\\jsp프로잭트\\workspace\\FUBoard\\WebContent\\board\\upload\\"+fileName);
 		if(!downfile.exists()) {
 			throw new FileNotFoundException();
 		}
@@ -66,7 +65,7 @@ public class _2DownloadFAction  implements CommandAction{
 	request.setAttribute("pageNum", new Integer(pageNum));
 	request.setAttribute("article", article);
 	
-	return "/bbboard2/content.jsp";	//해당 뷰 경로 반환
+	return "/bbboard3/content.jsp";	//해당 뷰 경로 반환
 }
 	
 }

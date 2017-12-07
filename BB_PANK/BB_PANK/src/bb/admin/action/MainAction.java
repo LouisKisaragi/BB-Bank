@@ -89,7 +89,7 @@ public class MainAction  implements CommandAction{
 			request.setAttribute("articleList5",articleList5);
 			request.setAttribute("preface", preface);
 			
-		return "Main.jsp";
+		return "/bbadmin/adMain.jsp";
 	}
 
 }

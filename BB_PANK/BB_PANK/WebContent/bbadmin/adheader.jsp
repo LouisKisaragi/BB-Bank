@@ -27,7 +27,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath }/bbboard/main.do">BBBANK</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath }/bbadmin/adMain.do">BBBANK adminpage</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,27 +35,22 @@
          <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" >
           <a class="nav-link" href="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=1&bn=1">
-            <span class="nav-link-text">공지사항</span>
+            <span class="nav-link-text">공지사항관리</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/bbboard4/list.do?pageNum=1&bn=4">
-            <span class="nav-link-text">자유 게시판</span>
+            <span class="nav-link-text">각 게시판별 관리</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=1&bn=2">
-            <span class="nav-link-text">Q&A</span>
+            <span class="nav-link-text">회원 관리</span>
           </a>
         </li>
      <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard5/list.do?pageNum=1&bn=5">
-            <span class="nav-link-text">야구게시판</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="nav-link-text">응원 게시판</span>
+          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard3/list.do?pageNum=1&bn=3">
+            <span class="nav-link-text">사이트 이슈 게시판</span>
           </a>
         </li>
         </ul>
@@ -70,19 +65,13 @@
         <c:choose>
             	<c:when test="${login eq 1 }">
             <li class="nav-item">
-            	<a class="nav-link" href="javascript:openView('${logNick }');" target="_blank">회원정보</a>
-            </li>
-            <li class="nav-item">
 				<a class="nav-link" href="${pageContext.request.contextPath }/bbmember/logout.do">로그아웃</a>
             </li>
             
 				</c:when>
             	<c:otherwise>
             <li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath }/bbmember/join.do">회원가입</a>	
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath }/bbmember/login.do">로그인</a>
+            <a class="nav-link" href="${pageContext.request.contextPath }/bbadmin/adlogin.do">관리자로그인</a>
             </li>
 				</c:otherwise>
           </c:choose>

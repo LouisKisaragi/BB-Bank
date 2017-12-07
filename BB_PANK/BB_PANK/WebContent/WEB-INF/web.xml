@@ -17,7 +17,7 @@
 		<param-value>commandPro.properties</param-value>
 	</init-param>
 	<multipart-config>
-			<location>/upload</location>
+			<location>C:/Users/IT64/Documents/GitHub/BB/BB-Bank/BB_PANK/BB_PANK/WebContent/upload</location>
 			<file-size-threshold>1024</file-size-threshold>
 	</multipart-config>
   </servlet>
