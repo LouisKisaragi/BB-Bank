@@ -1,9 +1,4 @@
 function writeSave() {
-	if(document.writeForm.writer.value == ""){
-		alert("작성자를 입력하세요.");
-		document.writeForm.writer.focus();
-		return false;
-	}
 	if(document.writeForm.subject.value == ""){
 		alert("제목을 입력하세요.");
 		document.writeForm.subject.focus();
@@ -14,18 +9,50 @@ function writeSave() {
 		document.writeForm.content.focus();
 		return false;
 	}
-	if(document.writeForm.pass.value == ""){
-		alert("비밀번호를 입력하세요.");
-		document.writeForm.pass.focus();
-		return false;
-	}
-	if(document.writeForm.preface.value == ""){
-		alert("말머리를 선택하세요")
-		document.writeForm.preface.focus();
-		return false;
-	}
 }
-
+function change(style) {
+    
+	   if( style == "1" )
+		   {
+	       view1.style.display = "inline"
+		   view2.style.display = "none"
+		   view3.style.display = "none"
+		   view4.style.display = "none"
+			   view5.style.display = "none"
+		   }
+	   if( style == "2" )
+	      {
+	       view1.style.display = "none"
+		   view2.style.display = "inline"
+		   view3.style.display = "none"
+			   view4.style.display = "none"
+				   view5.style.display = "none"
+		   }
+	   if( style == "3" )
+	      {
+	       view1.style.display = "none"
+		   view2.style.display = "none"
+		   view3.style.display = "inline"
+			   view4.style.display = "none"
+				   view5.style.display = "none"
+		   }
+		if( style == "4" )
+	      {
+	       view1.style.display = "none"
+		   view2.style.display = "none"
+		   view3.style.display = "none"
+			   view4.style.display = "inline"
+				   view5.style.display = "none"
+		   }
+		if( style == "5" )
+	      {
+	       view1.style.display = "none"
+		   view2.style.display = "none"
+		   view3.style.display = "none"
+			   view4.style.display = "none"
+				   view5.style.display = "inline"
+		   }
+	   	}
 function deleteSave() {
 	if(document.delForm.pass.value == ""){
 		alert("비밀번호를 입력하세요.");

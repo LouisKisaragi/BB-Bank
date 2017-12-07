@@ -12,22 +12,10 @@
 <title>로그인</title>
 <link href="${pageContext.request.contextPath}/bbadmin/css/style.css" rel="stylesheet" type="text/css">
 
-<style type="text/css">
-#footer {
 
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
-
-    height:70px;   
-}
-
-</style>
 </head>
 <body>
-<%@ include file="../bbadmin/adheader.jsp" %>
+
 <script type="text/javascript">
 function back(){
 	history.go(-1);

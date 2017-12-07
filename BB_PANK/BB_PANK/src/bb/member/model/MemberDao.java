@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import bb.admin.model.AdBoardDto;
+import bb.board.model2.BoardDto;
 import bb.board.model2.ConnUtil;
 
 public class  MemberDao{
@@ -422,7 +426,115 @@ public class  MemberDao{
 		}
 		return result;
 	}
+	//멤버수
+	public int memberCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try{
+			conn = ConnUtil.getConnection();
+		
+				pstmt = conn.prepareStatement("select count(*) from MEMBER where super_m=0");
+		
+				rs = pstmt.executeQuery();
 
+		if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch(Exception ex){
+				ex.printStackTrace();
+		} finally{
+			if(rs != null) try{rs.close(); } catch(SQLException e){}
+			if(pstmt != null) try{pstmt.close(); } catch(SQLException e){}
+			if(conn != null) try{conn.close(); } catch(SQLException e){}
+		}
+		return count;
+	}
+	public List<MemberDto> getArticles(int start, int end){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberDto> articleList = null;
+		try{
+			conn = ConnUtil.getConnection();
+			String sql=null;
+			
+				 sql="select * from(select * from "
+						+"(select rownum RNUM, PNUM, ID,"
+						+"NAME, NICKNAME, PASS, EMAIL,"
+						+"POINT, SUPER_M, JOINDATE, LOGINDATE from" 
+						+"(select * from MEMBER order by PNUM)where SUPER_M=0))"
+						+"where RNUM >= ? and RNUM <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+					rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				articleList = new ArrayList<MemberDto>(5);
+				do {
+					MemberDto article = new MemberDto();
+					article.setPnum(rs.getInt("pnum"));
+					article.setId(rs.getString("id"));
+					article.setNickname(rs.getString("nickname"));
+					article.setPass(rs.getString("pass"));
+					article.setEmail(rs.getString("email"));
+					article.setName(rs.getString("name"));
+					article.setPoint(rs.getInt("point"));
+					article.setSuper_m(rs.getString("super_m"));
+					article.setJoindate(rs.getTimestamp("joindate"));
+					article.setLogindate(rs.getString("logindate"));
+					articleList.add(article);
+				} while(rs.next());
+			}
+		} catch(Exception e){
+				e.printStackTrace();
+		} finally{
+			if(rs != null) try { rs.close(); } catch (SQLException e){}
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+			if(conn != null) try { conn.close(); } catch (SQLException e){}
+		}
+		return articleList;
+	}
+	//list로 반환하는 메서드
+	public List<MemberDto> getMArticles(){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<MemberDto> articleList = null;
+			try{
+				conn = ConnUtil.getConnection();
+				String sql=null;
+				sql="select * from MEMBER where SUPER_M=0 ";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					articleList = new ArrayList<MemberDto>(5);
+					do {
+						MemberDto article = new MemberDto();
+						article.setPnum(rs.getInt("pnum"));
+						article.setId(rs.getString("id"));
+						article.setNickname(rs.getString("nickname"));
+						article.setPass(rs.getString("pass"));
+						article.setEmail(rs.getString("email"));
+						article.setName(rs.getString("name"));
+						article.setPoint(rs.getInt("point"));
+						article.setSuper_m(rs.getString("super_m"));
+						article.setJoindate(rs.getTimestamp("joindate"));
+						article.setLogindate(rs.getString("logindate"));
+						articleList.add(article);
+					} while(rs.next());
+				}
+			} catch(Exception e){
+					e.printStackTrace();
+			} finally{
+				if(rs != null) try { rs.close(); } catch (SQLException e){}
+				if(pstmt != null) try { pstmt.close(); } catch (SQLException e){}
+				if(conn != null) try { conn.close(); } catch (SQLException e){}
+			}
+			return articleList;
+		}
 	//회원정보 가져오기
 	public MemberDto memberArticle(String id,String pass) {
 		Connection conn = null;

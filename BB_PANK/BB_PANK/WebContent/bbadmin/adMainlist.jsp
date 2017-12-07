@@ -7,9 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<link href="${pageContext.request.contextPath}/bbboard1/css/style.css"
+<link href="${pageContext.request.contextPath}/bbadmin/css/style.css"
 rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/bbboard1/css/liststyle.css"
+<link href="${pageContext.request.contextPath}/bbadmin/css/liststyle.css"
 rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #footer {
@@ -27,7 +27,7 @@ rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
-<%@ include file="../bbboard/header.jsp" %>
+<%@ include file="../bbadmin/adheader.jsp" %>
 <section>
 <c:set var="bn" value="1"/>
 	<b>글목록(전체글:${count})</b>
@@ -41,7 +41,7 @@ rel="stylesheet" type="text/css"/>
 			<table class="listwritebutton">
 				<tr>
 					<td>
-						<a href="${pageContext.request.contextPath }/bbboard1/writeForm.do?pageNum=${pageNum}&bn=${bn}">글쓰기</a>
+						<a href="${pageContext.request.contextPath }/bbadmin/adwriteForm.do?pageNum=${pageNum}&bn=${bn}">글쓰기</a>
 					</td>
 				</tr>
 			</table>
@@ -57,7 +57,13 @@ rel="stylesheet" type="text/css"/>
 </c:if>	
 
 <c:if test="${count > 0 }">
-
+<table class="listwritebutton">
+	<tr>
+		<td>
+			<a href="${pageContext.request.contextPath}/bbadmin/writeForm.do?pageNum=${pageNum}">글쓰기</a>
+		</td>
+	</tr>
+</table>
 <table class="listtable">
 	<tr>
 		<th id="num">번호</th>
@@ -77,33 +83,41 @@ rel="stylesheet" type="text/css"/>
 		<td>
 			<c:set var="preface" value="${article.preface }"/>
 			<c:choose>
-				<c:when test="${article.preface eq '공지' }">
-				[공지]
+				<c:when test="${article.bn eq '1' and article.preface eq '공지' }">
+				[공지사항]<p>[공지]
 				</c:when>
-				<c:when test="${article.preface eq '점검' }">
-				[점검]
+				<c:when test="${article.bn eq '1' and article.preface eq '점검' }">
+				[공지사항]<p>[점검]
 				</c:when>
-				<c:when test="${article.preface eq '이벤트' }">
-				[이벤트]
+				<c:when test="${article.bn eq '1' and article.preface eq '이벤트' }">
+				[공지사항]<p>[이벤트]
 				</c:when>
-				<c:when test="${article.preface eq '발표' }">
-				[발표]
+				<c:when test="${article.bn eq '1' and article.preface eq '발표' }">
+				[공지사항]<p>[발표]
 				</c:when>
-				
+				<c:when test="${article.bn eq '5'}">
+				[야구게시판]<p>[공지]
+				</c:when>
+				<c:when test="${article.bn eq '2' }">
+				[Q&A]<p>[공지]
+				</c:when>
+				<c:when test="${article.bn eq '3'}">
+				[사이트 이슈]<p>[공지]
+				</c:when>
 			</c:choose>
 		</td>
 		<td class="titletd" >
 			<c:if test="${ article.depth > 0 }">
-			<img src="${ pageContext.request.contextPath }/bbboard1/images/level.gif" width="${5* article.depth }">
-			<img src="${ pageContext.request.contextPath }/bbboard1/images/re.gif">
+			<img src="${ pageContext.request.contextPath }/bbadmin/adimages/level.gif" width="${5* article.depth }">
+			<img src="${ pageContext.request.contextPath }/bbadmin/adimages/re.gif">
 			</c:if>
 			<c:if test="${ article.depth == 0 }">
-			<img src="${ pageContext.request.contextPath }/bbboard1/images/level.gif" width="${5* article.depth }">
+			<img src="${ pageContext.request.contextPath }/bbadmin/adimages/level.gif" width="${5* article.depth }">
 			</c:if>
-			<a href="${ pageContext.request.contextPath}/bbboard1/content.do?num=${article.num}&pageNum=${currentPage}&bn=${bn}">
+			<a href="${ pageContext.request.contextPath}/bbadmin/content.do?num=${article.num}&pageNum=${currentPage}&bn=${article.bn}">
 			${ article.subject }</a>
 			<c:if test="${ article.readcount >= 20 }">
-			<img src = "${ pageContext.request.contextPath}/bbboard1/images/hot.gif">
+			<img src = "${ pageContext.request.contextPath}/bbadmin/adimages/hot.gif">
 			</c:if>		
 		</td>
 		<td>
@@ -135,7 +149,7 @@ rel="stylesheet" type="text/css"/>
 </table>
 </c:if>
 
-<form method="post" name="search" action="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=${pageNum }&bn=${bn}">
+<form method="post" name="search" action="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${pageNum }&bn=${bn}">
 <table style="border: 0px;">
   <tr>
     <td style="text-align: right;">
@@ -144,7 +158,7 @@ rel="stylesheet" type="text/css"/>
       	<option value="writer">이름</option>
       	<option value="content">내용</option>
       </select>
-	    <input type="text" size=16 name="keyWord"><input type="submit" value="찾기"> &nbsp;<input type="button" value=" 전체 목록" onclick="window.location='${pageContext.request.contextPath}/bbboard1/list.do?pageNum=${pageNum }&bn=${bn}'"></td>
+	    <input type="text" size=16 name="keyWord"><input type="submit" value="찾기"> &nbsp;<input type="button" value=" 전체 목록" onclick="window.location='${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=${pageNum }&bn=${bn}'"></td>
    </tr> 
    <tr><td colspan="3" align="center">
 
@@ -160,14 +174,14 @@ rel="stylesheet" type="text/css"/>
 		<c:set var="endPage" value="${pageCount}"/>
 	</c:if>
 	<c:if test="${startPage > pageBlock }">
-	<a href="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=${startPage - pageBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">이전</a>
+	<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${startPage - pageBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">이전</a>
 	</c:if>
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=${i}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">[${i}]</a>
+		<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${i}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">[${i}]</a>
 	</c:forEach>
 	
 	<c:if test="${endPage < pageCount}">
-		<a href="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=${startPage + pagBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">다음</a>
+		<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${startPage + pagBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">다음</a>
 	</c:if>
 </c:if>
 </td></tr>
@@ -175,7 +189,7 @@ rel="stylesheet" type="text/css"/>
 </form>
 </section>
 <div id="footer">
-<%@ include file="../bbboard/footer.jsp" %>
+<%@ include file="../bbadmin/adfooter.jsp" %>
 </div>
 </body>
 </html>

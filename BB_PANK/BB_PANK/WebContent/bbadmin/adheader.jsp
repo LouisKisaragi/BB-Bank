@@ -34,22 +34,36 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" >
-          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard1/list.do?pageNum=1&bn=1">
-            <span class="nav-link-text">공지사항관리</span>
+          <a class="nav-link" href="${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=1&bn=0">
+            <span class="nav-link-text">게시판별 공지사항 관리</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard4/list.do?pageNum=1&bn=4">
+         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <span class="nav-link-text">각 게시판별 관리</span>
           </a>
+            <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="${pageContext.request.contextPath}/bbadmin/listM.do?pageNum=1&bn=1">공지사항</a>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=1&bn=4">자유게시판</a>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=1&bn=5">야구게시판</a>
+            </li>
+             <li>
+              <a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=1&bn=2">Q&A게시판</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard2/list.do?pageNum=1&bn=2">
+          <a class="nav-link" href="${pageContext.request.contextPath}/bbadmin/admember.do?pageNum=1&bn=2">
             <span class="nav-link-text">회원 관리</span>
           </a>
         </li>
      <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/bbboard3/list.do?pageNum=1&bn=3">
+          <a class="nav-link" href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=1&bn=3">
             <span class="nav-link-text">사이트 이슈 게시판</span>
           </a>
         </li>
@@ -65,7 +79,7 @@
         <c:choose>
             	<c:when test="${login eq 1 }">
             <li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath }/bbmember/logout.do">로그아웃</a>
+				<a class="nav-link" href="${pageContext.request.contextPath }/bbadmin/adlogout.do">로그아웃</a>
             </li>
             
 				</c:when>

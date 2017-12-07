@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-<script src="${pageContext.request.contextPath}/bbadmin/script.js"></script>
+<script src="${pageContext.request.contextPath}/bbboard1/script.js"></script>
 <link href="${pageContext.request.contextPath}/bbboard1/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/bbboard1/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
@@ -35,12 +35,21 @@
 	<input type="hidden" name="ref" value="${ref}">
 	<input type="hidden" name="step" value="${step}">
 	<input type="hidden" name="depth" value="${depth}">
-	<input type="hidden" name="mem" value="2">
-		
+	<input type="hidden" name="bn" value="${bn}">
+	<c:choose>
+		<c:when test="${login eq 1 and super_m eq '1' }">
+			<input type="hidden" name="mem" value="2">
+		</c:when>
+		<c:when test="${login eq 1 }">
+		<input type="hidden" name="mem" value=1><!-- 로그인상태일때 -->
+		</c:when>
+		<c:otherwise>
+		<input type="hidden" name="mem" value="0"><!-- 비로그인상태일때 -->
+		</c:otherwise>
+	</c:choose>
 	<table class="board">
 		<tr>
 			<td>
-				
 				<select name="preface" >
 						<option value="">카테고리</option>
 						<option value="공지">공지</option>

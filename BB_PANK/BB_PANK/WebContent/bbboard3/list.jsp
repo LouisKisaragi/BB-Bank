@@ -13,11 +13,23 @@
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/bbboard3/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbboard3/css/liststyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbadmin/adheader.jsp" %>
 <section>
-<!-- <input type="hidden" name="bn" value="2">-->
-<c:set var="bn" value="2"/>
 <b>글목록(전체 글:${count})</b>
 <table class="listwritebutton">
 	<tr>
@@ -126,5 +138,8 @@
 	</c:if>
 </c:if>
 </section>
+<div id="footer">
+<%@ include file="../bbadmin/adfooter.jsp" %>
+</div>
 </body>
 </html>

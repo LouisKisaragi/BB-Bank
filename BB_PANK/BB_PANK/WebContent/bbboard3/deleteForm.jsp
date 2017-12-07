@@ -18,8 +18,22 @@
 </script>
 <link href="${pageContext.request.contextPath}/bbboard3/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbboard3/css/deleteFormstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbadmin/adheader.jsp" %>
 <section>
 <b>글삭제</b>
 <form method="POST" name="delForm" action="${pageContext.request.contextPath}/bbboard3/deletePro.do?pageNum=${pageNum}&bn=${bn}" 
@@ -46,5 +60,8 @@
 	</table>
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbadmin/adfooter.jsp" %>
+</div>
 </body>
 </html>

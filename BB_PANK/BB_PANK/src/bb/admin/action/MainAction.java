@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bb.board.action.CommandAction;
 import bb.board.model1.BoardDao;
@@ -16,6 +17,7 @@ public class MainAction  implements CommandAction{
 	public String requestPro (
 			HttpServletRequest request,
 			HttpServletResponse response)throws Throwable{
+		HttpSession session = request.getSession(true);//세션이 있는지 없는지를 확인 
 		request.setCharacterEncoding("UTF-8");
 		String preface = request.getParameter("preface");
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
@@ -71,7 +73,9 @@ public class MainAction  implements CommandAction{
 		number = count2 - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
 		number = count4 - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
 		number = count5 - (currentPage-1) * pageSize; //글 목록에 표시할 글 번호
-		
+		if(session.getAttribute("super")==null) {
+			return "/bbadmin/adlogin.jsp";	
+		}else {
 		// 해당 뷰에서 사용할 속성
 			request.setAttribute("bn1", bn1);
 			request.setAttribute("bn2", bn2);
@@ -90,6 +94,7 @@ public class MainAction  implements CommandAction{
 			request.setAttribute("preface", preface);
 			
 		return "/bbadmin/adMain.jsp";
+	}
 	}
 
 }
