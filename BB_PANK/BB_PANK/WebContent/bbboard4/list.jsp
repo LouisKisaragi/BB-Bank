@@ -12,8 +12,22 @@
 <link
 	href="${pageContext.request.contextPath}/bbboard4/css/liststyle.css"
 	rel="stylesheet" type="text/css">
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 	<section>
 		<%
 			request.setCharacterEncoding("UTF-8");
@@ -182,9 +196,12 @@ ${startPage - pageBlock }&prefaces=${prefaces}">이전</a>
 				</tr>
 			</table>
 		</form>
-		
+		<!-- 
 		prefaces: ${prefaces}<br>
-		article.preface: ${article.preface}
+		article.preface: ${article.preface}-->
 	</section>
+	<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

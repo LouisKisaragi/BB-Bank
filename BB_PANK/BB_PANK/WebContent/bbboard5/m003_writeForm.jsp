@@ -8,8 +8,22 @@
 <script src="${pageContext.request.contextPath}/bbboard5/script.js"></script>
 <link href="${pageContext.request.contextPath}/bbboard5/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/bbboard5/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <article>
 <b>글쓰기</b>
@@ -76,9 +90,12 @@
 		</tr>
 	</table>
 </form>
-임의의 변수<br>
-${tempdata}<br>
+<!-- 임의의 변수<br>
+${tempdata}<br>-->
 </article>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

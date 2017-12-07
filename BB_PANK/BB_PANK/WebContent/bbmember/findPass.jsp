@@ -23,19 +23,41 @@ function back(){
 
 
 
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 	<form method="post"  name="findPass" action="${pageContext.request.contextPath}/bbmember/findPassSend.do"
 	onsubmit="return passFindSave()">
+	<div class="layer">
+		<span class="content">
 		비밀번호 찾기<p>
 		아이디<input type="text" name="id"><br>
 		이메일<input type="email" name="email"><br>
 		<input type="submit"  value="비밀번호 찾기" >
 		<input type="button"  value="아이디 찾기" onClick="document.location.href='${pageContext.request.contextPath}/bbmember/findId.do'">
 		<input type="button" value="이전으로 가기" onClick="javascript:back();">
+		</span>
+		<span class="blank"></span>
+		</div>
 	</form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

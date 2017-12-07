@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <article>
 <b>글쓰기</b>
@@ -109,7 +109,7 @@
 </article>
 </section>
 <div id="footer">
-<%@ include file="footer.jsp" %>
+<%@ include file="../bbboard/footer.jsp" %>
 </div>
 </body>
 </html>

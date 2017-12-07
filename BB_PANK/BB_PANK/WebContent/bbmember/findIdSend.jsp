@@ -23,13 +23,29 @@ function back(){
 
 
 
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 	<form method="post"  name="findIdSend" action="${pageContext.request.contextPath}/bbmember/findIdPro.do"
 	onsubmit="return idFindSendSave()">
 	<input type="hidden" name="name" value="${name }">
 	<input type="hidden" name="email" value="${email }">
+	<div class="layer">
+		<span class="content">
 		<c:choose>
 			<c:when test="${check eq 1 }">
 				<p>인증번호입력<br><br>
@@ -42,8 +58,14 @@ function back(){
 				<input type="button" value="이전으로 가기" onClick="javascript:back();">
 			</c:when>
 		</c:choose>
+		</span>
+		<span class="blank"></span>
+		</div>
 	</form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

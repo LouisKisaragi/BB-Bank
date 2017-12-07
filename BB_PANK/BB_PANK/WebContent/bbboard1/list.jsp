@@ -27,7 +27,7 @@ rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <c:set var="bn" value="1"/>
 	<b>글목록(전체글:${count})</b>
@@ -175,7 +175,7 @@ rel="stylesheet" type="text/css"/>
 </form>
 </section>
 <div id="footer">
-<%@ include file="footer.jsp" %>
+<%@ include file="../bbboard/footer.jsp" %>
 </div>
 </body>
 </html>

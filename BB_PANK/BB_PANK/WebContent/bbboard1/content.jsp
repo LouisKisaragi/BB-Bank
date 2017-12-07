@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../bbboard/header.jsp" %>
 <iframe id="ifrm_filedown" style="position:absolute; z-index:1; visibility: hidden;">
 </iframe>
 <section>
@@ -253,7 +253,7 @@ onsubmit="return contentSave()">
 </section>
 
 <div id="footer">
-<%@ include file="footer.jsp" %>
+<%@ include file="../bbboard/footer.jsp" %>
 </div>
 </body>
 </html>

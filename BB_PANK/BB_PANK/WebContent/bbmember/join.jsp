@@ -13,8 +13,22 @@
 <link href="${pageContext.request.contextPath}/bbmember/css/joinstyle.css" rel="stylesheet" type="text/css"/>
 <script src="script.js"></script>
 <script src="${pageContext.request.contextPath}/bbmember/script.js"></script>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 	<form method="post" name="join" action="${pageContext.request.contextPath}/bbmember/joinPro.do?"
 	onsubmit="return joinSave()">
@@ -25,7 +39,8 @@
 	<input type="hidden" name="passcheck" value="0">
 	<input type="hidden" name="emailcheck" value="0">
 	<input type="hidden" name="nickcheck" value="0">
-
+<div class="layer">
+		<span class="content">
 	<table class="jointable">
 		<tr>
 			<th>아이디</th><td><input type="text" name="id" required></td>
@@ -52,8 +67,13 @@
 	<table class="joinbutton">
 	<tr><td><input type="submit" value="회원가입"></td></tr>
 	</table>
+	</span>
+		<span class="blank"></span>
+		</div>
 	</form>
 </section>
-
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

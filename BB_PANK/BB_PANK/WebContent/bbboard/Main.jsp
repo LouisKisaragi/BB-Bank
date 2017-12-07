@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/bbboard1/css/style.css"
 	rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<title>BB PARK</title>
 <style type="text/css">
 #footer {
 	position: absolute;

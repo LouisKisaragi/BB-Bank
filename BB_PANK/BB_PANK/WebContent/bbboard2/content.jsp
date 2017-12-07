@@ -11,8 +11,22 @@
 <link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbboard2/css/contentstyle.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/bbboard2/script.js"></script>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>자료 보기</b>
 <br>
@@ -221,5 +235,8 @@
 </table>
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

@@ -7,8 +7,22 @@
 <title>게시판 글 내용</title>
 <link href="${pageContext.request.contextPath}/bbboard5/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/bbboard5/css/contentstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>글 내용 보기</b><br>
 <form>
@@ -44,9 +58,13 @@
 	</tr>
 </table>
 </form>
-임의의 변수<br>
+<!-- 임의의 변수<br>
 멤버 번호 : ${mem}<br>
-세션 값 : ${tempdata}<br>
+세션 값 : ${tempdata}<br>-->
 </section>
+
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>
