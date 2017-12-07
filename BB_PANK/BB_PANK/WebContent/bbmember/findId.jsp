@@ -42,11 +42,11 @@ function back(){
 <section>
 	<form method="post"  name="findId" action="${pageContext.request.contextPath}/bbmember/findIdSend.do"
 	onsubmit="return idFindSave()">
-	<div class="layer">
+	<div class="layer2">
 		<span class="content">
-		아이디 찾기<p>
-		이름<input type="text" name="name"><br>
-		이메일<input type="email" name="email"><br>
+		아이디 찾기<p><p>
+		이름 &nbsp; &nbsp;  <input type="text" name="name"><br><p>
+		이메일 &nbsp; <input type="email" name="email"><br><br>
 		<input type="submit"  value="아이디 찾기" >
 		<input type="button"  value="비밀번호 찾기" onClick="document.location.href='${pageContext.request.contextPath}/bbmember/findPass.do'">
 		<input type="button" value="이전으로 가기" onClick="javascript:back();">

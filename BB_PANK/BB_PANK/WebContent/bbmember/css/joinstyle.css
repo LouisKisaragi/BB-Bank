@@ -1,19 +1,21 @@
 @CHARSET "UTF-8";
 section{
-	padding-top: 30px;
+	padding-top: 150px;
+	padding-left:100px;
 	width: 700px; 
 	margin: auto;
+	text-align:center;
 	left:0; top:0; right:0; bottom:0;
 }
 table{
-	width:300px;
+	width:700px;
 	border-collapse:collapse;
 }
 a{ 
 	text-decoration:none; 
 }
 .joinbutton{
-	text-align:right;
+	text-align:center;
 }
 .jointable{
 	text-align:center;	
@@ -24,7 +26,6 @@ a{
 }
 .jointable th {
 	color: #ffffff;
-
 	background-color: #4aa8b5; 
 	height:30px;
 	width:125px;

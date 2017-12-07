@@ -44,7 +44,7 @@ function back(){
 	onsubmit="return passFindSendSave()">
 	<input type="hidden" name="id" value="${id }">
 	<input type="hidden" name="email" value="${email }">
-	<div class="layer">
+	<div class="layer3">
 		<span class="content">
 		<c:choose>
 			<c:when test="${check eq 1 }">

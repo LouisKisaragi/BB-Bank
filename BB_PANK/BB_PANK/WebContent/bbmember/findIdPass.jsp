@@ -41,7 +41,7 @@ function back(){
 <%@ include file="../bbboard/header.jsp" %>
 <section>
 <form>
-<div class="layer">
+<div class="layer3">
 		<span class="content">
 <a href="${pageContext.request.contextPath }/bbmember/findId.do" >아이디 찾기</a>
 <a href="${pageContext.request.contextPath }/bbmember/findPass.do" >비밀번호 찾기</a>
