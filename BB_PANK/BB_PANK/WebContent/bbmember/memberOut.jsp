@@ -18,14 +18,29 @@ history.go(-1);
 <title>회원탈퇴</title>
 <link href="${pageContext.request.contextPath}/bbmember/css/style.css" rel="stylesheet" type="text/css">
 
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 
 	<form method="post"  name="memberOut" action="${pageContext.request.contextPath}/bbmember/memberOutPro.do"
 	onsubmit="return outSave()"> 
 			
-			
+			<div class="layer">
+		<span class="content">
 				회원 탈퇴시 복구 불가능합니다! 정말로 탈퇴하시겠습니까?
 				<p><p><p>
 				
@@ -36,9 +51,14 @@ history.go(-1);
 				
 				<input type="button" value="메인으로 돌아가기" onClick="document.location.href='${pageContext.request.contextPath}/board/main.do'">
 		
-	
+	</span>
+		<span class="blank"></span>
+		</div>
 	</form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 <script src="${pageContext.request.contextPath }/bbmember/script.js"></script>
 </body>
 </html>

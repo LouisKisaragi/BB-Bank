@@ -12,8 +12,22 @@
 <title>로그인</title>
 <link href="${pageContext.request.contextPath}/bbmember/css/style.css" rel="stylesheet" type="text/css">
 
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <script type="text/javascript">
 function back(){
 	history.go(-1);
@@ -23,6 +37,8 @@ function back(){
 	<form method="post"  name="logIn" action="${pageContext.request.contextPath}/bbmember/loginPro.do"
 	onsubmit="return logInSave()"> 
 	<input type="hidden" name="page" value="${page }" >
+	<div class="layer">
+		<span class="content">
 		<table class="login">
 			<tr>
 				<th>아이디</th><td><input type="text" name="id"></td>
@@ -37,8 +53,14 @@ function back(){
 				<td><input type="button" value="이전으로 돌아가기" onClick="javascript:back();">
 			</tr>	
 		</table>
+		</span>
+		<span class="blank"></span>
+		</div>
 	</form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 <script src="${pageContext.request.contextPath }/bbmember/script.js"></script>
 </body>
 </html>

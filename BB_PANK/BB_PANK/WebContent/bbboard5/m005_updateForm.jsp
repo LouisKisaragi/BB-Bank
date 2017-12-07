@@ -8,8 +8,22 @@
 <script src="${pageContext.request.contextPath}/bbboard5/script.js"></script>
 <link href="${pageContext.request.contextPath}/bbboard5/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/bbboard5/css/writeFormstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>글 수정</b>
 <form method=post name=writeForm action="${pageContext.request.contextPath}/bbboard5/updatePro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
@@ -47,5 +61,8 @@
 	</table>
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

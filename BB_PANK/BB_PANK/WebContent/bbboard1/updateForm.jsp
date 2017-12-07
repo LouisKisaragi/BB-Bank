@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>글수정</b>
 	
@@ -108,7 +108,7 @@
 	</form>
 </section>
 <div id="footer">
-<%@ include file="footer.jsp" %>
+<%@ include file="../bbboard/footer.jsp" %>
 </div>
 </body>
 </html>

@@ -8,8 +8,22 @@
 <title>게시판</title>
 <link href="${pageContext.request.contextPath}/bbboard4/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbboard4/css/contentstyle.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>글내용 보기</b>
 <br>
@@ -81,5 +95,8 @@
 </table> 
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

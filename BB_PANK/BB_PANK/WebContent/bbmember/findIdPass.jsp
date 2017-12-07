@@ -23,15 +23,37 @@ function back(){
 
 
 
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <form>
+<div class="layer">
+		<span class="content">
 <a href="${pageContext.request.contextPath }/bbmember/findId.do" >아이디 찾기</a>
 <a href="${pageContext.request.contextPath }/bbmember/findPass.do" >비밀번호 찾기</a>
 <a href="javascript:back()">이전으로 가기</a>
+</span>
+		<span class="blank"></span>
+		</div>
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

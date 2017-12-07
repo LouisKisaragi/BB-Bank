@@ -52,6 +52,6 @@ function contentSave(){
 	}
 }
 function openView(nick){
-	url="../member/viewMemberInformation.do?viewNick="+nick;
+	url="../bbmember/viewMemberInformation.do?viewNick="+nick;
 	window.open(url,"_blank","width=300,height=300, screenX=550, screenY=300;");
 }

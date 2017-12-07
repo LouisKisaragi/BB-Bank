@@ -26,7 +26,7 @@
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>글삭제</b>
 <c:choose>
@@ -63,7 +63,7 @@
 </form>
 </section>
 <div id="footer">
-<%@ include file="footer.jsp" %>
+<%@ include file="../bbboard/footer.jsp" %>
 </div>
 
 </body>

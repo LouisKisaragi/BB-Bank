@@ -18,8 +18,22 @@
 </script>
 <link href="${pageContext.request.contextPath}/bbboard2/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbboard2/css/ComDeleteFormstyle.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>댓글삭제</b>
 <c:choose>
@@ -55,5 +69,8 @@
 </c:otherwise>
 </c:choose>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>

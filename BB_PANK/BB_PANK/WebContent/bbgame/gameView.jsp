@@ -11,8 +11,22 @@
 <link href="${pageContext.request.contextPath}/bbgame/css/style.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/bbgame/css/gameviewstyle.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/bbgame/script.js"></script>
+<style type="text/css">
+#footer {
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:70px;   
+}
+
+</style>
 </head>
 <body>
+<%@ include file="../bbboard/header.jsp" %>
 <section>
 <b>경기보기</b>
 <br>
@@ -260,5 +274,8 @@
 
 </form>
 </section>
+<div id="footer">
+<%@ include file="../bbboard/footer.jsp" %>
+</div>
 </body>
 </html>
