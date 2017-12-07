@@ -32,7 +32,7 @@
 <%-- 제목 --%>
 <b>
 <c:choose>
-	<c:when test="${prefaces eq 'a' or prefaces eq 'b' or prefaces eq 'c' or prefaces eq 'd' or prefaces eq 'e'}">
+	<c:when test="${prefaces eq 'a' or prefaces eq 'b' or prefaces eq 'c' or prefaces eq 'd'}">
 		${prefaces}
 	</c:when>
 	<c:otherwise>
@@ -55,7 +55,6 @@
 			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=b">[b]</a>
 			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=c">[c]</a>
 			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=d">[d]</a>
-			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=e">[e]</a>
 		</td>
 	</tr>
 </table>

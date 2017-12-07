@@ -55,28 +55,17 @@ function openView(nick){
 	url="../bbmember/viewMemberInformation.do?viewNick="+nick;
 	window.open(url,"_blank","width=300,height=300, screenX=550, screenY=300;");
 }
-function change(style){
-	if(style==1){
-		view1.style.display="inline"
-		view2.style.display="none"
-		view4.style.display="none"
-		view5.style.display="none"
-	}if(style==2){
-		view1.style.display="none"
-		view2.style.display="inline"
-		view4.style.display="none"
-		view5.style.display="none"
-	}if(style==4){
-		view1.style.display="none"
-		view2.style.display="none"
-		view4.style.display="inline"
-		view5.style.display="none"
-	}if(style==5){
-		view1.style.display="none"
-		view2.style.display="none"
-		view4.style.display="none"
-		view5.style.display="inline"
-	}
-	
 
+function logInSave(){
+	if(document.logIn.id.value==""){
+		alert("아이디를 입력 해주세요");
+		document.logIn.id.focus();
+		return false;
+	}
+	if(document.logIn.pass.value==""){
+		alert("비밀번호를 입력해주세요.");
+		document.logIn.pass.focus();
+		return false;
+	}
 }
+

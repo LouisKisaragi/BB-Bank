@@ -27,7 +27,7 @@
 <%@ include file="../bbboard/header.jsp" %>
 <section>
 <article>
-<b>글쓰기</b>
+<b>공지사항쓰기</b>
 <br></br>
 <form method="post" name="writeForm" action="${pageContext.request.contextPath}/bbboard1/writePro.do?pageNum=${pageNum }&bn=${bn}"  enctype="multipart/form-data"
 	onsubmit="return writeSave();">
@@ -35,12 +35,13 @@
 	<input type="hidden" name="ref" value="${ref}">
 	<input type="hidden" name="step" value="${step}">
 	<input type="hidden" name="depth" value="${depth}">
-	<input type="hidden" name="mem" value="2">
-	
+	<input type="hidden" name="mem" value=2>
+	<input type="hidden" name="pass" value="${adminPass }">
+	<input type="hidden" name="writer" value="${adminId }">
 	<table class="board">
 		<tr>
 			<td>
-				<select name="bn"  onChange="change(this.options[this.selectedIndex].value)">
+				<select name="bn">
 						<option value=1>공지사항</option>
 						<option value=2>Q&A</option>
 						<option value=4>자유게시판</option>
@@ -55,58 +56,6 @@
 				</c:if>
 			</td>
 		</tr>
-		<tr>
-		<td id="view1"  style="display:none">
-				<select name="preface" >
-						<option value="공지">공지</option>
-						<option value="점검">점검</option>
-						<option value="이벤트">이벤트</option>
-						<option value="발표">발표</option>
-				</select> 
-			</td>
-			<td id="view2" style="display:none">
-				<select name="preface" >
-						<option value="solution">해결</option>
-						<option value="main">공지</option>
-						<option value="problem">질문</option>
-				</select> 
-			</td>
-			<td id="view4"  style="display:none">
-				<select name="preface" >
-						<option value="공지">공지</option>
-						<option value="점검">점검</option>
-						<option value="이벤트">이벤트</option>
-						<option value="발표">발표</option>
-				</select> 
-			</td>
-			<td id="view5" style="display:none">
-				<select name="preface" >
-						<option value="solution">해결</option>
-						<option value="main">공지</option>
-						<option value="problem">질문</option>
-				</select> 
-			</td>
-		</tr>
-		<tr>
-			<td class="attr">작성자</td>
-			<td colspan="2">
-			<c:choose>
-				<c:when test="${login eq 1}">${logNick}<input type="hidden" name="writer" value="${logNick}"></c:when>
-				<c:otherwise><input type="text" name="writer"></c:otherwise>
-			</c:choose>
-			</td>
-		</tr>
-		<c:choose>
-				<c:when test="${login eq 1 }"><input type="hidden" name="pass" value="${logPass }"></c:when>
-				<c:otherwise>
-		<tr>
-			<td class="attr">비밀번호</td>
-			<td colspan="2">
-				<input type="password" name="pass">
-			</td>
-		</tr>
-		</c:otherwise>
-			</c:choose>
 		<tr>
 			<td class="attr">내용</td>
 			<td colspan="2">

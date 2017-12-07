@@ -26,6 +26,6 @@ public class WriteFormAction implements CommandAction{
 		request.setAttribute("ref", new Integer(ref));
 		request.setAttribute("step", new Integer(step));
 		request.setAttribute("depth", new Integer(depth));
-		return "/bbadmin/writeForm.jsp";	//해당 뷰 경로 반환
+		return "/bbadmin/adwriteForm.jsp";	//해당 뷰 경로 반환
 	}
 }

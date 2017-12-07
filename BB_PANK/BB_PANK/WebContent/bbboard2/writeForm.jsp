@@ -56,7 +56,7 @@
 			<td class="attr">제  목</td>
 			<td>
 				<c:if test="${num == 0}">
-					<input class="input" type="text" name="subject">
+					<input class="input" type="text" name="subject" >
 				</c:if>
 				<c:if test="${num != 0}">
 					<input class="input" type="text" name="subject" value="[답변]"> 
@@ -68,17 +68,17 @@
 			<td COLSPAN="2">
 			<c:choose>
 				<c:when test="${login eq 1 }">${logNick }<input type="hidden" name="writer" value="${logNick }"></c:when>
-				<c:otherwise><input type="text" name="writer"></c:otherwise>
+				<c:otherwise><input type="text" name="writer" size='10' maxlength='8'></c:otherwise>
 			</c:choose>
 				</td>
 		</tr>
 			<c:choose>
-				<c:when test="${login eq 1 }"><input type="hidden" name="pass" value="${logPass }"></c:when>
+				<c:when test="${login eq 1 }"><input type="hidden" name="pass" value="${logPass } " ></c:when>
 				<c:otherwise>
 					<tr>
 						<td class="attr">비밀번호</td>
 						<td COLSPAN="2">
-							<input type="password" name="pass">
+							<input type="password" name="pass" size='10' maxlength='12'>
 						</td>
 					</tr>
 				</c:otherwise>
