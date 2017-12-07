@@ -50,7 +50,7 @@
         </li>
      <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/bbboard5/list.do?pageNum=1&bn=5">
-            <span class="nav-link-text">자유게시판</span>
+            <span class="nav-link-text">야구게시판</span>
           </a>
         </li>
         <li class="nav-item">
