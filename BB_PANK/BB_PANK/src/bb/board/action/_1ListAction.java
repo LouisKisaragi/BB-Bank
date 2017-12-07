@@ -26,6 +26,9 @@ public class _1ListAction implements CommandAction{
 		}		
 		
 		String preface = request.getParameter("preface");
+		if(preface == null) {
+			preface="all";
+		}
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
 //		String sbn = request.getParameter("bn");
 		if(pageNum == null) {
@@ -42,10 +45,10 @@ public class _1ListAction implements CommandAction{
 		int bn = Integer.parseInt(request.getParameter("bn"));
 		List<BoardDto> articleList = null;
 		BoardDao dbPro = BoardDao.getInstance(); //DB연결
-		count =dbPro.getArticleCount(bn, keyField, keyWord); //전체 글 개수
+		count =dbPro.getArticleCount(bn, keyField, keyWord, preface); //전체 글 개수
 		
 		if(count>0) { //현재 페이지의 글 목록
-			articleList =dbPro.getArticles(startRow, endRow, bn, keyField, keyWord);
+			articleList =dbPro.getArticles(startRow, endRow, bn, keyField, keyWord, preface);
 		}else {
 			articleList = Collections.emptyList();
 		}

@@ -26,7 +26,7 @@ public class BoardDao {
 		
 		//전체 글 개수를 알아오는 메서드
 		
-		public int getArticleCount(int bn, String keyField, String keyWord) {
+		public int getArticleCount(int bn, String keyField, String keyWord, String preface) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -35,10 +35,36 @@ public class BoardDao {
 			try {
 					conn = ConnUtil.getConnection();
 					if(keyWord == null || "".equals(keyWord.trim())) {
-						sql = "select count(*) from BOARD where BN=?";
-						pstmt = conn.prepareStatement(sql);						
-						pstmt.setInt(1, bn);
-					}else {
+//						sql = "select count(*) from BOARD where BN=?";
+//						pstmt = conn.prepareStatement(sql);						
+//						pstmt.setInt(1, bn);
+						if(preface.equals("all")) {
+							sql = "select count(*) from BOARD where BN=?";
+							pstmt = conn.prepareStatement(sql);
+							System.out.println(sql);
+							pstmt.setInt(1, bn);
+						}else {
+							sql = "select count(*) from BOARD where BN=? and preface=?";
+							pstmt = conn.prepareStatement(sql);
+							System.out.println(sql);
+							pstmt.setInt(1, bn);
+							pstmt.setString(2, preface);	
+						}
+					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("all"))) {
+//						sql = "select count(*) from BOARD where BN=?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface != null)) {
+//						sql = "select count(*) from BOARD where BN=? and preface=?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);						
+//					}
+					else {
 						sql="select count(*) from BOARD where BN=? and "+keyField+" like ?";
 						pstmt=conn.prepareStatement(sql);
 						pstmt.setInt(1, bn);
@@ -88,8 +114,8 @@ public class BoardDao {
 			return count;
 		}
 		
-		// 글 목록을 가져와서 List로 반환하는 메서드
-		public List<BoardDto> getArticles(int start, int end, int bn, String keyField, String keyWord){
+		// 글 목록을 가져와서 List로 반환하는 메서드+분류별
+		public List<BoardDto> getArticles(int start, int end, int bn, String keyField, String keyWord, String preface){
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -98,18 +124,128 @@ public class BoardDao {
 			try {
 					conn = ConnUtil.getConnection();
 					if(keyWord == null || "".equals(keyWord.trim())) {
-						sql = "select * from "
-								+"(select rownum RNUM, NUM, WRITER,"
-								+"SUBJECT, PASS, REGDATE,"
-								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
-								+"(select * from BOARD order by REF desc, STEP asc) where BN=?)"
-								+"where RNUM >= ? and RNUM <= ?";
-						pstmt = conn.prepareStatement(sql);
-						System.out.println(sql);
-						pstmt.setInt(1, bn);
-						pstmt.setInt(2, start);
-						pstmt.setInt(3, end);						
-					}else {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setInt(2, start);
+//						pstmt.setInt(3, end);
+						if(preface.equals("all")){
+							sql = "select * from "
+									+"(select rownum RNUM, NUM, WRITER,"
+									+"SUBJECT, PASS, REGDATE,"
+									+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+									+"(select * from BOARD order by REF desc, STEP asc) where BN=?)"
+									+"where RNUM >= ? and RNUM <= ?";
+							pstmt = conn.prepareStatement(sql);
+							System.out.println(sql);
+							pstmt.setInt(1, bn);
+							pstmt.setInt(2, start);
+							pstmt.setInt(3, end);						
+						}else {
+							sql = "select * from "
+									+"(select rownum RNUM, NUM, WRITER,"
+									+"SUBJECT, PASS, REGDATE,"
+									+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+									+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+									+"where RNUM >= ? and RNUM <= ?";
+							pstmt = conn.prepareStatement(sql);
+							System.out.println(sql);
+							pstmt.setInt(1, bn);
+							pstmt.setString(2, preface);
+							pstmt.setInt(3, start);
+							pstmt.setInt(4, end);	
+						}
+					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("all"))) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setInt(2, start);
+//						pstmt.setInt(3, end);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface != null)) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);
+//						pstmt.setInt(3, start);
+//						pstmt.setInt(4, end);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("공지"))) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);
+//						pstmt.setInt(3, start);
+//						pstmt.setInt(4, end);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("점검"))) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);
+//						pstmt.setInt(3, start);
+//						pstmt.setInt(4, end);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("이벤트"))) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);
+//						pstmt.setInt(3, start);
+//						pstmt.setInt(4, end);						
+//					}
+//					else if((keyWord == null || "".equals(keyWord.trim()))&&(preface.equals("발표"))) {
+//						sql = "select * from "
+//								+"(select rownum RNUM, NUM, WRITER,"
+//								+"SUBJECT, PASS, REGDATE,"
+//								+"READCOUNT, REF, STEP, DEPTH, CONTENT, IP, BN, ORIGIN_FILENAME, SERVER_FILENAME, FILESIZE, FILETYPE, PREFACE, MEM from "
+//								+"(select * from BOARD order by REF desc, STEP asc) where BN=? and PREFACE=?)"
+//								+"where RNUM >= ? and RNUM <= ?";
+//						pstmt = conn.prepareStatement(sql);
+//						System.out.println(sql);
+//						pstmt.setInt(1, bn);
+//						pstmt.setString(2, preface);
+//						pstmt.setInt(3, start);
+//						pstmt.setInt(4, end);						
+//					}
+					else {
 						sql = "select * from "
 								+"(select rownum RNUM, NUM, WRITER,"
 								+"SUBJECT, PASS, REGDATE,"

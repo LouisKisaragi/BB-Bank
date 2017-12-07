@@ -46,6 +46,56 @@ rel="stylesheet" type="text/css"/>
 				</tr>
 			</table>
 	</c:if>
+	<table class="prefacetable">
+	<tr>
+	<td colspan="7">
+	<c:choose>
+		<c:when test="${preface eq 'all'}">
+			[전부]&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>
+		</c:when>
+		<c:when test="${preface eq '공지' }">
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			[공지]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '점검' }">
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;		
+			[점검]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '이벤트' }">
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			[이벤트]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '발표' }">
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			[발표]
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/bbboard1/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>
+		</c:otherwise>
+	</c:choose>
+	</td>
+	</tr>
+	</table>
 <c:if test="${count == 0 }">
 <table class="listtable">
 	<tr>
@@ -59,6 +109,9 @@ rel="stylesheet" type="text/css"/>
 <c:if test="${count > 0 }">
 
 <table class="listtable">
+
+	
+	
 	<tr>
 		<th id="num">번호</th>
 		<th id="preface">분류</th>
