@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="bb.dao.MemberDAO"/>
-=======
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
->>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>
