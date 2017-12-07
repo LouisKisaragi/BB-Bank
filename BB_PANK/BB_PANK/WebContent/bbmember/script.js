@@ -223,3 +223,11 @@ function outSave(){
 		return false;
 	}
 }
+function openView(nick){
+	url="../bbmember/viewMemberInformation.do?viewNick="+nick;
+	window.open(url,"_blank","width=300,height=300, screenX=550, screenY=300;");
+}
+function openMemberOut(nick){
+	url="../bbmember/memberOut.do?viewNick="+nick;
+	window.open(url,"_blank","width=500,height=400, screenX=550, screenY=300;");	
+}

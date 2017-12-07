@@ -13,8 +13,13 @@
 <script type="text/javascript">
 
 </script>
-<style>
-
+<style type="text/css">
+section{
+	padding-top: 30px;
+	width: 300px; 
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
 </style>
 <title>유저 정보 보기</title>
 </head>
@@ -44,7 +49,8 @@
 				<th>가입날짜</th><td>[${logJoin }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
+				<td><a href="javascript:openMemberOut('${logNick }');"  target="_blank"><input type="button" value="회원탈퇴"></a></td>
 				</tr>
 				</table>
 				</c:when>
@@ -64,7 +70,7 @@
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 				</c:when>
@@ -83,7 +89,7 @@
 				<th>보유포인트</th><td>[${article.point }]</td>
 				</tr>
 				<tr>
-				<td colspan="2"><a href="javascript:self.close()">닫기</a></td>
+				<td><a href="javascript:self.close()"><input type="button" value="닫기"></a></td>
 				</tr>
 				</table>
 			</c:otherwise>

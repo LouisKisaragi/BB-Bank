@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #d1d3fc;
+	margin:0;
+	padding:0;
+	height:100%;
 	font-size: 15px;
-	color: #ce16e9;
 	text-align: center;
 }
-
 
 a:link {
 	text-decoration: nonecolor:#696969;
