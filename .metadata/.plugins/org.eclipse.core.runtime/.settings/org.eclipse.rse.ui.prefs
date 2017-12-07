@@ -1,6 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=3f2b6f44cea533eb651386cb6143c69e926f4e3d
 eclipse.preferences.version=1
-<<<<<<< HEAD
-org.eclipse.rse.preferences.order.connections=user-PC.Local
-=======
-org.eclipse.rse.preferences.order.connections=IT63-HP.Local
->>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
+org.eclipse.rse.preferences.order.connections=IT63-HP.Local;user-PC.Local
