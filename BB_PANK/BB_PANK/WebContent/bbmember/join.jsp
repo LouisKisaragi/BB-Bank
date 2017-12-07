@@ -39,8 +39,8 @@
 	<input type="hidden" name="passcheck" value="0">
 	<input type="hidden" name="emailcheck" value="0">
 	<input type="hidden" name="nickcheck" value="0">
-<div class="layer">
-		<span class="content">
+
+	<br><br>
 	<table class="jointable">
 		<tr>
 			<th>아이디</th><td><input type="text" name="id" required></td>
@@ -64,12 +64,13 @@
 			<td><input type="button" value="이메일 인증" onClick="emailCheck(this.form.email.value)"></td>
 		</tr>
 	</table>
+	<p></p>
 	<table class="joinbutton">
 	<tr><td><input type="submit" value="회원가입"></td></tr>
 	</table>
-	</span>
+	
 		<span class="blank"></span>
-		</div>
+	
 	</form>
 </section>
 <div id="footer">

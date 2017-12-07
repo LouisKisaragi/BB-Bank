@@ -37,15 +37,16 @@ function back(){
 	<form method="post"  name="logIn" action="${pageContext.request.contextPath}/bbmember/loginPro.do"
 	onsubmit="return logInSave()"> 
 	<input type="hidden" name="page" value="${page }" >
-	<div class="layer">
+	<div class="layer1">
 		<span class="content">
 		<table class="login">
 			<tr>
-				<th>아이디</th><td><input type="text" name="id"></td>
+				<th colspan="2">아이디</th><td colspan="2"><input type="text" name="id"></td>
 			</tr>
 			<tr>
-				<th>비밀번호</th><td><input type="password" name="pass"></td>
+				<th colspan="2">비밀번호</th><td colspan="2"><input type="password" name="pass"></td>
 			</tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
 			<tr>
 				<td><input type="submit" value="로그인" ></td>
 				<td><input type="button" value="아이디/비밀번호찾기" onClick="document.location.href='${pageContext.request.contextPath }/bbmember/findIdPass.do'"></td>

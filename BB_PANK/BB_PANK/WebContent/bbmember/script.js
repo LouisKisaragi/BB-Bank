@@ -80,7 +80,7 @@ function nickCheck(nickname){
 		var popX=winX+(winWidth - popWidth)/2;
 		var popY=winY+(winHeight - popHeight)/2;
 		
-		url="nickCheck.do?nick="+nickname;
+		url="nickCheck.do?nick="+encodeURI(nickname);
 		window.open(url, "post", 
 				"left="+popX+",top="+popY+",width="+popWidth+",height="+popHeight);
 	}
@@ -222,4 +222,12 @@ function outSave(){
 		document.memberOut.pass.focus();
 		return false;
 	}
+}
+function openView(nick){
+	url="../bbmember/viewMemberInformation.do?viewNick="+nick;
+	window.open(url,"_blank","width=300,height=300, screenX=550, screenY=300;");
+}
+function openMemberOut(nick){
+	url="../bbmember/memberOut.do?viewNick="+nick;
+	window.open(url,"_blank","width=500,height=400, screenX=550, screenY=300;");	
 }
