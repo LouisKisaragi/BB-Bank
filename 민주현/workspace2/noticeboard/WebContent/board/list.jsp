@@ -60,6 +60,54 @@ rel="stylesheet" type="text/css"/>
 
 <table class="listtable">
 	<tr>
+	<td colspan="7">
+	<c:choose>
+		<c:when test="${preface eq 'all'}">
+			[전부]&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>
+		</c:when>
+		<c:when test="${preface eq '공지' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			[공지]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '점검' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;		
+			[점검]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '이벤트' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			[이벤트]&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>&nbsp;&nbsp;&nbsp;
+		</c:when>
+		<c:when test="${preface eq '발표' }">
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			[발표]
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=all">[전부]</a>&nbsp;&nbsp;&nbsp;		
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=공지">[공지]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=점검">[점검]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=이벤트">[이벤트]</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/list.do?pageNum=1&bn=${bn}&preface=발표">[발표]</a>
+		</c:otherwise>
+	</c:choose>
+	</td>
+	</tr>
+	<tr>
 		<th id="num">번호</th>
 		<th id="preface">분류</th>
 		<th id="title">제목</th>
@@ -141,7 +189,7 @@ rel="stylesheet" type="text/css"/>
     <td style="text-align: right;">
       <select name="keyField">
       	<option value="subject">제목</option>      
-      	<option value="writer">이름</option>
+      	<option value="writer">작성자</option>
       	<option value="content">내용</option>
       </select>
 	    <input type="text" size=16 name="keyWord"><input type="submit" value="찾기"> &nbsp;<input type="button" value=" 전체 목록" onclick="window.location='${pageContext.request.contextPath}/board/list.do?pageNum=${pageNum }&bn=${bn}'"></td>
