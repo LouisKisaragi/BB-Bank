@@ -127,11 +127,8 @@ public class WriteProAction implements CommandAction{
 		HttpSession session = request.getSession();
 		session.setAttribute("logPoint", articleM.getPoint());
 		}
-		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
-		int bn = Integer.parseInt(request.getParameter("bn"));
-		request.setAttribute("pageNum",pageNum);
-		request.setAttribute("bn", bn);
-		return "/bbadmin/adwritePro.jsp";	//해당 뷰 경로 반환
+		
+		return "/bbadmin/writePro.jsp";	//해당 뷰 경로 반환
 	}
 	private String getFileName(Part part) throws UnsupportedEncodingException{
 		for( String cd : part.getHeader("Content-Disposition").split(";")) {
