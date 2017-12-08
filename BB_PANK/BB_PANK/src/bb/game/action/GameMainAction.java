@@ -20,6 +20,12 @@ public class GameMainAction  implements CommandAction{
 		String pageNum = request.getParameter("pageNum"); //페이지 번호
 		String preface=request.getParameter("preface");
 		int pageSize = 5; //한 페이지 당 글의 개수
+		if(pageNum==null) {
+			pageNum="1";
+		}
+		if(preface==null) {
+			preface="all";
+		}
 		int currentPage = Integer.parseInt(pageNum);
 		//페이지의 시작 글 번호
 

@@ -54,7 +54,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${pageContext.request.contextPath }/bbgame/gameMain.do">
             <span class="nav-link-text">응원 게시판</span>
           </a>
         </li>

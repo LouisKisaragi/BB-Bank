@@ -51,10 +51,10 @@
 		<td>
 			<!-- 해당하는 preface일 경우, 링크를 제거하자 -->
 			<a href="${pageContext.request.contextPath}/bbboard5/list.do">[전체]</a>
-			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=a">[a]</a>
-			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=b">[b]</a>
-			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=c">[c]</a>
-			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=d">[d]</a>
+			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=a">[KBO]</a>
+			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=b">[MLB]</a>
+			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=c">[NPB]</a>
+			<a href="${pageContext.request.contextPath}/bbboard5/list.do?prefaces=d">[기타]</a>
 		</td>
 	</tr>
 </table>
@@ -116,7 +116,22 @@
 		</td>
 		<!-- 분류 -->
 		<td>
-			<b>${article.preface}</b>
+			<b>
+			<c:choose>
+			<c:when test="${article.preface eq 'a' }">
+				[KBO]
+				</c:when>
+				<c:when test="${article.preface eq 'b' }">
+				[MLB]
+				</c:when>
+				<c:when test="${article.preface eq 'c' }">
+				[NPB]
+				</c:when>
+				<c:when test="${article.preface eq 'd' }">
+				[기타]
+				</c:when>
+				</c:choose>
+				</b>
 		</td>
 		<!-- 제목 -->
 		<td class="titleid">

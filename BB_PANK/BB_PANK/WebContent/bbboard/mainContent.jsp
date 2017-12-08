@@ -41,7 +41,7 @@ section {
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url(' ${pageContext.request.contextPath}/images/MainImg.jpg'); background-size: 1000px 300px;">
+          <div class="carousel-item active" style="background-image: url(' ${pageContext.request.contextPath}/bbboard/images/MainImg.jpg'); background-size: 1000px 300px;">
             <div class="carousel-caption d-none d-md-block">
               <h3>First Slide</h3>
             </div>

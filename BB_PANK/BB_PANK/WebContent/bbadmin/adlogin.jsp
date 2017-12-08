@@ -46,7 +46,7 @@ function back(){
 	</form>
 </section>
 <div id="footer">
-<%@ include file="../bbadmin/adfooter.jsp" %>
+<%@ include file="../bbadmin/adloginfooter.jsp" %>
 </div>
 <script src="${pageContext.request.contextPath }/bbadmin/script.js"></script>
 </body>
