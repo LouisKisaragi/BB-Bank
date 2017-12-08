@@ -40,6 +40,12 @@
 		<c:when test="${login eq 1 and super_m eq '1' }">
 			<input type="hidden" name="mem" value="2">
 		</c:when>
+		<c:when test="${login eq 1 }">
+		<input type="hidden" name="mem" value=1><!-- 로그인상태일때 -->
+		</c:when>
+		<c:otherwise>
+		<input type="hidden" name="mem" value="0"><!-- 비로그인상태일때 -->
+		</c:otherwise>
 	</c:choose>
 	<table class="board">
 		<tr>

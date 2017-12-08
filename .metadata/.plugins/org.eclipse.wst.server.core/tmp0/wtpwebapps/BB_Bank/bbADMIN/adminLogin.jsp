@@ -27,7 +27,11 @@
 			  	<p><small>관리자 로그인 페이지 입니다.<br />
 			  			관리 권한이 없으면 로그인이 불가능합니다.
 			  		</small></p><hr />
+<<<<<<< HEAD:BB Bank Fin/WebContent/bbADMIN/adminLogin.jsp
+				<form action="../adminLogin.do" method="post">
+=======
 				<form action="BB_Bank/adminLogin.do" method="post">
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BB_Bank/bbADMIN/adminLogin.jsp
 				<div class="form-group">
 					<label class="control-label">ID</label>
 					<input class="form-control" type="text" name="id" placeholder="ID를 입력 하세요" />

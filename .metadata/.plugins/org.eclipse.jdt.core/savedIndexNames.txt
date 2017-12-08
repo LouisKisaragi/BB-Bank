@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.130+C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.jdt.core
 649592034.index
 4225938356.index
@@ -47,3 +48,6 @@ INDEX VERSION 1.130+C:\Users\IT63\Documents\GitHub\BB-Bank\.metadata\.plugins\or
 1455399657.index
 3627084181.index
 1924480154.index
+=======
+INDEX VERSION 1.130+C:\Users\user\Documents\GitHub\BB-Bank\.metadata\.plugins\org.eclipse.jdt.core
+>>>>>>> b8edd77ddfdb3e87f8f59218bbe42550eecfe35f

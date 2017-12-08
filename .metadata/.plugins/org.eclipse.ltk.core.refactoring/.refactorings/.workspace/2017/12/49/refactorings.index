@@ -5,4 +5,9 @@
 1512520515071	Rename resource 'BB Bank Fin'
 1512520884157	Delete resource 'BB_Bank'
 1512521045792	Delete resource 'BB_Bank'
+<<<<<<< HEAD
 1512523432301	Delete resource 'BB_Bank'
+=======
+1512606535049	Delete 2 resources
+1512607021227	Delete resource 'BB_PANK'
+>>>>>>> b8edd77ddfdb3e87f8f59218bbe42550eecfe35f

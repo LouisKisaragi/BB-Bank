@@ -58,7 +58,15 @@ onsubmit="return contentSave()">
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${ article.writer }
+			<td>
+			<c:choose>
+				<c:when test="${article.mem eq 1 }">	
+					<a href="javascript:openView('${article.writer }');" target="_blank"><c:out value="${article.writer}"/></a>
+				</c:when>
+				<c:otherwise>
+					<c:out value="${article.writer}"/>
+				</c:otherwise>
+			</c:choose>
 			<c:set value="${article.ip }" var="ipcut"/>
 			(
 			<script type="text/javascript">
@@ -69,6 +77,7 @@ onsubmit="return contentSave()">
 				document.write(ipc[1]);
 			</script>
 			)
+			<p>
 			</td>
 			<th>작성일</th>
 			<td>${ article.regdate }</td>

@@ -1,4 +1,8 @@
-﻿안경현/workspace/.metadata/
+﻿BB_PANK/.metadata/
+BB_PANK/.recommenders/
+BB_PANK/RemoteSystemsTempFiles/
+BB_PANK/Servers/
+안경현/workspace/.metadata/
 안경현/workspace/.recommenders/
 안경현/workspace/RemoteSystemsTempFiles/
 안경현/workspace/Servers/
@@ -14,9 +18,12 @@
 민주현/workspace/.recommenders/
 민주현/workspace/RemoteSystemsTempFiles/
 민주현/workspace/Servers/
-
-BB_PANK/workspace/.metadata/
-BB_PANK/workspace/.recommenders/
-BB_PANK/workspace/RemoteSystemsTempFiles/
-BB_PANK/workspace/Servers/
+<<<<<<< HEAD
+adminpage/.metadata/
+adminpage/.recommenders/
+adminpage/RemoteSystemsTempFiles/
+adminpage/Servers
+=======
 /.recommenders/
+>>>>>>> 3f2b6f44cea533eb651386cb6143c69e926f4e3d
+/.metadata/

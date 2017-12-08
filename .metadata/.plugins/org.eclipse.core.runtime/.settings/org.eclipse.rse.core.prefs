@@ -1,4 +1,7 @@
-activeuserprofiles=IT63-HP;Team
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=3f2b6f44cea533eb651386cb6143c69e926f4e3d
+activeuserprofiles=IT63-HP;Team;user-PC
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=IT63
-useridperkey=IT63-HP.Local\=IT63;
+useridperkey=user-PC.Local\=IT63;IT63-HP.Local\=IT63;

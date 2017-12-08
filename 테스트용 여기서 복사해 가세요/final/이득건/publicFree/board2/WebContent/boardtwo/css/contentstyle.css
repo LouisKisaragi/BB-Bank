@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+section{
+	padding-top: 30px;
+	width:500px;
+	margin: auto;
+	left:0; top:0; right:0; bottom:0;
+}
+.contenttable{
+	text-align:center;
+	border-collapse:collapse;
+}
+.contenttable th{
+	color: #ffffff;
+	border:1px solid #333;
+	background-color: #4aa8b5; 
+	height:30px;
+	width:125px;
+}
+.contenttable td {
+	border:1px solid #333;
+	text-align:center;
+	width:125px;	
+	height:30px;
+	border:1px solid #333;
+}
+table .contenttitle{
+	text-align:left;
+}
+table .content{
+	text-align:left;
+	height:200px;
+}
