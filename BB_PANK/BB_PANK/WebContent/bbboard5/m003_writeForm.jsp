@@ -41,11 +41,10 @@
 			<td class="attr">분류</td>
 			<td>
 				<select name="preface">
-				<option value="a" selected>a</option>
-				<option value="b">b</option>
-				<option value="c">c</option>
-				<option value="d">d</option>
-				<option value="e">e</option>
+				<option value="a" selected>[KBO]</option>
+				<option value="b">[MLB]</option>
+				<option value="c">[NPB]</option>
+				<option value="d">[기타]</option>
 				</select>
 			</td>
 		</tr>

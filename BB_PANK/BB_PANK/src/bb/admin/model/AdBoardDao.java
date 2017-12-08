@@ -21,7 +21,7 @@ public class AdBoardDao {
 	}
 	//이제부터 여기에 게시판에서 필요한 작업 기능들을 메서드로 추가하게 된다.
 	
-	//전체 글 개수를 알아오는 메서드+bn별
+	//전체 글 개수를 알아오는 메서드
 	public int getArticleCount(int bn){
 		Connection conn = null;
 		PreparedStatement pstmt = null;

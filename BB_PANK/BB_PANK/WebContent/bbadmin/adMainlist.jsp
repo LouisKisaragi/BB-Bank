@@ -84,25 +84,25 @@ rel="stylesheet" type="text/css"/>
 			<c:set var="preface" value="${article.preface }"/>
 			<c:choose>
 				<c:when test="${article.bn eq '1' and article.preface eq '공지' }">
-				[공지사항]<p>[공지]
+				[공지]<p>[공지]
 				</c:when>
 				<c:when test="${article.bn eq '1' and article.preface eq '점검' }">
-				[공지사항]<p>[점검]
+				[공지]<p>[점검]
 				</c:when>
 				<c:when test="${article.bn eq '1' and article.preface eq '이벤트' }">
-				[공지사항]<p>[이벤트]
+				[공지]<p>[이벤트]
 				</c:when>
 				<c:when test="${article.bn eq '1' and article.preface eq '발표' }">
-				[공지사항]<p>[발표]
+				[공지]<p>[발표]
 				</c:when>
 				<c:when test="${article.bn eq '5'}">
-				[야구게시판]<p>[공지]
+				[야구]<p>[공지]
 				</c:when>
 				<c:when test="${article.bn eq '2' }">
 				[Q&A]<p>[공지]
 				</c:when>
 				<c:when test="${article.bn eq '3'}">
-				[사이트 이슈]<p>[공지]
+				[이슈]<p>[공지]
 				</c:when>
 			</c:choose>
 		</td>
@@ -149,7 +149,7 @@ rel="stylesheet" type="text/css"/>
 </table>
 </c:if>
 
-<form method="post" name="search" action="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${pageNum }&bn=${bn}">
+<form method="post" name="search" action="${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=${pageNum }&bn=${bn}">
 <table style="border: 0px;">
   <tr>
     <td style="text-align: right;">
@@ -174,14 +174,14 @@ rel="stylesheet" type="text/css"/>
 		<c:set var="endPage" value="${pageCount}"/>
 	</c:if>
 	<c:if test="${startPage > pageBlock }">
-	<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${startPage - pageBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">이전</a>
+	<a href="${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=${startPage - pageBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">이전</a>
 	</c:if>
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${i}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">[${i}]</a>
+		<a href="${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=${i}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">[${i}]</a>
 	</c:forEach>
 	
 	<c:if test="${endPage < pageCount}">
-		<a href="${pageContext.request.contextPath}/bbadmin/adlist.do?pageNum=${startPage + pagBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">다음</a>
+		<a href="${pageContext.request.contextPath}/bbadmin/adMainlist.do?pageNum=${startPage + pagBlock}&bn=${bn}&keyField=${keyField}&keyWord=${keyWord}">다음</a>
 	</c:if>
 </c:if>
 </td></tr>

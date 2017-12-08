@@ -41,9 +41,9 @@ section {
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url(' ${pageContext.request.contextPath}/bbboard/images/MainImg.jpg'); background-size: 1000px 300px;">
+          <div class="carousel-item active" style="background-image: url(' ${pageContext.request.contextPath}/bbboard/images/MainImg.jpg'); background-size: 1024px 450px;">
             <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
+             
             </div>
           </div>
         </div>
@@ -311,17 +311,17 @@ section {
                                         <td>
 												<c:set var="preface" value="${article.preface }"/>
 												<c:choose>
-													<c:when test="${article.preface eq '공지' }">
-													[공지]
+													<c:when test="${article.preface eq 'a' }">
+													[KBO]
 													</c:when>
-													<c:when test="${article.preface eq '점검' }">
-													[점검]
+													<c:when test="${article.preface eq 'b' }">
+													[MBL]
 													</c:when>
-													<c:when test="${article.preface eq '이벤트' }">
-													[이벤트]
+													<c:when test="${article.preface eq 'c' }">
+													[NPB]
 													</c:when>
-													<c:when test="${article.preface eq '발표' }">
-													[발표]
+													<c:when test="${article.preface eq 'd' }">
+													[기타]
 													</c:when>
 													
 												</c:choose>
